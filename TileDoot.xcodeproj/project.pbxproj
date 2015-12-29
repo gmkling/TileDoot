@@ -14,6 +14,7 @@
 		107698C51C320292006051B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107698C31C320292006051B2 /* Main.storyboard */; };
 		107698C71C320292006051B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107698C61C320292006051B2 /* Assets.xcassets */; };
 		107698CA1C320292006051B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107698C81C320292006051B2 /* LaunchScreen.storyboard */; };
+		107698D21C3202C8006051B2 /* TileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698D11C3202C8006051B2 /* TileState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		107698C61C320292006051B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		107698C91C320292006051B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		107698CB1C320292006051B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		107698D11C3202C8006051B2 /* TileState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				107698C61C320292006051B2 /* Assets.xcassets */,
 				107698C81C320292006051B2 /* LaunchScreen.storyboard */,
 				107698CB1C320292006051B2 /* Info.plist */,
+				107698D11C3202C8006051B2 /* TileState.swift */,
 			);
 			path = TileDoot;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				107698C01C320292006051B2 /* GameScene.swift in Sources */,
+				107698D21C3202C8006051B2 /* TileState.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
 				107698BC1C320292006051B2 /* AppDelegate.swift in Sources */,
 			);
