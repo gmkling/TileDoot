@@ -23,10 +23,9 @@ class TileDootModelTests: XCTestCase {
     
     func testTileInit()
     {
-        let testCoord = Coordinate(x:1, y:1)
         let testColor = Color.kRed
-        
-        var tileTest = Tile(inCoord: testCoord, inColor: testColor)
+        let testType = TileType.colorTile
+        var tileTest = Tile(initType: testType, initColor: testColor)
         
         // basic.
         XCTAssertFalse(tileTest.isStop)
@@ -34,13 +33,17 @@ class TileDootModelTests: XCTestCase {
         XCTAssertFalse(tileTest.deleted)
         XCTAssertFalse(tileTest.moveInProgress)
         
-        XCTAssertEqual(tileTest.coordinate.x, testCoord.x)
-        XCTAssertEqual(tileTest.coordinate.y, testCoord.y)
+        XCTAssertEqual(tileTest.type, testType)
         XCTAssertEqual(tileTest.color, testColor)
         XCTAssertEqual(tileTest.rank, 0)
         
     }
     
+    func testGameBoardInit()
+    {
+        
+    }
+
     
     
 //    func testPerformanceExample() {

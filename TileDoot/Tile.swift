@@ -14,6 +14,10 @@ enum Color: Int {
     case kBlue, kRed, kGreen, kYellow, kOrange
 }
 
+enum TileType: Int {
+    case colorTile, barrierTile
+}
+
 struct Coordinate {
     var x: Int
     var y: Int
@@ -22,8 +26,8 @@ struct Coordinate {
 class Tile {
     
     var parent: Tile?
-    var coordinate : Coordinate
     var color: Color
+    var type: TileType
     var rank : Int
     
     var isStop = false
@@ -31,10 +35,10 @@ class Tile {
     var deleted: Bool = false
     var moveInProgress: Bool = false
         
-    init(inCoord: Coordinate, inColor: Color)
+    init(initType: TileType, initColor: Color)
     {
-        self.coordinate = inCoord
-        self.color = inColor
+        self.color = initColor
+        self.type = initType
         self.rank = 0
         
         self.isStop = false
@@ -42,5 +46,7 @@ class Tile {
         self.deleted = false
         self.moveInProgress = false
     }
+    
+
 }
 

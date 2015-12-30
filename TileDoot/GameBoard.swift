@@ -12,34 +12,49 @@ import Foundation
 
 class GameBoard {
     
-    var sizeX, sizeY, numTiles, tileWidth, tileHeight: Int
+    var dimension, numTiles, tileWidth, tileHeight: Int
     // was a std::vector<std::vector<Tile>> tileMap
     var tileMap = [[Tile?]]()
     
     // orig init is initMap which creates a new blank map
-    init(xSize: Int, ySize: Int, tileW: Int, tileH: Int)
+    init(initDimension: Int, tileW: Int, tileH: Int)
     {
-        self.sizeX = xSize
-        self.sizeY = ySize
+        self.dimension = initDimension
         self.tileWidth = tileW
         self.tileHeight = tileH
-        self.numTiles = xSize*ySize
+        self.numTiles = initDimension*initDimension
         
         // the way I'm doing the Tiles bothers me
         tileMap.reserveCapacity(numTiles)
         
         // init the map arrays
-        for var row=0; row<xSize; row++ {
-            for var col=0; col<ySize; col++ {
-                tileMap[row][col] = Tile(inCoord: Coordinate.init(x: row, y: col), inColor: Color.kNoColor)
+        for var row=0; row<initDimension; row++ {
+            for var col=0; col<initDimension; col++ {
+                tileMap[row][col] = nil
             }
         }
     }
     
-//    func addTile(loc: Coordinate){
-//        
-//    }
-//    
+    func addTile(newTile: Tile, loc: Coordinate)
+    {
+        // if a Tile exists, we ignore this action
+        if tileMap[loc.x][loc.y] == nil
+        {
+            tileMap[loc.x][loc.y] = newTile
+            // issue the addTile command to the View delegate
+        }
+    }
+    
+    func deleteTile(loc: Coordinate)
+    {
+        if tileMap[loc.x][loc.y] != nil
+        {
+            tileMap[loc.x][loc.y] = nil
+            // forward the cmd to the View delegate
+        }
+    }
+    
+//
 //    func isLocInRange(loc: Coordinate) ->Bool {
 //        
 //    }
