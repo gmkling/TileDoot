@@ -23,8 +23,25 @@ class TileDootModelTests: XCTestCase {
     
     func testTileInit()
     {
+        let testCoord = Coordinate(x:1, y:1)
+        let testColor = Color.kRed
+        
+        var tileTest = Tile(inCoord: testCoord, inColor: testColor)
+        
+        // basic.
+        XCTAssertFalse(tileTest.isStop)
+        XCTAssertFalse(tileTest.markedForDelete)
+        XCTAssertFalse(tileTest.deleted)
+        XCTAssertFalse(tileTest.moveInProgress)
+        
+        XCTAssertEqual(tileTest.coordinate.x, testCoord.x)
+        XCTAssertEqual(tileTest.coordinate.y, testCoord.y)
+        XCTAssertEqual(tileTest.color, testColor)
+        XCTAssertEqual(tileTest.rank, 0)
         
     }
+    
+    
     
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.

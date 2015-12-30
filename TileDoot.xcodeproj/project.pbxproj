@@ -19,6 +19,8 @@
 		107698E11C3467DB006051B2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698D11C3202C8006051B2 /* Tile.swift */; };
 		107698E41C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
 		107698E51C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
+		107698E71C347CE7006051B2 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E61C347CE7006051B2 /* Commands.swift */; };
+		107698E81C347CE7006051B2 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E61C347CE7006051B2 /* Commands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 		107698D91C34668A006051B2 /* TileDootModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileDootModelTests.swift; sourceTree = "<group>"; };
 		107698DB1C34668A006051B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		107698E31C346CEE006051B2 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		107698E61C347CE7006051B2 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,7 @@
 			children = (
 				107698D11C3202C8006051B2 /* Tile.swift */,
 				107698E31C346CEE006051B2 /* GameBoard.swift */,
+				107698E61C347CE7006051B2 /* Commands.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -221,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				107698C01C320292006051B2 /* GameScene.swift in Sources */,
+				107698E71C347CE7006051B2 /* Commands.swift in Sources */,
 				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
@@ -235,6 +240,7 @@
 				107698DA1C34668A006051B2 /* TileDootModelTests.swift in Sources */,
 				107698E51C346CEE006051B2 /* GameBoard.swift in Sources */,
 				107698E11C3467DB006051B2 /* Tile.swift in Sources */,
+				107698E81C347CE7006051B2 /* Commands.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

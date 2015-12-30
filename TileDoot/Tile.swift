@@ -22,23 +22,21 @@ struct Coordinate {
 class Tile {
     
     var parent: Tile?
-    var coordinates : Coordinate
+    var coordinate : Coordinate
     var color: Color
     var rank : Int
     
-    var occupied = false
     var isStop = false
     var markedForDelete: Bool = false
     var deleted: Bool = false
     var moveInProgress: Bool = false
-    
-    init(inCoordinates: Coordinate, inColor: Color)
+        
+    init(inCoord: Coordinate, inColor: Color)
     {
-        self.coordinates = inCoordinates
+        self.coordinate = inCoord
         self.color = inColor
         self.rank = 0
         
-        self.occupied = false
         self.isStop = false
         self.markedForDelete = false
         self.deleted = false
