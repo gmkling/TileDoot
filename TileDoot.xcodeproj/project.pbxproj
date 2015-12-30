@@ -14,8 +14,22 @@
 		107698C51C320292006051B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107698C31C320292006051B2 /* Main.storyboard */; };
 		107698C71C320292006051B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107698C61C320292006051B2 /* Assets.xcassets */; };
 		107698CA1C320292006051B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107698C81C320292006051B2 /* LaunchScreen.storyboard */; };
-		107698D21C3202C8006051B2 /* TileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698D11C3202C8006051B2 /* TileState.swift */; };
+		107698D21C3202C8006051B2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698D11C3202C8006051B2 /* Tile.swift */; };
+		107698DA1C34668A006051B2 /* TileDootModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698D91C34668A006051B2 /* TileDootModelTests.swift */; };
+		107698E11C3467DB006051B2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698D11C3202C8006051B2 /* Tile.swift */; };
+		107698E41C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
+		107698E51C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		107698DC1C34668A006051B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 107698B01C320291006051B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 107698B71C320292006051B2;
+			remoteInfo = TileDoot;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		107698B81C320292006051B2 /* TileDoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileDoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,11 +41,22 @@
 		107698C61C320292006051B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		107698C91C320292006051B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		107698CB1C320292006051B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		107698D11C3202C8006051B2 /* TileState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileState.swift; sourceTree = "<group>"; };
+		107698D11C3202C8006051B2 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		107698D71C346689006051B2 /* TileDootModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TileDootModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		107698D91C34668A006051B2 /* TileDootModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileDootModelTests.swift; sourceTree = "<group>"; };
+		107698DB1C34668A006051B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		107698E31C346CEE006051B2 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		107698B51C320292006051B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		107698D41C346689006051B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				107698BA1C320292006051B2 /* TileDoot */,
+				107698D81C34668A006051B2 /* TileDootModelTests */,
 				107698B91C320292006051B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				107698B81C320292006051B2 /* TileDoot.app */,
+				107698D71C346689006051B2 /* TileDootModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,9 +95,27 @@
 				107698C61C320292006051B2 /* Assets.xcassets */,
 				107698C81C320292006051B2 /* LaunchScreen.storyboard */,
 				107698CB1C320292006051B2 /* Info.plist */,
-				107698D11C3202C8006051B2 /* TileState.swift */,
+				107698E21C346CB3006051B2 /* Models */,
 			);
 			path = TileDoot;
+			sourceTree = "<group>";
+		};
+		107698D81C34668A006051B2 /* TileDootModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				107698D91C34668A006051B2 /* TileDootModelTests.swift */,
+				107698DB1C34668A006051B2 /* Info.plist */,
+			);
+			path = TileDootModelTests;
+			sourceTree = "<group>";
+		};
+		107698E21C346CB3006051B2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				107698D11C3202C8006051B2 /* Tile.swift */,
+				107698E31C346CEE006051B2 /* GameBoard.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +138,24 @@
 			productReference = 107698B81C320292006051B2 /* TileDoot.app */;
 			productType = "com.apple.product-type.application";
 		};
+		107698D61C346689006051B2 /* TileDootModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 107698DE1C34668A006051B2 /* Build configuration list for PBXNativeTarget "TileDootModelTests" */;
+			buildPhases = (
+				107698D31C346689006051B2 /* Sources */,
+				107698D41C346689006051B2 /* Frameworks */,
+				107698D51C346689006051B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				107698DD1C34668A006051B2 /* PBXTargetDependency */,
+			);
+			name = TileDootModelTests;
+			productName = TileDootModelTests;
+			productReference = 107698D71C346689006051B2 /* TileDootModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -105,6 +168,10 @@
 				TargetAttributes = {
 					107698B71C320292006051B2 = {
 						CreatedOnToolsVersion = 7.2;
+					};
+					107698D61C346689006051B2 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 107698B71C320292006051B2;
 					};
 				};
 			};
@@ -122,6 +189,7 @@
 			projectRoot = "";
 			targets = (
 				107698B71C320292006051B2 /* TileDoot */,
+				107698D61C346689006051B2 /* TileDootModelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +206,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		107698D51C346689006051B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -146,13 +221,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				107698C01C320292006051B2 /* GameScene.swift in Sources */,
-				107698D21C3202C8006051B2 /* TileState.swift in Sources */,
+				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
+				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
 				107698BC1C320292006051B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		107698D31C346689006051B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				107698DA1C34668A006051B2 /* TileDootModelTests.swift in Sources */,
+				107698E51C346CEE006051B2 /* GameBoard.swift in Sources */,
+				107698E11C3467DB006051B2 /* Tile.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		107698DD1C34668A006051B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 107698B71C320292006051B2 /* TileDoot */;
+			targetProxy = 107698DC1C34668A006051B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		107698C31C320292006051B2 /* Main.storyboard */ = {
@@ -261,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TileDoot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmkling.TileDoot;
@@ -272,10 +367,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TileDoot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmkling.TileDoot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		107698DF1C34668A006051B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = TileDootModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmkling.TileDootModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TileDoot.app/TileDoot";
+			};
+			name = Debug;
+		};
+		107698E01C34668A006051B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TileDootModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmkling.TileDootModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TileDoot.app/TileDoot";
 			};
 			name = Release;
 		};
@@ -296,6 +417,14 @@
 			buildConfigurations = (
 				107698CF1C320292006051B2 /* Debug */,
 				107698D01C320292006051B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		107698DE1C34668A006051B2 /* Build configuration list for PBXNativeTarget "TileDootModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				107698DF1C34668A006051B2 /* Debug */,
+				107698E01C34668A006051B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
