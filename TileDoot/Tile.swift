@@ -9,12 +9,16 @@
 import Foundation
 import CoreGraphics
 
+// I don't like that I have to reference type when I use these: Color.kRed
+// What am I missing?
 enum Color: Int {
     case kNoColor=1
     case kBlue, kRed, kGreen, kYellow, kOrange
 }
 
+// should be changed to bitfield version - struct?
 enum TileType: Int {
+    case nullTile = 0
     case colorTile, barrierTile
 }
 
@@ -46,7 +50,54 @@ class Tile {
         self.deleted = false
         self.moveInProgress = false
     }
-    
 
 }
 
+// overrides for Tiles
+
+func == (left: Tile, right: Tile) -> Bool
+{
+    // we only test properties, not state
+    if left.color != right.color { return false }
+    if left.type != right.type { return false }
+    if left.isStop != right.isStop { return false }
+    
+    return true
+}
+
+func != (left: Tile, right: Tile) -> Bool
+{
+    return !(left == right)
+}
+
+class TileBoard {
+    var dimension: Int = 0
+    var board = [Tile]()
+    
+    init(dim: Int) {
+        let nullTile = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+        self.dimension = dim
+        self.board = [Tile](count:dim*dim, repeatedValue:nullTile)
+    }
+    
+    subscript(row: Int, col: Int) -> Tile {
+        get {
+            assert(row >= 0 && row < dimension)
+            assert(col >= 0 && col < dimension)
+            return board[row*dimension + col]
+        }
+        set {
+            assert(row >= 0 && row < dimension)
+            assert(col >= 0 && col < dimension)
+            board[row*dimension + col] = newValue
+        }
+    }
+    
+    func setAll(item: Tile) {
+        for i in 0..<dimension {
+            for j in 0..<dimension {
+                self[i, j] = item
+            }
+        }
+    }
+}

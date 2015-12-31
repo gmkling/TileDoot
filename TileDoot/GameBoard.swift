@@ -12,117 +12,150 @@ import Foundation
 
 class GameBoard {
     
-    var dimension, numTiles, tileWidth, tileHeight: Int
+    var dimension, numTiles: Int
     // was a std::vector<std::vector<Tile>> tileMap
-    var tileMap = [[Tile?]]()
+    var tileMap = TileBoard?()
     
     // orig init is initMap which creates a new blank map
-    init(initDimension: Int, tileW: Int, tileH: Int)
+    init(initDimension: Int)
     {
         self.dimension = initDimension
-        self.tileWidth = tileW
-        self.tileHeight = tileH
         self.numTiles = initDimension*initDimension
         
-        // the way I'm doing the Tiles bothers me
-        tileMap.reserveCapacity(numTiles)
-        
-        // init the map arrays
-        for var row=0; row<initDimension; row++ {
-            for var col=0; col<initDimension; col++ {
-                tileMap[row][col] = nil
-            }
-        }
+        tileMap = TileBoard(dim: initDimension)
     }
     
     func addTile(newTile: Tile, loc: Coordinate)
     {
-        // if a Tile exists, we ignore this action
-        if tileMap[loc.x][loc.y] == nil
+        // if it is a nullTile, overwrite it with the new one
+        if tileMap?[loc.x, loc.y].type == TileType.nullTile
         {
-            tileMap[loc.x][loc.y] = newTile
+            tileMap![loc.x, loc.y] = newTile
             // issue the addTile command to the View delegate
         }
+        
     }
     
     func deleteTile(loc: Coordinate)
     {
-        if tileMap[loc.x][loc.y] != nil
+        // insert a nullTile if one is not already there
+
+        if tileMap?[loc.x, loc.y].type != TileType.nullTile
         {
-            tileMap[loc.x][loc.y] = nil
+            tileMap![loc.x, loc.y] = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
             // forward the cmd to the View delegate
         }
     }
+
+    func isLocInRange(loc: Coordinate) ->Bool
+    {
+        return !((loc.x < 0 || loc.y < 0) && (loc.x > dimension || loc.y > dimension))
+    }
     
+    // Occupied is implied by the presence of a non-null tile
+    // this is not the same as a stop tile
+ 
+    func isLocOccupied(loc: Coordinate) ->Bool
+    {
+        return tileMap![loc.x, loc.y].type != TileType.nullTile
+    }
+
+    // stop property
+    
+    func setTileStop(loc: Coordinate)
+    {
+        tileMap![loc.x, loc.y].isStop = true
+    }
+
+    func setTileNotStop(loc: Coordinate)
+    {
+        tileMap![loc.x, loc.y].isStop = false
+    }
+
+    func isTileStop(loc: Coordinate) ->Bool
+    {
+        return tileMap![loc.x, loc.y].isStop
+    }
+    
+    // color
+
+    func setTileColor(loc: Coordinate, color: Color)
+    {
+        tileMap![loc.x, loc.y].color = color
+    }
+    
+    func clearTileColor(loc: Coordinate)
+    {
+        tileMap![loc.x, loc.y].color = Color.kNoColor
+    }
+    
+    func getTileColor(loc: Coordinate) ->Color
+    {
+        return tileMap![loc.x, loc.y].color
+    }
+    
+    func setTileType(loc: Coordinate, newType: TileType)
+    {
+        tileMap![loc.x, loc.y].type = newType
+    }
+    
+    func getTileType(loc: Coordinate) ->TileType
+    {
+        return tileMap![loc.x, loc.y].type
+    }
+    
+    // moving tiles
+    
+    func setTileMoving(loc: Coordinate)
+    {
+        tileMap![loc.x, loc.y].moveInProgress = true
+    }
+    
+    func setTileNotMoving(loc: Coordinate)
+    {
+        tileMap![loc.x, loc.y].moveInProgress = false
+    }
+    
+    func isTileMoving(loc: Coordinate) ->Bool
+    {
+        return tileMap![loc.x, loc.y].moveInProgress
+    }
+    
+    // copy, move, clear, delete
+    
+    // move in this case is instantaneous, 
+    // the above "moveInProgress" property accounts for the time a tile moves
+    // across the screen during an animated move
+    func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
+    {
+        let fromTile = tileMap![fromLoc.x, fromLoc.y]
+        var toTile = tileMap![toLoc.x, toLoc.y]
+        
+        toTile.color = fromTile.color
+        toTile.type = fromTile.type
+        toTile.isStop = fromTile.isStop
+        
+        // needed?
+        toTile.markedForDelete = fromTile.markedForDelete
+        
+        // null out the source
+        self.deleteTile(fromLoc)
+    }
+    
+    func copyTile(fromLoc: Coordinate, toLoc: Coordinate)
+    {
+        let fromTile = tileMap![fromLoc.x, fromLoc.y]
+        var toTile = tileMap![toLoc.x, toLoc.y]
+        
+        toTile.color = fromTile.color
+        toTile.type = fromTile.type
+        toTile.isStop = fromTile.isStop
+        
+        // needed?
+        toTile.markedForDelete = fromTile.markedForDelete
+        
+    }
 //
-//    func isLocInRange(loc: Coordinate) ->Bool {
-//        
-//    }
-//    
-//    func setTileOccupied(loc: Coordinate) {
-//        
-//    }
-//    
-//    func setTileNotOccupied(loc: Coordinate) {
-//        
-//    }
-//    
-//    func isTileOccupied(loc: Coordinate) ->Bool {
-//        
-//    }
-//    
-//    //    func setSpriteForTile(Vec2 loc, Sprite * newSprite);
-//    //    Sprite * getSpriteForTile(Vec2 loc);
-//    
-//    func setTileStop(loc: Coordinate) {
-//        
-//    }
-//    
-//    func setTileNotStop(loc: Coordinate) {
-//        
-//    }
-//    
-//    func isTileStop(loc: Coordinate) ->Bool {
-//        
-//    }
-//    
-//    func setTileColor(loc: Coordinate, color: Color) {
-//        
-//    }
-//    
-//    func clearTileColor(loc: Coordinate) {
-//        
-//    }
-//    
-//    func getTileColor(loc: Coordinate) ->Color {
-//        
-//    }
-//    
-//    func setTileMoving(loc: Coordinate) {
-//        
-//    }
-//    
-//    func setTileNotMoving(loc: Coordinate) {
-//        
-//    }
-//    
-//    func isTileMoving(loc: Coordinate) ->Bool {
-//        
-//    }
-//    
-//    func setTile(loc: Coordinate, occupy: Bool, stop: Bool) {
-//        
-//    }
-//    
-//    // utility
-//    func moveTile(fromLoc: Coordinate, toLoc: Coordinate) {
-//        
-//    }
-//    
-//    func copyTile(fromLoc: Coordinate, toLoc: Coordinate) {
-//        
-//    }
-//    
 //    func clearTile(loc: Coordinate) {
 //        
 //    }
