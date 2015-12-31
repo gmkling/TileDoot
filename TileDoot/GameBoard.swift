@@ -25,6 +25,9 @@ class GameBoard {
         tileMap = TileBoard(dim: initDimension)
     }
     
+    
+    // add/delete
+    
     func addTile(newTile: Tile, loc: Coordinate)
     {
         // if it is a nullTile, overwrite it with the new one
@@ -121,7 +124,7 @@ class GameBoard {
         return tileMap![loc.x, loc.y].moveInProgress
     }
     
-    // copy, move, clear, delete
+    // copy, move
     
     // move in this case is instantaneous, 
     // the above "moveInProgress" property accounts for the time a tile moves
@@ -129,7 +132,7 @@ class GameBoard {
     func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
     {
         let fromTile = tileMap![fromLoc.x, fromLoc.y]
-        var toTile = tileMap![toLoc.x, toLoc.y]
+        let toTile = tileMap![toLoc.x, toLoc.y]
         
         toTile.color = fromTile.color
         toTile.type = fromTile.type
@@ -145,7 +148,7 @@ class GameBoard {
     func copyTile(fromLoc: Coordinate, toLoc: Coordinate)
     {
         let fromTile = tileMap![fromLoc.x, fromLoc.y]
-        var toTile = tileMap![toLoc.x, toLoc.y]
+        let toTile = tileMap![toLoc.x, toLoc.y]
         
         toTile.color = fromTile.color
         toTile.type = fromTile.type
@@ -153,25 +156,23 @@ class GameBoard {
         
         // needed?
         toTile.markedForDelete = fromTile.markedForDelete
-        
+        // this method needs updated whenever the Tile class is changed
+        // I don't like that, I need to find a better way
     }
+    
+    // delete flag - game-driven
+    
+    func markTileForDelete(loc: Coordinate)
+    {
+        tileMap![loc.x, loc.y].markedForDelete = true
+    }
+    
+    func checkTileForDelete(loc: Coordinate) ->Bool
+    {
+        return tileMap![loc.x, loc.y].markedForDelete
+    }
+    
 //
-//    func clearTile(loc: Coordinate) {
-//        
-//    }
-//    
-//    func checkTileToDeleteMark(loc: Coordinate) ->Bool {
-//        
-//    }
-//    
-//    func setAsDeleted(loc: Coordinate) {
-//        
-//    }
-//    
-//    func wasTileDeleted(loc: Coordinate) ->Bool {
-//        
-//    }
-//    
 //    func convertPxToCoord(loc: Coordinate) ->Coordinate {
 //        
 //    }

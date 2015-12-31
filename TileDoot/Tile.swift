@@ -36,7 +36,6 @@ class Tile {
     
     var isStop = false
     var markedForDelete: Bool = false
-    var deleted: Bool = false
     var moveInProgress: Bool = false
         
     init(initType: TileType, initColor: Color)
@@ -47,7 +46,6 @@ class Tile {
         
         self.isStop = false
         self.markedForDelete = false
-        self.deleted = false
         self.moveInProgress = false
     }
 

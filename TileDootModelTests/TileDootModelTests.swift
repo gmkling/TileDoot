@@ -30,7 +30,6 @@ class TileDootModelTests: XCTestCase {
         // basic.
         XCTAssertFalse(tileTest.isStop)
         XCTAssertFalse(tileTest.markedForDelete)
-        XCTAssertFalse(tileTest.deleted)
         XCTAssertFalse(tileTest.moveInProgress)
         
         XCTAssertEqual(tileTest.type, testType)
@@ -236,6 +235,27 @@ class TileDootModelTests: XCTestCase {
         XCTAssert(testBoard.tileMap![tileFromLoc.x, tileFromLoc.y] != testBoard.tileMap![tileToLoc.x, tileToLoc.y])
         XCTAssert(testBoard.getTileType(tileFromLoc) != testBoard.getTileType(tileToLoc))
         // etc
+    }
+    
+    func testGameBoardTileDeleteFlag()
+    {
+        let testDim = 16
+        
+        let testType = TileType.colorTile
+        let tileColor = Color.kYellow
+        let tileLoc = Coordinate(x: 0,y: 2)
+        
+        let testTile = Tile(initType: testType, initColor: tileColor)
+        var testBoard = GameBoard(initDimension: testDim)
+        
+        testBoard.addTile(testTile, loc: tileLoc)
+        XCTAssertFalse(testBoard.checkTileForDelete(tileLoc))
+        
+        testBoard.markTileForDelete(tileLoc)
+        XCTAssert(testBoard.checkTileForDelete(tileLoc))
+        
+        
+        
     }
     
     
