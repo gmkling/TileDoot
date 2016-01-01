@@ -80,7 +80,7 @@ class GameBoard {
         return tileMap![loc.x, loc.y].isStop
     }
     
-    // color
+    // color - all need delegate notifs
 
     func setTileColor(loc: Coordinate, color: Color)
     {
@@ -143,6 +143,8 @@ class GameBoard {
         
         // null out the source
         self.deleteTile(fromLoc)
+        
+        // notify delegate of move
     }
     
     func copyTile(fromLoc: Coordinate, toLoc: Coordinate)
@@ -158,6 +160,8 @@ class GameBoard {
         toTile.markedForDelete = fromTile.markedForDelete
         // this method needs updated whenever the Tile class is changed
         // I don't like that, I need to find a better way
+        
+        // notify delegate of copy
     }
     
     // delete flag - game-driven
@@ -172,46 +176,247 @@ class GameBoard {
         return tileMap![loc.x, loc.y].markedForDelete
     }
     
-//
-//    func convertPxToCoord(loc: Coordinate) ->Coordinate {
-//        
-//    }
-//    
-//    func printState() {
-//        
-//    }
-//    
-//    // disjoint set methods
-//    func makeSet(loc: Coordinate) ->Tile {
-//        
-//    }
-//    
-//    func findSet(loc: Tile) ->Tile {
-//        
-//    }
-//    
-//    func unionSets(setA: Tile, setB: Tile) {
-//        
-//    }
-//    
-//    func connectComponents() {
-//        
-//    }
-//    
-//    func setMapSize(x: Int, y: Int) ->Bool {
-//        
-//    }
-//    
-//    func mapValid() ->Bool {
-//        
-//    }
-//    
-//    func clearMap() {
-//        
-//    }
-//    
-//    func createTile(loc: Coordinate, occupy: Bool, stop: Bool) ->Tile {
-//        
-//    }
-//    
+    // handling chars for board maps
+    
+    func getTypeForChar(tc: Character) ->TileType?
+    {
+        return typeChars.someKeyFor(tc)
+    }
+    
+    func getStringForType(tt: TileType) ->Character
+    {
+        return typeChars[tt]!
+    }
+    
+    func getColorForChar(cc: Character) ->Color?
+    {
+        return colorChars.someKeyFor(cc)
+    }
+    
+    func getStringForColor(inColor: Color) ->Character
+    {
+        return colorChars[inColor]!
+    }
+    
+    func getTileRank(loc: Coordinate) ->Int
+    {
+        return tileMap![loc.x, loc.y].rank
+    }
+    
+    func initBoardFromString (boardString: String) ->Bool
+    {
+        var curTile : Character
+        var i = 0
+        var boardSize = boardString.characters.count
+        
+        // check bounds/size - drop out if it is too big or small (arbitrarily set to 4)
+        if numTiles < boardSize || boardSize < 4
+        {
+            return false
+        }
+        
+        // iterate over string to construct it in a GameBoard object
+        // you can't just cruise through a string index by index since some chars
+        // take up more than one position, so swift lets you do this:
+        for index in boardString.characters.indices
+        {
+            curTile = boardString[index]
+            
+            // make a null tile. If the input matches nothing valid, we add nullTile and move on
+            var newTile = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+            
+            if let curType = self.getTypeForChar(curTile)
+            {
+                // this is a non-color tile
+                newTile = Tile(initType: curType, initColor: Color.kNoColor)
+            } else if let curColor = self.getColorForChar(curTile)
+            {
+                // this is a color tile
+                newTile = Tile(initType: TileType.colorTile, initColor: curColor)
+            }
+            
+            // unwrap the index
+            let curCol = i % self.dimension
+            let curRow = (i-curCol)/self.dimension
+            
+            // insert the tile
+            
+            self.addTile(newTile, loc: Coordinate(x:curRow, y:curCol))
+            
+            i++
+        }
+        
+        return true
+
+    }
+  
+    func printBoardState()
+    {
+        for i in 0..<tileMap!.dimension {
+            for j in 0..<tileMap!.dimension {
+                var curLoc = Coordinate(x: i,y: j)
+                var curType = getTileType(curLoc)
+                // if it isn't a color tile, print the typeChar and bail
+                if  curType != TileType.colorTile
+                {
+                    print(typeChars[getTileType(curLoc)]!, terminator:"")
+                } else if curType == TileType.colorTile
+                {
+                    print(colorChars[getTileColor(curLoc)]!, terminator:"")
+                } else
+                {
+                    print(" ")
+                }
+            }
+            print("\n", terminator:"")
+        }
+        
+    }
+
+    // disjoint set methods
+    func makeSet(loc: Coordinate) ->Tile?
+    {
+        if isLocInRange(loc)==false { return nil }
+        
+        let curTile = tileMap![loc.x, loc.y]
+        curTile.parent = nil
+        curTile.rank = 0
+        
+        return curTile
+    }
+    
+    func findSet(var node: Tile) ->Tile
+    {
+        var tempTile : Tile?
+        var root = node
+        
+        // get down to the root
+        while root.parent != nil
+        {
+            root = root.parent!
+        }
+        
+        // update the parent pointers
+        while node.parent != nil
+        {
+            tempTile = node.parent
+            node.parent = root
+            node = tempTile!
+        }
+        return root
+    }
+    
+    func unionSets(setA: Tile, setB: Tile)
+    {
+        if setA.rank > setB.rank
+        {
+            setB.parent = setA
+        } else if setB.rank > setA.rank
+        {
+            setA.parent = setB
+        } else
+        {
+            setB.parent = setA
+            setA.rank++
+        }
+    }
+    
+    func connectComponents()
+    {
+        var occupiedTiles = [Coordinate]()
+        
+        if numTiles<1 {return} // map is empty
+        
+        for i in 0..<tileMap!.dimension
+        {
+            for j in 0..<tileMap!.dimension
+            {
+                if tileMap![i, j].type == TileType.colorTile
+                {
+                    let curCoord = Coordinate(x: i,y: j)
+                    makeSet(curCoord)
+                    occupiedTiles.append(curCoord)
+                }
+            }
+        }
+        
+        // for each occupied tile, check neighbors for color
+        // push them onto the stack for grouping
+        
+        var x = 0 ; var y = 0;
+        var tileColor = Color.kNoColor
+        var tileRank = 0
+        var upColor, dwnColor, leftColor, rightColor: Color
+        rightColor = Color.kNoColor; upColor = Color.kNoColor; dwnColor = Color.kNoColor; leftColor = Color.kNoColor
+        
+        var neighbors = [Tile]()
+        var tileLoc : Coordinate
+        
+        for loc in occupiedTiles
+        {
+            tileLoc = loc
+            
+            x = loc.x; y = loc.y;
+            
+            tileColor = getTileColor(loc)
+            tileRank = getTileRank(loc)
+            
+            // going around the accessor?!
+            // bug will show up if we have an occupied tile in 0,0 ; 0,15; 15,0; or 15,15;
+            rightColor = tileMap![x+1, y].color
+            leftColor = tileMap![x-1, y].color
+            upColor = tileMap![x, y-1].color
+            dwnColor = tileMap![x, y+1].color
+            
+            if tileColor != Color.kNoColor
+            {
+                // find all connected neighbors not already merged into the same group, set them aside
+                if (tileColor == leftColor)
+                {
+                    neighbors.append(tileMap![x-1, y])
+                    
+                } else if (tileColor == dwnColor)
+                {
+                    neighbors.append(tileMap![x, y+1]);
+                    
+                } else if (tileColor == rightColor)
+                {
+                    neighbors.append(tileMap![x+1, y]);
+                    
+                } else if (tileColor == upColor)
+                {
+                    neighbors.append(tileMap![x, y-1]);
+                }
+            }
+            
+            // the second pass
+            // merge all the neighbors we pushed back, if we have any
+            if (neighbors.count>0) {
+
+                for item in neighbors
+                {
+                    unionSets(tileMap![loc.x, loc.y], setB: item)
+                    
+                    // if we merge any tiles, we need to delete - mark the group's parent
+                    findSet(tileMap![loc.x, loc.y]).markedForDelete = true
+                    
+                    // mark this tile as well
+                    item.markedForDelete = true
+                }
+            }
+            
+            // clear the neighbors
+            neighbors.removeAll()
+        }
+        
+        occupiedTiles.removeAll()
+        
+        
+    }
+    
+    func clearMap()
+    {
+        tileMap?.setAll(Tile(initType: TileType.nullTile, initColor: Color.kNoColor))
+    }
+        
 }

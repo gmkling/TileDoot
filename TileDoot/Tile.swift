@@ -16,10 +16,45 @@ enum Color: Int {
     case kBlue, kRed, kGreen, kYellow, kOrange
 }
 
-// should be changed to bitfield version - struct?
+// this is a var so we can customize/add colors
+var colorChars: [Color : Character] = [
+    Color.kNoColor : "X",
+    Color.kBlue : "B",
+    Color.kRed : "R",
+    Color.kGreen : "G",
+    Color.kYellow : "Y",
+    Color.kOrange : "O"
+]
+
+
+// should this be changed to bitfield version - struct?
+// Or put another way, can a Tile be more that one type?
 enum TileType: Int {
     case nullTile = 0
-    case colorTile, barrierTile
+    case colorTile, barrierTile, emptyTile
+}
+
+var typeChars : [TileType : Character] = [
+    TileType.nullTile : "0",
+    TileType.colorTile : "-",
+    TileType.barrierTile : "*",
+    TileType.emptyTile : "."
+]
+
+// to use these Dictionaries to parse input, extend Dictionary to return the first key for a given value
+
+extension Dictionary where Value: Equatable {
+    
+    func someKeyFor(value: Value) -> Key? {
+        
+        guard let index = indexOf({ $0.1 == value }) else {
+            return nil
+        }
+        
+        return self[index].0
+        
+    }
+    
 }
 
 struct Coordinate {

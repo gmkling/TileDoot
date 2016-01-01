@@ -233,8 +233,7 @@ class TileDootModelTests: XCTestCase {
         // just one change should short circuit
         testBoard.setTileNotStop(tileFromLoc)
         XCTAssert(testBoard.tileMap![tileFromLoc.x, tileFromLoc.y] != testBoard.tileMap![tileToLoc.x, tileToLoc.y])
-        XCTAssert(testBoard.getTileType(tileFromLoc) != testBoard.getTileType(tileToLoc))
-        // etc
+
     }
     
     func testGameBoardTileDeleteFlag()
@@ -254,7 +253,30 @@ class TileDootModelTests: XCTestCase {
         testBoard.markTileForDelete(tileLoc)
         XCTAssert(testBoard.checkTileForDelete(tileLoc))
         
+    }
+    
+    func testGameBoardBuild()
+    {
+        let testDim = 16
         
+        // construct the String rep of the game board
+        let barrierRow = "****************"
+        let puzRow1 = "******....******"
+        let puzRow2 = "******....******"
+        let puzRow3 = "******....******"
+        let puzRow4 = "******B..B******"
+        
+        let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
+        
+        let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
+        
+        var testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+        testBoard.printBoardState()
+        
+        // how to further test?
         
     }
     
