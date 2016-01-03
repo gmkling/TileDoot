@@ -91,10 +91,12 @@ class TileDootModelTests: XCTestCase {
         let testDim = 16
         var testBoard = GameBoard(initDimension: testDim)
         let outOfRangeTest = Coordinate(x: 17, y: -2)
+        let outOfRangeTest2 = Coordinate(x: 0, y: 17)
         let inRangeTest = Coordinate(x: 2, y: 6)
         
         XCTAssertTrue(testBoard.isLocInRange(inRangeTest))
         XCTAssertFalse(testBoard.isLocInRange(outOfRangeTest))
+        XCTAssertFalse(testBoard.isLocInRange(outOfRangeTest2))
     }
     
     func testGameBoardOccupied()
@@ -280,7 +282,133 @@ class TileDootModelTests: XCTestCase {
         
     }
     
+    // test union find methods - these are in the GameBoard class for now, but it may be good to push them over to the TileBoard class
     
+    func testGameBoardMakeSet()
+    {
+        let testDim = 16
+        
+        // construct the String rep of the game board
+        let barrierRow = "****************"
+        let puzRow1 = "******....******"
+        let puzRow2 = "******....******"
+        let puzRow3 = "******....******"
+        let puzRow4 = "******B..B******"
+        
+        let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
+        
+        let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
+        
+        let testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+        // test for out of range fail (should return nil)
+        XCTAssert((testBoard.makeSet(Coordinate(x:0, y:testDim+1))) == nil)
+        
+        // check that it sets things up: rank=0, parent is nil
+        let testLoc = Coordinate(x: 5, y: 5)
+        let testTile = testBoard.makeSet(testLoc)
+        XCTAssert(testTile?.rank==0)
+        XCTAssert(testTile?.parent==nil)
+        
+    }
+    
+    // test find set
+    
+    func testGameBoardFindSet()
+    {
+        let testDim = 16
+        
+        // construct the String rep of the game board
+        let barrierRow = "****************"
+        let puzRow1 = "******....******"
+        let puzRow2 = "******....******"
+        let puzRow3 = "******....******"
+        let puzRow4 = "******B..B******"
+        
+        let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
+        
+        let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
+        
+        let testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+        // find set looks for the root of the tree, 
+        // and then shortens the tree so all nodes point to the root
+        
+        // test that the root is correct after stacking the deck
+        // root is at [0,0], [1,0]->[1,1]->[0,1]->[0,0]
+        // after calling findSet, all parents should be set to [0,0]
+        // and the root returned should be [0,0]
+        testBoard.tileMap![0, 1].parent = testBoard.tileMap![0, 0]
+        testBoard.tileMap![1, 1].parent = testBoard.tileMap![0, 1]
+        testBoard.tileMap![1, 0].parent = testBoard.tileMap![1, 1]
+        
+        var testRoot = testBoard.findSet(testBoard.tileMap![1,0])
+        
+        XCTAssert(testBoard.tileMap![1,0].parent!==testBoard.tileMap![0, 0])
+        XCTAssert(testBoard.tileMap![1,1].parent!==testBoard.tileMap![0, 0])
+        XCTAssert(testBoard.tileMap![0,1].parent!==testBoard.tileMap![0, 0])
+        XCTAssert(testBoard.tileMap![0,0].parent==nil)
+        XCTAssert(testRoot==testBoard.tileMap![0, 0])
+        
+    }
+    
+    // test unionSets
+    
+    func testGameBoardUnionSets()
+    {
+        let testDim = 16
+        
+        // construct the String rep of the game board
+        let barrierRow = "****************"
+        let puzRow1 = "******....******"
+        let puzRow2 = "******....******"
+        let puzRow3 = "******....******"
+        let puzRow4 = "******B..B******"
+        
+        let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
+        
+        let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
+        
+        let testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+        // given two Tiles, A and B, unionSets will set the high ranked Tile (Tile.rank) as the parent of the other Tile
+        // if A.rank == B.rank, A will parent B.
+        
+        // create two parents of the same rank with makeSet
+        var setATile1 = testBoard.makeSet(Coordinate(x: 0, y: 0))!
+        var setBTile1 = testBoard.makeSet(Coordinate(x: 0, y: 1))!
+        
+        // union those 1-tile sets, see that A is the parent and that setBTile.rank<setATile.rank
+        testBoard.unionSets(setATile1, setB: setBTile1)
+        XCTAssert(setBTile1.parent!==setATile1)
+        XCTAssert(setATile1.rank>setBTile1.rank)
+        
+        // create two parents makeSet, change the rank of B>A
+        var setATile2 = testBoard.makeSet(Coordinate(x: 1, y: 0))!
+        var setBTile2 = testBoard.makeSet(Coordinate(x: 1, y: 1))!
+        
+        setBTile2.rank = 20
+        testBoard.unionSets(setATile2, setB: setBTile2)
+        
+        // check that B is made parent, A's rank is lower
+        XCTAssert(setATile2.parent! == setBTile2)
+        XCTAssert(setATile2.rank < setBTile2.rank)
+        
+    }
+    
+    // test connectComponents
+    
+    func testGameBoardConnectComponents()
+    {
+        
+    }
+
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
 //        self.measureBlock {

@@ -52,7 +52,9 @@ class GameBoard {
 
     func isLocInRange(loc: Coordinate) ->Bool
     {
-        return !((loc.x < 0 || loc.y < 0) && (loc.x > dimension || loc.y > dimension))
+        let lessThanZero = loc.x < 0 || loc.y < 0
+        let greaterThanDim = loc.x > dimension || loc.y > dimension
+        return !(lessThanZero || greaterThanDim)
     }
     
     // Occupied is implied by the presence of a non-null tile
@@ -252,10 +254,13 @@ class GameBoard {
   
     func printBoardState()
     {
+        var curLoc : Coordinate
+        var curType : TileType
+        
         for i in 0..<tileMap!.dimension {
             for j in 0..<tileMap!.dimension {
-                var curLoc = Coordinate(x: i,y: j)
-                var curType = getTileType(curLoc)
+                curLoc = Coordinate(x: i,y: j)
+                curType = getTileType(curLoc)
                 // if it isn't a color tile, print the typeChar and bail
                 if  curType != TileType.colorTile
                 {
