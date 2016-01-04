@@ -457,7 +457,7 @@ class TileDootModelTests: XCTestCase {
             g4Root = testBoard.findSet(g4Tile)
         }
         
-        let tileGroups = [g1Root, g2Root, g3Root, g4Root]
+        var tileGroups = [g1Root, g2Root, g3Root, g4Root]
         
         // make sure we got them all
         for item in tileGroups
@@ -472,11 +472,76 @@ class TileDootModelTests: XCTestCase {
         XCTAssert(g2Root != g3Root)
         XCTAssert(g2Root != g4Root)
         XCTAssert(g3Root != g4Root)
-
         
+        // Now test the singletons in the corner to make sure they have nil parents
+        
+        if let g1Tile = testBoard.getTile(Coordinate(x: 6,y: 0))
+        {
+            g1Root = testBoard.findSet(g1Tile)
+        }
+        
+        if let g2Tile = testBoard.getTile(Coordinate(x: 6,y: 1))
+        {
+            g2Root = testBoard.findSet(g2Tile)
+        }
+        
+        if let g3Tile = testBoard.getTile(Coordinate(x: 7,y: 0))
+        {
+            g3Root = testBoard.findSet(g3Tile)
+        }
+        
+        if let g4Tile = testBoard.getTile(Coordinate(x: 7,y: 1))
+        {
+            g4Root = testBoard.findSet(g4Tile)
+        }
+        
+        tileGroups = [g1Root, g2Root, g3Root, g4Root]
+        
+        // make sure they are all nil parents
+        for item in tileGroups
+        {
+            XCTAssertNil(item.parent)
+        }
+        
+        // what else?
     }
     
     // test clearMap
+    func testGameBoardClearMap()
+    {
+        let testDim = 8
+        
+        // construct the String rep of the game board
+        let puzRow1 = "BBBB****"
+        let puzRow2 = "BBBB****"
+        let puzRow3 = "****GGGG"
+        let puzRow4 = "****GGGG"
+        let puzRow5 = "***RR***"
+        let puzRow6 = "***RR*OO"
+        let puzRow7 = "RO***OO*"
+        let puzRow8 = "GB**OO**"
+        
+        let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
+        
+        let testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+        testBoard.clearMap()
+        
+        // now every Tile should be the nullTile type
+        
+        for i in 0..<testBoard.dimension {
+            for j in 0..<testBoard.dimension {
+                
+                XCTAssert(testBoard.tileMap![i,j].type == TileType.nullTile)
+            }
+        }
+        
+        // good enough for me
+        
+    }
+    
 
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
