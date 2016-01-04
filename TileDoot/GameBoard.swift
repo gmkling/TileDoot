@@ -53,8 +53,13 @@ class GameBoard {
     func isLocInRange(loc: Coordinate) ->Bool
     {
         let lessThanZero = loc.x < 0 || loc.y < 0
-        let greaterThanDim = loc.x > dimension || loc.y > dimension
+        let greaterThanDim = loc.x > (dimension-1) || loc.y > (dimension-1)
         return !(lessThanZero || greaterThanDim)
+    }
+    
+    func isLocInRange(x: Int, y: Int) ->Bool
+    {
+        return isLocInRange(Coordinate(x: x, y: y))
     }
     
     // Occupied is implied by the presence of a non-null tile
@@ -205,6 +210,13 @@ class GameBoard {
         return tileMap![loc.x, loc.y].rank
     }
     
+    func getTile(loc: Coordinate) ->Tile?
+    {
+        if !isLocInRange(loc) { return nil }
+        
+        return tileMap?[loc.x, loc.y]
+    }
+    
     func initBoardFromString (boardString: String) ->Bool
     {
         var curTile : Character
@@ -351,7 +363,7 @@ class GameBoard {
         var x = 0 ; var y = 0;
         var tileColor = Color.kNoColor
         var tileRank = 0
-        var upColor, dwnColor, leftColor, rightColor: Color
+        var upColor, dwnColor, leftColor, rightColor: Color?
         rightColor = Color.kNoColor; upColor = Color.kNoColor; dwnColor = Color.kNoColor; leftColor = Color.kNoColor
         
         var neighbors = [Tile]()
@@ -368,10 +380,26 @@ class GameBoard {
             
             // going around the accessor?!
             // bug will show up if we have an occupied tile in 0,0 ; 0,15; 15,0; or 15,15;
-            rightColor = tileMap![x+1, y].color
-            leftColor = tileMap![x-1, y].color
-            upColor = tileMap![x, y-1].color
-            dwnColor = tileMap![x, y+1].color
+            // use protection
+            if isLocInRange(x+1, y: y)
+            {
+                rightColor = tileMap![x+1, y].color
+            } else { rightColor = Color.kNoColor }
+            
+            if isLocInRange(x-1, y: y)
+            {
+                leftColor = tileMap![x-1, y].color
+            } else { leftColor = Color.kNoColor }
+            
+            if isLocInRange(x, y: y-1)
+            {
+                upColor = tileMap![x, y-1].color
+            } else { leftColor = Color.kNoColor }
+            
+            if isLocInRange(x, y: y+1)
+            {
+                dwnColor = tileMap![x, y+1].color
+            } else { dwnColor = Color.kNoColor }
             
             if tileColor != Color.kNoColor
             {

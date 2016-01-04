@@ -406,8 +406,77 @@ class TileDootModelTests: XCTestCase {
     
     func testGameBoardConnectComponents()
     {
+        let testDim = 8
+        
+        // construct the String rep of the game board
+        let puzRow1 = "BBBB****"
+        let puzRow2 = "BBBB****"
+        let puzRow3 = "****GGGG"
+        let puzRow4 = "****GGGG"
+        let puzRow5 = "***RR***"
+        let puzRow6 = "***RR*OO"
+        let puzRow7 = "RO***OO*"
+        let puzRow8 = "GB**OO**"
+        
+        let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
+        
+        let testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+        // connectComponents groups tiles of the same color that are vertically or horizontally adjoint
+        // the groups are not stored in a seperate data structures, they are implied by sharing a common root node ptr
+        // in the existing tileMap. eg tile A B and C are in a group since A&B point to C or A->B->C
+        // the group is constructed using the connected components proceedure with tree shortening
+        
+        testBoard.connectComponents()
+        
+        // test that the 4 groups (B, G, R, and O) are distinct (share no root)
+        var g1Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+        var g2Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+        var g3Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+        var g4Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+        
+        if let g1Tile = testBoard.getTile(Coordinate(x: 0,y: 0))
+        {
+            g1Root = testBoard.findSet(g1Tile)
+        }
+        
+        if let g2Tile = testBoard.getTile(Coordinate(x: 2,y: 4))
+        {
+            g2Root = testBoard.findSet(g2Tile)
+        }
+        
+        if let g3Tile = testBoard.getTile(Coordinate(x: 4,y: 4))
+        {
+            g3Root = testBoard.findSet(g3Tile)
+        }
+        
+        if let g4Tile = testBoard.getTile(Coordinate(x: 5,y: 7))
+        {
+            g4Root = testBoard.findSet(g4Tile)
+        }
+        
+        let tileGroups = [g1Root, g2Root, g3Root, g4Root]
+        
+        // make sure we got them all
+        for item in tileGroups
+        {
+            XCTAssertNotNil(item)
+        }
+        
+        // they are distinct
+        XCTAssert(g1Root != g2Root)
+        XCTAssert(g1Root != g3Root)
+        XCTAssert(g1Root != g4Root)
+        XCTAssert(g2Root != g3Root)
+        XCTAssert(g2Root != g4Root)
+        XCTAssert(g3Root != g4Root)
+
         
     }
+    
+    // test clearMap
 
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
