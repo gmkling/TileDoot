@@ -21,6 +21,8 @@
 		107698E51C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
 		107698E71C347CE7006051B2 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E61C347CE7006051B2 /* Commands.swift */; };
 		107698E81C347CE7006051B2 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E61C347CE7006051B2 /* Commands.swift */; };
+		107698EA1C3BC3CA006051B2 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E91C3BC3CA006051B2 /* GameModel.swift */; };
+		107698EB1C3BC3CA006051B2 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E91C3BC3CA006051B2 /* GameModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		107698DB1C34668A006051B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		107698E31C346CEE006051B2 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		107698E61C347CE7006051B2 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
+		107698E91C3BC3CA006051B2 /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 				107698D11C3202C8006051B2 /* Tile.swift */,
 				107698E31C346CEE006051B2 /* GameBoard.swift */,
 				107698E61C347CE7006051B2 /* Commands.swift */,
+				107698E91C3BC3CA006051B2 /* GameModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -229,6 +233,7 @@
 				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
+				107698EA1C3BC3CA006051B2 /* GameModel.swift in Sources */,
 				107698BC1C320292006051B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				107698EB1C3BC3CA006051B2 /* GameModel.swift in Sources */,
 				107698DA1C34668A006051B2 /* TileDootModelTests.swift in Sources */,
 				107698E51C346CEE006051B2 /* GameBoard.swift in Sources */,
 				107698E11C3467DB006051B2 /* Tile.swift in Sources */,

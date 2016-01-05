@@ -13,7 +13,11 @@ import Foundation
 class GameBoard {
     
     var dimension, numTiles: Int
+    
     // was a std::vector<std::vector<Tile>> tileMap
+    // we should really look at not making this an optional
+    // it made sense when I was first learning, but I admit that might be false.
+    // can it be declared empty and filled in later?
     var tileMap = TileBoard?()
     
     // orig init is initMap which creates a new blank map

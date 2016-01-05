@@ -17,6 +17,10 @@ enum MoveDirection
     case up, down, left, right
 }
 
+// Right now the only command is a move command
+// But I want to leave thedoor open to other types of commands
+// changeColor, turnCorner, splitInTwo, etc.
+
 class Command {
     var cmdComplete: Bool
     
