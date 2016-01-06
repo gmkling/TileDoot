@@ -8,27 +8,32 @@
 
 import Foundation
 
+/*
 class GameModel
 {
     // the dimension of the game depends on the level
     // every level will have a new GameBoard
     // the cmdQueue is where cmds are stored
-    var dimension : Int
+    var dimension : Int = 0
     var gameTiles : GameBoard
     var cmdQueue : [Command]
     let maxCmd = 50
-    var score : Int
+    var score : Int = 0
     
     // level info
-    var curLevel : Int
-    var curLevelString : String
-    var levelScore : Int
+    var curLevel : Int = 0
+    var curLevelString : String = ""
+    var levelScore : Int = 0
     
     
-    init(startLevel: int, levelPath: String)
+    init(firstLevel: Int)
     {
-        // set delegate for view
+        curLevel = firstLevel
+        
+        // set delegate for view -TBD
+        
         // load first level
+        startLevel(curLevel)
     }
     
     // starts the level indicated
@@ -38,8 +43,14 @@ class GameModel
         
     }
     
-    // how we change levels
-    func swapLevels ()
+    // how we change levels randomly
+    func swapLevels (newLevel: Int)
+    {
+        
+    }
+    
+    // how we go to the next level
+    func nextLevel ()
     {
         
     }
@@ -76,3 +87,4 @@ class GameModel
         
     }
 }
+*/

@@ -382,8 +382,8 @@ class GameBoard {
             tileColor = getTileColor(loc)
             tileRank = getTileRank(loc)
             
-            // going around the accessor?!
-            // bug will show up if we have an occupied tile in 0,0 ; 0,15; 15,0; or 15,15;
+            // checking adjacent tiles
+            // bug will show up if we have an occupied tile in a corner ex. 0,0 ; 0,dim; dim,0; or dim,dim;
             // use protection
             if isLocInRange(x+1, y: y)
             {
