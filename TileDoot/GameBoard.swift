@@ -302,20 +302,15 @@ class GameBoard {
         // for each puzzle tile, check if they should move and how far.
         // construct the movement action in direction dir
         // don't move tiles that are already moving until they stop.
-    
-        let curDirection = dir;
-    
+        
         var x, y : Int
         let maxX = dimension - 1;
         let maxY = dimension - 1;
-        var moving = false;
-        var delMar = false;
-        var curType = TileType.nullTile
         var curLoc = Coordinate(x: 0,y: 0)
         
         // these sentinels indicate whether we need to check for grouped colors and/or if we need to delete tiles and recurse
+        // should this be a switch?
         
-    
         if dir == MoveDirection.up
         {
             for (x=maxX; x>=0; x--) {
@@ -360,6 +355,7 @@ class GameBoard {
             };
         }
         
+        
         // if we moved anything, check for connected components
         if(tileMapDirty)
         {
@@ -381,10 +377,82 @@ class GameBoard {
     
     func createTileMove (inLoc: Coordinate, dir: MoveDirection) ->Bool
     {
+        // create the actions for the tile moving in the specified direction and schedule/run them
+        // accommodating more complicated and special tile actions here may require creating stacks of actions
+        // before wrapping them in a sequence and sending them to runAction.
+        // For now the simple construction below will suffice.
+        
+        var stopped = false;
+        var currentPos = Coordinate(x:inLoc.x, y:inLoc.y);
+        var oldPos = inLoc;
+        var nextPos, nextPosCoords : Coordinate
+        var numTilesInMove = 0
+        
+        while !stopped
+        {
+            // we calc next location in terms of px, check it in tileCoords, do move in px
+            nextPos = getAdjacentCoord(currentPos, direction: dir)
+            
+            if !isLocInRange(nextPos) || isTileStop(nextPos)
+            {
+                stopped = true;
+                continue
+            } else {
+                currentPos = nextPos // otherwise we move ahead
+                numTilesInMove++;
+            }
+            
+        }
+        
+        // if we move nothing, let the caller know and leave
+        // check the delete status first in case adjacent tile moves have marked the tile
+        
+        if (numTilesInMove==0)
+        { return false }
+        
+        // else, we move
+        // tell the delegate to move from oldPos to currentPos
+        moveTile(oldPos, toLoc: currentPos);
+        setTileMoving(currentPos);
+        
         // if we move anything
-        // tileMapDirty = true
-        return true
+        tileMapDirty = true
+        
+        // let the caller know we moved something
+        return true;
+        
     }
+    
+    func getAdjacentCoord(inCoord: Coordinate, direction: MoveDirection) -> Coordinate
+    {
+        // calculate the map coordinates of the next tile towards the specified direction
+        let xIncrement = 1;
+        let yIncrement = 1;
+        
+        var newPos : Coordinate
+        
+        switch (direction) {
+            case MoveDirection.up:
+                newPos = Coordinate(x: inCoord.x, y: inCoord.y+yIncrement)
+            break;
+            
+            case MoveDirection.down:
+                newPos = Coordinate(x: inCoord.x, y: inCoord.y-yIncrement)
+            break;
+            
+            case MoveDirection.left:
+                newPos = Coordinate(x: inCoord.x-xIncrement, y: inCoord.y)
+            break;
+            
+            case MoveDirection.right:
+                newPos = Coordinate(x: inCoord.x+xIncrement, y: inCoord.y)
+            break;
+
+        }
+        
+        return newPos;
+    }
+
 
 
     // disjoint set methods

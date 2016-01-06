@@ -539,8 +539,35 @@ class TileDootModelTests: XCTestCase {
         }
         
         // good enough for me
+    }
+    
+    
+    func testGameBoardTileMoves()
+    {
+        let testDim = 16
+        
+        // construct the String rep of the game board
+        let barrierRow = "****************"
+        let puzRow1 = "******....******"
+        let puzRow2 = "******....******"
+        let puzRow3 = "******....******"
+        let puzRow4 = "******B..B******"
+        
+        let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
+        
+        let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
+        
+        let testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+        // put the B's together
+        testBoard.dootTiles(MoveDirection.right)
+        testBoard.printBoardState()
+        XCTAssert(testBoard.tileMap[10, 7].color == Color.kBlue)
         
     }
+
     
 
 //    func testPerformanceExample() {
