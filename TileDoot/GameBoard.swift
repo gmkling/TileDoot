@@ -19,6 +19,7 @@ class GameBoard {
     // it made sense when I was first learning, but I admit that might be false.
     // can it be declared empty and filled in later?
     var tileMap : TileBoard
+    var tileMapDirty = false;
     
     // orig init is initMap which creates a new blank map
     init(initDimension: Int)
@@ -135,7 +136,7 @@ class GameBoard {
         return tileMap[loc.x, loc.y].moveInProgress
     }
     
-    // copy, move
+    // copy, move: tiles
     
     // move in this case is instantaneous, 
     // the above "moveInProgress" property accounts for the time a tile moves
@@ -293,6 +294,98 @@ class GameBoard {
         }
         
     }
+    
+    // sliding all tiles - the "doots"
+    
+    func dootTiles(dir: MoveDirection)
+    {
+        // for each puzzle tile, check if they should move and how far.
+        // construct the movement action in direction dir
+        // don't move tiles that are already moving until they stop.
+    
+        let curDirection = dir;
+    
+        var x, y : Int
+        let maxX = dimension - 1;
+        let maxY = dimension - 1;
+        var moving = false;
+        var delMar = false;
+        var curType = TileType.nullTile
+        var curLoc = Coordinate(x: 0,y: 0)
+        
+        // these sentinels indicate whether we need to check for grouped colors and/or if we need to delete tiles and recurse
+        
+    
+        if dir == MoveDirection.up
+        {
+            for (x=maxX; x>=0; x--) {
+                for (y=0; y<=maxY; y++) {
+                    curLoc = Coordinate(x: x,y: y);
+                    if checkTileCanMove(curLoc)
+                    {
+                        createTileMove(curLoc, dir: dir)
+                    }
+                }
+            };
+        } else if dir == MoveDirection.down {
+            for (x=maxX; x>=0; x--) {
+                for (y=maxY; y>=0; y--) {
+                    curLoc = Coordinate(x: x,y: y);
+                    if checkTileCanMove(curLoc)
+                    {
+                        createTileMove(curLoc, dir: dir)
+                    }
+                }
+            };
+        } else if dir == MoveDirection.left {
+            for (y=0; y<=maxY; y++) {
+                for (x=0; x<=maxX; x++) {
+                    curLoc = Coordinate(x: x,y: y);
+                    if checkTileCanMove(curLoc)
+                    {
+                        createTileMove(curLoc, dir: dir)
+                    }
+                }
+            };
+        } else if dir == MoveDirection.right
+        {
+            for (y=0; y<=maxY; y++) {
+                for (x=maxX; x>=0; x--) {
+                    curLoc = Coordinate(x: x,y: y);
+                    if checkTileCanMove(curLoc)
+                    {
+                        createTileMove(curLoc, dir: dir)
+                    }
+                }
+            };
+        }
+        
+        // if we moved anything, check for connected components
+        if(tileMapDirty)
+        {
+        connectComponents();
+        }
+    
+    }
+    
+    func checkTileCanMove(inLoc: Coordinate) -> Bool
+    {
+        let curType = getTileType(inLoc);
+        let moving = isTileMoving(inLoc);
+        let delMar = checkTileForDelete(inLoc);
+        
+        // if the tile is a color tile, isn't already moving, and isn't about to be deleted, we can move
+        return ( curType == TileType.colorTile && !moving && !delMar )
+        
+    }
+    
+    func createTileMove (inLoc: Coordinate, dir: MoveDirection) ->Bool
+    {
+        // if we move anything
+        // tileMapDirty = true
+        return true
+    }
+
 
     // disjoint set methods
     func makeSet(loc: Coordinate) ->Tile?
