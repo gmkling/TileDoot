@@ -18,7 +18,7 @@ class GameBoard {
     // we should really look at not making this an optional
     // it made sense when I was first learning, but I admit that might be false.
     // can it be declared empty and filled in later?
-    var tileMap = TileBoard?()
+    var tileMap : TileBoard
     
     // orig init is initMap which creates a new blank map
     init(initDimension: Int)
@@ -35,9 +35,9 @@ class GameBoard {
     func addTile(newTile: Tile, loc: Coordinate)
     {
         // if it is a nullTile, overwrite it with the new one
-        if tileMap?[loc.x, loc.y].type == TileType.nullTile
+        if tileMap[loc.x, loc.y].type == TileType.nullTile
         {
-            tileMap![loc.x, loc.y] = newTile
+            tileMap[loc.x, loc.y] = newTile
             // issue the addTile command to the View delegate
         }
         
@@ -47,9 +47,9 @@ class GameBoard {
     {
         // insert a nullTile if one is not already there
 
-        if tileMap?[loc.x, loc.y].type != TileType.nullTile
+        if tileMap[loc.x, loc.y].type != TileType.nullTile
         {
-            tileMap![loc.x, loc.y] = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+            tileMap[loc.x, loc.y] = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
             // forward the cmd to the View delegate
         }
     }
@@ -71,68 +71,68 @@ class GameBoard {
  
     func isLocOccupied(loc: Coordinate) ->Bool
     {
-        return tileMap![loc.x, loc.y].type != TileType.nullTile
+        return tileMap[loc.x, loc.y].type != TileType.nullTile
     }
 
     // stop property
     
     func setTileStop(loc: Coordinate)
     {
-        tileMap![loc.x, loc.y].isStop = true
+        tileMap[loc.x, loc.y].isStop = true
     }
 
     func setTileNotStop(loc: Coordinate)
     {
-        tileMap![loc.x, loc.y].isStop = false
+        tileMap[loc.x, loc.y].isStop = false
     }
 
     func isTileStop(loc: Coordinate) ->Bool
     {
-        return tileMap![loc.x, loc.y].isStop
+        return tileMap[loc.x, loc.y].isStop
     }
     
     // color - all need delegate notifs
 
     func setTileColor(loc: Coordinate, color: Color)
     {
-        tileMap![loc.x, loc.y].color = color
+        tileMap[loc.x, loc.y].color = color
     }
     
     func clearTileColor(loc: Coordinate)
     {
-        tileMap![loc.x, loc.y].color = Color.kNoColor
+        tileMap[loc.x, loc.y].color = Color.kNoColor
     }
     
     func getTileColor(loc: Coordinate) ->Color
     {
-        return tileMap![loc.x, loc.y].color
+        return tileMap[loc.x, loc.y].color
     }
     
     func setTileType(loc: Coordinate, newType: TileType)
     {
-        tileMap![loc.x, loc.y].type = newType
+        tileMap[loc.x, loc.y].type = newType
     }
     
     func getTileType(loc: Coordinate) ->TileType
     {
-        return tileMap![loc.x, loc.y].type
+        return tileMap[loc.x, loc.y].type
     }
     
     // moving tiles
     
     func setTileMoving(loc: Coordinate)
     {
-        tileMap![loc.x, loc.y].moveInProgress = true
+        tileMap[loc.x, loc.y].moveInProgress = true
     }
     
     func setTileNotMoving(loc: Coordinate)
     {
-        tileMap![loc.x, loc.y].moveInProgress = false
+        tileMap[loc.x, loc.y].moveInProgress = false
     }
     
     func isTileMoving(loc: Coordinate) ->Bool
     {
-        return tileMap![loc.x, loc.y].moveInProgress
+        return tileMap[loc.x, loc.y].moveInProgress
     }
     
     // copy, move
@@ -142,8 +142,8 @@ class GameBoard {
     // across the screen during an animated move
     func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
     {
-        let fromTile = tileMap![fromLoc.x, fromLoc.y]
-        let toTile = tileMap![toLoc.x, toLoc.y]
+        let fromTile = tileMap[fromLoc.x, fromLoc.y]
+        let toTile = tileMap[toLoc.x, toLoc.y]
         
         toTile.color = fromTile.color
         toTile.type = fromTile.type
@@ -160,8 +160,8 @@ class GameBoard {
     
     func copyTile(fromLoc: Coordinate, toLoc: Coordinate)
     {
-        let fromTile = tileMap![fromLoc.x, fromLoc.y]
-        let toTile = tileMap![toLoc.x, toLoc.y]
+        let fromTile = tileMap[fromLoc.x, fromLoc.y]
+        let toTile = tileMap[toLoc.x, toLoc.y]
         
         toTile.color = fromTile.color
         toTile.type = fromTile.type
@@ -179,12 +179,12 @@ class GameBoard {
     
     func markTileForDelete(loc: Coordinate)
     {
-        tileMap![loc.x, loc.y].markedForDelete = true
+        tileMap[loc.x, loc.y].markedForDelete = true
     }
     
     func checkTileForDelete(loc: Coordinate) ->Bool
     {
-        return tileMap![loc.x, loc.y].markedForDelete
+        return tileMap[loc.x, loc.y].markedForDelete
     }
     
     // handling chars for board maps
@@ -211,14 +211,14 @@ class GameBoard {
     
     func getTileRank(loc: Coordinate) ->Int
     {
-        return tileMap![loc.x, loc.y].rank
+        return tileMap[loc.x, loc.y].rank
     }
     
     func getTile(loc: Coordinate) ->Tile?
     {
         if !isLocInRange(loc) { return nil }
         
-        return tileMap?[loc.x, loc.y]
+        return tileMap[loc.x, loc.y]
     }
     
     func initBoardFromString (boardString: String) ->Bool
@@ -273,8 +273,8 @@ class GameBoard {
         var curLoc : Coordinate
         var curType : TileType
         
-        for i in 0..<tileMap!.dimension {
-            for j in 0..<tileMap!.dimension {
+        for i in 0..<tileMap.dimension {
+            for j in 0..<tileMap.dimension {
                 curLoc = Coordinate(x: i,y: j)
                 curType = getTileType(curLoc)
                 // if it isn't a color tile, print the typeChar and bail
@@ -299,7 +299,7 @@ class GameBoard {
     {
         if isLocInRange(loc)==false { return nil }
         
-        let curTile = tileMap![loc.x, loc.y]
+        let curTile = tileMap[loc.x, loc.y]
         curTile.parent = nil
         curTile.rank = 0
         
@@ -348,11 +348,11 @@ class GameBoard {
         
         if numTiles<1 {return} // map is empty
         
-        for i in 0..<tileMap!.dimension
+        for i in 0..<tileMap.dimension
         {
-            for j in 0..<tileMap!.dimension
+            for j in 0..<tileMap.dimension
             {
-                if tileMap![i, j].type == TileType.colorTile
+                if tileMap[i, j].type == TileType.colorTile
                 {
                     let curCoord = Coordinate(x: i,y: j)
                     makeSet(curCoord)
@@ -387,22 +387,22 @@ class GameBoard {
             // use protection
             if isLocInRange(x+1, y: y)
             {
-                rightColor = tileMap![x+1, y].color
+                rightColor = tileMap[x+1, y].color
             } else { rightColor = Color.kNoColor }
             
             if isLocInRange(x-1, y: y)
             {
-                leftColor = tileMap![x-1, y].color
+                leftColor = tileMap[x-1, y].color
             } else { leftColor = Color.kNoColor }
             
             if isLocInRange(x, y: y-1)
             {
-                upColor = tileMap![x, y-1].color
+                upColor = tileMap[x, y-1].color
             } else { leftColor = Color.kNoColor }
             
             if isLocInRange(x, y: y+1)
             {
-                dwnColor = tileMap![x, y+1].color
+                dwnColor = tileMap[x, y+1].color
             } else { dwnColor = Color.kNoColor }
             
             if tileColor != Color.kNoColor
@@ -410,19 +410,19 @@ class GameBoard {
                 // find all connected neighbors not already merged into the same group, set them aside
                 if (tileColor == leftColor)
                 {
-                    neighbors.append(tileMap![x-1, y])
+                    neighbors.append(tileMap[x-1, y])
                     
                 } else if (tileColor == dwnColor)
                 {
-                    neighbors.append(tileMap![x, y+1]);
+                    neighbors.append(tileMap[x, y+1]);
                     
                 } else if (tileColor == rightColor)
                 {
-                    neighbors.append(tileMap![x+1, y]);
+                    neighbors.append(tileMap[x+1, y]);
                     
                 } else if (tileColor == upColor)
                 {
-                    neighbors.append(tileMap![x, y-1]);
+                    neighbors.append(tileMap[x, y-1]);
                 }
             }
             
@@ -432,10 +432,10 @@ class GameBoard {
 
                 for item in neighbors
                 {
-                    unionSets(tileMap![loc.x, loc.y], setB: item)
+                    unionSets(tileMap[loc.x, loc.y], setB: item)
                     
                     // if we merge any tiles, we need to delete - mark the group's parent
-                    findSet(tileMap![loc.x, loc.y]).markedForDelete = true
+                    findSet(tileMap[loc.x, loc.y]).markedForDelete = true
                     
                     // mark this tile as well
                     item.markedForDelete = true
@@ -453,7 +453,7 @@ class GameBoard {
     
     func clearMap()
     {
-        tileMap?.setAll(Tile(initType: TileType.nullTile, initColor: Color.kNoColor))
+        tileMap.setAll(Tile(initType: TileType.nullTile, initColor: Color.kNoColor))
     }
         
 }

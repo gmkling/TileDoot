@@ -75,14 +75,14 @@ class TileDootModelTests: XCTestCase {
         var testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileLoc)
-        XCTAssert(testBoard.tileMap![tileLoc.x, tileLoc.y] == testTile)
+        XCTAssert(testBoard.tileMap[tileLoc.x, tileLoc.y] == testTile)
         
         // also sneak the operator overload tests here
         testBoard.deleteTile(tileLoc)
-        XCTAssertFalse(testBoard.tileMap![tileLoc.x, tileLoc.y] == testTile)
-        XCTAssertTrue(testBoard.tileMap![tileLoc.x, tileLoc.y] != testTile)
-        XCTAssertTrue(testBoard.tileMap![tileLoc.x, tileLoc.y].type == TileType.nullTile)
-        XCTAssertFalse(testBoard.tileMap![tileLoc.x, tileLoc.y].type != TileType.nullTile)
+        XCTAssertFalse(testBoard.tileMap[tileLoc.x, tileLoc.y] == testTile)
+        XCTAssertTrue(testBoard.tileMap[tileLoc.x, tileLoc.y] != testTile)
+        XCTAssertTrue(testBoard.tileMap[tileLoc.x, tileLoc.y].type == TileType.nullTile)
+        XCTAssertFalse(testBoard.tileMap[tileLoc.x, tileLoc.y].type != TileType.nullTile)
         
     }
     
@@ -234,7 +234,7 @@ class TileDootModelTests: XCTestCase {
         // make sure they are distinct under modification
         // just one change should short circuit
         testBoard.setTileNotStop(tileFromLoc)
-        XCTAssert(testBoard.tileMap![tileFromLoc.x, tileFromLoc.y] != testBoard.tileMap![tileToLoc.x, tileToLoc.y])
+        XCTAssert(testBoard.tileMap[tileFromLoc.x, tileFromLoc.y] != testBoard.tileMap[tileToLoc.x, tileToLoc.y])
 
     }
     
@@ -342,17 +342,17 @@ class TileDootModelTests: XCTestCase {
         // root is at [0,0], [1,0]->[1,1]->[0,1]->[0,0]
         // after calling findSet, all parents should be set to [0,0]
         // and the root returned should be [0,0]
-        testBoard.tileMap![0, 1].parent = testBoard.tileMap![0, 0]
-        testBoard.tileMap![1, 1].parent = testBoard.tileMap![0, 1]
-        testBoard.tileMap![1, 0].parent = testBoard.tileMap![1, 1]
+        testBoard.tileMap[0, 1].parent = testBoard.tileMap[0, 0]
+        testBoard.tileMap[1, 1].parent = testBoard.tileMap[0, 1]
+        testBoard.tileMap[1, 0].parent = testBoard.tileMap[1, 1]
         
-        var testRoot = testBoard.findSet(testBoard.tileMap![1,0])
+        var testRoot = testBoard.findSet(testBoard.tileMap[1,0])
         
-        XCTAssert(testBoard.tileMap![1,0].parent!==testBoard.tileMap![0, 0])
-        XCTAssert(testBoard.tileMap![1,1].parent!==testBoard.tileMap![0, 0])
-        XCTAssert(testBoard.tileMap![0,1].parent!==testBoard.tileMap![0, 0])
-        XCTAssert(testBoard.tileMap![0,0].parent==nil)
-        XCTAssert(testRoot==testBoard.tileMap![0, 0])
+        XCTAssert(testBoard.tileMap[1,0].parent!==testBoard.tileMap[0, 0])
+        XCTAssert(testBoard.tileMap[1,1].parent!==testBoard.tileMap[0, 0])
+        XCTAssert(testBoard.tileMap[0,1].parent!==testBoard.tileMap[0, 0])
+        XCTAssert(testBoard.tileMap[0,0].parent==nil)
+        XCTAssert(testRoot==testBoard.tileMap[0, 0])
         
     }
     
@@ -534,7 +534,7 @@ class TileDootModelTests: XCTestCase {
         for i in 0..<testBoard.dimension {
             for j in 0..<testBoard.dimension {
                 
-                XCTAssert(testBoard.tileMap![i,j].type == TileType.nullTile)
+                XCTAssert(testBoard.tileMap[i,j].type == TileType.nullTile)
             }
         }
         
