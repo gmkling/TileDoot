@@ -10,18 +10,30 @@ import Foundation
 
 class GameModel
 {
+    // the dimension of the game depends on the level
+    // every level will have a new GameBoard
+    // the cmdQueue is where cmds are stored
     var dimension : Int
-    var gameTiles : GameBoard?
+    var gameTiles : GameBoard
+    var cmdQueue : [Command]
+    let maxCmd = 50
+    var score : Int
     
-    init()
+    // level info
+    var curLevel : Int
+    var curLevelString : String
+    var levelScore : Int
+    
+    
+    init(startLevel: int, levelPath: String)
     {
-        
+        // set delegate for view
+        // load first level
     }
     
-    // starts game a level indicated
-    // init code probably finds player's last level
-    // and calls this
-    func startAtLevel (levelNum: Int)
+    // starts the level indicated
+    // levels do not need sequence, but can use it
+    func startLevel (levelNum: Int)
     {
         
     }
@@ -35,27 +47,31 @@ class GameModel
     // reset level - if player requests
     func resetLevel ()
     {
-        
+        levelScore = 0
+        gameTiles.clearMap()
+        cmdQueue.removeAll(keepCapacity: true)
+        startLevel(curLevel)
     }
-    
-    //
     
     // quit level at player request == return to menu
     func quitLevel ()
     {
         
     }
-        
+    
     // Handling commands
     
     // enqueueCommand appends a command to the queue
-    func enqueueCommand ()
+    func enqueueCommand (cmd: Command)
     {
+        // make sure the queue is not full - if full, ignore the cmd, sorry
+        guard cmdQueue.count <= maxCmd else { return }
         
+        cmdQueue.append(cmd)
     }
     
-    // doMove fetches commands from queue and performs them
-    func doMoves ()
+    // doCmds fetches commands from queue and performs them
+    func doCmds ()
     {
         
     }
