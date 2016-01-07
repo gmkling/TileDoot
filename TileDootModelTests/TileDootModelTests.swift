@@ -278,7 +278,15 @@ class TileDootModelTests: XCTestCase {
         
         testBoard.printBoardState()
         
-        // how to further test?
+        // check that * creates a stop tile
+        
+        XCTAssert(testBoard.isTileStop(Coordinate(x:0,y:0)))
+        
+        // check that . does not stop
+        
+        XCTAssert(!testBoard.isTileStop(Coordinate(x:6,y:6)))
+
+        
         
     }
     
@@ -542,7 +550,7 @@ class TileDootModelTests: XCTestCase {
     }
     
     
-    func testGameBoardTileMoves()
+    func testGameBoardTileMovesBasic()
     {
         let testDim = 16
         
@@ -561,11 +569,42 @@ class TileDootModelTests: XCTestCase {
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
-        // put the B's together
+        // the first test uses the same initial conditions, so the board is re-inited each time
+        // connectComponents is run after each move, which interferes with moving
+        print(puzzleString)
+        
+        // put the B's together - move right
+        // check that the source is now empty in this case
         testBoard.dootTiles(MoveDirection.right)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[10, 7].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[9,8].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[9,9].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[9,6].type == TileType.emptyTile)
+       
+        // then left
+        testBoard.clearMap()
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        testBoard.dootTiles(MoveDirection.left)
+        testBoard.printBoardState()
+        XCTAssert(testBoard.tileMap[9,6].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[9,7].color == Color.kBlue)
+       
+        // then up
+        testBoard.clearMap()
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        testBoard.dootTiles(MoveDirection.up)
+        testBoard.printBoardState()
+        XCTAssert(testBoard.tileMap[6,6].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[6,9].color == Color.kBlue)
         
+        // and down - nothing should move in this case
+        testBoard.clearMap()
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        testBoard.dootTiles(MoveDirection.down)
+        testBoard.printBoardState()
+        XCTAssert(testBoard.tileMap[9,6].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[9,9].color == Color.kBlue)
+
     }
 
     

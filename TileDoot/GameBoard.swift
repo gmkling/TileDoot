@@ -47,12 +47,18 @@ class GameBoard {
     func deleteTile(loc: Coordinate)
     {
         // insert a nullTile if one is not already there
-
+        // what is the purpose of this check?
         if tileMap[loc.x, loc.y].type != TileType.nullTile
         {
             tileMap[loc.x, loc.y] = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
             // forward the cmd to the View delegate
         }
+    }
+    
+    func emptyTile (loc: Coordinate)
+    {
+        tileMap[loc.x, loc.y] = Tile(initType: TileType.emptyTile, initColor: Color.kNoColor)
+        // tell the delegate pls
     }
 
     func isLocInRange(loc: Coordinate) ->Bool
@@ -72,7 +78,13 @@ class GameBoard {
  
     func isLocOccupied(loc: Coordinate) ->Bool
     {
-        return tileMap[loc.x, loc.y].type != TileType.nullTile
+        let tileNull = tileMap[loc.x, loc.y].type == TileType.nullTile
+        let tileEmpty = tileMap[loc.x, loc.y].type == TileType.emptyTile
+        
+        if !tileNull && !tileEmpty
+        { return true }
+        
+        return false
     }
 
     // stop property
@@ -153,8 +165,8 @@ class GameBoard {
         // needed?
         toTile.markedForDelete = fromTile.markedForDelete
         
-        // null out the source
-        self.deleteTile(fromLoc)
+        // empty out the source
+        self.emptyTile(fromLoc)
         
         // notify delegate of move
     }
@@ -248,6 +260,8 @@ class GameBoard {
             {
                 // this is a non-color tile
                 newTile = Tile(initType: curType, initColor: Color.kNoColor)
+                if curType==TileType.barrierTile { newTile.isStop = true }
+                
             } else if let curColor = self.getColorForChar(curTile)
             {
                 // this is a color tile
@@ -335,8 +349,9 @@ class GameBoard {
         } else if dir == MoveDirection.left {
             for (y=0; y<=maxY; y++) {
                 for (x=0; x<=maxX; x++) {
-                    curLoc = Coordinate(x: x,y: y);
-                    if checkTileCanMove(curLoc)
+                    curLoc = Coordinate(x: x,y: y)
+                    var canMove = checkTileCanMove(curLoc)
+                    if canMove
                     {
                         createTileMove(curLoc, dir: dir)
                     }
@@ -359,7 +374,7 @@ class GameBoard {
         // if we moved anything, check for connected components
         if(tileMapDirty)
         {
-        connectComponents();
+        //connectComponents();
         }
     
     }
@@ -393,7 +408,7 @@ class GameBoard {
             // we calc next location in terms of px, check it in tileCoords, do move in px
             nextPos = getAdjacentCoord(currentPos, direction: dir)
             
-            if !isLocInRange(nextPos) || isTileStop(nextPos)
+            if !isLocInRange(nextPos) || isTileStop(nextPos) || isLocOccupied(nextPos)
             {
                 stopped = true;
                 continue
@@ -433,19 +448,19 @@ class GameBoard {
         
         switch (direction) {
             case MoveDirection.up:
-                newPos = Coordinate(x: inCoord.x, y: inCoord.y+yIncrement)
-            break;
-            
-            case MoveDirection.down:
-                newPos = Coordinate(x: inCoord.x, y: inCoord.y-yIncrement)
-            break;
-            
-            case MoveDirection.left:
                 newPos = Coordinate(x: inCoord.x-xIncrement, y: inCoord.y)
             break;
             
-            case MoveDirection.right:
+            case MoveDirection.down:
                 newPos = Coordinate(x: inCoord.x+xIncrement, y: inCoord.y)
+            break;
+            
+            case MoveDirection.left:
+                newPos = Coordinate(x: inCoord.x, y: inCoord.y-yIncrement)
+            break;
+            
+            case MoveDirection.right:
+                newPos = Coordinate(x: inCoord.x, y: inCoord.y+yIncrement)
             break;
 
         }
