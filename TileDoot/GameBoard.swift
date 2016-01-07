@@ -55,9 +55,16 @@ class GameBoard {
         }
     }
     
+    
     func emptyTile (loc: Coordinate)
     {
         tileMap[loc.x, loc.y] = Tile(initType: TileType.emptyTile, initColor: Color.kNoColor)
+        // tell the delegate pls
+    }
+    
+    func emptyTile (x: Int, y: Int)
+    {
+        tileMap[x, y] = Tile(initType: TileType.emptyTile, initColor: Color.kNoColor)
         // tell the delegate pls
     }
 
@@ -373,7 +380,14 @@ class GameBoard {
         // if we moved anything, check for connected components
         if(tileMapDirty)
         {
-        connectComponents();
+            if connectComponents()
+            {
+                // remove deleted tiles
+                emptyMarkedTiles()
+                // repeat the move to collapse, until connectComponents returns false
+                dootTiles(dir)
+            }
+            
         }
     
     }
@@ -404,9 +418,7 @@ class GameBoard {
         
         while !stopped
         {
-            // we calc next location in terms of px, check it in tileCoords, do move in px
             nextPos = getAdjacentCoord(currentPos, direction: dir)
-            
             
             if !isLocInRange(nextPos) || isTileStop(nextPos) || isLocOccupied(nextPos)
             {
@@ -521,11 +533,12 @@ class GameBoard {
         }
     }
     
-    func connectComponents()
+    func connectComponents() -> Bool
     {
         var occupiedTiles = [Coordinate]()
+        var result = false
         
-        if numTiles<1 {return} // map is empty
+        if numTiles<1 {return result} // map is empty
         
         for i in 0..<tileMap.dimension
         {
@@ -561,27 +574,26 @@ class GameBoard {
             tileColor = getTileColor(loc)
             tileRank = getTileRank(loc)
             
-            // checking adjacent tiles
-            // bug will show up if we have an occupied tile in a corner ex. 0,0 ; 0,dim; dim,0; or dim,dim;
-            // use protection
-            if isLocInRange(x+1, y: y)
-            {
-                rightColor = tileMap[x+1, y].color
-            } else { rightColor = Color.kNoColor }
-            
-            if isLocInRange(x-1, y: y)
-            {
-                leftColor = tileMap[x-1, y].color
-            } else { leftColor = Color.kNoColor }
-            
-            if isLocInRange(x, y: y-1)
-            {
-                upColor = tileMap[x, y-1].color
-            } else { leftColor = Color.kNoColor }
+            // gather adjacent tiles
             
             if isLocInRange(x, y: y+1)
             {
-                dwnColor = tileMap[x, y+1].color
+                rightColor = tileMap[x, y+1].color
+            } else { rightColor = Color.kNoColor }
+            
+            if isLocInRange(x, y: y-1)
+            {
+                leftColor = tileMap[x, y-1].color
+            } else { leftColor = Color.kNoColor }
+            
+            if isLocInRange(x-1, y: y)
+            {
+                upColor = tileMap[x-1, y].color
+            } else { leftColor = Color.kNoColor }
+            
+            if isLocInRange(x+1, y: y)
+            {
+                dwnColor = tileMap[x+1, y].color
             } else { dwnColor = Color.kNoColor }
             
             if tileColor != Color.kNoColor
@@ -589,19 +601,19 @@ class GameBoard {
                 // find all connected neighbors not already merged into the same group, set them aside
                 if (tileColor == leftColor)
                 {
-                    neighbors.append(tileMap[x-1, y])
+                    neighbors.append(tileMap[x, y-1])
                     
                 } else if (tileColor == dwnColor)
                 {
-                    neighbors.append(tileMap[x, y+1]);
+                    neighbors.append(tileMap[x+1, y]);
                     
                 } else if (tileColor == rightColor)
                 {
-                    neighbors.append(tileMap[x+1, y]);
+                    neighbors.append(tileMap[x, y+1]);
                     
                 } else if (tileColor == upColor)
                 {
-                    neighbors.append(tileMap[x, y-1]);
+                    neighbors.append(tileMap[x-1, y]);
                 }
             }
             
@@ -616,8 +628,17 @@ class GameBoard {
                     // if we merge any tiles, we need to delete - mark the group's parent
                     findSet(tileMap[loc.x, loc.y]).markedForDelete = true
                     
+                    // if this is the 1 and only time this loc is scanned, and is the parent
+                    // findSet may return nil and this parent will not get marked
+                    // redundant in most cases
+                    // is findSet broken in this case?
+                    tileMap[loc.x, loc.y].markedForDelete = true
+                    
+                    
                     // mark this tile as well
                     item.markedForDelete = true
+                    
+                    if result != true { result=true }
                 }
             }
             
@@ -627,7 +648,22 @@ class GameBoard {
         
         occupiedTiles.removeAll()
         
-        
+        return result
+    }
+    
+    func emptyMarkedTiles()
+    {
+        // delete all marked tiles and notify delegate
+        for i in 0..<tileMap.dimension
+        {
+            for j in 0..<tileMap.dimension
+            {
+                if tileMap[i, j].markedForDelete == true
+                {
+                    emptyTile(i, y:j)
+                }
+            }
+        }
     }
     
     func clearMap()
