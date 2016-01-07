@@ -327,7 +327,7 @@ class GameBoard {
         
         if dir == MoveDirection.up
         {
-            for (x=maxX; x>=0; x--) {
+            for (x=0; x<=maxX; x++) {
                 for (y=0; y<=maxY; y++) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
@@ -347,11 +347,10 @@ class GameBoard {
                 }
             };
         } else if dir == MoveDirection.left {
-            for (y=0; y<=maxY; y++) {
-                for (x=0; x<=maxX; x++) {
+            for (x=0; x<=maxX; x++) {
+                for (y=0; y<=maxY; y++) {
                     curLoc = Coordinate(x: x,y: y)
-                    var canMove = checkTileCanMove(curLoc)
-                    if canMove
+                    if checkTileCanMove(curLoc)
                     {
                         createTileMove(curLoc, dir: dir)
                     }
@@ -359,7 +358,7 @@ class GameBoard {
             };
         } else if dir == MoveDirection.right
         {
-            for (y=0; y<=maxY; y++) {
+            for (y=maxY; y>=0; y--) {
                 for (x=maxX; x>=0; x--) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
@@ -374,7 +373,7 @@ class GameBoard {
         // if we moved anything, check for connected components
         if(tileMapDirty)
         {
-        //connectComponents();
+        connectComponents();
         }
     
     }
@@ -400,13 +399,14 @@ class GameBoard {
         var stopped = false;
         var currentPos = Coordinate(x:inLoc.x, y:inLoc.y);
         var oldPos = inLoc;
-        var nextPos, nextPosCoords : Coordinate
+        var nextPos : Coordinate
         var numTilesInMove = 0
         
         while !stopped
         {
             // we calc next location in terms of px, check it in tileCoords, do move in px
             nextPos = getAdjacentCoord(currentPos, direction: dir)
+            
             
             if !isLocInRange(nextPos) || isTileStop(nextPos) || isLocOccupied(nextPos)
             {
@@ -428,7 +428,10 @@ class GameBoard {
         // else, we move
         // tell the delegate to move from oldPos to currentPos
         moveTile(oldPos, toLoc: currentPos);
-        setTileMoving(currentPos);
+        
+        // the moving flag is to prevent events from triggering a movement on a new thread before this is done
+        // find a better way - queueing commands may do it, but may lead to unexpected behavior for the user
+        //setTileMoving(currentPos);
         
         // if we move anything
         tileMapDirty = true

@@ -23,6 +23,7 @@
 		107698E81C347CE7006051B2 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E61C347CE7006051B2 /* Commands.swift */; };
 		107698EA1C3BC3CA006051B2 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E91C3BC3CA006051B2 /* GameModel.swift */; };
 		107698EB1C3BC3CA006051B2 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E91C3BC3CA006051B2 /* GameModel.swift */; };
+		107698ED1C3EF0FD006051B2 /* TileDootModelMovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		107698E31C346CEE006051B2 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		107698E61C347CE7006051B2 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		107698E91C3BC3CA006051B2 /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootModelMovementTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				107698D91C34668A006051B2 /* TileDootModelTests.swift */,
 				107698DB1C34668A006051B2 /* Info.plist */,
+				107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */,
 			);
 			path = TileDootModelTests;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				107698ED1C3EF0FD006051B2 /* TileDootModelMovementTests.swift in Sources */,
 				107698EB1C3BC3CA006051B2 /* GameModel.swift in Sources */,
 				107698DA1C34668A006051B2 /* TileDootModelTests.swift in Sources */,
 				107698E51C346CEE006051B2 /* GameBoard.swift in Sources */,
