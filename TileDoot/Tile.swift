@@ -13,7 +13,7 @@ import CoreGraphics
 // What am I missing?
 enum Color: Int {
     case kNoColor=1
-    case kBlue, kRed, kGreen, kYellow, kOrange
+    case kBlue, kRed, kGreen, kYellow, kOrange, kPurple
 }
 
 // this is a var so we can customize/add colors
@@ -23,7 +23,8 @@ var colorChars: [Color : Character] = [
     Color.kRed : "R",
     Color.kGreen : "G",
     Color.kYellow : "Y",
-    Color.kOrange : "O"
+    Color.kOrange : "O",
+    Color.kPurple : "P"
 ]
 
 

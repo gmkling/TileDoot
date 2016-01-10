@@ -268,5 +268,35 @@ class TileDootModelMovementTests: XCTestCase {
         XCTAssertEqual(Color.kNoColor, testBoard.tileMap[7,0].color)
         testBoard.printBoardState()
     }
+    
+    func testGameBoardTileMovesSerialWithDeletesAndMultiStageCollapse ()
+    {
+        let testDim = 16
+        
+        // construct the String rep of the game board
+        let puzRow1 =  "BRY............."
+        let puzRow2 =  ".BRY............"
+        let puzRow3 =  "..BRY..........."
+        let puzRow4 =  "...BPR.........."
+        let puzRow5 =  "....BRR........."
+        let puzRow6 =  ".....BPR........"
+        let puzRow7 =  "......BRP......."
+        let puzRow8 =  ".......BOR......"
+        let puzRow9 =  "........BGP....."
+        let puzRow10 = ".........BOR...."
+        let puzRow11 = "..........BGO..."
+        let puzRow12 = "...........BYG.."
+        let puzRow13 = "............BYO."
+        let puzRow14 = ".............BYG"
+        let puzRow15 = "..............BY"
+        let puzRow16 = "...............B"
+        
+        let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8+puzRow9+puzRow10+puzRow11+puzRow12+puzRow13+puzRow14+puzRow15+puzRow16
+        
+        let testBoard = GameBoard(initDimension: testDim)
+        
+        XCTAssert(testBoard.initBoardFromString(puzzleString))
+        
+    }
 
 }
