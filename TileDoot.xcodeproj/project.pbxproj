@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		107698BC1C320292006051B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698BB1C320292006051B2 /* AppDelegate.swift */; };
-		107698BE1C320292006051B2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 107698BD1C320292006051B2 /* GameScene.sks */; };
-		107698C01C320292006051B2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698BF1C320292006051B2 /* GameScene.swift */; };
+		107698C01C320292006051B2 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698BF1C320292006051B2 /* SplashScene.swift */; };
 		107698C21C320292006051B2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698C11C320292006051B2 /* GameViewController.swift */; };
 		107698C51C320292006051B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107698C31C320292006051B2 /* Main.storyboard */; };
 		107698C71C320292006051B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107698C61C320292006051B2 /* Assets.xcassets */; };
@@ -39,8 +38,7 @@
 /* Begin PBXFileReference section */
 		107698B81C320292006051B2 /* TileDoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileDoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107698BB1C320292006051B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		107698BD1C320292006051B2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		107698BF1C320292006051B2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		107698BF1C320292006051B2 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
 		107698C11C320292006051B2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		107698C41C320292006051B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		107698C61C320292006051B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,8 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				107698BB1C320292006051B2 /* AppDelegate.swift */,
-				107698BD1C320292006051B2 /* GameScene.sks */,
-				107698BF1C320292006051B2 /* GameScene.swift */,
+				107698BF1C320292006051B2 /* SplashScene.swift */,
 				107698C11C320292006051B2 /* GameViewController.swift */,
 				107698C31C320292006051B2 /* Main.storyboard */,
 				107698C61C320292006051B2 /* Assets.xcassets */,
@@ -210,7 +207,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				107698BE1C320292006051B2 /* GameScene.sks in Resources */,
 				107698CA1C320292006051B2 /* LaunchScreen.storyboard in Resources */,
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
@@ -231,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				107698C01C320292006051B2 /* GameScene.swift in Sources */,
+				107698C01C320292006051B2 /* SplashScene.swift in Sources */,
 				107698E71C347CE7006051B2 /* Commands.swift in Sources */,
 				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
@@ -435,6 +431,7 @@
 				107698D01C320292006051B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		107698DE1C34668A006051B2 /* Build configuration list for PBXNativeTarget "TileDootModelTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +440,7 @@
 				107698E01C34668A006051B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
