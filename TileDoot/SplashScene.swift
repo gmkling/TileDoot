@@ -21,8 +21,17 @@ class SplashScene: SKScene {
         
         splashImage.position = CGPoint(x: frame.size.width/2 , y: frame.size.height/2)
         
+        var startButton = TDButton(defaultImageName: "StartButtonUp.png", selectImageName: "StartButtonDown.png", buttonAction: printStart)
+        startButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + (myLabel.frame.height / 2) + 3)
+        
         self.addChild(splashImage)
         self.addChild(myLabel)
+        self.addChild(startButton)
+    }
+    
+    func printStart()
+    {
+        print("Start Button pushed.")
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
