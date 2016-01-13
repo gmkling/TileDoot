@@ -9,11 +9,10 @@
 import Foundation
 import CoreGraphics
 
-// I don't like that I have to reference type when I use these: Color.kRed
-// What am I missing?
+// I don't like that I have to reference type when I use these: Color.kRed - is there something better for this?
 enum Color: Int {
     case kNoColor=1
-    case kBlue, kRed, kGreen, kYellow, kOrange, kPurple
+    case kBlue, kRed, kGreen, kLightGreen, kYellow, kOrange, kLightOrange, kPurple
 }
 
 // this is a var so we can customize/add colors
@@ -22,8 +21,10 @@ var colorChars: [Color : Character] = [
     Color.kBlue : "B",
     Color.kRed : "R",
     Color.kGreen : "G",
+    Color.kLightGreen : "g",
     Color.kYellow : "Y",
     Color.kOrange : "O",
+    Color.kLightOrange : "o",
     Color.kPurple : "P"
 ]
 

@@ -10,7 +10,7 @@ import SpriteKit
 
 class SplashScene: SKScene {
     
-    var splashImage = SKSpriteNode(imageNamed: "td-bgimage")
+    var splashImage = SKSpriteNode(imageNamed: "SplashGlass_test.jpg")
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -20,13 +20,14 @@ class SplashScene: SKScene {
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
         splashImage.position = CGPoint(x: frame.size.width/2 , y: frame.size.height/2)
+        splashImage.setScale(0.5)
         
         var startButton = TDButton(defaultImageName: "StartButtonUp.png", selectImageName: "StartButtonDown.png", buttonAction: printStart)
         startButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + (myLabel.frame.height / 2) + 3)
         
         self.addChild(splashImage)
         self.addChild(myLabel)
-        self.addChild(startButton)
+        //self.addChild(startButton)
     }
     
     func printStart()
