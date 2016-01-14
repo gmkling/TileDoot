@@ -35,6 +35,48 @@ class TDButton : SKNode
         
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
+        // if the touch begins on button, swap the selected image in for default
+        selectedImage.hidden = false
+        defaultImage.hidden = true
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
+        // if the user moves a touch, find out if it moved onto or off of the button
+        // and do the right thing
+        for touch in touches
+        {
+            var location: CGPoint = touch.locationInNode(self)
+            
+            if defaultImage.containsPoint(location)
+            {
+                selectedImage.hidden = false
+                defaultImage.hidden = true
+            } else {
+                selectedImage.hidden = true
+                defaultImage.hidden = false
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
+        for touch in touches
+        {
+            let location: CGPoint = touch.locationInNode(self)
+            
+            if defaultImage.containsPoint(location)
+            {
+                action()
+            }
+            
+            selectedImage.hidden = true
+            defaultImage.hidden = false
+        }
+    }
+    
     // implement this once we have a better handle on things.
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

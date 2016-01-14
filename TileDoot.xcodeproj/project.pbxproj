@@ -28,6 +28,14 @@
 		10B34C6D1C44F02900AD8DD7 /* TDButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */; };
 		10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */; };
 		10B34C741C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */; };
+		10B34C7A1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C761C478D5D00AD8DD7 /* NewGameActive_test.png */; };
+		10B34C7B1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C761C478D5D00AD8DD7 /* NewGameActive_test.png */; };
+		10B34C7C1C478D5D00AD8DD7 /* NewGameActive_test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C771C478D5D00AD8DD7 /* NewGameActive_test.svg */; };
+		10B34C7D1C478D5D00AD8DD7 /* NewGameActive_test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C771C478D5D00AD8DD7 /* NewGameActive_test.svg */; };
+		10B34C7E1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C781C478D5D00AD8DD7 /* NewGameSelected_test.png */; };
+		10B34C7F1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C781C478D5D00AD8DD7 /* NewGameSelected_test.png */; };
+		10B34C801C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */; };
+		10B34C811C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,10 @@
 		10B34C681C44E63400AD8DD7 /* TDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDButton.swift; sourceTree = "<group>"; };
 		10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDButtonTest.swift; path = TileDootUITests/TDButtonTest.swift; sourceTree = "<group>"; };
 		10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SplashGlass_test.JPG; sourceTree = "<group>"; };
+		10B34C761C478D5D00AD8DD7 /* NewGameActive_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameActive_test.png; sourceTree = "<group>"; };
+		10B34C771C478D5D00AD8DD7 /* NewGameActive_test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewGameActive_test.svg; sourceTree = "<group>"; };
+		10B34C781C478D5D00AD8DD7 /* NewGameSelected_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameSelected_test.png; sourceTree = "<group>"; };
+		10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewGameSelected_test.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,7 @@
 				107698BA1C320292006051B2 /* TileDoot */,
 				107698D81C34668A006051B2 /* TileDootModelTests */,
 				10B34C6B1C44EFCC00AD8DD7 /* TileDootUITests */,
+				10B34C751C478D5D00AD8DD7 /* TD_Buttons */,
 				10B34C6E1C46437A00AD8DD7 /* TileAssets */,
 				107698B91C320292006051B2 /* Products */,
 			);
@@ -159,6 +172,17 @@
 				10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */,
 			);
 			path = TileAssets;
+			sourceTree = "<group>";
+		};
+		10B34C751C478D5D00AD8DD7 /* TD_Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				10B34C761C478D5D00AD8DD7 /* NewGameActive_test.png */,
+				10B34C771C478D5D00AD8DD7 /* NewGameActive_test.svg */,
+				10B34C781C478D5D00AD8DD7 /* NewGameSelected_test.png */,
+				10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */,
+			);
+			path = TD_Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,8 +268,12 @@
 			files = (
 				107698CA1C320292006051B2 /* LaunchScreen.storyboard in Resources */,
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
+				10B34C801C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */,
+				10B34C7A1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */,
 				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
+				10B34C7E1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */,
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
+				10B34C7C1C478D5D00AD8DD7 /* NewGameActive_test.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +281,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10B34C7B1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */,
 				10B34C741C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
+				10B34C7D1C478D5D00AD8DD7 /* NewGameActive_test.svg in Resources */,
+				10B34C811C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */,
+				10B34C7F1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

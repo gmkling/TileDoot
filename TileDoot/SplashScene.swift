@@ -11,23 +11,28 @@ import SpriteKit
 class SplashScene: SKScene {
     
     var splashImage = SKSpriteNode(imageNamed: "SplashGlass_test.jpg")
+    let myLabel = SKLabelNode(fontNamed:"Futura-medium")
     
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Futura-medium")
+    
+    override func didMoveToView(view: SKView)
+    {
+        // since we need a ptr to the method, this happens here instead of at init time
+        let startButton = TDButton(defaultImageName: "NewGameActive_test.png", selectImageName: "NewGameSelected_test.png", buttonAction: printStart)
+        
         myLabel.text = "TileDoot"
         myLabel.fontSize = 45
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)*1.33)
         
         splashImage.position = CGPoint(x: frame.size.width/2 , y: frame.size.height/2)
         splashImage.setScale(0.5)
+        splashImage.zPosition = -1
         
-        var startButton = TDButton(defaultImageName: "StartButtonUp.png", selectImageName: "StartButtonDown.png", buttonAction: printStart)
-        startButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + (myLabel.frame.height / 2) + 3)
+        startButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        startButton.setScale(0.25)
         
         self.addChild(splashImage)
         self.addChild(myLabel)
-        //self.addChild(startButton)
+        self.addChild(startButton)
     }
     
     func printStart()
@@ -35,8 +40,10 @@ class SplashScene: SKScene {
         print("Start Button pushed.")
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+    // touch overrides may not be needed since we are only interested in buttons.
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
         
         for touch in touches
         {
@@ -44,8 +51,8 @@ class SplashScene: SKScene {
             // interesting stuff goes here
         }
     }
-   
+    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+    
     }
 }
