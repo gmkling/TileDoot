@@ -24,7 +24,7 @@ class SplashScene: SKScene {
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)*1.33)
         
         splashImage.position = CGPoint(x: frame.size.width/2 , y: frame.size.height/2)
-        splashImage.setScale(0.5)
+        splashImage.setScale(0.15)
         splashImage.zPosition = -1
         
         startButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))

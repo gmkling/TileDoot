@@ -36,6 +36,8 @@
 		10B34C7F1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C781C478D5D00AD8DD7 /* NewGameSelected_test.png */; };
 		10B34C801C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */; };
 		10B34C811C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */; };
+		10B34C851C48EC9E00AD8DD7 /* Blue1_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C831C48EC9E00AD8DD7 /* Blue1_test.png */; };
+		10B34C861C48EC9E00AD8DD7 /* Blue1_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C831C48EC9E00AD8DD7 /* Blue1_test.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 		10B34C771C478D5D00AD8DD7 /* NewGameActive_test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewGameActive_test.svg; sourceTree = "<group>"; };
 		10B34C781C478D5D00AD8DD7 /* NewGameSelected_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameSelected_test.png; sourceTree = "<group>"; };
 		10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewGameSelected_test.svg; sourceTree = "<group>"; };
+		10B34C831C48EC9E00AD8DD7 /* Blue1_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue1_test.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,7 @@
 		10B34C6E1C46437A00AD8DD7 /* TileAssets */ = {
 			isa = PBXGroup;
 			children = (
+				10B34C821C48EC9E00AD8DD7 /* GlassTiles_Test */,
 				10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */,
 			);
 			path = TileAssets;
@@ -183,6 +187,14 @@
 				10B34C791C478D5D00AD8DD7 /* NewGameSelected_test.svg */,
 			);
 			path = TD_Buttons;
+			sourceTree = "<group>";
+		};
+		10B34C821C48EC9E00AD8DD7 /* GlassTiles_Test */ = {
+			isa = PBXGroup;
+			children = (
+				10B34C831C48EC9E00AD8DD7 /* Blue1_test.png */,
+			);
+			path = GlassTiles_Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +282,7 @@
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
 				10B34C801C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */,
 				10B34C7A1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */,
+				10B34C851C48EC9E00AD8DD7 /* Blue1_test.png in Resources */,
 				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
 				10B34C7E1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */,
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
@@ -282,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10B34C7B1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */,
+				10B34C861C48EC9E00AD8DD7 /* Blue1_test.png in Resources */,
 				10B34C741C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
 				10B34C7D1C478D5D00AD8DD7 /* NewGameActive_test.svg in Resources */,
 				10B34C811C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */,
