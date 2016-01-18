@@ -66,6 +66,16 @@
 		10B34CB31C4B935F00AD8DD7 /* Yellow4_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CA21C4B935F00AD8DD7 /* Yellow4_test.png */; };
 		10B34CB41C4B935F00AD8DD7 /* Yellow5_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CA31C4B935F00AD8DD7 /* Yellow5_test.png */; };
 		10B34CB51C4B935F00AD8DD7 /* Yellow5_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CA31C4B935F00AD8DD7 /* Yellow5_test.png */; };
+		10B34CBB1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB61C4DA4B700AD8DD7 /* LGreen1_test.png */; };
+		10B34CBC1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB61C4DA4B700AD8DD7 /* LGreen1_test.png */; };
+		10B34CBD1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB71C4DA4B700AD8DD7 /* LGreen2_test.png */; };
+		10B34CBE1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB71C4DA4B700AD8DD7 /* LGreen2_test.png */; };
+		10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB81C4DA4B700AD8DD7 /* LGreen3_test.png */; };
+		10B34CC01C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB81C4DA4B700AD8DD7 /* LGreen3_test.png */; };
+		10B34CC11C4DA4B700AD8DD7 /* LGreen4_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB91C4DA4B700AD8DD7 /* LGreen4_test.png */; };
+		10B34CC21C4DA4B700AD8DD7 /* LGreen4_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CB91C4DA4B700AD8DD7 /* LGreen4_test.png */; };
+		10B34CC31C4DA4B700AD8DD7 /* LGreen5_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CBA1C4DA4B700AD8DD7 /* LGreen5_test.png */; };
+		10B34CC41C4DA4B700AD8DD7 /* LGreen5_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CBA1C4DA4B700AD8DD7 /* LGreen5_test.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +127,11 @@
 		10B34CA11C4B935F00AD8DD7 /* Yellow3_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow3_test.png; sourceTree = "<group>"; };
 		10B34CA21C4B935F00AD8DD7 /* Yellow4_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow4_test.png; sourceTree = "<group>"; };
 		10B34CA31C4B935F00AD8DD7 /* Yellow5_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow5_test.png; sourceTree = "<group>"; };
+		10B34CB61C4DA4B700AD8DD7 /* LGreen1_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LGreen1_test.png; sourceTree = "<group>"; };
+		10B34CB71C4DA4B700AD8DD7 /* LGreen2_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LGreen2_test.png; sourceTree = "<group>"; };
+		10B34CB81C4DA4B700AD8DD7 /* LGreen3_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LGreen3_test.png; sourceTree = "<group>"; };
+		10B34CB91C4DA4B700AD8DD7 /* LGreen4_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LGreen4_test.png; sourceTree = "<group>"; };
+		10B34CBA1C4DA4B700AD8DD7 /* LGreen5_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LGreen5_test.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +249,11 @@
 		10B34C821C48EC9E00AD8DD7 /* GlassTiles_Test */ = {
 			isa = PBXGroup;
 			children = (
+				10B34CB61C4DA4B700AD8DD7 /* LGreen1_test.png */,
+				10B34CB71C4DA4B700AD8DD7 /* LGreen2_test.png */,
+				10B34CB81C4DA4B700AD8DD7 /* LGreen3_test.png */,
+				10B34CB91C4DA4B700AD8DD7 /* LGreen4_test.png */,
+				10B34CBA1C4DA4B700AD8DD7 /* LGreen5_test.png */,
 				10B34C9B1C4B935F00AD8DD7 /* DGreen1_test.png */,
 				10B34C9C1C4B935F00AD8DD7 /* DGreen2_test.png */,
 				10B34C9D1C4B935F00AD8DD7 /* DGreen3_test.png */,
@@ -334,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10B34CC31C4DA4B700AD8DD7 /* LGreen5_test.png in Resources */,
 				10B34CB21C4B935F00AD8DD7 /* Yellow4_test.png in Resources */,
 				10B34CAE1C4B935F00AD8DD7 /* Yellow2_test.png in Resources */,
 				107698CA1C320292006051B2 /* LaunchScreen.storyboard in Resources */,
@@ -342,14 +363,18 @@
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
 				10B34CAA1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
 				10B34C801C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */,
+				10B34CBD1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */,
 				10B34C7A1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */,
 				10B34CB41C4B935F00AD8DD7 /* Yellow5_test.png in Resources */,
 				10B34CA41C4B935F00AD8DD7 /* DGreen1_test.png in Resources */,
 				10B34C8F1C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
 				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
+				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
 				10B34C7E1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */,
 				10B34CA61C4B935F00AD8DD7 /* DGreen2_test.png in Resources */,
+				10B34CC11C4DA4B700AD8DD7 /* LGreen4_test.png in Resources */,
 				10B34C931C4A4A0200AD8DD7 /* Blue3_test.png in Resources */,
+				10B34CBB1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */,
 				10B34CAC1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
 				10B34C951C4A4A0200AD8DD7 /* Blue4_test.png in Resources */,
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
@@ -365,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10B34C7B1C478D5D00AD8DD7 /* NewGameActive_test.png in Resources */,
+				10B34CC01C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
 				10B34C901C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
 				10B34C741C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
 				10B34CAB1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
@@ -374,13 +400,17 @@
 				10B34CAF1C4B935F00AD8DD7 /* Yellow2_test.png in Resources */,
 				10B34C981C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
 				10B34CA91C4B935F00AD8DD7 /* DGreen3_test.png in Resources */,
+				10B34CC21C4DA4B700AD8DD7 /* LGreen4_test.png in Resources */,
 				10B34C961C4A4A0200AD8DD7 /* Blue4_test.png in Resources */,
+				10B34CBE1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */,
 				10B34C811C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */,
 				10B34CA51C4B935F00AD8DD7 /* DGreen1_test.png in Resources */,
+				10B34CBC1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */,
 				10B34C9A1C4A4A0200AD8DD7 /* Yellow1_test.png in Resources */,
 				10B34CAD1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
 				10B34CA71C4B935F00AD8DD7 /* DGreen2_test.png in Resources */,
 				10B34C921C4A4A0200AD8DD7 /* Blue2_test.png in Resources */,
+				10B34CC41C4DA4B700AD8DD7 /* LGreen5_test.png in Resources */,
 				10B34CB31C4B935F00AD8DD7 /* Yellow4_test.png in Resources */,
 				10B34C7F1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */,
 				10B34CB51C4B935F00AD8DD7 /* Yellow5_test.png in Resources */,
