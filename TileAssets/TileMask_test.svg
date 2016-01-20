@@ -16,7 +16,7 @@
    id="svg4204"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="Blue1_test.svg"
+   sodipodi:docname="TileMask_test.svg"
    enable-background="new"
    inkscape:export-filename="/Users/garrykling/Documents/Projects/Games/SpriteKitStudy/TileDoot/TileAssets/GlassTiles_Test/Blue1_test.png"
    inkscape:export-xdpi="90"
@@ -40,16 +40,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4402542"
-     inkscape:cx="315.33754"
-     inkscape:cy="415.09267"
+     inkscape:cx="203.20456"
+     inkscape:cy="248.45542"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      inkscape:window-width="1804"
      inkscape:window-height="1196"
-     inkscape:window-x="1723"
-     inkscape:window-y="89"
+     inkscape:window-x="1878"
+     inkscape:window-y="170"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata4209">
@@ -75,9 +75,9 @@
      transform="translate(0,-552.36209)"
      style="display:inline">
     <path
-       inkscape:connector-curvature="0"
+       id="path10315"
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.49999976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 71.115315,552.36209 C 31.718417,552.36209 3.9603046e-8,584.08052 3.9603046e-8,623.47743 l 0,357.77131 C 3.9603046e-8,1020.6457 31.718417,1052.362 71.115315,1052.362 l 357.769325,0 c 39.3969,0 71.11532,-31.7163 71.11532,-71.11326 l 0,-357.77131 c 0,-39.39691 -31.71842,-71.11534 -71.11532,-71.11534 l -357.769325,0 z"
-       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.49999982;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4993" />
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
