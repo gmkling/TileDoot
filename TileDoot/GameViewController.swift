@@ -14,13 +14,13 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scene = SplashScene(size: view.bounds.size)
+        let scene = SceneInvertTest(size: view.bounds.size)
         
         // Configure the view.
         let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = true
+        //skView.showsFPS = true
+        //skView.showsNodeCount = true
+        //skView.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .ResizeFill

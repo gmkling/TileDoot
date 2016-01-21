@@ -106,6 +106,7 @@
 		10B34CEF1C4F87BE00AD8DD7 /* Red4_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CE61C4F87BE00AD8DD7 /* Red4_test.png */; };
 		10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CE71C4F87BE00AD8DD7 /* Red5_test.png */; };
 		10B34CF11C4F87BE00AD8DD7 /* Red5_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34CE71C4F87BE00AD8DD7 /* Red5_test.png */; };
+		10B34CF31C50CC7D00AD8DD7 /* SceneInvertTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34CF21C50CC7D00AD8DD7 /* SceneInvertTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +178,7 @@
 		10B34CE51C4F87BE00AD8DD7 /* Red3_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red3_test.png; sourceTree = "<group>"; };
 		10B34CE61C4F87BE00AD8DD7 /* Red4_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red4_test.png; sourceTree = "<group>"; };
 		10B34CE71C4F87BE00AD8DD7 /* Red5_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red5_test.png; sourceTree = "<group>"; };
+		10B34CF21C50CC7D00AD8DD7 /* SceneInvertTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneInvertTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				107698CB1C320292006051B2 /* Info.plist */,
 				107698E21C346CB3006051B2 /* Models */,
 				10B34C671C44E60300AD8DD7 /* UI_Nodes */,
+				10B34CF21C50CC7D00AD8DD7 /* SceneInvertTest.swift */,
 			);
 			path = TileDoot;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
 				10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */,
+				10B34CF31C50CC7D00AD8DD7 /* SceneInvertTest.swift in Sources */,
 				107698EA1C3BC3CA006051B2 /* GameModel.swift in Sources */,
 				107698BC1C320292006051B2 /* AppDelegate.swift in Sources */,
 			);

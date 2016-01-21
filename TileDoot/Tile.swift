@@ -43,6 +43,45 @@ var typeChars : [TileType : Character] = [
     TileType.emptyTile : "."
 ]
 
+var tileNames = [
+    "Blue1_test.png",
+    "Blue2_test.png",
+    "Blue3_test.png",
+    "Blue4_test.png",
+    "Blue5_test.png",
+    "Red1_test.png",
+    "Red2_test.png",
+    "Red3_test.png",
+    "Red4_test.png",
+    "Red5_test.png",
+    "Yellow1_test.png",
+    "Yellow2_test.png",
+    "Yellow3_test.png",
+    "Yellow4_test.png",
+    "Yellow5_test.png",
+    "Orange1_test.png",
+    "Orange2_test.png",
+    "Orange3_test.png",
+    "Orange4_test.png",
+    "Orange5_test.png",
+    "LGreen1_test.png",
+    "LGreen2_test.png",
+    "LGreen3_test.png",
+    "LGreen4_test.png",
+    "LGreen5_test.png",
+    "DGreen1_test.png",
+    "DGreen2_test.png",
+    "DGreen3_test.png",
+    "DGreen4_test.png",
+    "DGreen5_test.png",
+    "Purple1_test.png",
+    "Purple2_test.png",
+    "Purple3_test.png",
+    "Purple4_test.png",
+    "Purple5_test.png"
+]
+
+
 // to use these Dictionaries to parse input, extend Dictionary to return the first key for a given value
 
 extension Dictionary where Value: Equatable {
