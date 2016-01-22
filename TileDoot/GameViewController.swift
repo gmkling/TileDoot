@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scene = SceneInvertTest(size: view.bounds.size)
+        let scene = SplashScene(size: view.bounds.size)
         
         // Configure the view.
         let skView = self.view as! SKView

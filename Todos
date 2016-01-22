@@ -1,0 +1,33 @@
+/*
+
+Custom UI classes
+-----------------
+
+TileButtons - Buttons with labels or arrows whose shape/bckgnd is a Tile image
+GameView - A frame that contains the representation of the game model
+StatusView - A frame that lists the relevant stats for the tile deletion (Tile, x/N, etc.)
+GameControlView - bank of buttons to navigate through the game levels, restart level, main menus, etc.
+PuzzleMatrixView - for use in the level directory screens, show thumbs of each level and whether it has been completed
+
+Main Scenes
+-----------
+MainMenu / Splash
+
+PuzzleDirectoryPage - using a PuzzleMatrixView, show menu of available puzzles to play
+EasyPuzzleDir - Directory of easy puzzles, composed of PuzzleDirectorySheets
+AdvancedPuzzleDir - ditto, but with more advanced levels
+
+GamePlayScene - the actual game screen
+
+Level Handling
+--------------
+LevelIconifier - scans avail puzzles, renders thumbs for use in the PuzzleMatrixView
+LevelLoader - works with game representation (+etc) to load levels for Iconifier or for GamePlay
+GameLaunchScan - uses the above utils at startup (and update) to generate internal data storage for level info
+
+Additions to the model
+----------------------
+LevelStorage - data structure for the storage of level data
+Detailed spec for Level definition files
+
+*/

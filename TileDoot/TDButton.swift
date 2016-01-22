@@ -15,7 +15,7 @@ class TDButton : SKNode
     var defaultImage: SKSpriteNode
     var selectedImage: SKSpriteNode
     var disabledImage: SKSpriteNode?
-    
+        
     var action: () -> Void
     
     // MARK: Initializers
