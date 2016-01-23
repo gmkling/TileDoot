@@ -19,7 +19,8 @@ class SplashScene: SKScene {
     {
         self.backgroundColor = lightGreenTileColor
         // since we need a ptr to the method, this happens here instead of at init time
-        let startButton = TDButton(defaultImageName: "Red1_test.png", selectImageName: "Red1_test.png", buttonAction: printStart)
+        let easyButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: printStart)
+        let hardButton = TDButton(defaultImageName: "Purple2_def.png", selectImageName: "Purple2_sel.png", buttonAction: printStart)
         
         myLabel.text = "TileDoot"
         myLabel.fontSize = 45
@@ -30,12 +31,16 @@ class SplashScene: SKScene {
         splashImage.setScale(1.1)
         splashImage.zPosition = -1
         
-        startButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        startButton.setScale(0.25)
+        easyButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        easyButton.setScale(0.25)
+        
+        hardButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)-easyButton.frame.size.height)
+        hardButton.setScale(0.25)
         
         //self.addChild(splashImage)
         self.addChild(myLabel)
-        self.addChild(startButton)
+        self.addChild(easyButton)
+        self.addChild(hardButton)
     }
     
     func printStart()

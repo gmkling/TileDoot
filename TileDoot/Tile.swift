@@ -20,7 +20,14 @@ let yellowTileColor = UIColor(red: 226.0/255.0, green: 198.0/255.0, blue: 72.0/2
 let orangeTileColor = UIColor(red: 249.0/255.0, green: 171.0/255.0, blue: 73.0/255.0, alpha: 0.0)
 let purpleTileColor = UIColor(red: 164.0/255.0, green: 74.0/255.0, blue: 135.0/255.0, alpha: 0.0)
 
-let colorBank = [blueTileColor, redTileColor, greenTileColor, lightGreenTileColor, yellowTileColor, orangeTileColor, purpleTileColor]
+let colorBank = [blueTileColor,
+    redTileColor,
+    greenTileColor,
+    lightGreenTileColor,
+    yellowTileColor,
+    orangeTileColor,
+    purpleTileColor]
+
 // I don't like that I have to reference type when I use these: Color.kRed - is there something better for this?
 enum Color: Int {
     case kNoColor=1
