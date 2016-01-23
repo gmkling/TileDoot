@@ -29,5 +29,12 @@ Additions to the model
 ----------------------
 LevelStorage - data structure for the storage of level data
 Detailed spec for Level definition files
+Shall we change the coordinate system to match Sprite Kit? Or just write the GameView to do it itself?
+
+Audio
+-----
+Map out audio cues in game
+Define audio cues in Menus
+List and record sounds
 
 */

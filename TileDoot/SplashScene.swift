@@ -15,11 +15,11 @@ class SplashScene: SKScene {
     let myLabel = SKLabelNode(fontNamed:"Futura-medium")
     var labelBackground = SKSpriteNode()
     
-    
     override func didMoveToView(view: SKView)
     {
+        self.backgroundColor = lightGreenTileColor
         // since we need a ptr to the method, this happens here instead of at init time
-        let startButton = TDButton(defaultImageName: "Orange1_test.png", selectImageName: "NewGameSelected_test.png", buttonAction: printStart)
+        let startButton = TDButton(defaultImageName: "Red1_test.png", selectImageName: "Red1_test.png", buttonAction: printStart)
         
         myLabel.text = "TileDoot"
         myLabel.fontSize = 45
@@ -41,6 +41,7 @@ class SplashScene: SKScene {
     func printStart()
     {
         print("Start Button pushed.")
+        self.backgroundColor = colorBank.randomItem()
     }
     
     // touch overrides may not be needed since we are only interested in buttons.
