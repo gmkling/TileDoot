@@ -18,16 +18,16 @@ class SplashScene: SKScene {
     {
         self.backgroundColor = lightGreenTileColor
         // since we need a ptr to the method, this happens here instead of at init time
-        let easyButton = TDButton(defaultImageName: "Purple2_def.png", selectImageName: "Purple2_sel.png", buttonAction: printStart)
-        let hardButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: printStart)
-        let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo)
+        let easyButton = TDButton(defaultImageName: "Purple2_def.png", selectImageName: "Purple2_sel.png", buttonAction: printStart, labelStr: "Easy Puzzles")
+        let hardButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: printStart, labelStr: "Hard Puzzles")
+        let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo, labelStr: "")
         
         let gridSize = self.frame.width/12.0
         let bigButtonSize = 3.0*gridSize
         let bigButtonScale = bigButtonSize/500.0
         
         myLabel.text = "TileDoot"
-        myLabel.fontSize = 45
+        myLabel.fontSize = 48
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)*1.33)
         
 //        easyButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))

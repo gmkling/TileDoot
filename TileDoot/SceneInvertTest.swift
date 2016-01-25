@@ -22,7 +22,7 @@ class SceneInvertTest: SKScene {
     override func didMoveToView(view: SKView)
     {
         // since we need a ptr to the method, this happens here instead of at init time
-        let endButton = TDButton(defaultImageName: "NewGameActive_test.png", selectImageName: "NewGameSelected_test.png", buttonAction: printStart)
+        let endButton = TDButton(defaultImageName: "NewGameActive_test.png", selectImageName: "NewGameSelected_test.png", buttonAction: printStart, labelStr: "")
         
         // flip the coord system so that [0,0] is TRHC
         //self.yScale = -1.0

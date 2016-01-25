@@ -15,12 +15,16 @@ class TDButton : SKNode
     var defaultImage: SKSpriteNode
     var selectedImage: SKSpriteNode
     var disabledImage: SKSpriteNode?
+    
+    // MARK: Text
+    var labelString : String
+    var buttonLabel = SKLabelNode(fontNamed: "Futura-medium")
         
     var action: () -> Void
     
     // MARK: Initializers
     
-    init(defaultImageName: String, selectImageName: String, buttonAction: () -> Void)
+    init(defaultImageName: String, selectImageName: String, buttonAction: () -> Void, labelStr: String?)
     {
         self.defaultImage = SKSpriteNode(imageNamed: defaultImageName)
         self.selectedImage = SKSpriteNode(imageNamed: selectImageName)
@@ -28,10 +32,25 @@ class TDButton : SKNode
         selectedImage.hidden = true
         action = buttonAction
         
+        if labelStr == nil
+        {
+            labelString = "Untitled"
+        } else
+        {
+            labelString = labelStr!
+        }
+        
+        buttonLabel.text = labelString
+        buttonLabel.fontSize = 64
+        
         super.init()
+        
+        buttonLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        buttonLabel.zPosition = 1.0
         userInteractionEnabled = true
         addChild(defaultImage)
         addChild(selectedImage)
+        addChild(buttonLabel)
         
     }
     
