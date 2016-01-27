@@ -18,8 +18,8 @@ class SplashScene: SKScene {
     {
         self.backgroundColor = lightGreenTileColor
         // since we need a ptr to the method, this happens here instead of at init time
-        let easyButton = TDButton(defaultImageName: "Purple2_def.png", selectImageName: "Purple2_sel.png", buttonAction: printStart, labelStr: "Easy Puzzles")
-        let hardButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: printStart, labelStr: "Hard Puzzles")
+        let easyButton = TDButton(defaultImageName: "Purple2_def.png", selectImageName: "Purple2_sel.png", buttonAction: doEasyPuzzleMenu, labelStr: "Easy Puzzles")
+        let hardButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: doHardPuzzleMenu, labelStr: "Hard Puzzles")
         let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo, labelStr: "")
         
         let gridSize = self.frame.width/12.0
@@ -47,9 +47,15 @@ class SplashScene: SKScene {
         self.addChild(infoButton)
     }
     
-    func printStart()
+    func doEasyPuzzleMenu()
     {
-        print("Start Button pushed.")
+        print("Easy Puzzle Button pushed.")
+        self.backgroundColor = colorBank.randomItem()
+    }
+    
+    func doHardPuzzleMenu()
+    {
+        print("Hard Puzzle Button pushed.")
         self.backgroundColor = colorBank.randomItem()
     }
     
