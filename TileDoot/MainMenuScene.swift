@@ -9,7 +9,7 @@
 import SpriteKit
 import UIKit
 
-class SplashScene: SKScene {
+class MainMenuScene: SKScene {
     
     let myLabel = SKLabelNode(fontNamed:"Futura-medium")
     var labelBackground = SKSpriteNode()
