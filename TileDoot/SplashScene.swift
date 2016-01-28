@@ -50,13 +50,11 @@ class SplashScene: SKScene {
     func doEasyPuzzleMenu()
     {
         print("Easy Puzzle Button pushed.")
-        self.backgroundColor = colorBank.randomItem()
     }
     
     func doHardPuzzleMenu()
     {
         print("Hard Puzzle Button pushed.")
-        self.backgroundColor = colorBank.randomItem()
     }
     
     func doInfo()
