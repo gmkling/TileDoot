@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1023D29C1C5AE38A005DBAB9 /* GitHub-Mark-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D29B1C5AE38A005DBAB9 /* GitHub-Mark-500px.png */; };
+		1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D29D1C5AE7C1005DBAB9 /* web-500px.png */; };
+		1023D2A01C5B5057005DBAB9 /* email-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D29F1C5B5057005DBAB9 /* email-500px.png */; };
+		1023D2A31C5B58F0005DBAB9 /* BlueOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2A11C5B58F0005DBAB9 /* BlueOFF.png */; };
+		1023D2A41C5B58F0005DBAB9 /* BlueON.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2A21C5B58F0005DBAB9 /* BlueON.png */; };
 		107698BC1C320292006051B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698BB1C320292006051B2 /* AppDelegate.swift */; };
 		107698C01C320292006051B2 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698BF1C320292006051B2 /* MainMenuScene.swift */; };
 		107698C21C320292006051B2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698C11C320292006051B2 /* GameViewController.swift */; };
@@ -136,6 +141,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1023D29B1C5AE38A005DBAB9 /* GitHub-Mark-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark-500px.png"; sourceTree = "<group>"; };
+		1023D29D1C5AE7C1005DBAB9 /* web-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web-500px.png"; sourceTree = "<group>"; };
+		1023D29F1C5B5057005DBAB9 /* email-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-500px.png"; sourceTree = "<group>"; };
+		1023D2A11C5B58F0005DBAB9 /* BlueOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueOFF.png; sourceTree = "<group>"; };
+		1023D2A21C5B58F0005DBAB9 /* BlueON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueON.png; sourceTree = "<group>"; };
 		107698B81C320292006051B2 /* TileDoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileDoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107698BB1C320292006051B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		107698BF1C320292006051B2 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -226,6 +236,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1023D29A1C5AE38A005DBAB9 /* MiscButtons */ = {
+			isa = PBXGroup;
+			children = (
+				1023D2A11C5B58F0005DBAB9 /* BlueOFF.png */,
+				1023D2A21C5B58F0005DBAB9 /* BlueON.png */,
+				1023D29F1C5B5057005DBAB9 /* email-500px.png */,
+				1023D29D1C5AE7C1005DBAB9 /* web-500px.png */,
+				1023D29B1C5AE38A005DBAB9 /* GitHub-Mark-500px.png */,
+			);
+			path = MiscButtons;
+			sourceTree = "<group>";
+		};
 		107698AF1C320291006051B2 = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +327,7 @@
 		10B34C6E1C46437A00AD8DD7 /* TileAssets */ = {
 			isa = PBXGroup;
 			children = (
+				1023D29A1C5AE38A005DBAB9 /* MiscButtons */,
 				10B34CFA1C536C1700AD8DD7 /* TileButtons */,
 				10B34CF41C516DAC00AD8DD7 /* MainMenu1.png */,
 				10B34CF51C516DAC00AD8DD7 /* MainMenu2.png */,
@@ -483,6 +506,7 @@
 				10B34CD71C4E32DB00AD8DD7 /* Orange5_test.png in Resources */,
 				10B34CDB1C4E32DB00AD8DD7 /* Purple2_test.png in Resources */,
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
+				1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */,
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
 				10B34CAA1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
 				10B34C801C478D5D00AD8DD7 /* NewGameSelected_test.svg in Resources */,
@@ -496,6 +520,7 @@
 				10B34CB41C4B935F00AD8DD7 /* Yellow5_test.png in Resources */,
 				10B34CA41C4B935F00AD8DD7 /* DGreen1_test.png in Resources */,
 				10B34C8F1C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
+				1023D2A41C5B58F0005DBAB9 /* BlueON.png in Resources */,
 				10B34D021C536C1700AD8DD7 /* Purple2_def.png in Resources */,
 				10B34D0A1C536C1700AD8DD7 /* Red1_def.png in Resources */,
 				10B34D061C536C1700AD8DD7 /* Purple2_sel.png in Resources */,
@@ -510,8 +535,10 @@
 				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
 				10B34C7E1C478D5D00AD8DD7 /* NewGameSelected_test.png in Resources */,
 				10B34CA61C4B935F00AD8DD7 /* DGreen2_test.png in Resources */,
+				1023D2A01C5B5057005DBAB9 /* email-500px.png in Resources */,
 				10B34CE11C4E32DB00AD8DD7 /* Purple5_test.png in Resources */,
 				10B34CC11C4DA4B700AD8DD7 /* LGreen4_test.png in Resources */,
+				1023D2A31C5B58F0005DBAB9 /* BlueOFF.png in Resources */,
 				10B34C931C4A4A0200AD8DD7 /* Blue3_test.png in Resources */,
 				10B34CBB1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */,
 				10B34CAC1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
@@ -520,6 +547,7 @@
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
 				10B34C991C4A4A0200AD8DD7 /* Yellow1_test.png in Resources */,
 				10B34CA81C4B935F00AD8DD7 /* DGreen3_test.png in Resources */,
+				1023D29C1C5AE38A005DBAB9 /* GitHub-Mark-500px.png in Resources */,
 				10B34C911C4A4A0200AD8DD7 /* Blue2_test.png in Resources */,
 				10B34C7C1C478D5D00AD8DD7 /* NewGameActive_test.svg in Resources */,
 			);

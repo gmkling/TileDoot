@@ -101,3 +101,8 @@ class TDButton : SKNode
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class TDToggleButton : TDButton
+{
+    // this would be good
+}
