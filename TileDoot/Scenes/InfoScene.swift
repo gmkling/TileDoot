@@ -38,39 +38,43 @@ class InfoScene: SKScene {
         infoButton.setScale(gridSize/500.0)
         infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*18.0)
         
+        var backButton = TDButton(defaultImageName: "BlueBack_def-500px.png", selectImageName: "BlueBack_sel-500px.png", buttonAction: doBackButton, labelStr: "")
+        backButton.setScale(littleButtonScale)
+        backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
+        
         // The name of the game
         appLabel.text = "TileDoot"
         appLabel.fontSize = 28
         appLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y: gridSize*16.0)
         
-        aGameBy.text = "a game by"
+        aGameBy.text = "A Game By"
         aGameBy.fontSize = normalTextSize
-        aGameBy.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*14.0)
+        aGameBy.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*11.0)
         
-        companyName.text = "Omondi Media"
-        companyName.fontSize = normalTextSize
-        companyName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*12.0)
-        
-        codeNdesign.text = "Code and Design by:"
-        codeNdesign.fontSize = normalTextSize
-        codeNdesign.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*10.0)
+//        companyName.text = "Omondi Media"
+//        companyName.fontSize = normalTextSize
+//        companyName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*12.0)
+//        
+//        codeNdesign.text = "Code and Design"
+//        codeNdesign.fontSize = normalTextSize
+//        codeNdesign.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*10.0)
         
         authorName.text = "Garry Kling"
         authorName.fontSize = normalTextSize
-        authorName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*9.0)
+        authorName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*10.0)
         
         // social buttons
         var webButton = TDButton(defaultImageName: "web-500px.png", selectImageName: "web-500px.png", buttonAction: doWebButton, labelStr: "")
         var githubButton = TDButton(defaultImageName: "GitHub-Mark-500px.png", selectImageName: "GitHub-Mark-500px.png", buttonAction: doGitButton, labelStr: "")
         var emailButton = TDButton(defaultImageName: "email-500px.png", selectImageName: "email-500px.png", buttonAction: doEmailButton, labelStr: "")
         
-        webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - gridSize, y:gridSize*8.0)
+        webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - gridSize, y:gridSize*9.0)
         webButton.setScale(littleButtonScale)
         
-        emailButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*8.0)
+        emailButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*9.0)
         emailButton.setScale(littleButtonScale)
         
-        githubButton.position = CGPoint(x: CGRectGetMidX(self.frame) + gridSize, y: gridSize*8.0)
+        githubButton.position = CGPoint(x: CGRectGetMidX(self.frame) + gridSize, y: gridSize*9.0)
         githubButton.setScale(littleButtonScale)
         
         // preference custom buttons - can we implement proper checkbox UI class please?
@@ -101,11 +105,12 @@ class InfoScene: SKScene {
         
         // var tileSet
         
-        self.addChild(infoButton)
+        //self.addChild(infoButton)
+        self.addChild(backButton)
         self.addChild(appLabel)
         self.addChild(aGameBy)
-        self.addChild(companyName)
-        self.addChild(codeNdesign)
+        //self.addChild(companyName)
+        //self.addChild(codeNdesign)
         self.addChild(authorName)
         
         self.addChild(webButton)
@@ -116,6 +121,11 @@ class InfoScene: SKScene {
         self.addChild(sfxLabel)
         self.addChild(musicButton)
         self.addChild(musicLabel)
+    }
+    
+    func doBackButton()
+    {
+        
     }
     
     func doEasyPuzzleMenu()
