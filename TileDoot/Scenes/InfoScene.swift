@@ -6,7 +6,7 @@
 //  Copyright © 2016 Garry Kling. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SpriteKit
 
 class InfoScene: SKScene {
@@ -30,6 +30,8 @@ class InfoScene: SKScene {
         let gridSize = self.frame.width/12.0
         let littleButtonSize = 0.5*gridSize
         let littleButtonScale = littleButtonSize/500.0
+        let imageWidth = 8.0*gridSize
+        
         let normalTextSize = CGFloat(16.0)
         let smallTextSize = CGFloat(8.0)
         
@@ -39,13 +41,17 @@ class InfoScene: SKScene {
         infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*18.0)
         
         var backButton = TDButton(defaultImageName: "BlueBack_def-500px.png", selectImageName: "BlueBack_sel-500px.png", buttonAction: doBackButton, labelStr: "")
-        backButton.setScale(littleButtonScale)
+        backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
         // The name of the game
         appLabel.text = "TileDoot"
         appLabel.fontSize = 28
-        appLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y: gridSize*16.0)
+        appLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y: gridSize*18.0)
+        
+        var tileSheetImage = SKSpriteNode(imageNamed: "TileSheetSample.png")
+        tileSheetImage.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*14.75)
+        tileSheetImage.setScale(imageWidth/tileSheetImage.frame.width)
         
         aGameBy.text = "A Game By"
         aGameBy.fontSize = normalTextSize
@@ -108,6 +114,7 @@ class InfoScene: SKScene {
         //self.addChild(infoButton)
         self.addChild(backButton)
         self.addChild(appLabel)
+        self.addChild(tileSheetImage)
         self.addChild(aGameBy)
         //self.addChild(companyName)
         //self.addChild(codeNdesign)
@@ -128,29 +135,27 @@ class InfoScene: SKScene {
         
     }
     
-    func doEasyPuzzleMenu()
-    {
-        print("Easy Puzzle Button pushed.")
-    }
-    
     func doWebButton()
     {
-        
+        let webUrl = NSURL(string: "http://www.garrykling.com")!
+        UIApplication.sharedApplication().openURL(webUrl)
     }
     
     func doGitButton()
     {
-        
+        let gitUrl = NSURL(string: "http://www.github.com/gmkling")!
+        UIApplication.sharedApplication().openURL(gitUrl)
     }
     
     func doEmailButton()
     {
-        
+        let emailUrl = NSURL(string: "mailto: garry.kling@gmail.com")!
+        UIApplication.sharedApplication().openURL(emailUrl)
     }
     
     func doSfxCheck()
     {
-        
+        // toggle SFX
     }
     
     func doMusicCheck()

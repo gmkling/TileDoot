@@ -14,6 +14,8 @@
 		1023D2A41C5B58F0005DBAB9 /* BlueON.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2A21C5B58F0005DBAB9 /* BlueON.png */; };
 		1023D2A71C5C2713005DBAB9 /* BlueBack_def-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2A51C5C2713005DBAB9 /* BlueBack_def-500px.png */; };
 		1023D2A81C5C2713005DBAB9 /* BlueBack_sel-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2A61C5C2713005DBAB9 /* BlueBack_sel-500px.png */; };
+		1023D2AC1C5C2E57005DBAB9 /* TileSheetSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2AA1C5C2E57005DBAB9 /* TileSheetSample.png */; };
+		1023D2AD1C5C2E57005DBAB9 /* TileSheetSample.xcf in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2AB1C5C2E57005DBAB9 /* TileSheetSample.xcf */; };
 		107698BC1C320292006051B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698BB1C320292006051B2 /* AppDelegate.swift */; };
 		107698C01C320292006051B2 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698BF1C320292006051B2 /* MainMenuScene.swift */; };
 		107698C21C320292006051B2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698C11C320292006051B2 /* GameViewController.swift */; };
@@ -150,6 +152,8 @@
 		1023D2A21C5B58F0005DBAB9 /* BlueON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueON.png; sourceTree = "<group>"; };
 		1023D2A51C5C2713005DBAB9 /* BlueBack_def-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueBack_def-500px.png"; sourceTree = "<group>"; };
 		1023D2A61C5C2713005DBAB9 /* BlueBack_sel-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueBack_sel-500px.png"; sourceTree = "<group>"; };
+		1023D2AA1C5C2E57005DBAB9 /* TileSheetSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TileSheetSample.png; sourceTree = "<group>"; };
+		1023D2AB1C5C2E57005DBAB9 /* TileSheetSample.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TileSheetSample.xcf; sourceTree = "<group>"; };
 		107698B81C320292006051B2 /* TileDoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileDoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107698BB1C320292006051B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		107698BF1C320292006051B2 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -254,6 +258,15 @@
 			path = MiscButtons;
 			sourceTree = "<group>";
 		};
+		1023D2A91C5C2E57005DBAB9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1023D2AA1C5C2E57005DBAB9 /* TileSheetSample.png */,
+				1023D2AB1C5C2E57005DBAB9 /* TileSheetSample.xcf */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		107698AF1C320291006051B2 = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +346,7 @@
 		10B34C6E1C46437A00AD8DD7 /* TileAssets */ = {
 			isa = PBXGroup;
 			children = (
+				1023D2A91C5C2E57005DBAB9 /* Images */,
 				1023D29A1C5AE38A005DBAB9 /* MiscButtons */,
 				10B34CFA1C536C1700AD8DD7 /* TileButtons */,
 				10B34CF41C516DAC00AD8DD7 /* MainMenu1.png */,
@@ -511,6 +525,7 @@
 				10B34D111C536C9500AD8DD7 /* Red1_sel.png in Resources */,
 				10B34CD71C4E32DB00AD8DD7 /* Orange5_test.png in Resources */,
 				10B34CDB1C4E32DB00AD8DD7 /* Purple2_test.png in Resources */,
+				1023D2AC1C5C2E57005DBAB9 /* TileSheetSample.png in Resources */,
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
 				1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */,
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
@@ -538,6 +553,7 @@
 				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
 				10B34CCF1C4E32DB00AD8DD7 /* Orange1_test.png in Resources */,
 				10B34CE81C4F87BE00AD8DD7 /* Red1_test.png in Resources */,
+				1023D2AD1C5C2E57005DBAB9 /* TileSheetSample.xcf in Resources */,
 				10B34CD51C4E32DB00AD8DD7 /* Orange4_test.png in Resources */,
 				10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */,
 				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
