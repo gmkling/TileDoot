@@ -45,7 +45,7 @@ class InfoScene: SKScene {
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
         // The name of the game
-        appLabel.text = "TileDoot"
+        appLabel.text = "Tile Doot"
         appLabel.fontSize = 28
         appLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y: gridSize*18.0)
         

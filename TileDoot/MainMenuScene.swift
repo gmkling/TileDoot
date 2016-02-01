@@ -26,7 +26,7 @@ class MainMenuScene: SKScene {
         let bigButtonSize = 3.0*gridSize
         let bigButtonScale = bigButtonSize/500.0
         
-        myLabel.text = "TileDoot"
+        myLabel.text = "Tile Doot"
         myLabel.fontSize = 48
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)*1.33)
         
