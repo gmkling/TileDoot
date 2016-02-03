@@ -281,7 +281,7 @@ class GameBoard {
             
             // insert the tile
             
-            self.addTile(newTile, loc: Coordinate(x:curRow, y:curCol))
+            self.addTile(newTile, loc: Coordinate(x:curCol, y:curRow))
             
             i++
         }
@@ -295,6 +295,7 @@ class GameBoard {
         var curLoc : Coordinate
         var curType : TileType
         
+        // Todo - need this to print out the matrix in the new (left-handed, column major) way
         for i in 0..<tileMap.dimension {
             for j in 0..<tileMap.dimension {
                 curLoc = Coordinate(x: i,y: j)
@@ -334,8 +335,9 @@ class GameBoard {
         
         if dir == MoveDirection.up
         {
-            for (x=0; x<=maxX; x++) {
-                for (y=0; y<=maxY; y++) {
+            
+            for (y=maxY; y>=0; y--) {
+                for (x=0; x<=maxX; x++) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
                     {
@@ -344,8 +346,8 @@ class GameBoard {
                 }
             };
         } else if dir == MoveDirection.down {
-            for (x=maxX; x>=0; x--) {
-                for (y=maxY; y>=0; y--) {
+            for (y=0; y<=maxY; y++) {
+                for (x=maxX; x>=0; x--) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
                     {
@@ -354,8 +356,8 @@ class GameBoard {
                 }
             };
         } else if dir == MoveDirection.left {
-            for (x=0; x<=maxX; x++) {
-                for (y=0; y<=maxY; y++) {
+            for (y=maxY; y>=0; y--) {
+                for (x=0; x<=maxX; x++) {
                     curLoc = Coordinate(x: x,y: y)
                     if checkTileCanMove(curLoc)
                     {
@@ -365,8 +367,8 @@ class GameBoard {
             };
         } else if dir == MoveDirection.right
         {
-            for (y=maxY; y>=0; y--) {
-                for (x=maxX; x>=0; x--) {
+            for (x=maxX; x>=0; x--) {
+                for (y=0; y<=maxY; y++) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
                     {
@@ -463,19 +465,19 @@ class GameBoard {
         
         switch (direction) {
             case MoveDirection.up:
-                newPos = Coordinate(x: inCoord.x-xIncrement, y: inCoord.y)
+                newPos = Coordinate(x: inCoord.x, y: inCoord.y+yIncrement)
             break;
             
             case MoveDirection.down:
-                newPos = Coordinate(x: inCoord.x+xIncrement, y: inCoord.y)
-            break;
-            
-            case MoveDirection.left:
                 newPos = Coordinate(x: inCoord.x, y: inCoord.y-yIncrement)
             break;
             
+            case MoveDirection.left:
+                newPos = Coordinate(x: inCoord.x-xIncrement, y: inCoord.y)
+            break;
+            
             case MoveDirection.right:
-                newPos = Coordinate(x: inCoord.x, y: inCoord.y+yIncrement)
+                newPos = Coordinate(x: inCoord.x+xIncrement, y: inCoord.y)
             break;
 
         }
@@ -576,24 +578,24 @@ class GameBoard {
             
             // gather adjacent tiles
             
-            if isLocInRange(x, y: y+1)
+            if isLocInRange(x+1, y: y)
             {
-                rightColor = tileMap[x, y+1].color
+                rightColor = tileMap[x+1, y].color
             } else { rightColor = Color.kNoColor }
-            
-            if isLocInRange(x, y: y-1)
-            {
-                leftColor = tileMap[x, y-1].color
-            } else { leftColor = Color.kNoColor }
             
             if isLocInRange(x-1, y: y)
             {
-                upColor = tileMap[x-1, y].color
+                leftColor = tileMap[x-1, y].color
             } else { leftColor = Color.kNoColor }
             
-            if isLocInRange(x+1, y: y)
+            if isLocInRange(x, y: y+1)
             {
-                dwnColor = tileMap[x+1, y].color
+                upColor = tileMap[x, y+1].color
+            } else { upColor = Color.kNoColor }
+            
+            if isLocInRange(x, y: y-1)
+            {
+                dwnColor = tileMap[x, y-1].color
             } else { dwnColor = Color.kNoColor }
             
             if tileColor != Color.kNoColor
@@ -601,19 +603,19 @@ class GameBoard {
                 // find all connected neighbors not already merged into the same group, set them aside
                 if (tileColor == leftColor)
                 {
-                    neighbors.append(tileMap[x, y-1])
+                    neighbors.append(tileMap[x-1, y])
                     
                 } else if (tileColor == dwnColor)
                 {
-                    neighbors.append(tileMap[x+1, y]);
+                    neighbors.append(tileMap[x, y-1]);
                     
                 } else if (tileColor == rightColor)
                 {
-                    neighbors.append(tileMap[x, y+1]);
+                    neighbors.append(tileMap[x+1, y]);
                     
                 } else if (tileColor == upColor)
                 {
-                    neighbors.append(tileMap[x-1, y]);
+                    neighbors.append(tileMap[x, y+1]);
                 }
             }
             
