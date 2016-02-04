@@ -263,10 +263,10 @@ class TileDootModelTests: XCTestCase {
         
         // construct the String rep of the game board
         let barrierRow = "****************"
-        let puzRow1 = "******....******"
-        let puzRow2 = "******....******"
+        let puzRow4 = "******....******"
         let puzRow3 = "******....******"
-        let puzRow4 = "******B..B******"
+        let puzRow2 = "******....******"
+        let puzRow1 = "******B..B******"
         
         let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
         
@@ -284,8 +284,11 @@ class TileDootModelTests: XCTestCase {
         
         // check that . does not stop
         
-        XCTAssert(!testBoard.isTileStop(Coordinate(x:6,y:6)))
-
+        XCTAssert(!testBoard.isTileStop(Coordinate(x:6,y:9)))
+        
+        // see that B does the right thing
+        XCTAssertEqual(testBoard.getTileColor(Coordinate(x: 6, y: 6)), Color.kBlue)
+        XCTAssertEqual(testBoard.getTileColor(Coordinate(x: 9, y: 6)), Color.kBlue)
         
         
     }

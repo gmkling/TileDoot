@@ -245,7 +245,7 @@ class GameBoard {
     {
         var curTile : Character
         var i = 0
-        var boardSize = boardString.characters.count
+        let boardSize = boardString.characters.count
         
         // check bounds/size - drop out if it is too big or small (arbitrarily set to 4)
         if numTiles < boardSize || boardSize < 4
@@ -296,9 +296,9 @@ class GameBoard {
         var curType : TileType
         
         // Todo - need this to print out the matrix in the new (left-handed, column major) way
-        for i in 0..<tileMap.dimension {
+        for (var i=(tileMap.dimension-1); i>=0; i--){
             for j in 0..<tileMap.dimension {
-                curLoc = Coordinate(x: i,y: j)
+                curLoc = Coordinate(x: j,y: i)
                 curType = getTileType(curLoc)
                 // if it isn't a color tile, print the typeChar and bail
                 if  curType != TileType.colorTile
