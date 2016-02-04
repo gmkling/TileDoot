@@ -301,10 +301,10 @@ class TileDootModelTests: XCTestCase {
         
         // construct the String rep of the game board
         let barrierRow = "****************"
-        let puzRow1 = "******....******"
-        let puzRow2 = "******....******"
+        let puzRow4 = "******....******"
         let puzRow3 = "******....******"
-        let puzRow4 = "******B..B******"
+        let puzRow2 = "******....******"
+        let puzRow1 = "******B..B******"
         
         let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
         
@@ -333,10 +333,10 @@ class TileDootModelTests: XCTestCase {
         
         // construct the String rep of the game board
         let barrierRow = "****************"
-        let puzRow1 = "******....******"
-        let puzRow2 = "******....******"
+        let puzRow4 = "******....******"
         let puzRow3 = "******....******"
-        let puzRow4 = "******B..B******"
+        let puzRow2 = "******....******"
+        let puzRow1 = "******B..B******"
         
         let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
         
@@ -375,10 +375,10 @@ class TileDootModelTests: XCTestCase {
         
         // construct the String rep of the game board
         let barrierRow = "****************"
-        let puzRow1 = "******....******"
-        let puzRow2 = "******....******"
+        let puzRow4 = "******....******"
         let puzRow3 = "******....******"
-        let puzRow4 = "******B..B******"
+        let puzRow2 = "******....******"
+        let puzRow1 = "******B..B******"
         
         let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
         
@@ -420,14 +420,14 @@ class TileDootModelTests: XCTestCase {
         let testDim = 8
         
         // construct the String rep of the game board
-        let puzRow1 = "BBBB****"
-        let puzRow2 = "BBBB****"
-        let puzRow3 = "****GGGG"
-        let puzRow4 = "****GGGG"
-        let puzRow5 = "***RR***"
-        let puzRow6 = "***RR*OO"
-        let puzRow7 = "RO***OO*"
-        let puzRow8 = "GB**OO**"
+        let puzRow8 = "BBBB****"
+        let puzRow7 = "BBBB****"
+        let puzRow6 = "****GGGG"
+        let puzRow5 = "****GGGG"
+        let puzRow4 = "***RR***"
+        let puzRow3 = "***RR*OO"
+        let puzRow2 = "RO***OO*"
+        let puzRow1 = "GB**OO**"
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
@@ -448,22 +448,22 @@ class TileDootModelTests: XCTestCase {
         var g3Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
         var g4Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
         
-        if let g1Tile = testBoard.getTile(Coordinate(x: 0,y: 0))
+        if let g1Tile = testBoard.getTile(Coordinate(x: 0,y: 8))
         {
             g1Root = testBoard.findSet(g1Tile)
         }
         
-        if let g2Tile = testBoard.getTile(Coordinate(x: 2,y: 4))
+        if let g2Tile = testBoard.getTile(Coordinate(x: 4,y: 6))
         {
             g2Root = testBoard.findSet(g2Tile)
         }
         
-        if let g3Tile = testBoard.getTile(Coordinate(x: 4,y: 4))
+        if let g3Tile = testBoard.getTile(Coordinate(x: 4,y: 3))
         {
             g3Root = testBoard.findSet(g3Tile)
         }
         
-        if let g4Tile = testBoard.getTile(Coordinate(x: 5,y: 7))
+        if let g4Tile = testBoard.getTile(Coordinate(x: 5,y: 0))
         {
             g4Root = testBoard.findSet(g4Tile)
         }
@@ -523,14 +523,14 @@ class TileDootModelTests: XCTestCase {
         let testDim = 8
         
         // construct the String rep of the game board
-        let puzRow1 = "BBBB****"
-        let puzRow2 = "BBBB****"
-        let puzRow3 = "****GGGG"
-        let puzRow4 = "****GGGG"
-        let puzRow5 = "***RR***"
-        let puzRow6 = "***RR*OO"
-        let puzRow7 = "RO***OO*"
-        let puzRow8 = "GB**OO**"
+        let puzRow8 = "BBBB****"
+        let puzRow7 = "BBBB****"
+        let puzRow6 = "****GGGG"
+        let puzRow5 = "****GGGG"
+        let puzRow4 = "***RR***"
+        let puzRow3 = "***RR*OO"
+        let puzRow2 = "RO***OO*"
+        let puzRow1 = "GB**OO**"
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
