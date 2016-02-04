@@ -37,6 +37,11 @@
                BlueprintName = "TileDootModelTests"
                ReferencedContainer = "container:TileDoot.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TDButtonTest">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

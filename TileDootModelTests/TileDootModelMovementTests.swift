@@ -27,10 +27,10 @@ class TileDootModelMovementTests: XCTestCase {
         
         // construct the String rep of the game board
         let barrierRow = "****************"
-        let puzRow1 = "******....******"
-        let puzRow2 = "******....******"
+        let puzRow4 = "******....******"
         let puzRow3 = "******....******"
-        let puzRow4 = "******Y..B******"
+        let puzRow2 = "******....******"
+        let puzRow1 = "******Y..B******"
         
         let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
         
@@ -50,33 +50,33 @@ class TileDootModelMovementTests: XCTestCase {
         // check that the source is now empty in this case
         testBoard.dootTiles(MoveDirection.right)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[9,8].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[9,9].color == Color.kBlue)
-        XCTAssert(testBoard.tileMap[9,6].type == TileType.emptyTile)
+        XCTAssert(testBoard.tileMap[8,6].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[9,6].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[6,6].type == TileType.emptyTile)
         
         // then left
         testBoard.clearMap()
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         testBoard.dootTiles(MoveDirection.left)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[9,6].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[9,7].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[6,6].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[7,6].color == Color.kBlue)
         
         // then up
         testBoard.clearMap()
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         testBoard.dootTiles(MoveDirection.up)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[6,6].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[6,9].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[6,9].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[9,9].color == Color.kBlue)
         
         // and down - nothing should move in this case
         testBoard.clearMap()
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         testBoard.dootTiles(MoveDirection.down)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[9,6].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[9,9].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[6,6].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[9,6].color == Color.kBlue)
         
     }
     
@@ -86,10 +86,10 @@ class TileDootModelMovementTests: XCTestCase {
         
         // construct the String rep of the game board
         let barrierRow = "****************"
-        let puzRow1 = "******Y..O******"
-        let puzRow2 = "******....******"
+        let puzRow4 = "******Y..O******"
         let puzRow3 = "******....******"
-        let puzRow4 = "******B..G******"
+        let puzRow2 = "******....******"
+        let puzRow1 = "******B..G******"
         
         let block6 = barrierRow + barrierRow + barrierRow + barrierRow + barrierRow + barrierRow
         
@@ -107,10 +107,10 @@ class TileDootModelMovementTests: XCTestCase {
         testBoard.dootTiles(MoveDirection.down)
         testBoard.dootTiles(MoveDirection.up)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[6,6].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[6,9].color == Color.kOrange)
-        XCTAssert(testBoard.tileMap[7,6].color == Color.kBlue)
-        XCTAssert(testBoard.tileMap[7,9].color == Color.kGreen)
+        XCTAssert(testBoard.tileMap[6,9].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[9,9].color == Color.kOrange)
+        XCTAssert(testBoard.tileMap[6,8].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[9,8].color == Color.kGreen)
         
         // RLR
         testBoard.clearMap()
@@ -119,10 +119,10 @@ class TileDootModelMovementTests: XCTestCase {
         testBoard.dootTiles(MoveDirection.left)
         testBoard.dootTiles(MoveDirection.right)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[6,8].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[6,9].color == Color.kOrange)
-        XCTAssert(testBoard.tileMap[9,8].color == Color.kBlue)
-        XCTAssert(testBoard.tileMap[9,9].color == Color.kGreen)
+        XCTAssert(testBoard.tileMap[8,9].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[9,9].color == Color.kOrange)
+        XCTAssert(testBoard.tileMap[8,6].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[9,6].color == Color.kGreen)
         
         // RUL
         testBoard.clearMap()
@@ -131,10 +131,10 @@ class TileDootModelMovementTests: XCTestCase {
         testBoard.dootTiles(MoveDirection.up)
         testBoard.dootTiles(MoveDirection.left)
         testBoard.printBoardState()
-        XCTAssert(testBoard.tileMap[6,6].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[6,7].color == Color.kOrange)
-        XCTAssert(testBoard.tileMap[7,6].color == Color.kBlue)
-        XCTAssert(testBoard.tileMap[7,7].color == Color.kGreen)
+        XCTAssert(testBoard.tileMap[6,9].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[7,9].color == Color.kOrange)
+        XCTAssert(testBoard.tileMap[6,8].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[7,8].color == Color.kGreen)
         
         // RUDLRLU
         testBoard.clearMap()
@@ -148,10 +148,10 @@ class TileDootModelMovementTests: XCTestCase {
         testBoard.dootTiles(MoveDirection.up)
         testBoard.printBoardState()
         
-        XCTAssert(testBoard.tileMap[6,6].color == Color.kYellow)
-        XCTAssert(testBoard.tileMap[6,7].color == Color.kOrange)
-        XCTAssert(testBoard.tileMap[7,6].color == Color.kBlue)
-        XCTAssert(testBoard.tileMap[7,7].color == Color.kGreen)
+        XCTAssert(testBoard.tileMap[6,9].color == Color.kYellow)
+        XCTAssert(testBoard.tileMap[7,9].color == Color.kOrange)
+        XCTAssert(testBoard.tileMap[6,8].color == Color.kBlue)
+        XCTAssert(testBoard.tileMap[7,8].color == Color.kGreen)
         
     }
 
@@ -160,14 +160,14 @@ class TileDootModelMovementTests: XCTestCase {
         let testDim = 8
         
         // construct the String rep of the game board
-        let puzRow1 = "BBBB****"
-        let puzRow2 = "BBBB****"
-        let puzRow3 = "....GGGG"
-        let puzRow4 = "....GGGG"
-        let puzRow5 = "...RR***"
-        let puzRow6 = "...RR*OO"
-        let puzRow7 = "YO***OO*"
-        let puzRow8 = "GB**OO**"
+        let puzRow8 = "BBBB****"
+        let puzRow7 = "BBBB****"
+        let puzRow6 = "....GGGG"
+        let puzRow5 = "....GGGG"
+        let puzRow4 = "...RR***"
+        let puzRow3 = "...RR*OO"
+        let puzRow2 = "YO***OO*"
+        let puzRow1 = "GB**OO**"
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
@@ -180,9 +180,16 @@ class TileDootModelMovementTests: XCTestCase {
         // moving all left should delete Blue, Green, and Red groups
         testBoard.dootTiles(MoveDirection.left)
         
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[2,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[4,0].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,7].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,5].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,4].color)
+        
+        // but not singletons
+        XCTAssertEqual(Color.kGreen, testBoard.tileMap[0,0].color)
+        XCTAssertEqual(Color.kBlue, testBoard.tileMap[1,0].color)
+        XCTAssertEqual(Color.kYellow, testBoard.tileMap[0,1].color)
+        XCTAssertEqual(Color.kOrange, testBoard.tileMap[1,1].color)
+
         testBoard.printBoardState()
 
     }
@@ -192,14 +199,14 @@ class TileDootModelMovementTests: XCTestCase {
         let testDim = 8
         
         // construct the String rep of the game board
-        let puzRow1 = "BBBB****"
-        let puzRow2 = "BBBB****"
-        let puzRow3 = "....GGGG"
-        let puzRow4 = "....GGGG"
-        let puzRow5 = "...RR***"
-        let puzRow6 = "...RR.OO"
-        let puzRow7 = "YO...OOY"
-        let puzRow8 = "GB..OO**"
+        let puzRow8 = "BBBB****"
+        let puzRow7 = "BBBB****"
+        let puzRow6 = "....GGGG"
+        let puzRow5 = "....GGGG"
+        let puzRow4 = "...RR***"
+        let puzRow3 = "...RR.OO"
+        let puzRow2 = "YO...OOY"
+        let puzRow1 = "GB..OO**"
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
@@ -212,15 +219,15 @@ class TileDootModelMovementTests: XCTestCase {
         // moving all left should delete Blue, Green, Red, and Orange groups
         testBoard.dootTiles(MoveDirection.left)
         
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[2,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[4,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[6,2].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,7].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,4].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,3].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[2,1].color)
         
         // yellow tile should collapse, and form group for delete
-        // deleting the group at 6,0 & 6,1
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[6,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[6,1].color)
+        // deleting the new yellow group at 0,1 & 1,1
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,1].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[1,1].color)
         
         testBoard.printBoardState()
 
@@ -231,14 +238,14 @@ class TileDootModelMovementTests: XCTestCase {
         let testDim = 8
         
         // construct the String rep of the game board
-        let puzRow1 = "BBBB****"
-        let puzRow2 = "BBBB****"
-        let puzRow3 = "....GGGG"
-        let puzRow4 = "....GGGG"
-        let puzRow5 = "...RR***"
-        let puzRow6 = "...RG.OO"
-        let puzRow7 = "YO...OOY"
-        let puzRow8 = "GB..OOB*"
+        let puzRow8 = "BBBB****"
+        let puzRow7 = "BBBB****"
+        let puzRow6 = "....GGGG"
+        let puzRow5 = "....GGGG"
+        let puzRow4 = "...RR***"
+        let puzRow3 = "...RG.OO"
+        let puzRow2 = "YO...OOY"
+        let puzRow1 = "GB..OOB*"
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
@@ -251,21 +258,22 @@ class TileDootModelMovementTests: XCTestCase {
         // moving all left should delete Blue, Green, Red, and Orange groups
         testBoard.dootTiles(MoveDirection.left)
         
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[2,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[4,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[6,2].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,7].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,5].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,3].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[2,2].color)
         
         // yellow tile should collapse, and form group for delete
-        // deleting the group at 6,0 & 6,1
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[6,0].color)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[6,1].color)
+        // deleting the group at 0,1 & 1,1
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,1].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[1,1].color)
         
         testBoard.printBoardState()
         
         // one move to finish the green in the corner
         testBoard.dootTiles(MoveDirection.down)
-        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[7,0].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,0].color)
+        XCTAssertEqual(Color.kNoColor, testBoard.tileMap[0,2].color)
         testBoard.printBoardState()
     }
     
