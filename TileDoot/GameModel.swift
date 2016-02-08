@@ -8,14 +8,14 @@
 
 import Foundation
 
-/*
+
 class GameModel
 {
     // the dimension of the game depends on the level
     // every level will have a new GameBoard
     // the cmdQueue is where cmds are stored
     var dimension : Int = 0
-    var gameTiles : GameBoard
+    var gameTiles : GameBoard = GameBoard(initDimension: 0)
     var cmdQueue : [Command]
     let maxCmd = 50
     var score : Int = 0
@@ -31,6 +31,8 @@ class GameModel
         curLevel = firstLevel
         
         // set delegate for view -TBD
+        
+        cmdQueue = [Command]()
         
         // load first level
         startLevel(curLevel)
@@ -87,4 +89,3 @@ class GameModel
         
     }
 }
-*/
