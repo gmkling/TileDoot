@@ -61,16 +61,194 @@ import Foundation
 //}
 //
 
+//class PuzzleSetManager
+//{
+//    var nPuzzleSets = 0
+//    var puzzleSets : [PuzzleSet?]
+//    
+//    
+//    
+//    init()
+//    {
+//        puzzleSets = []
+//
+//    }
+//    
+//    
+//}
+
 class PuzzleSet
 {
     var nPuzzles = 0
     var puzzles : [Puzzle?]
     var name : String
     
-    init(withName: String)
+    // storage for file i/o
+    var rawPuzzleFile : String
+    var puzzleSetStrings : [String]
+    var nLines = 0
+    
+    // optional file name
+    var fileName : String
+    
+    init(withName: String) // for building puzzle sets manually, I think
     {
         self.name = withName
+        fileName = ""
         puzzles = []
+        rawPuzzleFile = String()
+        puzzleSetStrings = []
+    }
+    
+    init(withFileName: String)
+    {
+        self.name = String()
+        fileName = withFileName
+        puzzles = []
+        rawPuzzleFile = String()
+        puzzleSetStrings = []
+        
+        // this should then load, check, and parse the input file with funcs below
+        
+        loadPuzzleSetFile(fileName)
+        
+        if !checkPuzzleSetHeader( puzzleSetStrings[0] )
+        {
+            print("Error reading header of PuzzleSet file: \(fileName)")
+            return
+        }
+        
+        // loop through the file and load each puzzle, skipping levels that don't make sense without failing
+        for var i=1; i<nLines;
+        {
+            if puzzleSetStrings[i]=="%END%"
+            {
+                print("Early end to file in set file \(fileName)")
+                break
+            }
+            
+            var puzzleHeader = puzzleSetStrings[i].componentsSeparatedByString(" ")
+            
+            // parse the level header
+            if !checkPuzzleHeader(puzzleHeader)
+            {
+                print("Puzzle header skipped at line \(i) in \(fileName)")
+                i++
+                continue
+            }
+            
+            let tempDim = Int(puzzleHeader[0])
+            let tempPar = Int(puzzleHeader[1])
+            let tempName = puzzleHeader[2]
+            
+            var pl = 0
+            var tempLine = String()
+            var tempPuzzle = String()
+            
+            // gather the puzzle lines
+            while pl<tempDim
+            {
+                // get a line
+                tempLine = puzzleSetStrings[i+pl]
+                // check a line
+                let lineGood = checkPuzzleLine(tempLine, puzDim: tempDim!)
+                
+                // append if true, fail back to header (cont) if false
+                if lineGood
+                {
+                    tempPuzzle.appendContentsOf(tempLine)
+                    
+                } else {
+                    i+=pl
+                    print("Bad puzzle line at row \(i) in file \(fileName)")
+                    continue
+                }
+            }
+
+            // create Puzzle and append to set
+            self.appendPuzzle(Puzzle(dim: tempDim!, inPar: tempPar!, levelString: tempName))
+            
+            // incr i by how many lines we read
+            i+=pl
+        }
+    }
+    
+    func loadPuzzleSetFile(fileInBundle: String)
+    {
+        let filePath = NSBundle.mainBundle().pathForResource(fileInBundle, ofType: nil)
+        
+        if filePath == nil
+        {
+            print("Failed to file PuzzleSet file in the Bundle: \(fileInBundle)")
+            return
+        }
+        
+        // copy the path we used for reference
+        fileName = filePath!
+        
+        do{
+            rawPuzzleFile = try String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
+            puzzleSetStrings = rawPuzzleFile.componentsSeparatedByString("\n")
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
+        
+        
+    }
+    
+    func checkPuzzleSetHeader(headerString : String) ->Bool
+    {
+        // this assumes that the corresponding puzzleFile data is already loaded in the rawPuzzleFile and puzzleSetStrings vars
+        
+        // split it into substrings
+        var fileHeader : [String] = headerString.componentsSeparatedByString(" ")
+        
+        // there are three items in the header
+        if fileHeader.count != 3 { return false }
+        
+        // first member should be an Integer for the number of puzzles in the file
+        // this is hard to check, I might create a max, but would rather not
+        nPuzzles = Int(fileHeader[0])!
+        
+        // second member should be a String name of the PuzzleSet
+        name = fileHeader[1]
+        
+        // third should be the total number of lines in the raw file as an Int
+        nLines = Int(fileHeader[2])!
+        if nLines != puzzleSetStrings.count { return false }
+        
+        return true
+        
+    }
+    
+    func checkPuzzleHeader(puzzleHeader: [String]) -> Bool
+    {
+        if puzzleHeader.count != 3
+        {
+            return false
+        }
+        
+        // Int Dim, Int Par, String Nickname
+        
+        // a place for future checks
+        return true
+    }
+    
+    func checkPuzzleLine(puzLine: String, puzDim: Int) ->Bool
+    {
+        // puzzle lines should begin with a char, but not digits
+        
+        if let firstChar = puzLine.characters.first
+        {
+            if firstChar >= "0" && firstChar <= "9"  {return false}
+        } else { return false }
+        
+        // should match the dim
+        if puzLine.characters.count != puzDim { return false }
+        
+        // check for legal chars: TBD
+        
+        return true
     }
     
     // should overload this to be able to use a string + dimension

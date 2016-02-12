@@ -96,4 +96,51 @@ class TileDootPuzzleSetTests: XCTestCase {
         
     }
     
+    // MARK: File I/O tests
+    
+    func testPuzzleSetCheckHeader()
+    {
+        // too many items
+        // not enough
+        // perfect header
+        // empty header
+        
+    }
+    
+    func testPuzzleSetCheckPuzzleHeader()
+    {
+        // generate headers
+        // good case
+        // too many items
+        // too few
+        // wrong types of characters in 1st, 2nd, 3d slots
+    }
+    
+    func testPuzzleSetCheckPuzzleLine()
+    {
+        // generate puzzle lines
+        // extra spaces
+        // wrong length
+        // begin with digits
+        // various illegal chars
+        // empty string
+    }
+    
+    func testPuzzleSetFileLoad()
+    {
+        // load a short file with known contents
+        // check that the set.rawPuzzleFile matches
+        // test levelStrings as well
+        // check nPuzzles, puzzles.count, name, nLines, fileName
+    }
+    
+    func testPuzzleSetInitWithFile()
+    {
+        // test against a good file
+        // test against various bad ones
+        // test against empty one
+        // bad filename
+    }
+    
+    
 }
