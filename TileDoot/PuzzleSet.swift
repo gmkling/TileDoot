@@ -60,15 +60,70 @@ import Foundation
 //    
 //}
 //
-//class PuzzleSet
-//{
-//    
-//}
+
+class PuzzleSet
+{
+    var nPuzzles = 0
+    var puzzles : [Puzzle?]
+    var name : String
+    
+    init(withName: String)
+    {
+        self.name = withName
+        puzzles = []
+    }
+    
+    // should overload this to be able to use a string + dimension
+    func appendPuzzle(inPuzzle: Puzzle)
+    {
+        puzzles.append(inPuzzle)
+        nPuzzles++
+    }
+    
+    func removePuzzleNumber(var puzNum: Int)
+    {
+        // adjust the index
+        puzNum--
+        
+        // check if index is in range or the puzzles are empty
+        if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return }
+        
+        if puzzles[puzNum] == nil
+        { return }
+        
+        puzzles.removeAtIndex(puzNum)
+        nPuzzles--
+    }
+    
+    func checkForLevel(var puzNum: Int) ->Bool
+    {
+        // adjust the index
+        puzNum--
+        
+        // check if index is in range or the puzzles are empty
+        if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return false }
+        
+        // see if the index is occupied by a valid puzzle
+        if puzzles[puzNum]!.checkValid()
+        {
+            return true
+        }
+        
+        return false
+    }
+    
+    func getPuzzle(puzNum: Int) -> Puzzle?
+    {
+        // check if index is in range or the puzzles are empty
+        if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return nil }
+        
+        return puzzles[puzNum]
+    }
+}
 
 class Puzzle
 {
     var dimension : Int
-    var levelNumber : Int
     var par : Int
     var puzzleValid = false
     
@@ -76,21 +131,21 @@ class Puzzle
     
     var stringRep = String()
     
-    init(dim: Int, num: Int, inPar: Int, levelString: String)
+    init(dim: Int, inPar: Int, var levelString: String)
     {
         self.dimension = dim
-        self.levelNumber = num
         self.par = inPar
         
-        // check to see that the string will fit the dim
-        if levelString.characters.count != dimension*dimension
+        // if the string is too big, truncate it
+        if levelString.characters.count > dimension*dimension
         {
-            puzzleValid = false
-            return
+            var maxIndex = levelString.startIndex.advancedBy(dimension*dimension)
+            var tempString = levelString.substringToIndex(maxIndex)
+            levelString = tempString
         }
         
         stringRep.appendContentsOf(levelString)
-        puzzleValid = true
+        self.checkValid()
     }
     
     // all puzzle editing funcs will return false if they are out of range, make the puzzle too big, etc with no info
@@ -98,7 +153,7 @@ class Puzzle
     func replaceRow(rowNum: Int, theRow: String) ->Bool
     {
         // check that rowNum is in range
-        if rowNum > dimension { return false }
+        if rowNum >= dimension { return false }
         
         // check the row is proper dim
         if theRow.characters.count == self.dimension

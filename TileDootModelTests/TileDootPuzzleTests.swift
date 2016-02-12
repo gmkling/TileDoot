@@ -28,10 +28,12 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        var testPuzzle = Puzzle(dim: 4, num: 1, inPar: 1, levelString: testString)
+        var testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: testString)
         
         XCTAssert(testPuzzle.stringRep.hasPrefix("****"))
         XCTAssert(testPuzzle.stringRep.hasSuffix("...."))
+        
+        // test truncation
     }
     
     func testPuzzleReplaceRow()
@@ -42,7 +44,7 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        var testPuzzle = Puzzle(dim: testDim, num: 1, inPar: 1, levelString: testString)
+        var testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
         
         XCTAssert(testPuzzle.stringRep.hasPrefix("****"))
         XCTAssert(testPuzzle.stringRep.hasSuffix("...."))
@@ -69,26 +71,100 @@ class TileDootPuzzleTests: XCTestCase {
     
     func testPuzzleReplaceRowFails()
     {
+        var testDim = 4
+        var testString =    "****"
+        testString +=       "RRRR"
+        testString +=       "GGGG"
+        testString +=       "...."
         
+        var testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        
+        // row too far
+        XCTAssertFalse(testPuzzle.replaceRow(4, theRow: "0000"))
+        
+        // row too long
+        XCTAssertFalse(testPuzzle.replaceRow(0, theRow: "00000"))
+
     }
     
     func testPuzzlePrependRow()
     {
+        var testDim = 4
+        var testString =    "RRRR"
+        testString +=       "GGGG"
+        testString +=       "...."
         
+        var testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        
+        XCTAssert(testPuzzle.prependRow("****"))
+        
+        XCTAssert(testPuzzle.stringRep.containsString("****"))
+        XCTAssert(testPuzzle.stringRep.hasPrefix("****"))
     }
     
     func testPuzzleAppendRow()
     {
+        var testDim = 4
+        var testString =    "RRRR"
+        testString +=       "GGGG"
+        testString +=       "...."
         
+        var testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        
+        XCTAssert(testPuzzle.appendRow("****"))
+        
+        XCTAssert(testPuzzle.stringRep.containsString("****"))
+        XCTAssert(testPuzzle.stringRep.hasSuffix("****"))
     }
     
     func testPuzzleReverseString()
     {
+        var testDim = 2
+        var testString = "1234"
+        var reverse = "4321"
+        var testPuzzle1 = Puzzle(dim: testDim, inPar: 1, levelString: testString)
         
+        XCTAssert(testPuzzle1.reverseString() == reverse)
+        
+        var longerTest = "1111"
+        longerTest += "2222"
+        longerTest += "3333"
+        longerTest += "4444"
+        var longerDim = 4
+        
+        var testPuzzle2 = Puzzle(dim: longerDim, inPar: 2, levelString: longerTest)
+        
+        testPuzzle2.replaceRow(0, theRow: "5555")
+        var testRev = testPuzzle2.reverseString()
+        
+        XCTAssert(testRev.hasSuffix("5555"))
+        XCTAssert(testRev.hasPrefix("4444"))
     }
     
     func testPuzzleCheckValid()
     {
+        var testDim = 4
+        var testString =    "****"
+        testString +=       "RRRR"
+        testString +=       "GGGG"
+        testString +=       "...."
+        
+        var testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        
+        
+        // abuse private data
+        XCTAssert(testPuzzle.checkValid())
+        
+        testPuzzle.stringRep.appendContentsOf("Garbage")
+        
+        XCTAssertFalse(testPuzzle.checkValid())
+        
+        testPuzzle.stringRep.removeAll()
+        
+        XCTAssertFalse(testPuzzle.checkValid())
+        
+        testPuzzle.stringRep.appendContentsOf(testString)
+        XCTAssert(testPuzzle.checkValid())
         
     }
     
