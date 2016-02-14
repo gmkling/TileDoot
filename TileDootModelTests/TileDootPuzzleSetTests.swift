@@ -98,12 +98,27 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     // MARK: File I/O tests
     
-    func testPuzzleSetCheckHeader()
+    func testPuzzleSetCheckFileHeader()
     {
+        var testSet = PuzzleSet(withName: "George")
+        
         // too many items
+        let bigHeader = "20 Too long 200"
+        XCTAssertFalse(testSet.checkPuzzleSetHeader(bigHeader))
+        
         // not enough
+        let smallHeader = "20 short"
+        XCTAssertFalse(testSet.checkPuzzleSetHeader(smallHeader))
+        
         // perfect header
+        let goodHeader = "1 4x4 5"
+        // simulate file i/o (ish)
+        testSet.puzzleSetStrings = [goodHeader, "XXXX", "XXXX", "XXXX", "XXXX"]
+        XCTAssert(testSet.checkPuzzleSetHeader(goodHeader))
+        
         // empty header
+        let emptyHeader = ""
+        XCTAssertFalse(testSet.checkPuzzleSetHeader(emptyHeader))
         
     }
     
