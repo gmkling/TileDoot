@@ -124,11 +124,21 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     func testPuzzleSetCheckPuzzleHeader()
     {
+        let testSet = PuzzleSet(withName: "Bernie")
         // generate headers
         // good case
+        let testHeader1 = "8.2.GoodPuzzle"
         // too many items
+        let testHeader2 = "8.2.Not.So.Good"
         // too few
+        let testHeader3 = "8.2"
         // wrong types of characters in 1st, 2nd, 3d slots
+        let testHeader4 = "Very.VeryBad.6"
+        
+        XCTAssert(testSet.checkPuzzleHeader(testHeader1.componentsSeparatedByString(".")))
+        XCTAssertFalse(testSet.checkPuzzleHeader(testHeader2.componentsSeparatedByString(".")))
+        XCTAssertFalse(testSet.checkPuzzleHeader(testHeader3.componentsSeparatedByString(".")))
+        XCTAssertFalse(testSet.checkPuzzleHeader(testHeader4.componentsSeparatedByString(".")))
     }
     
     func testPuzzleSetCheckPuzzleLine()

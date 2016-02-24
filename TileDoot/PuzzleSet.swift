@@ -127,7 +127,7 @@ class PuzzleSet
                 break
             }
             
-            var puzzleHeader = puzzleSetStrings[i].componentsSeparatedByString(" ")
+            var puzzleHeader = puzzleSetStrings[i].componentsSeparatedByString(".")
             
             // parse the level header
             if !checkPuzzleHeader(puzzleHeader)
@@ -230,14 +230,31 @@ class PuzzleSet
         
         // Int Dim, Int Par, String Nickname
         
+        if let dimChar = puzzleHeader[0].characters.first
+        {
+            if dimChar >= "0" && dimChar <= "9"  {} else {return false}
+        } else { return false }
+        
+        if let parChar = puzzleHeader[1].characters.first
+        {
+            if parChar >= "0" && parChar <= "9"  {} else {return false}
+        } else { return false }
+        
+        if let nickChar = puzzleHeader[2].characters.first
+        {
+            if nickChar >= "0" && nickChar <= "9"  {return false}
+        } else { return false }
+        
         // a place for future checks
+        // ...
+        
         return true
     }
     
     func checkPuzzleLine(puzLine: String, puzDim: Int) ->Bool
     {
         // puzzle lines should begin with a char, but not digits
-        
+        // fail if we can't get char
         if let firstChar = puzLine.characters.first
         {
             if firstChar >= "0" && firstChar <= "9"  {return false}
