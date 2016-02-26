@@ -25,7 +25,7 @@ class TileDootModelTests: XCTestCase {
     {
         let testColor = Color.kRed
         let testType = TileType.colorTile
-        var tileTest = Tile(initType: testType, initColor: testColor)
+        let tileTest = Tile(initType: testType, initColor: testColor)
         
         // basic.
         XCTAssertFalse(tileTest.isStop)
@@ -42,8 +42,8 @@ class TileDootModelTests: XCTestCase {
     {
         let testColor = Color.kRed
         let testType = TileType.colorTile
-        var testTile1 = Tile(initType: testType, initColor: testColor)
-        var testTile2 = Tile(initType: testType, initColor: testColor)
+        let testTile1 = Tile(initType: testType, initColor: testColor)
+        let testTile2 = Tile(initType: testType, initColor: testColor)
         
         // the first test should be true
         XCTAssert(testTile1 == testTile2)
@@ -59,7 +59,7 @@ class TileDootModelTests: XCTestCase {
     {
         let testDim = 16
         
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         XCTAssertEqual(testBoard.dimension, testDim)
         XCTAssertEqual(testBoard.numTiles, testDim*testDim)
@@ -72,7 +72,7 @@ class TileDootModelTests: XCTestCase {
         let testType = TileType.colorTile
         let tileLoc = Coordinate(x: 10,y: 10)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileLoc)
         XCTAssert(testBoard.tileMap[tileLoc.x, tileLoc.y] == testTile)
@@ -89,7 +89,7 @@ class TileDootModelTests: XCTestCase {
     func testGameBoardRange()
     {
         let testDim = 16
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         let outOfRangeTest = Coordinate(x: 17, y: -2)
         let outOfRangeTest2 = Coordinate(x: 0, y: 17)
         let inRangeTest = Coordinate(x: 2, y: 6)
@@ -106,7 +106,7 @@ class TileDootModelTests: XCTestCase {
         let tileLoc = Coordinate(x: 10,y: 10)
         let tileLoc2 = Coordinate(x: 0,y: 0)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -120,7 +120,7 @@ class TileDootModelTests: XCTestCase {
         let testType = TileType.colorTile
         let tileLoc = Coordinate(x: 4,y: 2)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -142,7 +142,7 @@ class TileDootModelTests: XCTestCase {
         let tileLoc = Coordinate(x: 4,y: 2)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
         let testColor = Color.kGreen
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -162,7 +162,7 @@ class TileDootModelTests: XCTestCase {
         let testType = TileType.colorTile
         let tileLoc = Coordinate(x: 4,y: 2)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -184,7 +184,7 @@ class TileDootModelTests: XCTestCase {
         let tileToLoc = Coordinate(x: 7, y: 13)
         
         let testTile = Tile(initType: testType, initColor: tileColor)
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileFromLoc)
         testBoard.setTileStop(tileFromLoc)
@@ -211,7 +211,7 @@ class TileDootModelTests: XCTestCase {
         let tileToLoc = Coordinate(x: 5, y: 15)
         
         let testTile = Tile(initType: testType, initColor: tileColor)
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileFromLoc)
         testBoard.setTileStop(tileFromLoc)
@@ -247,7 +247,7 @@ class TileDootModelTests: XCTestCase {
         let tileLoc = Coordinate(x: 0,y: 2)
         
         let testTile = Tile(initType: testType, initColor: tileColor)
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         testBoard.addTile(testTile, loc: tileLoc)
         XCTAssertFalse(testBoard.checkTileForDelete(tileLoc))
@@ -272,7 +272,7 @@ class TileDootModelTests: XCTestCase {
         
         let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
         
-        var testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -357,7 +357,7 @@ class TileDootModelTests: XCTestCase {
         testBoard.tileMap[1, 1].parent = testBoard.tileMap[0, 1]
         testBoard.tileMap[1, 0].parent = testBoard.tileMap[1, 1]
         
-        var testRoot = testBoard.findSet(testBoard.tileMap[1,0])
+        let testRoot = testBoard.findSet(testBoard.tileMap[1,0])
         
         XCTAssert(testBoard.tileMap[1,0].parent!==testBoard.tileMap[0, 0])
         XCTAssert(testBoard.tileMap[1,1].parent!==testBoard.tileMap[0, 0])
@@ -392,8 +392,8 @@ class TileDootModelTests: XCTestCase {
         // if A.rank == B.rank, A will parent B.
         
         // create two parents of the same rank with makeSet
-        var setATile1 = testBoard.makeSet(Coordinate(x: 0, y: 0))!
-        var setBTile1 = testBoard.makeSet(Coordinate(x: 0, y: 1))!
+        let setATile1 = testBoard.makeSet(Coordinate(x: 0, y: 0))!
+        let setBTile1 = testBoard.makeSet(Coordinate(x: 0, y: 1))!
         
         // union those 1-tile sets, see that A is the parent and that setBTile.rank<setATile.rank
         testBoard.unionSets(setATile1, setB: setBTile1)
@@ -401,8 +401,8 @@ class TileDootModelTests: XCTestCase {
         XCTAssert(setATile1.rank>setBTile1.rank)
         
         // create two parents makeSet, change the rank of B>A
-        var setATile2 = testBoard.makeSet(Coordinate(x: 1, y: 0))!
-        var setBTile2 = testBoard.makeSet(Coordinate(x: 1, y: 1))!
+        let setATile2 = testBoard.makeSet(Coordinate(x: 1, y: 0))!
+        let setBTile2 = testBoard.makeSet(Coordinate(x: 1, y: 1))!
         
         setBTile2.rank = 20
         testBoard.unionSets(setATile2, setB: setBTile2)

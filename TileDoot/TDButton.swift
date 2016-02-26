@@ -67,7 +67,7 @@ class TDButton : SKNode
         // and do the right thing
         for touch in touches
         {
-            var location: CGPoint = touch.locationInNode(self)
+            let location: CGPoint = touch.locationInNode(self)
             
             if defaultImage.containsPoint(location)
             {

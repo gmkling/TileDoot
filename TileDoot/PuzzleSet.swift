@@ -340,8 +340,8 @@ class Puzzle
         // if the string is too big, truncate it
         if levelString.characters.count > dimension*dimension
         {
-            var maxIndex = levelString.startIndex.advancedBy(dimension*dimension)
-            var tempString = levelString.substringToIndex(maxIndex)
+            let maxIndex = levelString.startIndex.advancedBy(dimension*dimension)
+            let tempString = levelString.substringToIndex(maxIndex)
             levelString = tempString
         }
         
@@ -359,7 +359,7 @@ class Puzzle
         // check the row is proper dim
         if theRow.characters.count == self.dimension
         {
-            var repRange = stringRep.startIndex.advancedBy(rowNum*dimension)..<stringRep.startIndex.advancedBy(rowNum*dimension + dimension)
+            let repRange = stringRep.startIndex.advancedBy(rowNum*dimension)..<stringRep.startIndex.advancedBy(rowNum*dimension + dimension)
             stringRep.replaceRange(repRange, with: theRow)
             return true
         } else { return false }
@@ -374,8 +374,7 @@ class Puzzle
         if theRow.characters.count != dimension { return false }
         if theRow.characters.count + stringRep.characters.count > dimension*dimension { return false }
         
-        var tempString = theRow + stringRep
-        stringRep = tempString
+        stringRep = theRow + stringRep
         
         self.checkValid()
         
@@ -391,8 +390,7 @@ class Puzzle
         if theRow.characters.count != dimension { return false }
         if theRow.characters.count + stringRep.characters.count > dimension*dimension { return false }
         
-        var tempString = stringRep + theRow
-        stringRep = tempString
+        stringRep = stringRep + theRow
         
         self.checkValid()
         

@@ -414,7 +414,7 @@ class GameBoard {
         
         var stopped = false;
         var currentPos = Coordinate(x:inLoc.x, y:inLoc.y);
-        var oldPos = inLoc;
+        let oldPos = inLoc;
         var nextPos : Coordinate
         var numTilesInMove = 0
         

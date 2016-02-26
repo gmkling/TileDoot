@@ -36,11 +36,11 @@ class InfoScene: SKScene {
         let smallTextSize = CGFloat(8.0)
         
         // info icon at top
-        var infoButton = SKSpriteNode(imageNamed: "info1.png")
+        let infoButton = SKSpriteNode(imageNamed: "info1.png")
         infoButton.setScale(gridSize/500.0)
         infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*18.0)
         
-        var backButton = TDButton(defaultImageName: "BlueBack_def-500px.png", selectImageName: "BlueBack_sel-500px.png", buttonAction: doBackButton, labelStr: "")
+        let backButton = TDButton(defaultImageName: "BlueBack_def-500px.png", selectImageName: "BlueBack_sel-500px.png", buttonAction: doBackButton, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
@@ -49,7 +49,7 @@ class InfoScene: SKScene {
         appLabel.fontSize = 28
         appLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y: gridSize*18.0)
         
-        var tileSheetImage = SKSpriteNode(imageNamed: "TileSheetSample.png")
+        let tileSheetImage = SKSpriteNode(imageNamed: "TileSheetSample.png")
         tileSheetImage.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*14.75)
         tileSheetImage.setScale(imageWidth/tileSheetImage.frame.width)
         
@@ -70,9 +70,9 @@ class InfoScene: SKScene {
         authorName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*10.0)
         
         // social buttons
-        var webButton = TDButton(defaultImageName: "web-500px.png", selectImageName: "web-500px.png", buttonAction: doWebButton, labelStr: "")
-        var githubButton = TDButton(defaultImageName: "GitHub-Mark-500px.png", selectImageName: "GitHub-Mark-500px.png", buttonAction: doGitButton, labelStr: "")
-        var emailButton = TDButton(defaultImageName: "email-500px.png", selectImageName: "email-500px.png", buttonAction: doEmailButton, labelStr: "")
+        let webButton = TDButton(defaultImageName: "web-500px.png", selectImageName: "web-500px.png", buttonAction: doWebButton, labelStr: "")
+        let githubButton = TDButton(defaultImageName: "GitHub-Mark-500px.png", selectImageName: "GitHub-Mark-500px.png", buttonAction: doGitButton, labelStr: "")
+        let emailButton = TDButton(defaultImageName: "email-500px.png", selectImageName: "email-500px.png", buttonAction: doEmailButton, labelStr: "")
         
         webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - gridSize, y:gridSize*9.0)
         webButton.setScale(littleButtonScale)
@@ -87,22 +87,22 @@ class InfoScene: SKScene {
         // further, the whole group should be centered, the way this is here, that is not possible
         
         // change tiles to simple checkboxes when doing the custom class, the tiles are ugly for this
-        var sfxButton = TDButton(defaultImageName: "BlueOFF.png", selectImageName: "BlueON.png", buttonAction: doSfxCheck, labelStr: "")
+        let sfxButton = TDButton(defaultImageName: "BlueOFF.png", selectImageName: "BlueON.png", buttonAction: doSfxCheck, labelStr: "")
         sfxButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*5.0)
         sfxButton.setScale(littleButtonScale)
         
-        var sfxLabel = SKLabelNode(fontNamed: "Futura-medium")
+        let sfxLabel = SKLabelNode(fontNamed: "Futura-medium")
         sfxLabel.text = "Enable SFX"
         sfxLabel.fontSize = normalTextSize
         sfxLabel.horizontalAlignmentMode = .Left
         sfxLabel.verticalAlignmentMode = .Center
         sfxLabel.position = CGPoint(x: gridSize*4.5, y: gridSize*5.0)
         
-        var musicButton = TDButton(defaultImageName: "BlueOFF.png", selectImageName: "BlueON.png", buttonAction: doMusicCheck, labelStr: "")
+        let musicButton = TDButton(defaultImageName: "BlueOFF.png", selectImageName: "BlueON.png", buttonAction: doMusicCheck, labelStr: "")
         musicButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*4.0)
         musicButton.setScale(littleButtonScale)
         
-        var musicLabel = SKLabelNode(fontNamed: "Futura-medium")
+        let musicLabel = SKLabelNode(fontNamed: "Futura-medium")
         musicLabel.text = "Enable Music"
         musicLabel.fontSize = normalTextSize
         musicLabel.horizontalAlignmentMode = .Left

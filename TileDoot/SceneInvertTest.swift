@@ -32,7 +32,7 @@ class SceneInvertTest: SKScene {
         let dim = 8
         let spriteDim = CGFloat(dim)
         let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
-        var tileRenderSize = sceneSizeX / spriteDim
+        let tileRenderSize = sceneSizeX / spriteDim
         let tileScale = tileRenderSize / tileSizeIn
         //let tileName = ["Purple1_test.png", "Blue1_test.png", "Red1_test.png"]
         
@@ -40,7 +40,7 @@ class SceneInvertTest: SKScene {
         {
             for j in 0..<dim*2
             {
-                var tile = SKSpriteNode(imageNamed: tileNames.randomItem())
+                let tile = SKSpriteNode(imageNamed: tileNames.randomItem())
                 tile.anchorPoint = CGPointMake(0.0, 1.0)
                 
                 // how we calculate the position may be an alternative to re-writing the model
