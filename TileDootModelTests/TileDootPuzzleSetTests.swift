@@ -32,8 +32,7 @@ class TileDootPuzzleSetTests: XCTestCase {
     func testPuzzleSetAdd()
     {
         let testName = "Test Set"
-        let
-        testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************", levelName: testName)
         let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
@@ -45,7 +44,7 @@ class TileDootPuzzleSetTests: XCTestCase {
     func testPuzzleSetRemove()
     {
         let testName = "Test Set"
-        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************", levelName: testName)
         let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
@@ -61,7 +60,7 @@ class TileDootPuzzleSetTests: XCTestCase {
     func testPuzzleSetCheck()
     {
         let testName = "Test Set"
-        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************", levelName: testName)
         let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
@@ -79,8 +78,8 @@ class TileDootPuzzleSetTests: XCTestCase {
     func testPuzzleSetGetPuzzle()
     {
         let testName = "Test Set"
-        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
-        let testPuzzle1 = Puzzle(dim: 4, inPar: 1, levelString: "................")
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************", levelName: testName)
+        let testPuzzle1 = Puzzle(dim: 4, inPar: 1, levelString: "................", levelName: testName)
         let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
@@ -193,6 +192,9 @@ class TileDootPuzzleSetTests: XCTestCase {
         // check nPuzzles, puzzles.count, name, nLines, fileName
     }
     
+    // test parsePuzzle
+    // test parsePuzzleSet
+    
     func testPuzzleSetInitWithFile()
     {
         // test against a good file
@@ -202,7 +204,8 @@ class TileDootPuzzleSetTests: XCTestCase {
         // test PuzzleSet variables
         XCTAssert(testSet.name=="Test1")
         XCTAssert(testSet.nPuzzles==1)
-        XCTAssert(testSet.nLines==6)
+        XCTAssert(testSet.nLines==7)
+        XCTAssert(testSet.puzzles[0]?.stringRep == "*****..**..*****")
         
         // test against various bad ones
         // test against empty one

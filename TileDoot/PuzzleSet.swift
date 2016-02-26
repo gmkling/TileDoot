@@ -91,7 +91,7 @@ class PuzzleSet
     // optional file name
     var fileName : String
     
-    init(withName: String) // for building puzzle sets manually, I think
+    init(withName: String) // for building puzzle sets manually
     {
         self.name = withName
         fileName = ""
@@ -100,7 +100,7 @@ class PuzzleSet
         puzzleSetStrings = []
     }
     
-    init(withFileName: String)
+    init(withFileName: String) // for loading files
     {
         self.name = String()
         fileName = withFileName
@@ -115,61 +115,14 @@ class PuzzleSet
         if !checkPuzzleSetHeader( puzzleSetStrings[0] )
         {
             print("Error reading header of PuzzleSet file: \(fileName)")
+            print("Bad Header")
             return
         }
         
-        // loop through the file and load each puzzle, skipping levels that don't make sense without failing
-        for var i=1; i<nLines;
+        if !parsePuzzleSet(1)
         {
-            if puzzleSetStrings[i]=="%END%"
-            {
-                print("Early end to file in set file \(fileName)")
-                break
-            }
-            
-            var puzzleHeader = puzzleSetStrings[i].componentsSeparatedByString(".")
-            
-            // parse the level header
-            if !checkPuzzleHeader(puzzleHeader)
-            {
-                print("Puzzle header skipped at line \(i) in \(fileName)")
-                i++
-                continue
-            }
-            
-            let tempDim = Int(puzzleHeader[0])
-            let tempPar = Int(puzzleHeader[1])
-            let tempName = puzzleHeader[2]
-            
-            let pl = 0
-            var tempLine = String()
-            var tempPuzzle = String()
-            
-            // gather the puzzle lines
-            while pl<tempDim
-            {
-                // get a line
-                tempLine = puzzleSetStrings[i+pl]
-                // check a line
-                let lineGood = checkPuzzleLine(tempLine, puzDim: tempDim!)
-                
-                // append if true, fail back to header (cont) if false
-                if lineGood
-                {
-                    tempPuzzle.appendContentsOf(tempLine)
-                    
-                } else {
-                    i+=pl
-                    print("Bad puzzle line at row \(i) in file \(fileName)")
-                    continue
-                }
-            }
-
-            // create Puzzle and append to set
-            self.appendPuzzle(Puzzle(dim: tempDim!, inPar: tempPar!, levelString: tempName))
-            
-            // incr i by how many lines we read
-            i+=pl
+            print("Problem in parsePuzzleSet")
+            return
         }
     }
     
@@ -212,7 +165,7 @@ class PuzzleSet
         
         // first member should be an Integer for the number of puzzles in the file
         // this is hard to check, I might create a max, but would rather not
-        nPuzzles = Int(fileHeader[0])!
+        // nPuzzles = Int(fileHeader[0])! // change to be updated when puzzles are parsed
         
         // second member should be a String name of the PuzzleSet
         name = fileHeader[1]
@@ -274,6 +227,75 @@ class PuzzleSet
         return true
     }
     
+    func parsePuzzleSet(firstLineNum: Int) ->Bool
+    {
+        var nPuzzlesRead = 0
+        
+        // loop through the file and load each puzzle, skipping levels that don't make sense without failing
+        for var i=firstLineNum; puzzleSetStrings[i] != "%END%";
+        {
+            if puzzleSetStrings[i]=="%END%"
+            {
+                print("Early end to file in set file \(fileName)")
+                break
+            }
+            
+            var puzzleHeader = puzzleSetStrings[i].componentsSeparatedByString(".")
+            
+            // parse the level header
+            if !checkPuzzleHeader(puzzleHeader)
+            {
+                print("Puzzle header skipped at line \(i) in \(fileName)")
+                i++
+                continue
+            }
+            i++
+            // we checked the header, we know it can be unwrapped
+            let pDim = Int(puzzleHeader[0])!
+            let tailIndex = i+pDim-1
+            let templines = puzzleSetStrings[i...tailIndex]
+                
+            // create Puzzle and append to set
+            if let newPuzzle = parsePuzzle(templines, dim: pDim)
+            {
+                if newPuzzle.puzzleValid
+                {
+                    newPuzzle.par = Int(puzzleHeader[1])!
+                    newPuzzle.puzzleName = puzzleHeader[2]
+                    self.appendPuzzle(newPuzzle)
+                    nPuzzlesRead++
+                }
+            }
+            
+            // incr i by how many lines we read
+            i+=pDim
+        }
+        
+        return true
+    }
+    
+    func parsePuzzle(puzzleLines: ArraySlice<String>, dim: Int) ->Puzzle?
+    {
+        var tempPuzzleString = String()
+        for pLine in puzzleLines
+        {
+            // check a line
+            let lineGood = checkPuzzleLine(pLine, puzDim: dim)
+        
+            // append if true, return nil Puzzle otherwise
+            if lineGood
+            {
+                tempPuzzleString.appendContentsOf(pLine)
+            } else {
+                print("Bad puzzle line found")
+                return nil
+            }
+        }
+        
+        return Puzzle(dim: dim, inPar: 0, levelString: tempPuzzleString, levelName: "")
+
+    }
+    
     // should overload this to be able to use a string + dimension
     func appendPuzzle(inPuzzle: Puzzle)
     {
@@ -329,10 +351,10 @@ class Puzzle
     var puzzleValid = false
     
     // the stringRep
-    
+    var puzzleName = String()
     var stringRep = String()
     
-    init(dim: Int, inPar: Int, var levelString: String)
+    init(dim: Int, inPar: Int, levelString: String, levelName: String?)
     {
         self.dimension = dim
         self.par = inPar
@@ -341,11 +363,12 @@ class Puzzle
         if levelString.characters.count > dimension*dimension
         {
             let maxIndex = levelString.startIndex.advancedBy(dimension*dimension)
-            let tempString = levelString.substringToIndex(maxIndex)
-            levelString = tempString
-        }
+            stringRep = levelString.substringToIndex(maxIndex)
+        } else { stringRep = levelString }
         
-        stringRep.appendContentsOf(levelString)
+        if levelName != nil
+        { puzzleName = levelName! } 
+        
         self.checkValid()
     }
     

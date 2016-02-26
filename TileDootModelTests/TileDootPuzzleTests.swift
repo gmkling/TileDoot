@@ -28,7 +28,7 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: testString)
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: testString, levelName: "Doot")
         
         XCTAssert(testPuzzle.stringRep.hasPrefix("****"))
         XCTAssert(testPuzzle.stringRep.hasSuffix("...."))
@@ -44,7 +44,7 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString, levelName: "Doot")
         
         XCTAssert(testPuzzle.stringRep.hasPrefix("****"))
         XCTAssert(testPuzzle.stringRep.hasSuffix("...."))
@@ -77,7 +77,7 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString, levelName: "Doot")
         
         // row too far
         XCTAssertFalse(testPuzzle.replaceRow(4, theRow: "0000"))
@@ -94,7 +94,7 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString, levelName: "Doot")
         
         XCTAssert(testPuzzle.prependRow("****"))
         
@@ -109,7 +109,7 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString, levelName: "Doot")
         
         XCTAssert(testPuzzle.appendRow("****"))
         
@@ -122,7 +122,7 @@ class TileDootPuzzleTests: XCTestCase {
         let testDim = 2
         let testString = "1234"
         let reverse = "4321"
-        let testPuzzle1 = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        let testPuzzle1 = Puzzle(dim: testDim, inPar: 1, levelString: testString, levelName: "Doot")
         
         XCTAssert(testPuzzle1.reverseString() == reverse)
         
@@ -132,7 +132,7 @@ class TileDootPuzzleTests: XCTestCase {
         longerTest += "4444"
         let longerDim = 4
         
-        let testPuzzle2 = Puzzle(dim: longerDim, inPar: 2, levelString: longerTest)
+        let testPuzzle2 = Puzzle(dim: longerDim, inPar: 2, levelString: longerTest, levelName: "Doot")
         
         testPuzzle2.replaceRow(0, theRow: "5555")
         let testRev = testPuzzle2.reverseString()
@@ -149,7 +149,7 @@ class TileDootPuzzleTests: XCTestCase {
         testString +=       "GGGG"
         testString +=       "...."
         
-        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString)
+        let testPuzzle = Puzzle(dim: testDim, inPar: 1, levelString: testString, levelName: "Doot")
         
         
         // abuse private data
