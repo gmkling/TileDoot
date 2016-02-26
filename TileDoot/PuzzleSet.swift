@@ -110,7 +110,7 @@ class PuzzleSet
         
         // this should then load, check, and parse the input file with funcs below
         
-        loadPuzzleSetFile(fileName)
+        if !loadPuzzleSetFile(fileName) { return }
         
         if !checkPuzzleSetHeader( puzzleSetStrings[0] )
         {
@@ -141,7 +141,7 @@ class PuzzleSet
             let tempPar = Int(puzzleHeader[1])
             let tempName = puzzleHeader[2]
             
-            var pl = 0
+            let pl = 0
             var tempLine = String()
             var tempPuzzle = String()
             
@@ -173,14 +173,14 @@ class PuzzleSet
         }
     }
     
-    func loadPuzzleSetFile(fileInBundle: String)
+    func loadPuzzleSetFile(fileInBundle: String) ->Bool
     {
         let filePath = NSBundle.mainBundle().pathForResource(fileInBundle, ofType: nil)
         
         if filePath == nil
         {
-            print("Failed to file PuzzleSet file in the Bundle: \(fileInBundle)")
-            return
+            print("Failed to find PuzzleSet file in the Bundle: \(fileInBundle)")
+            return false
         }
         
         // copy the path we used for reference
@@ -190,10 +190,14 @@ class PuzzleSet
             rawPuzzleFile = try String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
             puzzleSetStrings = rawPuzzleFile.componentsSeparatedByString("\n")
         } catch let error as NSError{
+            print("Failure while reading file: \(fileInBundle)")
             print(error.localizedDescription)
+            return false
         }
         
+        // is there a good way to check success here?
         
+        return true
     }
     
     func checkPuzzleSetHeader(headerString : String) ->Bool
@@ -253,17 +257,19 @@ class PuzzleSet
     
     func checkPuzzleLine(puzLine: String, puzDim: Int) ->Bool
     {
+
+        // should match the dim - newlines have been removed we assume
+        if puzLine.characters.count != puzDim { return false }
+        
+        // check for legal chars: TBD for all of them, need to finalize spec
+        if puzLine.characters.contains(" ") { return false }
+        
         // puzzle lines should begin with a char, but not digits
         // fail if we can't get char
         if let firstChar = puzLine.characters.first
         {
             if firstChar >= "0" && firstChar <= "9"  {return false}
         } else { return false }
-        
-        // should match the dim
-        if puzLine.characters.count != puzDim { return false }
-        
-        // check for legal chars: TBD
         
         return true
     }

@@ -22,9 +22,8 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     func testPuzzleSetInit()
     {
-        var testName = "Test Set"
-        var testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
-        var testPuzzleSet = PuzzleSet(withName: testName)
+        let testName = "Test Set"
+        let testPuzzleSet = PuzzleSet(withName: testName)
         
         XCTAssert(testPuzzleSet.name == testName)
         
@@ -32,9 +31,10 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     func testPuzzleSetAdd()
     {
-        var testName = "Test Set"
-        var testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
-        var testPuzzleSet = PuzzleSet(withName: testName)
+        let testName = "Test Set"
+        let
+        testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
+        let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
         
@@ -44,9 +44,9 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     func testPuzzleSetRemove()
     {
-        var testName = "Test Set"
-        var testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
-        var testPuzzleSet = PuzzleSet(withName: testName)
+        let testName = "Test Set"
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
+        let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
         
@@ -60,9 +60,9 @@ class TileDootPuzzleSetTests: XCTestCase {
    
     func testPuzzleSetCheck()
     {
-        var testName = "Test Set"
-        var testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
-        var testPuzzleSet = PuzzleSet(withName: testName)
+        let testName = "Test Set"
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
+        let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
         
@@ -78,10 +78,10 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     func testPuzzleSetGetPuzzle()
     {
-        var testName = "Test Set"
-        var testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
-        var testPuzzle1 = Puzzle(dim: 4, inPar: 1, levelString: "................")
-        var testPuzzleSet = PuzzleSet(withName: testName)
+        let testName = "Test Set"
+        let testPuzzle = Puzzle(dim: 4, inPar: 1, levelString: "****************")
+        let testPuzzle1 = Puzzle(dim: 4, inPar: 1, levelString: "................")
+        let testPuzzleSet = PuzzleSet(withName: testName)
         
         testPuzzleSet.appendPuzzle(testPuzzle)
         testPuzzleSet.appendPuzzle(testPuzzle1)
@@ -90,7 +90,7 @@ class TileDootPuzzleSetTests: XCTestCase {
         XCTAssert(testPuzzleSet.nPuzzles == 2)
         XCTAssert(testPuzzleSet.checkForLevel(1))
         
-        var testPuzzleBack = testPuzzleSet.getPuzzle(1)!
+        let testPuzzleBack = testPuzzleSet.getPuzzle(1)!
         XCTAssert( testPuzzleBack.checkValid())
         XCTAssert( testPuzzleBack.stringRep.containsString("....") )
         
@@ -100,7 +100,7 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     func testPuzzleSetCheckFileHeader()
     {
-        var testSet = PuzzleSet(withName: "George")
+        let testSet = PuzzleSet(withName: "George")
         
         // too many items
         let bigHeader = "20 Too long 200"
@@ -143,25 +143,67 @@ class TileDootPuzzleSetTests: XCTestCase {
     
     func testPuzzleSetCheckPuzzleLine()
     {
+        // set parameters
+        let testSet = PuzzleSet(withName: "Bernie")
+        let testDim = 4
+        
         // generate puzzle lines
+        // good one
+        let lineGood = "****"
         // extra spaces
+        let lineExtraSpace = "* **"
         // wrong length
+        let lineTooLong = "**** "
+        let lineTooShort = "***"
+        
         // begin with digits
+        let lineWDigits = "5***"
+        
         // various illegal chars
+        let lineBadChar = "?`\\"
+        
         // empty string
+        let lineEmpty = ""
+        
+        XCTAssert(testSet.checkPuzzleLine(lineGood, puzDim: testDim))
+        XCTAssertFalse(testSet.checkPuzzleLine(lineExtraSpace, puzDim: testDim))
+        XCTAssertFalse(testSet.checkPuzzleLine(lineTooLong, puzDim: testDim))
+        XCTAssertFalse(testSet.checkPuzzleLine(lineTooShort, puzDim: testDim))
+        XCTAssertFalse(testSet.checkPuzzleLine(lineWDigits, puzDim: testDim))
+        XCTAssertFalse(testSet.checkPuzzleLine(lineBadChar, puzDim: testDim))
+        XCTAssertFalse(testSet.checkPuzzleLine(lineEmpty, puzDim: testDim))
     }
     
     func testPuzzleSetFileLoad()
     {
-        // load a short file with known contents
+        // load a short file with known contents - levels_1.txt
+        let testFile = "levels_1.txt"
+        let testSet = PuzzleSet(withName: "Bernie")
+        
+        XCTAssert(testSet.loadPuzzleSetFile(testFile))
+        
         // check that the set.rawPuzzleFile matches
-        // test levelStrings as well
+        XCTAssert(testSet.puzzleSetStrings[0] == "1 Test1 6")
+        XCTAssert(testSet.puzzleSetStrings[1] == "4 1 TestLevel1")
+        XCTAssert(testSet.puzzleSetStrings[2] == "****")
+        XCTAssert(testSet.puzzleSetStrings[3] == "*..*")
+        XCTAssert(testSet.puzzleSetStrings[4] == "*..*")
+        XCTAssert(testSet.puzzleSetStrings[5] == "****")
+        
         // check nPuzzles, puzzles.count, name, nLines, fileName
     }
     
     func testPuzzleSetInitWithFile()
     {
         // test against a good file
+        let testFile = "levels_1.txt"
+        let testSet = PuzzleSet(withFileName:testFile)
+        
+        // test PuzzleSet variables
+        XCTAssert(testSet.name=="Test1")
+        XCTAssert(testSet.nPuzzles==1)
+        XCTAssert(testSet.nLines==6)
+        
         // test against various bad ones
         // test against empty one
         // bad filename
