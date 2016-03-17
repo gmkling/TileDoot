@@ -103,7 +103,7 @@ class PuzzleSet
     init(withFileName: String) // for loading files
     {
         self.name = String()
-        fileName = withFileName
+        fileName = String(withFileName)
         puzzles = []
         rawPuzzleFile = String()
         puzzleSetStrings = []

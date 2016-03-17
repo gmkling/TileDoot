@@ -9,11 +9,28 @@
 import XCTest
 @testable import TileDoot
 
-class TileDootModelTests: XCTestCase {
+class TileDootModelTests: XCTestCase , GameBoardProtocol {
+    
+    // these are dummies for testing
+    func addTile(loc: Coordinate)
+    {}
+    
+    func deleteTile(loc: Coordinate)
+    {}
+    
+    func setColor(loc: Coordinate, color: Color)
+    {}
+    
+    func setTileType(loc: Coordinate, newType: TileType)
+    {}
+    
+    func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
+    {}
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
     
     override func tearDown() {
@@ -59,7 +76,7 @@ class TileDootModelTests: XCTestCase {
     {
         let testDim = 16
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssertEqual(testBoard.dimension, testDim)
         XCTAssertEqual(testBoard.numTiles, testDim*testDim)
@@ -72,7 +89,7 @@ class TileDootModelTests: XCTestCase {
         let testType = TileType.colorTile
         let tileLoc = Coordinate(x: 10,y: 10)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         testBoard.addTile(testTile, loc: tileLoc)
         XCTAssert(testBoard.tileMap[tileLoc.x, tileLoc.y] == testTile)
@@ -89,7 +106,7 @@ class TileDootModelTests: XCTestCase {
     func testGameBoardRange()
     {
         let testDim = 16
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         let outOfRangeTest = Coordinate(x: 17, y: -2)
         let outOfRangeTest2 = Coordinate(x: 0, y: 17)
         let inRangeTest = Coordinate(x: 2, y: 6)
@@ -106,7 +123,7 @@ class TileDootModelTests: XCTestCase {
         let tileLoc = Coordinate(x: 10,y: 10)
         let tileLoc2 = Coordinate(x: 0,y: 0)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -120,7 +137,7 @@ class TileDootModelTests: XCTestCase {
         let testType = TileType.colorTile
         let tileLoc = Coordinate(x: 4,y: 2)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -142,7 +159,7 @@ class TileDootModelTests: XCTestCase {
         let tileLoc = Coordinate(x: 4,y: 2)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
         let testColor = Color.kGreen
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -162,7 +179,7 @@ class TileDootModelTests: XCTestCase {
         let testType = TileType.colorTile
         let tileLoc = Coordinate(x: 4,y: 2)
         let testTile = Tile(initType: testType, initColor: Color.kRed)
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         testBoard.addTile(testTile, loc: tileLoc)
         
@@ -184,7 +201,7 @@ class TileDootModelTests: XCTestCase {
         let tileToLoc = Coordinate(x: 7, y: 13)
         
         let testTile = Tile(initType: testType, initColor: tileColor)
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         testBoard.addTile(testTile, loc: tileFromLoc)
         testBoard.setTileStop(tileFromLoc)
@@ -201,43 +218,43 @@ class TileDootModelTests: XCTestCase {
         XCTAssertFalse(testBoard.isLocOccupied(tileFromLoc))
     }
 
-    func testGameBoardTileCopy()
-    {
-        let testDim = 16
-        
-        let testType = TileType.colorTile
-        let tileColor = Color.kYellow
-        let tileFromLoc = Coordinate(x: 0,y: 2)
-        let tileToLoc = Coordinate(x: 5, y: 15)
-        
-        let testTile = Tile(initType: testType, initColor: tileColor)
-        let testBoard = GameBoard(initDimension: testDim)
-        
-        testBoard.addTile(testTile, loc: tileFromLoc)
-        testBoard.setTileStop(tileFromLoc)
-        
-        testBoard.copyTile(tileFromLoc, toLoc: tileToLoc)
-        
-        XCTAssert(testBoard.isLocOccupied(tileToLoc))
-        XCTAssert(testBoard.isTileStop(tileToLoc))
-        XCTAssert(testBoard.isLocOccupied(tileToLoc))
-        XCTAssert(testBoard.getTileColor(tileToLoc)==tileColor)
-        XCTAssert(testBoard.getTileType(tileToLoc)==testType)
-        
-        // make sure the original is still there
-        XCTAssert(testBoard.isLocOccupied(tileFromLoc))
-        XCTAssert(testBoard.isTileStop(tileFromLoc))
-        XCTAssert(testBoard.isLocOccupied(tileFromLoc))
-        XCTAssert(testBoard.getTileColor(tileFromLoc)==tileColor)
-        XCTAssert(testBoard.getTileType(tileFromLoc)==testType)
-        
-        // make sure they are distinct under modification
-        // just one change should short circuit
-        testBoard.setTileNotStop(tileFromLoc)
-        XCTAssert(testBoard.tileMap[tileFromLoc.x, tileFromLoc.y] != testBoard.tileMap[tileToLoc.x, tileToLoc.y])
-
-    }
-    
+//    func testGameBoardTileCopy()
+//    {
+//        let testDim = 16
+//        
+//        let testType = TileType.colorTile
+//        let tileColor = Color.kYellow
+//        let tileFromLoc = Coordinate(x: 0,y: 2)
+//        let tileToLoc = Coordinate(x: 5, y: 15)
+//        
+//        let testTile = Tile(initType: testType, initColor: tileColor)
+//        let testBoard = GameBoard(initDimension: testDim)
+//        
+//        testBoard.addTile(testTile, loc: tileFromLoc)
+//        testBoard.setTileStop(tileFromLoc)
+//        
+//        testBoard.copyTile(tileFromLoc, toLoc: tileToLoc)
+//        
+//        XCTAssert(testBoard.isLocOccupied(tileToLoc))
+//        XCTAssert(testBoard.isTileStop(tileToLoc))
+//        XCTAssert(testBoard.isLocOccupied(tileToLoc))
+//        XCTAssert(testBoard.getTileColor(tileToLoc)==tileColor)
+//        XCTAssert(testBoard.getTileType(tileToLoc)==testType)
+//        
+//        // make sure the original is still there
+//        XCTAssert(testBoard.isLocOccupied(tileFromLoc))
+//        XCTAssert(testBoard.isTileStop(tileFromLoc))
+//        XCTAssert(testBoard.isLocOccupied(tileFromLoc))
+//        XCTAssert(testBoard.getTileColor(tileFromLoc)==tileColor)
+//        XCTAssert(testBoard.getTileType(tileFromLoc)==testType)
+//        
+//        // make sure they are distinct under modification
+//        // just one change should short circuit
+//        testBoard.setTileNotStop(tileFromLoc)
+//        XCTAssert(testBoard.tileMap[tileFromLoc.x, tileFromLoc.y] != testBoard.tileMap[tileToLoc.x, tileToLoc.y])
+//
+//    }
+//    
     func testGameBoardTileDeleteFlag()
     {
         let testDim = 16
@@ -247,7 +264,7 @@ class TileDootModelTests: XCTestCase {
         let tileLoc = Coordinate(x: 0,y: 2)
         
         let testTile = Tile(initType: testType, initColor: tileColor)
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         testBoard.addTile(testTile, loc: tileLoc)
         XCTAssertFalse(testBoard.checkTileForDelete(tileLoc))
@@ -272,7 +289,7 @@ class TileDootModelTests: XCTestCase {
         
         let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -310,7 +327,7 @@ class TileDootModelTests: XCTestCase {
         
         let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -342,7 +359,7 @@ class TileDootModelTests: XCTestCase {
         
         let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -384,7 +401,7 @@ class TileDootModelTests: XCTestCase {
         
         let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -431,7 +448,7 @@ class TileDootModelTests: XCTestCase {
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -534,7 +551,7 @@ class TileDootModelTests: XCTestCase {
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         

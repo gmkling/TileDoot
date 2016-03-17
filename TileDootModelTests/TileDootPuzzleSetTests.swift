@@ -182,8 +182,8 @@ class TileDootPuzzleSetTests: XCTestCase {
         XCTAssert(testSet.loadPuzzleSetFile(testFile))
         
         // check that the set.rawPuzzleFile matches
-        XCTAssert(testSet.puzzleSetStrings[0] == "1 Test1 6")
-        XCTAssert(testSet.puzzleSetStrings[1] == "4 1 TestLevel1")
+        XCTAssert(testSet.puzzleSetStrings[0] == "1 Test1 7")
+        XCTAssert(testSet.puzzleSetStrings[1] == "4.1.TestLevel1")
         XCTAssert(testSet.puzzleSetStrings[2] == "****")
         XCTAssert(testSet.puzzleSetStrings[3] == "*..*")
         XCTAssert(testSet.puzzleSetStrings[4] == "*..*")
@@ -206,6 +206,7 @@ class TileDootPuzzleSetTests: XCTestCase {
         XCTAssert(testSet.nPuzzles==1)
         XCTAssert(testSet.nLines==7)
         XCTAssert(testSet.puzzles[0]?.stringRep == "*****..**..*****")
+        XCTAssert(testSet.fileName ==  NSBundle.mainBundle().pathForResource(testFile, ofType: nil))
         
         // test against various bad ones
         // test against empty one

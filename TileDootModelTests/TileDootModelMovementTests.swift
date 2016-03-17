@@ -9,8 +9,24 @@
 import XCTest
 @testable import TileDoot
 
-class TileDootModelMovementTests: XCTestCase {
+class TileDootModelMovementTests: XCTestCase , GameBoardProtocol {
 
+    // these are dummies for testing
+    func addTile(loc: Coordinate)
+    {}
+    
+    func deleteTile(loc: Coordinate)
+    {}
+    
+    func setColor(loc: Coordinate, color: Color)
+    {}
+    
+    func setTileType(loc: Coordinate, newType: TileType)
+    {}
+    
+    func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
+    {}
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -36,7 +52,7 @@ class TileDootModelMovementTests: XCTestCase {
         
         let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -95,7 +111,7 @@ class TileDootModelMovementTests: XCTestCase {
         
         let puzzleString = block6 + puzRow1 + puzRow2 + puzRow3 + puzRow4 + block6
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -171,7 +187,7 @@ class TileDootModelMovementTests: XCTestCase {
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -210,7 +226,7 @@ class TileDootModelMovementTests: XCTestCase {
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -249,7 +265,7 @@ class TileDootModelMovementTests: XCTestCase {
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         
@@ -301,7 +317,7 @@ class TileDootModelMovementTests: XCTestCase {
         
         let puzzleString = puzRow1+puzRow2+puzRow3+puzRow4+puzRow5+puzRow6+puzRow7+puzRow8+puzRow9+puzRow10+puzRow11+puzRow12+puzRow13+puzRow14+puzRow15+puzRow16
         
-        let testBoard = GameBoard(initDimension: testDim)
+        let testBoard = GameBoard(initDimension: testDim, delegate: self)
         
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         

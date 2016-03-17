@@ -8,26 +8,35 @@
 
 import Foundation
 
+protocol GameBoardProtocol : class {
+    func addTile(loc: Coordinate)
+    func deleteTile(loc: Coordinate)
+    
+    // these are the only properties we need to make the sprite look right
+    func setColor(loc: Coordinate, color: Color)
+    func setTileType(loc: Coordinate, newType: TileType)
+    
+    func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
+}
 
+// GameBoard is the game model wrapped around a TileBoard. It uses the GameBoard Protocol to communicate with its view
 
 class GameBoard {
     
     var dimension, numTiles: Int
-    
-    // was a std::vector<std::vector<Tile>> tileMap
-    // we should really look at not making this an optional
-    // it made sense when I was first learning, but I admit that might be false.
-    // can it be declared empty and filled in later?
     var tileMap : TileBoard
     var tileMapDirty = false;
     
+    unowned let delegate : GameBoardProtocol
+    
     // orig init is initMap which creates a new blank map
-    init(initDimension: Int)
+    init(initDimension: Int, delegate: GameBoardProtocol)
     {
         self.dimension = initDimension
         self.numTiles = initDimension*initDimension
         
         tileMap = TileBoard(dim: initDimension)
+        self.delegate = delegate
     }
     
     
@@ -39,7 +48,7 @@ class GameBoard {
         if tileMap[loc.x, loc.y].type == TileType.nullTile
         {
             tileMap[loc.x, loc.y] = newTile
-            // issue the addTile command to the View delegate
+            delegate.addTile(loc)
         }
         
     }
@@ -51,7 +60,7 @@ class GameBoard {
         if tileMap[loc.x, loc.y].type != TileType.nullTile
         {
             tileMap[loc.x, loc.y] = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
-            // forward the cmd to the View delegate
+            delegate.deleteTile(loc)
         }
     }
     
@@ -59,13 +68,11 @@ class GameBoard {
     func emptyTile (loc: Coordinate)
     {
         tileMap[loc.x, loc.y] = Tile(initType: TileType.emptyTile, initColor: Color.kNoColor)
-        // tell the delegate pls
     }
     
     func emptyTile (x: Int, y: Int)
     {
         tileMap[x, y] = Tile(initType: TileType.emptyTile, initColor: Color.kNoColor)
-        // tell the delegate pls
     }
 
     func isLocInRange(loc: Coordinate) ->Bool
@@ -116,6 +123,7 @@ class GameBoard {
     func setTileColor(loc: Coordinate, color: Color)
     {
         tileMap[loc.x, loc.y].color = color
+        delegate.setColor(loc, color: color)
     }
     
     func clearTileColor(loc: Coordinate)
@@ -131,6 +139,7 @@ class GameBoard {
     func setTileType(loc: Coordinate, newType: TileType)
     {
         tileMap[loc.x, loc.y].type = newType
+        delegate.setTileType(loc, newType: newType)
     }
     
     func getTileType(loc: Coordinate) ->TileType
@@ -178,22 +187,22 @@ class GameBoard {
         // notify delegate of move
     }
     
-    func copyTile(fromLoc: Coordinate, toLoc: Coordinate)
-    {
-        let fromTile = tileMap[fromLoc.x, fromLoc.y]
-        let toTile = tileMap[toLoc.x, toLoc.y]
-        
-        toTile.color = fromTile.color
-        toTile.type = fromTile.type
-        toTile.isStop = fromTile.isStop
-        
-        // needed?
-        toTile.markedForDelete = fromTile.markedForDelete
-        // this method needs updated whenever the Tile class is changed
-        // I don't like that, I need to find a better way
-        
-        // notify delegate of copy
-    }
+//    func copyTile(fromLoc: Coordinate, toLoc: Coordinate)
+//    {
+//        let fromTile = tileMap[fromLoc.x, fromLoc.y]
+//        let toTile = tileMap[toLoc.x, toLoc.y]
+//        
+//        toTile.color = fromTile.color
+//        toTile.type = fromTile.type
+//        toTile.isStop = fromTile.isStop
+//        
+//        // needed?
+//        toTile.markedForDelete = fromTile.markedForDelete
+//        // this method needs updated whenever the Tile class is changed
+//        // I don't like that, I need to find a better way
+//        
+//        // notify delegate of copy
+//    }
     
     // delete flag - game-driven
     
@@ -662,7 +671,8 @@ class GameBoard {
             {
                 if tileMap[i, j].markedForDelete == true
                 {
-                    emptyTile(i, y:j)
+                    //emptyTile(i, y:j)
+                    deleteTile(Coordinate(x: i,y: j))
                 }
             }
         }
