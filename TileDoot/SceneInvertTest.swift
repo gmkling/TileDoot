@@ -8,12 +8,12 @@
 
 import SpriteKit
 
-extension Array {
-    func randomItem() -> Element {
-        let index = Int(arc4random_uniform(UInt32(self.count)))
-        return self[index]
-    }
-}
+//extension Array {
+//    func randomItem() -> Element {
+//        let index = Int(arc4random_uniform(UInt32(self.count)))
+//        return self[index]
+//    }
+//}
 
 class SceneInvertTest: SKScene {
     

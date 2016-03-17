@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GameBoardProtocol : class {
-    func addTile(loc: Coordinate)
+    func addTile(loc: Coordinate, tile: Tile)
     func deleteTile(loc: Coordinate)
     
     // these are the only properties we need to make the sprite look right
@@ -30,15 +30,74 @@ class GameBoard {
     unowned let delegate : GameBoardProtocol
     
     // orig init is initMap which creates a new blank map
-    init(initDimension: Int, delegate: GameBoardProtocol)
+    init(boardDimension: Int, delegate: GameBoardProtocol)
     {
-        self.dimension = initDimension
-        self.numTiles = initDimension*initDimension
+        self.dimension = boardDimension
+        self.numTiles = boardDimension*boardDimension
         
-        tileMap = TileBoard(dim: initDimension)
+        tileMap = TileBoard(dim: boardDimension)
         self.delegate = delegate
     }
     
+    init(boardDimension: Int, delegate: GameBoardProtocol, boardString: String)
+    {
+        self.dimension = boardDimension
+        self.numTiles = boardDimension*boardDimension
+        
+        tileMap = TileBoard(dim: boardDimension)
+        self.delegate = delegate
+        
+        self.initBoardFromString(boardString)
+    }
+    
+    func initBoardFromString (boardString: String) ->Bool
+    {
+        var curTile : Character
+        var i = 0
+        let boardSize = boardString.characters.count
+        
+        // check bounds/size - drop out if it is too big or small (arbitrarily set to 4)
+        if numTiles < boardSize || boardSize < 4
+        {
+            return false
+        }
+        
+        // iterate over string to construct it in a GameBoard object
+        // you can't just cruise through a string index by index since some chars
+        // take up more than one position, so swift lets you do this:
+        for index in boardString.characters.indices
+        {
+            curTile = boardString[index]
+            
+            // make a null tile. If the input matches nothing valid, we add nullTile and move on
+            var newTile = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
+            
+            if let curType = self.getTypeForChar(curTile)
+            {
+                // this is a non-color tile
+                newTile = Tile(initType: curType, initColor: Color.kNoColor)
+                if curType==TileType.barrierTile { newTile.isStop = true }
+                
+            } else if let curColor = self.getColorForChar(curTile)
+            {
+                // this is a color tile
+                newTile = Tile(initType: TileType.colorTile, initColor: curColor)
+            }
+            
+            // unwrap the index
+            let curCol = i % self.dimension
+            let curRow = (i-curCol)/self.dimension
+            
+            // insert the tile
+            
+            self.addTile(newTile, loc: Coordinate(x:curCol, y:curRow))
+            
+            i++
+        }
+        
+        return true
+        
+    }
     
     // add/delete
     
@@ -48,7 +107,7 @@ class GameBoard {
         if tileMap[loc.x, loc.y].type == TileType.nullTile
         {
             tileMap[loc.x, loc.y] = newTile
-            delegate.addTile(loc)
+            delegate.addTile(loc, tile: newTile)
         }
         
     }
@@ -250,54 +309,7 @@ class GameBoard {
         return tileMap[loc.x, loc.y]
     }
     
-    func initBoardFromString (boardString: String) ->Bool
-    {
-        var curTile : Character
-        var i = 0
-        let boardSize = boardString.characters.count
-        
-        // check bounds/size - drop out if it is too big or small (arbitrarily set to 4)
-        if numTiles < boardSize || boardSize < 4
-        {
-            return false
-        }
-        
-        // iterate over string to construct it in a GameBoard object
-        // you can't just cruise through a string index by index since some chars
-        // take up more than one position, so swift lets you do this:
-        for index in boardString.characters.indices
-        {
-            curTile = boardString[index]
-            
-            // make a null tile. If the input matches nothing valid, we add nullTile and move on
-            var newTile = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
-            
-            if let curType = self.getTypeForChar(curTile)
-            {
-                // this is a non-color tile
-                newTile = Tile(initType: curType, initColor: Color.kNoColor)
-                if curType==TileType.barrierTile { newTile.isStop = true }
-                
-            } else if let curColor = self.getColorForChar(curTile)
-            {
-                // this is a color tile
-                newTile = Tile(initType: TileType.colorTile, initColor: curColor)
-            }
-            
-            // unwrap the index
-            let curCol = i % self.dimension
-            let curRow = (i-curCol)/self.dimension
-            
-            // insert the tile
-            
-            self.addTile(newTile, loc: Coordinate(x:curCol, y:curRow))
-            
-            i++
-        }
-        
-        return true
-
-    }
+    
   
     func printBoardState()
     {

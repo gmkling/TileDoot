@@ -420,6 +420,7 @@ class Puzzle
         return true
     }
     
+    // this should return a String suitable to init the GameBoard object
     func reverseString() ->String
     {
         return String(stringRep.characters.reverse())
