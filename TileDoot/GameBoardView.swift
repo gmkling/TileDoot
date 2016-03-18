@@ -17,6 +17,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     var size: CGSize
     var gameBoard : GameBoard?
     var dimension : Int
+    var background = SKShapeNode()
     var tiles : SpriteBoard
     
     // boardSize is the size in Pixels of the UI element
@@ -25,12 +26,28 @@ class GameBoardView : SKNode , GameBoardProtocol
         self.size = boardSize
         self.dimension = puzzle.dimension
         tiles = SpriteBoard(dim: dimension)
-        
         super.init()
         
-        // init
+        // init background
+        //drawBackground()
+        
+        // init board
         self.gameBoard = GameBoard(boardDimension: dimension, delegate: self, boardString: puzzle.reverseString())
         
+    }
+    
+    func drawBackground()
+    {
+        // determine grid size
+        // set line style
+        // draw lines
+        
+        // would rather draw grid, but just a square in back for now, to hold the size of the view
+        background = SKShapeNode.init(rectOfSize: size)
+        background.fillColor = SKColor.grayColor()
+        background.position = CGPointMake(0.0, 0.0)
+        // default anchor at 0,0 - add at origin should be good
+        self.addChild(background)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -42,6 +59,15 @@ class GameBoardView : SKNode , GameBoardProtocol
         let newX = CGFloat(coord.x) * (self.size.width/CGFloat(self.dimension))
         let newY = CGFloat(coord.y) * (self.size.height/CGFloat(self.dimension))
         return CGPoint(x: newX, y: newY)
+    }
+    
+    func clearTile(loc: Coordinate)
+    {
+        // this should not effect the existing sprite's behavior, just remove the reference. 
+        // may need to protect this, I don't think it's threadsafe
+        
+        // make the location a blank sprite
+        tiles[loc.x, loc.y] = TileSprite()
     }
     
     // the GameBoardProtocol
@@ -56,11 +82,22 @@ class GameBoardView : SKNode , GameBoardProtocol
         {
             tileFile = "barrierTile.png"
         }
-            // get the location for the loc
+        // get the location for the loc
         let tilePos = locationForCoord(loc)
         let tempTile = TileSprite(imageNamed: tileFile)
         tempTile.position = tilePos
         
+        // calc the scale
+        let sceneSizeX = self.size.width
+        let sceneSizeY = self.size.height
+        let spriteDim = CGFloat(dimension)
+        let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
+        let tileRenderSize = sceneSizeX / spriteDim
+        let tileScale = tileRenderSize / tileSizeIn
+        
+        tempTile.anchorPoint = CGPointMake(0.0, 0.0)
+        tempTile.setScale(tileScale)
+            
         self.addChild(tempTile)
         
         tiles[loc.x, loc.y] = tempTile
@@ -70,8 +107,12 @@ class GameBoardView : SKNode , GameBoardProtocol
     func deleteTile(loc: Coordinate)
     {
         // create the action/animation for deletion
+        let delAction = SKAction.fadeOutWithDuration(0.5)
+        let delSprite = tiles[loc.x, loc.y]
+        delSprite.runAction(delAction)
+        
         // delete the TileSprite in the SpriteBoard
-        tiles[loc.x, loc.y] = TileSprite()
+        clearTile(loc)
     }
     
     func setColor(loc: Coordinate, color: Color)
@@ -86,8 +127,18 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
     {
+        // convert grid location to node space
+        let toPos = locationForCoord(toLoc)
         // create an animation/action for the sprite
+        let moveAction = SKAction.moveTo(toPos, duration: 0.5)
+        
+        // get the sprite, queue the action
+        let tileSprite = tiles[fromLoc.x, fromLoc.y]
+        tileSprite.runAction(moveAction)
+        
         // also change the grid position
+        tiles[toLoc.x, toLoc.y] = tileSprite
+        deleteTile(fromLoc)
     }
     
 }

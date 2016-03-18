@@ -39,6 +39,7 @@
 		10A6B2821C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */; };
 		10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A91E081C99EFEF009F50AB /* GameBoardView.swift */; };
 		10A91E0B1C9A99A4009F50AB /* TileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A91E0A1C9A99A4009F50AB /* TileSprite.swift */; };
+		10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */; };
 		10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6A1C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6D1C44F02900AD8DD7 /* TDButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */; };
@@ -183,6 +184,7 @@
 		10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetMgrTests.swift; sourceTree = "<group>"; };
 		10A91E081C99EFEF009F50AB /* GameBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardView.swift; sourceTree = "<group>"; };
 		10A91E0A1C9A99A4009F50AB /* TileSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileSprite.swift; sourceTree = "<group>"; };
+		10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestGameBoardViewScene.swift; path = Scenes/TestGameBoardViewScene.swift; sourceTree = "<group>"; };
 		10B34C681C44E63400AD8DD7 /* TDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDButton.swift; sourceTree = "<group>"; };
 		10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDButtonTest.swift; path = TileDootUITests/TDButtonTest.swift; sourceTree = "<group>"; };
 		10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SplashGlass_test.JPG; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				10B34D171C5A0AA500AD8DD7 /* InfoScene.swift */,
 				10B34D191C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift */,
 				10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */,
+				10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
+				10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */,
 				10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */,
 				10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */,
 				10B34CF31C50CC7D00AD8DD7 /* SceneInvertTest.swift in Sources */,
