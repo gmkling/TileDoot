@@ -11,5 +11,17 @@ import SpriteKit
 
 class TileSprite : SKSpriteNode
 {
-    // to be continued 
+    var actionQ = [SKAction]()
+    
+    func enqueueAction(action: SKAction)
+    {
+        actionQ.append(action)
+    }
+    
+    func executeNext()
+    {
+        if actionQ.count == 0 { return }
+        
+        self.runAction(actionQ.removeFirst())
+    }
 }

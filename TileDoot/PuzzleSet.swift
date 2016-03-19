@@ -426,6 +426,24 @@ class Puzzle
         return String(stringRep.characters.reverse())
     }
     
+    func reverseRows() ->String
+    {
+        var tempString = ""
+//        var strIndex = stringRep.endIndex.advancedBy(-dimension)
+        for index in 0...(dimension-1)
+        {
+            var strIndex = stringRep.endIndex.advancedBy(-((dimension*index)+dimension))
+            for j in 0...(dimension-1)
+            {
+                tempString.append(stringRep[strIndex.advancedBy(j)])
+                
+            }
+            
+        }
+        
+        return tempString
+    }
+    
     func checkValid() ->Bool
     {
         if stringRep.characters.count == dimension*dimension { puzzleValid = true } else { puzzleValid=false }

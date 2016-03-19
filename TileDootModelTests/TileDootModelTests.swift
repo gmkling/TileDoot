@@ -12,7 +12,7 @@ import XCTest
 class TileDootModelTests: XCTestCase , GameBoardProtocol {
     
     // these are dummies for testing
-    func addTile(loc: Coordinate)
+    func addTile(loc: Coordinate, tile: Tile)
     {}
     
     func deleteTile(loc: Coordinate)

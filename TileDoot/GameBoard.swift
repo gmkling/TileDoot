@@ -244,6 +244,7 @@ class GameBoard {
         self.emptyTile(fromLoc)
         
         // notify delegate of move
+        delegate.moveTile(fromLoc, toLoc: toLoc)
     }
     
 //    func copyTile(fromLoc: Coordinate, toLoc: Coordinate)

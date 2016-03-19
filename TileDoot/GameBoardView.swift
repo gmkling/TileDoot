@@ -29,24 +29,26 @@ class GameBoardView : SKNode , GameBoardProtocol
         super.init()
         
         // init background
-        //drawBackground()
+        drawBackground()
         
         // init board
-        self.gameBoard = GameBoard(boardDimension: dimension, delegate: self, boardString: puzzle.reverseString())
+        self.gameBoard = GameBoard(boardDimension: dimension, delegate: self, boardString: puzzle.reverseRows())
         
     }
     
     func drawBackground()
     {
+        // TODO: Some work is needed to make this look good
+        // ************************************************
         // determine grid size
         // set line style
         // draw lines
         
-        // would rather draw grid, but just a square in back for now, to hold the size of the view
+        // would rather draw grid, but just a square in back for now
         background = SKShapeNode.init(rectOfSize: size)
         background.fillColor = SKColor.grayColor()
-        background.position = CGPointMake(0.0, 0.0)
-        // default anchor at 0,0 - add at origin should be good
+        background.strokeColor = SKColor.blackColor()
+        background.position = self.center()
         self.addChild(background)
     }
 
@@ -74,14 +76,24 @@ class GameBoardView : SKNode , GameBoardProtocol
     func addTile(loc: Coordinate, tile: Tile)
     {
         var tileFile = ""
+        
+        // swift + switch == :)
         // get an image for the color/type combo
-        if tile.type == TileType.colorTile
-        {
-            tileFile = filenameForColor(tile.color)
-        } else if tile.type == TileType.barrierTile
-        {
-            tileFile = "barrierTile.png"
+        
+        switch tile.type {
+        case .colorTile:
+                tileFile = filenameForColor(tile.color)
+        case .barrierTile:
+                tileFile = "barrierTile.png"
+        case .emptyTile:
+            // the rest of this is irrelevant
+            return
+        case .nullTile:
+            return
+        default:
+            print("Unrecognized TileType: \(tile.type)")
         }
+        
         // get the location for the loc
         let tilePos = locationForCoord(loc)
         let tempTile = TileSprite(imageNamed: tileFile)
@@ -107,7 +119,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     func deleteTile(loc: Coordinate)
     {
         // create the action/animation for deletion
-        let delAction = SKAction.fadeOutWithDuration(0.5)
+        let delAction = SKAction.fadeOutWithDuration(0.25)
         let delSprite = tiles[loc.x, loc.y]
         delSprite.runAction(delAction)
         
@@ -130,7 +142,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         // convert grid location to node space
         let toPos = locationForCoord(toLoc)
         // create an animation/action for the sprite
-        let moveAction = SKAction.moveTo(toPos, duration: 0.5)
+        let moveAction = SKAction.moveTo(toPos, duration: 0.25)
         
         // get the sprite, queue the action
         let tileSprite = tiles[fromLoc.x, fromLoc.y]
@@ -138,7 +150,12 @@ class GameBoardView : SKNode , GameBoardProtocol
         
         // also change the grid position
         tiles[toLoc.x, toLoc.y] = tileSprite
-        deleteTile(fromLoc)
+        //deleteTile(fromLoc)
+    }
+    
+    func center () ->CGPoint
+    {
+        return CGPointMake((self.size.width/2.0), (self.size.height/2.0))
     }
     
 }
