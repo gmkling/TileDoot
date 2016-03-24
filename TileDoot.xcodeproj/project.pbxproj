@@ -42,6 +42,18 @@
 		10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */; };
 		10AB011F1CA35D950092D7AF /* PlayButton_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB011D1CA35D950092D7AF /* PlayButton_active.png */; };
 		10AB01201CA35D950092D7AF /* PlayButton_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB011E1CA35D950092D7AF /* PlayButton_sel.png */; };
+		10AB01231CA46E100092D7AF /* PurplePlay_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01211CA46E100092D7AF /* PurplePlay_def.png */; };
+		10AB01241CA46E100092D7AF /* PurplePlay_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01221CA46E100092D7AF /* PurplePlay_sel.png */; };
+		10AB01271CA474F00092D7AF /* PurpleMenu_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01251CA474F00092D7AF /* PurpleMenu_def.png */; };
+		10AB01281CA474F00092D7AF /* PurpleMenu_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01261CA474F00092D7AF /* PurpleMenu_sel.png */; };
+		10AB01301CA480DE0092D7AF /* emailButton-500px_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB012A1CA480DE0092D7AF /* emailButton-500px_def.png */; };
+		10AB01311CA480DE0092D7AF /* emailButton-500px_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB012B1CA480DE0092D7AF /* emailButton-500px_sel.png */; };
+		10AB01321CA480DE0092D7AF /* gitButton-500px_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB012C1CA480DE0092D7AF /* gitButton-500px_def.png */; };
+		10AB01331CA480DE0092D7AF /* gitButton-500px_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB012D1CA480DE0092D7AF /* gitButton-500px_sel.png */; };
+		10AB01341CA480DE0092D7AF /* webButton-500px_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB012E1CA480DE0092D7AF /* webButton-500px_def.png */; };
+		10AB01351CA480DE0092D7AF /* webButton-500px_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB012F1CA480DE0092D7AF /* webButton-500px_sel.png */; };
+		10AB01381CA485C90092D7AF /* checkBox-500px_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01361CA485C90092D7AF /* checkBox-500px_def.png */; };
+		10AB01391CA485C90092D7AF /* checkBox-500px_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01371CA485C90092D7AF /* checkBox-500px_sel.png */; };
 		10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6A1C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6D1C44F02900AD8DD7 /* TDButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */; };
@@ -181,6 +193,18 @@
 		10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestGameBoardViewScene.swift; path = Scenes/TestGameBoardViewScene.swift; sourceTree = "<group>"; };
 		10AB011D1CA35D950092D7AF /* PlayButton_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton_active.png; sourceTree = "<group>"; };
 		10AB011E1CA35D950092D7AF /* PlayButton_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton_sel.png; sourceTree = "<group>"; };
+		10AB01211CA46E100092D7AF /* PurplePlay_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurplePlay_def.png; sourceTree = "<group>"; };
+		10AB01221CA46E100092D7AF /* PurplePlay_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurplePlay_sel.png; sourceTree = "<group>"; };
+		10AB01251CA474F00092D7AF /* PurpleMenu_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleMenu_def.png; sourceTree = "<group>"; };
+		10AB01261CA474F00092D7AF /* PurpleMenu_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleMenu_sel.png; sourceTree = "<group>"; };
+		10AB012A1CA480DE0092D7AF /* emailButton-500px_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "emailButton-500px_def.png"; path = "MiscButtons/emailButton-500px_def.png"; sourceTree = "<group>"; };
+		10AB012B1CA480DE0092D7AF /* emailButton-500px_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "emailButton-500px_sel.png"; path = "MiscButtons/emailButton-500px_sel.png"; sourceTree = "<group>"; };
+		10AB012C1CA480DE0092D7AF /* gitButton-500px_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gitButton-500px_def.png"; path = "MiscButtons/gitButton-500px_def.png"; sourceTree = "<group>"; };
+		10AB012D1CA480DE0092D7AF /* gitButton-500px_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gitButton-500px_sel.png"; path = "MiscButtons/gitButton-500px_sel.png"; sourceTree = "<group>"; };
+		10AB012E1CA480DE0092D7AF /* webButton-500px_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "webButton-500px_def.png"; path = "MiscButtons/webButton-500px_def.png"; sourceTree = "<group>"; };
+		10AB012F1CA480DE0092D7AF /* webButton-500px_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "webButton-500px_sel.png"; path = "MiscButtons/webButton-500px_sel.png"; sourceTree = "<group>"; };
+		10AB01361CA485C90092D7AF /* checkBox-500px_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkBox-500px_def.png"; path = "../TileAssets/MiscButtons/checkBox-500px_def.png"; sourceTree = "<group>"; };
+		10AB01371CA485C90092D7AF /* checkBox-500px_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkBox-500px_sel.png"; path = "../TileAssets/MiscButtons/checkBox-500px_sel.png"; sourceTree = "<group>"; };
 		10B34C681C44E63400AD8DD7 /* TDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDButton.swift; sourceTree = "<group>"; };
 		10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDButtonTest.swift; path = TileDootUITests/TDButtonTest.swift; sourceTree = "<group>"; };
 		10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SplashGlass_test.JPG; sourceTree = "<group>"; };
@@ -254,6 +278,10 @@
 		1023D29A1C5AE38A005DBAB9 /* MiscButtons */ = {
 			isa = PBXGroup;
 			children = (
+				10AB01251CA474F00092D7AF /* PurpleMenu_def.png */,
+				10AB01261CA474F00092D7AF /* PurpleMenu_sel.png */,
+				10AB01211CA46E100092D7AF /* PurplePlay_def.png */,
+				10AB01221CA46E100092D7AF /* PurplePlay_sel.png */,
 				1023D2A51C5C2713005DBAB9 /* BlueBack_def-500px.png */,
 				1023D2A61C5C2713005DBAB9 /* BlueBack_sel-500px.png */,
 				1023D2A11C5B58F0005DBAB9 /* BlueOFF.png */,
@@ -357,6 +385,19 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		10AB01291CA480B80092D7AF /* InfoButtons */ = {
+			isa = PBXGroup;
+			children = (
+				10AB012A1CA480DE0092D7AF /* emailButton-500px_def.png */,
+				10AB012B1CA480DE0092D7AF /* emailButton-500px_sel.png */,
+				10AB012C1CA480DE0092D7AF /* gitButton-500px_def.png */,
+				10AB012D1CA480DE0092D7AF /* gitButton-500px_sel.png */,
+				10AB012E1CA480DE0092D7AF /* webButton-500px_def.png */,
+				10AB012F1CA480DE0092D7AF /* webButton-500px_sel.png */,
+			);
+			name = InfoButtons;
+			sourceTree = "<group>";
+		};
 		10B34C671C44E60300AD8DD7 /* UI_Nodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +417,7 @@
 		10B34C6E1C46437A00AD8DD7 /* TileAssets */ = {
 			isa = PBXGroup;
 			children = (
+				10AB01291CA480B80092D7AF /* InfoButtons */,
 				1023D2A91C5C2E57005DBAB9 /* Images */,
 				1023D29A1C5AE38A005DBAB9 /* MiscButtons */,
 				10B34CFA1C536C1700AD8DD7 /* TileButtons */,
@@ -390,6 +432,8 @@
 		10B34C751C478D5D00AD8DD7 /* TD_Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				10AB01361CA485C90092D7AF /* checkBox-500px_def.png */,
+				10AB01371CA485C90092D7AF /* checkBox-500px_sel.png */,
 				10AB011D1CA35D950092D7AF /* PlayButton_active.png */,
 				10AB011E1CA35D950092D7AF /* PlayButton_sel.png */,
 			);
@@ -551,7 +595,9 @@
 				107698CA1C320292006051B2 /* LaunchScreen.storyboard in Resources */,
 				10B34CD31C4E32DB00AD8DD7 /* Orange3_test.png in Resources */,
 				10B34CB01C4B935F00AD8DD7 /* Yellow3_test.png in Resources */,
+				10AB01301CA480DE0092D7AF /* emailButton-500px_def.png in Resources */,
 				10B34D111C536C9500AD8DD7 /* Red1_sel.png in Resources */,
+				10AB01341CA480DE0092D7AF /* webButton-500px_def.png in Resources */,
 				10B34CD71C4E32DB00AD8DD7 /* Orange5_test.png in Resources */,
 				10B34CDB1C4E32DB00AD8DD7 /* Purple2_test.png in Resources */,
 				10AB01201CA35D950092D7AF /* PlayButton_sel.png in Resources */,
@@ -559,19 +605,26 @@
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
 				1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */,
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
+				10AB01381CA485C90092D7AF /* checkBox-500px_def.png in Resources */,
 				10B34CAA1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
 				1023D2A81C5C2713005DBAB9 /* BlueBack_sel-500px.png in Resources */,
 				10B34CD91C4E32DB00AD8DD7 /* Purple1_test.png in Resources */,
 				10B34CDD1C4E32DB00AD8DD7 /* Purple3_test.png in Resources */,
 				10B34CF91C5221F200AD8DD7 /* Todos in Resources */,
+				10AB01241CA46E100092D7AF /* PurplePlay_sel.png in Resources */,
 				10B34CBD1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */,
 				10B34CDF1C4E32DB00AD8DD7 /* Purple4_test.png in Resources */,
 				10B34D141C54C49D00AD8DD7 /* info1.png in Resources */,
 				1023D2A71C5C2713005DBAB9 /* BlueBack_def-500px.png in Resources */,
+				10AB01391CA485C90092D7AF /* checkBox-500px_sel.png in Resources */,
 				10B34CB41C4B935F00AD8DD7 /* Yellow5_test.png in Resources */,
+				10AB01321CA480DE0092D7AF /* gitButton-500px_def.png in Resources */,
 				10B34CA41C4B935F00AD8DD7 /* DGreen1_test.png in Resources */,
 				10B34C8F1C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
 				1023D2A41C5B58F0005DBAB9 /* BlueON.png in Resources */,
+				10AB01311CA480DE0092D7AF /* emailButton-500px_sel.png in Resources */,
+				10AB01331CA480DE0092D7AF /* gitButton-500px_sel.png in Resources */,
+				10AB01231CA46E100092D7AF /* PurplePlay_def.png in Resources */,
 				10B34D021C536C1700AD8DD7 /* Purple2_def.png in Resources */,
 				10B34D0A1C536C1700AD8DD7 /* Red1_def.png in Resources */,
 				10B34D061C536C1700AD8DD7 /* Purple2_sel.png in Resources */,
@@ -579,12 +632,14 @@
 				10B34CEC1C4F87BE00AD8DD7 /* Red3_test.png in Resources */,
 				10B34CD11C4E32DB00AD8DD7 /* Orange2_test.png in Resources */,
 				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
+				10AB01271CA474F00092D7AF /* PurpleMenu_def.png in Resources */,
 				10B34CCF1C4E32DB00AD8DD7 /* Orange1_test.png in Resources */,
 				10B34CE81C4F87BE00AD8DD7 /* Red1_test.png in Resources */,
 				1023D2AD1C5C2E57005DBAB9 /* TileSheetSample.xcf in Resources */,
 				10B34CD51C4E32DB00AD8DD7 /* Orange4_test.png in Resources */,
 				10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */,
 				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
+				10AB01351CA480DE0092D7AF /* webButton-500px_sel.png in Resources */,
 				10B34CA61C4B935F00AD8DD7 /* DGreen2_test.png in Resources */,
 				1023D2A01C5B5057005DBAB9 /* email-500px.png in Resources */,
 				10B34CE11C4E32DB00AD8DD7 /* Purple5_test.png in Resources */,
@@ -595,6 +650,7 @@
 				10B34CBB1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */,
 				10B34CAC1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
 				10B34C951C4A4A0200AD8DD7 /* Blue4_test.png in Resources */,
+				10AB01281CA474F00092D7AF /* PurpleMenu_sel.png in Resources */,
 				10B34CF71C516DAC00AD8DD7 /* MainMenu2.png in Resources */,
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
 				1023D2B01C6421A8005DBAB9 /* levels_1.txt in Resources */,

@@ -100,9 +100,93 @@ class TDButton : SKNode
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func setScale(scale: CGFloat) {
+        super.setScale(scale)
+        buttonLabel.setScale(1.0/scale)
+    }
 }
 
 class TDToggleButton : TDButton
 {
-    // this would be good
+    var isEnabled = false
+    
+    var disableAction : () -> Void
+    
+    init(defaultImageName: String, selectImageName: String, enableAction: () -> Void, disableAction: () -> Void, withState: Bool, labelStr: String?)
+    {
+        isEnabled = withState
+        self.disableAction = disableAction
+        
+        super.init(defaultImageName: defaultImageName, selectImageName: selectImageName, buttonAction: enableAction, labelStr: labelStr)
+        
+        if isEnabled
+        {
+            defaultImage.hidden = true
+            selectedImage.hidden = false
+            action()
+        } else {
+            defaultImage.hidden = false
+            selectedImage.hidden = true
+            disableAction()
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
+        swapImages()
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
+        // if the user moves a touch, find out if it moved onto or off of the button
+        // and swap
+        for touch in touches
+        {
+            let location: CGPoint = touch.locationInNode(self)
+            
+            if defaultImage.containsPoint(location)
+            {
+                selectedImage.hidden = isEnabled
+                defaultImage.hidden = !isEnabled
+            } else {
+                selectedImage.hidden = !isEnabled
+                defaultImage.hidden = isEnabled
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
+        for touch in touches
+        {
+            let location: CGPoint = touch.locationInNode(self)
+            
+            if defaultImage.containsPoint(location)
+            {
+                isEnabled = !isEnabled
+                if isEnabled {
+                    action()
+                    selectedImage.hidden = false
+                    defaultImage.hidden = true
+                } else {
+                    disableAction()
+                    selectedImage.hidden = true
+                    defaultImage.hidden = false
+                }
+            }
+            
+        }
+    }
+    
+    func swapImages()
+    {
+        selectedImage.hidden = !selectedImage.hidden
+        defaultImage.hidden = !defaultImage.hidden
+    }
+    
+    // implement this once we have a better handle on things.
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

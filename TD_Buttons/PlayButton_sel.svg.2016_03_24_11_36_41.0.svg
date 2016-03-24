@@ -17,10 +17,10 @@
    id="svg3336"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="PlayButton_active.svg"
-   inkscape:export-filename="/Users/garrykling/Documents/Projects/Games/SpriteKitStudy/TileDoot/TD_Buttons/PlayButton_active.png"
-   inkscape:export-xdpi="60.48"
-   inkscape:export-ydpi="60.48">
+   sodipodi:docname="PlayButton_sel.svg"
+   inkscape:export-filename="/Users/garrykling/Documents/Projects/Games/SpriteKitStudy/TileDoot/TD_Buttons/PlayButton_sel.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs3338">
     <linearGradient
@@ -44,7 +44,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.78599998"
-     inkscape:cx="153.30787"
+     inkscape:cx="-5.8270508"
      inkscape:cy="250.00002"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -52,8 +52,8 @@
      units="px"
      inkscape:window-width="1580"
      inkscape:window-height="1221"
-     inkscape:window-x="94"
-     inkscape:window-y="209"
+     inkscape:window-x="20"
+     inkscape:window-y="43"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata3341">
@@ -73,19 +73,15 @@
      id="layer1"
      transform="translate(0,-552.36214)">
     <circle
-       style="fill:#a44a87;fill-rule:evenodd;stroke:#000000;stroke-width:1.03950095px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       style="fill:#682f55;fill-rule:evenodd;stroke:#000000;stroke-width:1.03950095px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
        id="path3344"
        cx="250"
        cy="802.36212"
-       r="249.48026"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
+       r="249.48026" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot4146"
-       style="fill:#000000;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><flowRegion
+       style="fill:#000000;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;"><flowRegion
          id="flowRegion4148"
          style="fill-opacity:1;fill:url(#linearGradient4158)"><rect
            id="rect4150"
@@ -101,9 +97,7 @@
        x="242.30957"
        y="853.29474"
        id="text4160"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="242.30957"
          y="853.29474"

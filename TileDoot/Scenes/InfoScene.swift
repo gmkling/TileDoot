@@ -40,7 +40,7 @@ class InfoScene: SKScene {
         infoButton.setScale(gridSize/500.0)
         infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*18.0)
         
-        let backButton = TDButton(defaultImageName: "BlueBack_def-500px.png", selectImageName: "BlueBack_sel-500px.png", buttonAction: doBackButton, labelStr: "")
+        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
@@ -70,9 +70,9 @@ class InfoScene: SKScene {
         authorName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*10.0)
         
         // social buttons
-        let webButton = TDButton(defaultImageName: "web-500px.png", selectImageName: "web-500px.png", buttonAction: doWebButton, labelStr: "")
-        let githubButton = TDButton(defaultImageName: "GitHub-Mark-500px.png", selectImageName: "GitHub-Mark-500px.png", buttonAction: doGitButton, labelStr: "")
-        let emailButton = TDButton(defaultImageName: "email-500px.png", selectImageName: "email-500px.png", buttonAction: doEmailButton, labelStr: "")
+        let webButton = TDButton(defaultImageName: "webButton-500px_def.png", selectImageName: "webButton-500px_sel.png", buttonAction: doWebButton, labelStr: "")
+        let githubButton = TDButton(defaultImageName: "gitButton-500px_def.png", selectImageName: "gitButton-500px_sel.png", buttonAction: doGitButton, labelStr: "")
+        let emailButton = TDButton(defaultImageName: "emailButton-500px_def.png", selectImageName: "emailButton-500px_sel.png", buttonAction: doEmailButton, labelStr: "")
         
         webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - gridSize, y:gridSize*9.0)
         webButton.setScale(littleButtonScale)
@@ -87,23 +87,23 @@ class InfoScene: SKScene {
         // further, the whole group should be centered, the way this is here, that is not possible
         
         // change tiles to simple checkboxes when doing the custom class, the tiles are ugly for this
-        let sfxButton = TDButton(defaultImageName: "BlueOFF.png", selectImageName: "BlueON.png", buttonAction: doSfxCheck, labelStr: "")
+        let sfxButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doSfxOn, disableAction: doSfxOff, withState: false, labelStr: "")
         sfxButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*5.0)
         sfxButton.setScale(littleButtonScale)
         
         let sfxLabel = SKLabelNode(fontNamed: "Futura-medium")
-        sfxLabel.text = "Enable SFX"
+        sfxLabel.text = "Sound Effects"
         sfxLabel.fontSize = normalTextSize
         sfxLabel.horizontalAlignmentMode = .Left
         sfxLabel.verticalAlignmentMode = .Center
         sfxLabel.position = CGPoint(x: gridSize*4.5, y: gridSize*5.0)
         
-        let musicButton = TDButton(defaultImageName: "BlueOFF.png", selectImageName: "BlueON.png", buttonAction: doMusicCheck, labelStr: "")
+        let musicButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doMusicOn, disableAction: doMusicOff, withState: false, labelStr: "")
         musicButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*4.0)
         musicButton.setScale(littleButtonScale)
         
         let musicLabel = SKLabelNode(fontNamed: "Futura-medium")
-        musicLabel.text = "Enable Music"
+        musicLabel.text = "Music"
         musicLabel.fontSize = normalTextSize
         musicLabel.horizontalAlignmentMode = .Left
         musicLabel.verticalAlignmentMode = .Center
@@ -156,14 +156,26 @@ class InfoScene: SKScene {
         UIApplication.sharedApplication().openURL(emailUrl)
     }
     
-    func doSfxCheck()
+    func doSfxOn()
     {
-        // toggle SFX
+        print("SFX On")
     }
     
-    func doMusicCheck()
+    func doSfxOff()
     {
-        // toggle music
+        print("SFX Off")
+    }
+    
+    func doMusicOff()
+    {
+        // music off
+        print("Music Off.")
+    }
+    
+    func doMusicOn()
+    {
+        // music on
+        print("Music On")
     }
     
     // touch overrides may not be needed since we are only interested in buttons.
