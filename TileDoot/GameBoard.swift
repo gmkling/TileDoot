@@ -553,7 +553,7 @@ class GameBoard {
         } else
         {
             setB.parent = setA
-            setA.rank++
+            setA.rank += 1
         }
     }
     

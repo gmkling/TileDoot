@@ -14,7 +14,7 @@ class InfoScene: SKScene {
     let appLabel = SKLabelNode(fontNamed:"Futura-medium")
     let aGameBy = SKLabelNode(fontNamed:"Futura-medium")
     let companyName = SKLabelNode(fontNamed:"Futura-medium")
-    var companyLogo = SKSpriteNode(imageNamed: "placeHolder.png")
+    //var companyLogo = SKSpriteNode(imageNamed: "placeHolder.png")
     let codeNdesign = SKLabelNode(fontNamed:"Futura-medium")
     let authorName = SKLabelNode(fontNamed:"Futura-medium")
     // icon panel
@@ -24,7 +24,7 @@ class InfoScene: SKScene {
     
     override func didMoveToView(view: SKView)
     {
-        self.backgroundColor = lightGreenTileColor
+        self.backgroundColor = greenTileColor
         
         
         let gridSize = self.frame.width/12.0
@@ -132,7 +132,10 @@ class InfoScene: SKScene {
     
     func doBackButton()
     {
-        
+        // slide from right, where we came from
+        let mmTransition = SKTransition.pushWithDirection(.Left, duration: 0.5)
+        let mmScene = MainMenuScene(size: view!.bounds.size)
+        scene!.view!.presentScene(mmScene, transition: mmTransition)
     }
     
     func doWebButton()

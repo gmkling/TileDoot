@@ -14,12 +14,14 @@ class MainMenuScene: SKScene {
     let myLabel = SKLabelNode(fontNamed:"Futura-medium")
     var labelBackground = SKSpriteNode()
     
+    
     override func didMoveToView(view: SKView)
     {
-        self.backgroundColor = lightGreenTileColor
-        // since we need a ptr to the method, this happens here instead of at init time
-        let easyButton = TDButton(defaultImageName: "Purple2_def.png", selectImageName: "Purple2_sel.png", buttonAction: doEasyPuzzleMenu, labelStr: "Easy Puzzles")
-        let hardButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: doHardPuzzleMenu, labelStr: "Hard Puzzles")
+        // saving a lot of the old layout info in comments until I finalize the new one.
+        
+        self.backgroundColor = greenTileColor
+        let playButton = TDButton(defaultImageName: "PlayButton_active.png", selectImageName: "PlayButton_sel.png", buttonAction: doPlayButton, labelStr: "")
+        //let hardButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: doHardPuzzleMenu, labelStr: "Hard Puzzles")
         let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo, labelStr: "")
         
         let gridSize = self.frame.width/12.0
@@ -31,23 +33,24 @@ class MainMenuScene: SKScene {
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)*1.33)
         
 //        easyButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        easyButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*11.0)
-        easyButton.setScale(bigButtonScale)
-        
-        hardButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*7.0)
-        hardButton.setScale(bigButtonScale)
+        //playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*11.0)
+        playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*9.0)
+        playButton.setScale(bigButtonScale)
+//        
+//        hardButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*7.0)
+//        hardButton.setScale(bigButtonScale)
         
         infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*2.0)
         infoButton.setScale(gridSize/500.0) // I want this little one @ 1/12 the width
         
         //self.addChild(splashImage)
         self.addChild(myLabel)
-        self.addChild(easyButton)
-        self.addChild(hardButton)
+        self.addChild(playButton)
+//        self.addChild(hardButton)
         self.addChild(infoButton)
     }
     
-    func doEasyPuzzleMenu()
+    func doPlayButton()
     {
         print("Easy Puzzle Button pushed.")
     }
@@ -59,20 +62,26 @@ class MainMenuScene: SKScene {
     
     func doInfo()
     {
-        print("Info button pushed.")
+        // create transition
+        let transition = SKTransition.pushWithDirection(.Right, duration: 0.5)
+        // create the info scene
+        let infoScene = InfoScene(size: view!.bounds.size)
+        // present it
+        scene!.view!.presentScene(infoScene, transition: transition)
+
     }
     
     // touch overrides may not be needed since we are only interested in buttons.
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
-    {
-        
-        for touch in touches
-        {
-            let location = touch.locationInNode(self)
-            // interesting stuff goes here
-        }
-    }
+//    
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+//    {
+//        
+//        for touch in touches
+//        {
+//            let location = touch.locationInNode(self)
+//            // interesting stuff goes here
+//        }
+//    }
     
     override func update(currentTime: CFTimeInterval) {
     
