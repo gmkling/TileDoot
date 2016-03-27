@@ -55,7 +55,11 @@ class MainMenuScene: SKScene {
     
     func doPlayButton()
     {
-        print("Easy Puzzle Button pushed.")
+        // switch to PuzzleDirectoryScene
+        // slide in from the Right
+        let pdsTransition = SKTransition.pushWithDirection(.Left, duration: 0.5)
+        let pdsScene = PuzzleDirectoryScene(size: view!.bounds.size)
+        scene!.view!.presentScene(pdsScene, transition: pdsTransition)
     }
     
     func doHardPuzzleMenu()

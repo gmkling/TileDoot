@@ -10,23 +10,18 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let scene = MainMenuScene()
-        
-        // GameBoardView test
-        //let scene = TestGameBoardView(size: view.bounds.size)
-        
+
         // Configure the view.
         let skView = self.view as! SKView
         //skView.showsFPS = true
         //skView.showsNodeCount = true
         //skView.ignoresSiblingOrder = true
         
-        /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .ResizeFill
+        // create the scene sized to fit
+        let scene = MainMenuScene(size: view!.bounds.size)
         skView.presentScene(scene)
         
     }
