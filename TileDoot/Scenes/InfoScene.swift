@@ -33,7 +33,7 @@ class InfoScene: SKScene {
         let imageWidth = 8.0*gridSize
         
         let normalTextSize = CGFloat(16.0)
-        let smallTextSize = CGFloat(8.0)
+        //let smallTextSize = CGFloat(8.0)
         
         // info icon at top
         let infoButton = SKSpriteNode(imageNamed: "info1.png")

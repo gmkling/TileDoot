@@ -9,7 +9,8 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController
+{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,5 +46,17 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func loadPuzzleData()
+    {
+        // load all of the Puzzle data here, pass it to the scenes
+    }
+    
+    func setupAudio()
+    {
+        // load settings
+        // load sounds
+        // start up the thread
     }
 }

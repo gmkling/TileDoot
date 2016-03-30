@@ -30,7 +30,10 @@ class PuzzleDirectoryScene: SKScene {
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
-        // info button
+        
+        // load the puzzle directory subview
+        // info button is it needed here?
+        // make the node tree
         self.addChild(backButton)
         
     }

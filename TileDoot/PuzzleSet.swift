@@ -246,10 +246,10 @@ class PuzzleSet
             if !checkPuzzleHeader(puzzleHeader)
             {
                 print("Puzzle header skipped at line \(i) in \(fileName)")
-                i++
+                i += 1
                 continue
             }
-            i++
+            i += 1
             // we checked the header, we know it can be unwrapped
             let pDim = Int(puzzleHeader[0])!
             let tailIndex = i+pDim-1
@@ -263,7 +263,7 @@ class PuzzleSet
                     newPuzzle.par = Int(puzzleHeader[1])!
                     newPuzzle.puzzleName = puzzleHeader[2]
                     self.appendPuzzle(newPuzzle)
-                    nPuzzlesRead++
+                    nPuzzlesRead += 1
                 }
             }
             
@@ -300,13 +300,13 @@ class PuzzleSet
     func appendPuzzle(inPuzzle: Puzzle)
     {
         puzzles.append(inPuzzle)
-        nPuzzles++
+        nPuzzles += 1
     }
     
-    func removePuzzleNumber(var puzNum: Int)
+    func removePuzzleNumber(inout puzNum: Int)
     {
         // adjust the index
-        puzNum--
+        puzNum -= 1
         
         // check if index is in range or the puzzles are empty
         if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return }
@@ -315,13 +315,13 @@ class PuzzleSet
         { return }
         
         puzzles.removeAtIndex(puzNum)
-        nPuzzles--
+        nPuzzles -= 1
     }
     
-    func checkForLevel(var puzNum: Int) ->Bool
+    func checkForLevel(inout puzNum: Int) ->Bool
     {
         // adjust the index
-        puzNum--
+        puzNum -= 1
         
         // check if index is in range or the puzzles are empty
         if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return false }
@@ -432,7 +432,7 @@ class Puzzle
 //        var strIndex = stringRep.endIndex.advancedBy(-dimension)
         for index in 0...(dimension-1)
         {
-            var strIndex = stringRep.endIndex.advancedBy(-((dimension*index)+dimension))
+            let strIndex = stringRep.endIndex.advancedBy(-((dimension*index)+dimension))
             for j in 0...(dimension-1)
             {
                 tempString.append(stringRep[strIndex.advancedBy(j)])

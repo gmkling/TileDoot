@@ -92,7 +92,7 @@ class GameBoard {
             
             self.addTile(newTile, loc: Coordinate(x:curCol, y:curRow))
             
-            i++
+            i += 1
         }
         
         return true
@@ -318,7 +318,7 @@ class GameBoard {
         var curType : TileType
         
         // Todo - need this to print out the matrix in the new (left-handed, column major) way
-        for (var i=(tileMap.dimension-1); i>=0; i--){
+        for (var i=(tileMap.dimension-1); i>=0; i -= 1){
             for j in 0..<tileMap.dimension {
                 curLoc = Coordinate(x: j,y: i)
                 curType = getTileType(curLoc)
@@ -358,8 +358,8 @@ class GameBoard {
         if dir == MoveDirection.up
         {
             
-            for (y=maxY; y>=0; y--) {
-                for (x=0; x<=maxX; x++) {
+            for (y=maxY; y>=0; y -= 1) {
+                for (x=0; x<=maxX; x += 1) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
                     {
@@ -368,8 +368,8 @@ class GameBoard {
                 }
             };
         } else if dir == MoveDirection.down {
-            for (y=0; y<=maxY; y++) {
-                for (x=maxX; x>=0; x--) {
+            for (y=0; y<=maxY; y += 1) {
+                for (x=maxX; x>=0; x -= 1) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
                     {
@@ -378,8 +378,8 @@ class GameBoard {
                 }
             };
         } else if dir == MoveDirection.left {
-            for (y=maxY; y>=0; y--) {
-                for (x=0; x<=maxX; x++) {
+            for (y=maxY; y>=0; y -= 1) {
+                for (x=0; x<=maxX; x += 1) {
                     curLoc = Coordinate(x: x,y: y)
                     if checkTileCanMove(curLoc)
                     {
@@ -389,8 +389,8 @@ class GameBoard {
             };
         } else if dir == MoveDirection.right
         {
-            for (x=maxX; x>=0; x--) {
-                for (y=0; y<=maxY; y++) {
+            for (x=maxX; x>=0; x -= 1) {
+                for (y=0; y<=maxY; y += 1) {
                     curLoc = Coordinate(x: x,y: y);
                     if checkTileCanMove(curLoc)
                     {
@@ -450,7 +450,7 @@ class GameBoard {
                 continue
             } else {
                 currentPos = nextPos // otherwise we move ahead
-                numTilesInMove++;
+                numTilesInMove += 1;
             }
             
         }
@@ -521,7 +521,7 @@ class GameBoard {
         return curTile
     }
     
-    func findSet(var node: Tile) ->Tile
+    func findSet(inout node: Tile) ->Tile
     {
         var tempTile : Tile?
         var root = node
@@ -650,7 +650,7 @@ class GameBoard {
                     unionSets(tileMap[loc.x, loc.y], setB: item)
                     
                     // if we merge any tiles, we need to delete - mark the group's parent
-                    findSet(tileMap[loc.x, loc.y]).markedForDelete = true
+                    findSet(&tileMap[loc.x, loc.y]).markedForDelete = true
                     
                     // if this is the 1 and only time this loc is scanned, and is the parent
                     // findSet may return nil and this parent will not get marked
