@@ -56,6 +56,55 @@
 		10AB01391CA485C90092D7AF /* checkBox-500px_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01371CA485C90092D7AF /* checkBox-500px_sel.png */; };
 		10AB013B1CA515BF0092D7AF /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB013A1CA515BF0092D7AF /* GameData.swift */; };
 		10AB013C1CA515BF0092D7AF /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB013A1CA515BF0092D7AF /* GameData.swift */; };
+		10AB013F1CAD9B380092D7AF /* TD_AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB013E1CAD9B380092D7AF /* TD_AudioPlayer.swift */; };
+		10AB01781CADE1ED0092D7AF /* LR_WoodSlide_Stereo1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01421CADE1ED0092D7AF /* LR_WoodSlide_Stereo1.aiff */; };
+		10AB01791CADE1ED0092D7AF /* LR_WoodSlide_Stereo2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01431CADE1ED0092D7AF /* LR_WoodSlide_Stereo2.aiff */; };
+		10AB017A1CADE1ED0092D7AF /* LR_WoodSlide_Stereo3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01441CADE1ED0092D7AF /* LR_WoodSlide_Stereo3.aiff */; };
+		10AB017B1CADE1ED0092D7AF /* LR_WoodSlide_Stereo4.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01451CADE1ED0092D7AF /* LR_WoodSlide_Stereo4.aiff */; };
+		10AB017C1CADE1ED0092D7AF /* LR_WoodSlide_Stereo5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01461CADE1ED0092D7AF /* LR_WoodSlide_Stereo5.aiff */; };
+		10AB017D1CADE1ED0092D7AF /* LR_WoodSlide_Stereo6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01471CADE1ED0092D7AF /* LR_WoodSlide_Stereo6.aiff */; };
+		10AB017E1CADE1ED0092D7AF /* Catch_Mono1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01491CADE1ED0092D7AF /* Catch_Mono1.aiff */; };
+		10AB017F1CADE1ED0092D7AF /* Catch_Mono2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB014A1CADE1ED0092D7AF /* Catch_Mono2.aiff */; };
+		10AB01801CADE1ED0092D7AF /* Catch_Mono3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB014B1CADE1ED0092D7AF /* Catch_Mono3.aiff */; };
+		10AB01811CADE1ED0092D7AF /* Catch_Mono4.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB014C1CADE1ED0092D7AF /* Catch_Mono4.aiff */; };
+		10AB01821CADE1ED0092D7AF /* Catch_Mono5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB014D1CADE1ED0092D7AF /* Catch_Mono5.aiff */; };
+		10AB01831CADE1ED0092D7AF /* Catch_Mono6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB014E1CADE1ED0092D7AF /* Catch_Mono6.aiff */; };
+		10AB01841CADE1ED0092D7AF /* PileTap_Mono1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01501CADE1ED0092D7AF /* PileTap_Mono1.aiff */; };
+		10AB01851CADE1ED0092D7AF /* PileTap_Mono2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01511CADE1ED0092D7AF /* PileTap_Mono2.aiff */; };
+		10AB01861CADE1ED0092D7AF /* PileTap_Mono3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01521CADE1ED0092D7AF /* PileTap_Mono3.aiff */; };
+		10AB01871CADE1ED0092D7AF /* PileTap_Mono4.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01531CADE1ED0092D7AF /* PileTap_Mono4.aiff */; };
+		10AB01881CADE1ED0092D7AF /* PileTap_Mono5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01541CADE1ED0092D7AF /* PileTap_Mono5.aiff */; };
+		10AB01891CADE1ED0092D7AF /* PileTap_Mono6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01551CADE1ED0092D7AF /* PileTap_Mono6.aiff */; };
+		10AB018A1CADE1ED0092D7AF /* PileTap_Mono7.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01561CADE1ED0092D7AF /* PileTap_Mono7.aiff */; };
+		10AB018B1CADE1ED0092D7AF /* PileTap_Mono8.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01571CADE1ED0092D7AF /* PileTap_Mono8.aiff */; };
+		10AB018C1CADE1ED0092D7AF /* RL_WoodSlide_Stereo1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01591CADE1ED0092D7AF /* RL_WoodSlide_Stereo1.aiff */; };
+		10AB018D1CADE1ED0092D7AF /* RL_WoodSlide_Stereo2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB015A1CADE1ED0092D7AF /* RL_WoodSlide_Stereo2.aiff */; };
+		10AB018E1CADE1ED0092D7AF /* RL_WoodSlide_Stereo3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB015B1CADE1ED0092D7AF /* RL_WoodSlide_Stereo3.aiff */; };
+		10AB018F1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB015C1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff */; };
+		10AB01901CADE1ED0092D7AF /* SingleTap_Mono1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB015E1CADE1ED0092D7AF /* SingleTap_Mono1.aiff */; };
+		10AB01911CADE1ED0092D7AF /* SingleTap_Mono2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB015F1CADE1ED0092D7AF /* SingleTap_Mono2.aiff */; };
+		10AB01921CADE1ED0092D7AF /* SingleTap_Mono3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01601CADE1ED0092D7AF /* SingleTap_Mono3.aiff */; };
+		10AB01931CADE1ED0092D7AF /* SingleTap_Mono4.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01611CADE1ED0092D7AF /* SingleTap_Mono4.aiff */; };
+		10AB01941CADE1ED0092D7AF /* SingleTap_Mono5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01621CADE1ED0092D7AF /* SingleTap_Mono5.aiff */; };
+		10AB01951CADE1ED0092D7AF /* SingleTap_Mono6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01631CADE1ED0092D7AF /* SingleTap_Mono6.aiff */; };
+		10AB01961CADE1ED0092D7AF /* SingleTap_Mono7.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01641CADE1ED0092D7AF /* SingleTap_Mono7.aiff */; };
+		10AB01971CADE1ED0092D7AF /* SingleTap_Mono8.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01651CADE1ED0092D7AF /* SingleTap_Mono8.aiff */; };
+		10AB01981CADE1ED0092D7AF /* SingleTapLoud_Mono1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01671CADE1ED0092D7AF /* SingleTapLoud_Mono1.aiff */; };
+		10AB01991CADE1ED0092D7AF /* SingleTapLoud_Mono2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01681CADE1ED0092D7AF /* SingleTapLoud_Mono2.aiff */; };
+		10AB019A1CADE1ED0092D7AF /* SingleTapLoud_Mono3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01691CADE1ED0092D7AF /* SingleTapLoud_Mono3.aiff */; };
+		10AB019B1CADE1ED0092D7AF /* SingleTapLoud_Mono4.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB016A1CADE1ED0092D7AF /* SingleTapLoud_Mono4.aiff */; };
+		10AB019C1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB016B1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff */; };
+		10AB019D1CADE1ED0092D7AF /* SingleTapLoud_Mono6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB016C1CADE1ED0092D7AF /* SingleTapLoud_Mono6.aiff */; };
+		10AB019E1CADE1ED0092D7AF /* SingleTapLoud_Mono7.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB016D1CADE1ED0092D7AF /* SingleTapLoud_Mono7.aiff */; };
+		10AB019F1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB016E1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff */; };
+		10AB01A01CADE1ED0092D7AF /* SmallFall_Stereo1.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01701CADE1ED0092D7AF /* SmallFall_Stereo1.aiff */; };
+		10AB01A11CADE1ED0092D7AF /* SmallFall_Stereo2.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01711CADE1ED0092D7AF /* SmallFall_Stereo2.aiff */; };
+		10AB01A21CADE1ED0092D7AF /* SmallFall_Stereo3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01721CADE1ED0092D7AF /* SmallFall_Stereo3.aiff */; };
+		10AB01A31CADE1ED0092D7AF /* SmallFall_Stereo4.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01731CADE1ED0092D7AF /* SmallFall_Stereo4.aiff */; };
+		10AB01A41CADE1ED0092D7AF /* SmallFall_Stereo5.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01741CADE1ED0092D7AF /* SmallFall_Stereo5.aiff */; };
+		10AB01A51CADE1ED0092D7AF /* SmallFall_Stereo6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01751CADE1ED0092D7AF /* SmallFall_Stereo6.aiff */; };
+		10AB01A61CADE1ED0092D7AF /* SmallFall_Stereo7.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01761CADE1ED0092D7AF /* SmallFall_Stereo7.aiff */; };
+		10AB01A71CADE1ED0092D7AF /* SmallFall_Stereo8.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01771CADE1ED0092D7AF /* SmallFall_Stereo8.aiff */; };
 		10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6A1C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6D1C44F02900AD8DD7 /* TDButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */; };
@@ -208,6 +257,55 @@
 		10AB01361CA485C90092D7AF /* checkBox-500px_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkBox-500px_def.png"; path = "../TileAssets/MiscButtons/checkBox-500px_def.png"; sourceTree = "<group>"; };
 		10AB01371CA485C90092D7AF /* checkBox-500px_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkBox-500px_sel.png"; path = "../TileAssets/MiscButtons/checkBox-500px_sel.png"; sourceTree = "<group>"; };
 		10AB013A1CA515BF0092D7AF /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		10AB013E1CAD9B380092D7AF /* TD_AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TD_AudioPlayer.swift; sourceTree = "<group>"; };
+		10AB01421CADE1ED0092D7AF /* LR_WoodSlide_Stereo1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = LR_WoodSlide_Stereo1.aiff; sourceTree = "<group>"; };
+		10AB01431CADE1ED0092D7AF /* LR_WoodSlide_Stereo2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = LR_WoodSlide_Stereo2.aiff; sourceTree = "<group>"; };
+		10AB01441CADE1ED0092D7AF /* LR_WoodSlide_Stereo3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = LR_WoodSlide_Stereo3.aiff; sourceTree = "<group>"; };
+		10AB01451CADE1ED0092D7AF /* LR_WoodSlide_Stereo4.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = LR_WoodSlide_Stereo4.aiff; sourceTree = "<group>"; };
+		10AB01461CADE1ED0092D7AF /* LR_WoodSlide_Stereo5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = LR_WoodSlide_Stereo5.aiff; sourceTree = "<group>"; };
+		10AB01471CADE1ED0092D7AF /* LR_WoodSlide_Stereo6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = LR_WoodSlide_Stereo6.aiff; sourceTree = "<group>"; };
+		10AB01491CADE1ED0092D7AF /* Catch_Mono1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Catch_Mono1.aiff; sourceTree = "<group>"; };
+		10AB014A1CADE1ED0092D7AF /* Catch_Mono2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Catch_Mono2.aiff; sourceTree = "<group>"; };
+		10AB014B1CADE1ED0092D7AF /* Catch_Mono3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Catch_Mono3.aiff; sourceTree = "<group>"; };
+		10AB014C1CADE1ED0092D7AF /* Catch_Mono4.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Catch_Mono4.aiff; sourceTree = "<group>"; };
+		10AB014D1CADE1ED0092D7AF /* Catch_Mono5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Catch_Mono5.aiff; sourceTree = "<group>"; };
+		10AB014E1CADE1ED0092D7AF /* Catch_Mono6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Catch_Mono6.aiff; sourceTree = "<group>"; };
+		10AB01501CADE1ED0092D7AF /* PileTap_Mono1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono1.aiff; sourceTree = "<group>"; };
+		10AB01511CADE1ED0092D7AF /* PileTap_Mono2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono2.aiff; sourceTree = "<group>"; };
+		10AB01521CADE1ED0092D7AF /* PileTap_Mono3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono3.aiff; sourceTree = "<group>"; };
+		10AB01531CADE1ED0092D7AF /* PileTap_Mono4.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono4.aiff; sourceTree = "<group>"; };
+		10AB01541CADE1ED0092D7AF /* PileTap_Mono5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono5.aiff; sourceTree = "<group>"; };
+		10AB01551CADE1ED0092D7AF /* PileTap_Mono6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono6.aiff; sourceTree = "<group>"; };
+		10AB01561CADE1ED0092D7AF /* PileTap_Mono7.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono7.aiff; sourceTree = "<group>"; };
+		10AB01571CADE1ED0092D7AF /* PileTap_Mono8.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = PileTap_Mono8.aiff; sourceTree = "<group>"; };
+		10AB01591CADE1ED0092D7AF /* RL_WoodSlide_Stereo1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = RL_WoodSlide_Stereo1.aiff; sourceTree = "<group>"; };
+		10AB015A1CADE1ED0092D7AF /* RL_WoodSlide_Stereo2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = RL_WoodSlide_Stereo2.aiff; sourceTree = "<group>"; };
+		10AB015B1CADE1ED0092D7AF /* RL_WoodSlide_Stereo3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = RL_WoodSlide_Stereo3.aiff; sourceTree = "<group>"; };
+		10AB015C1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = RL_WoodSlide_Stereo4.aiff; sourceTree = "<group>"; };
+		10AB015E1CADE1ED0092D7AF /* SingleTap_Mono1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono1.aiff; sourceTree = "<group>"; };
+		10AB015F1CADE1ED0092D7AF /* SingleTap_Mono2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono2.aiff; sourceTree = "<group>"; };
+		10AB01601CADE1ED0092D7AF /* SingleTap_Mono3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono3.aiff; sourceTree = "<group>"; };
+		10AB01611CADE1ED0092D7AF /* SingleTap_Mono4.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono4.aiff; sourceTree = "<group>"; };
+		10AB01621CADE1ED0092D7AF /* SingleTap_Mono5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono5.aiff; sourceTree = "<group>"; };
+		10AB01631CADE1ED0092D7AF /* SingleTap_Mono6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono6.aiff; sourceTree = "<group>"; };
+		10AB01641CADE1ED0092D7AF /* SingleTap_Mono7.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono7.aiff; sourceTree = "<group>"; };
+		10AB01651CADE1ED0092D7AF /* SingleTap_Mono8.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTap_Mono8.aiff; sourceTree = "<group>"; };
+		10AB01671CADE1ED0092D7AF /* SingleTapLoud_Mono1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono1.aiff; sourceTree = "<group>"; };
+		10AB01681CADE1ED0092D7AF /* SingleTapLoud_Mono2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono2.aiff; sourceTree = "<group>"; };
+		10AB01691CADE1ED0092D7AF /* SingleTapLoud_Mono3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono3.aiff; sourceTree = "<group>"; };
+		10AB016A1CADE1ED0092D7AF /* SingleTapLoud_Mono4.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono4.aiff; sourceTree = "<group>"; };
+		10AB016B1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono5.aiff; sourceTree = "<group>"; };
+		10AB016C1CADE1ED0092D7AF /* SingleTapLoud_Mono6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono6.aiff; sourceTree = "<group>"; };
+		10AB016D1CADE1ED0092D7AF /* SingleTapLoud_Mono7.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono7.aiff; sourceTree = "<group>"; };
+		10AB016E1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SingleTapLoud_Mono8.aiff; sourceTree = "<group>"; };
+		10AB01701CADE1ED0092D7AF /* SmallFall_Stereo1.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo1.aiff; sourceTree = "<group>"; };
+		10AB01711CADE1ED0092D7AF /* SmallFall_Stereo2.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo2.aiff; sourceTree = "<group>"; };
+		10AB01721CADE1ED0092D7AF /* SmallFall_Stereo3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo3.aiff; sourceTree = "<group>"; };
+		10AB01731CADE1ED0092D7AF /* SmallFall_Stereo4.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo4.aiff; sourceTree = "<group>"; };
+		10AB01741CADE1ED0092D7AF /* SmallFall_Stereo5.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo5.aiff; sourceTree = "<group>"; };
+		10AB01751CADE1ED0092D7AF /* SmallFall_Stereo6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo6.aiff; sourceTree = "<group>"; };
+		10AB01761CADE1ED0092D7AF /* SmallFall_Stereo7.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo7.aiff; sourceTree = "<group>"; };
+		10AB01771CADE1ED0092D7AF /* SmallFall_Stereo8.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo8.aiff; sourceTree = "<group>"; };
 		10B34C681C44E63400AD8DD7 /* TDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDButton.swift; sourceTree = "<group>"; };
 		10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDButtonTest.swift; path = TileDootUITests/TDButtonTest.swift; sourceTree = "<group>"; };
 		10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SplashGlass_test.JPG; sourceTree = "<group>"; };
@@ -340,6 +438,8 @@
 		107698BA1C320292006051B2 /* TileDoot */ = {
 			isa = PBXGroup;
 			children = (
+				10AB01401CADE1ED0092D7AF /* AudioAssets */,
+				10AB013D1CAD9B070092D7AF /* Audio */,
 				10B34D161C5A0A5E00AD8DD7 /* Scenes */,
 				107698BB1C320292006051B2 /* AppDelegate.swift */,
 				107698C11C320292006051B2 /* GameViewController.swift */,
@@ -400,6 +500,126 @@
 				10AB012F1CA480DE0092D7AF /* webButton-500px_sel.png */,
 			);
 			name = InfoButtons;
+			sourceTree = "<group>";
+		};
+		10AB013D1CAD9B070092D7AF /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				10AB013E1CAD9B380092D7AF /* TD_AudioPlayer.swift */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		10AB01401CADE1ED0092D7AF /* AudioAssets */ = {
+			isa = PBXGroup;
+			children = (
+				10AB01411CADE1ED0092D7AF /* LR_WoodSlide_Stereo */,
+				10AB01481CADE1ED0092D7AF /* MonoCatch */,
+				10AB014F1CADE1ED0092D7AF /* PileTap_Mono */,
+				10AB01581CADE1ED0092D7AF /* RL_WoodSlide_Stereo_good */,
+				10AB015D1CADE1ED0092D7AF /* SingleTaps_Mono */,
+				10AB01661CADE1ED0092D7AF /* SingleTapsLoud_Mono */,
+				10AB016F1CADE1ED0092D7AF /* SmallFall_Stereo */,
+			);
+			name = AudioAssets;
+			path = ../AudioAssets;
+			sourceTree = "<group>";
+		};
+		10AB01411CADE1ED0092D7AF /* LR_WoodSlide_Stereo */ = {
+			isa = PBXGroup;
+			children = (
+				10AB01421CADE1ED0092D7AF /* LR_WoodSlide_Stereo1.aiff */,
+				10AB01431CADE1ED0092D7AF /* LR_WoodSlide_Stereo2.aiff */,
+				10AB01441CADE1ED0092D7AF /* LR_WoodSlide_Stereo3.aiff */,
+				10AB01451CADE1ED0092D7AF /* LR_WoodSlide_Stereo4.aiff */,
+				10AB01461CADE1ED0092D7AF /* LR_WoodSlide_Stereo5.aiff */,
+				10AB01471CADE1ED0092D7AF /* LR_WoodSlide_Stereo6.aiff */,
+			);
+			path = LR_WoodSlide_Stereo;
+			sourceTree = "<group>";
+		};
+		10AB01481CADE1ED0092D7AF /* MonoCatch */ = {
+			isa = PBXGroup;
+			children = (
+				10AB01491CADE1ED0092D7AF /* Catch_Mono1.aiff */,
+				10AB014A1CADE1ED0092D7AF /* Catch_Mono2.aiff */,
+				10AB014B1CADE1ED0092D7AF /* Catch_Mono3.aiff */,
+				10AB014C1CADE1ED0092D7AF /* Catch_Mono4.aiff */,
+				10AB014D1CADE1ED0092D7AF /* Catch_Mono5.aiff */,
+				10AB014E1CADE1ED0092D7AF /* Catch_Mono6.aiff */,
+			);
+			path = MonoCatch;
+			sourceTree = "<group>";
+		};
+		10AB014F1CADE1ED0092D7AF /* PileTap_Mono */ = {
+			isa = PBXGroup;
+			children = (
+				10AB01501CADE1ED0092D7AF /* PileTap_Mono1.aiff */,
+				10AB01511CADE1ED0092D7AF /* PileTap_Mono2.aiff */,
+				10AB01521CADE1ED0092D7AF /* PileTap_Mono3.aiff */,
+				10AB01531CADE1ED0092D7AF /* PileTap_Mono4.aiff */,
+				10AB01541CADE1ED0092D7AF /* PileTap_Mono5.aiff */,
+				10AB01551CADE1ED0092D7AF /* PileTap_Mono6.aiff */,
+				10AB01561CADE1ED0092D7AF /* PileTap_Mono7.aiff */,
+				10AB01571CADE1ED0092D7AF /* PileTap_Mono8.aiff */,
+			);
+			path = PileTap_Mono;
+			sourceTree = "<group>";
+		};
+		10AB01581CADE1ED0092D7AF /* RL_WoodSlide_Stereo_good */ = {
+			isa = PBXGroup;
+			children = (
+				10AB01591CADE1ED0092D7AF /* RL_WoodSlide_Stereo1.aiff */,
+				10AB015A1CADE1ED0092D7AF /* RL_WoodSlide_Stereo2.aiff */,
+				10AB015B1CADE1ED0092D7AF /* RL_WoodSlide_Stereo3.aiff */,
+				10AB015C1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff */,
+			);
+			path = RL_WoodSlide_Stereo_good;
+			sourceTree = "<group>";
+		};
+		10AB015D1CADE1ED0092D7AF /* SingleTaps_Mono */ = {
+			isa = PBXGroup;
+			children = (
+				10AB015E1CADE1ED0092D7AF /* SingleTap_Mono1.aiff */,
+				10AB015F1CADE1ED0092D7AF /* SingleTap_Mono2.aiff */,
+				10AB01601CADE1ED0092D7AF /* SingleTap_Mono3.aiff */,
+				10AB01611CADE1ED0092D7AF /* SingleTap_Mono4.aiff */,
+				10AB01621CADE1ED0092D7AF /* SingleTap_Mono5.aiff */,
+				10AB01631CADE1ED0092D7AF /* SingleTap_Mono6.aiff */,
+				10AB01641CADE1ED0092D7AF /* SingleTap_Mono7.aiff */,
+				10AB01651CADE1ED0092D7AF /* SingleTap_Mono8.aiff */,
+			);
+			path = SingleTaps_Mono;
+			sourceTree = "<group>";
+		};
+		10AB01661CADE1ED0092D7AF /* SingleTapsLoud_Mono */ = {
+			isa = PBXGroup;
+			children = (
+				10AB01671CADE1ED0092D7AF /* SingleTapLoud_Mono1.aiff */,
+				10AB01681CADE1ED0092D7AF /* SingleTapLoud_Mono2.aiff */,
+				10AB01691CADE1ED0092D7AF /* SingleTapLoud_Mono3.aiff */,
+				10AB016A1CADE1ED0092D7AF /* SingleTapLoud_Mono4.aiff */,
+				10AB016B1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff */,
+				10AB016C1CADE1ED0092D7AF /* SingleTapLoud_Mono6.aiff */,
+				10AB016D1CADE1ED0092D7AF /* SingleTapLoud_Mono7.aiff */,
+				10AB016E1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff */,
+			);
+			path = SingleTapsLoud_Mono;
+			sourceTree = "<group>";
+		};
+		10AB016F1CADE1ED0092D7AF /* SmallFall_Stereo */ = {
+			isa = PBXGroup;
+			children = (
+				10AB01701CADE1ED0092D7AF /* SmallFall_Stereo1.aiff */,
+				10AB01711CADE1ED0092D7AF /* SmallFall_Stereo2.aiff */,
+				10AB01721CADE1ED0092D7AF /* SmallFall_Stereo3.aiff */,
+				10AB01731CADE1ED0092D7AF /* SmallFall_Stereo4.aiff */,
+				10AB01741CADE1ED0092D7AF /* SmallFall_Stereo5.aiff */,
+				10AB01751CADE1ED0092D7AF /* SmallFall_Stereo6.aiff */,
+				10AB01761CADE1ED0092D7AF /* SmallFall_Stereo7.aiff */,
+				10AB01771CADE1ED0092D7AF /* SmallFall_Stereo8.aiff */,
+			);
+			path = SmallFall_Stereo;
 			sourceTree = "<group>";
 		};
 		10B34C671C44E60300AD8DD7 /* UI_Nodes */ = {
@@ -591,75 +811,123 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10AB01831CADE1ED0092D7AF /* Catch_Mono6.aiff in Resources */,
 				10B34CC31C4DA4B700AD8DD7 /* LGreen5_test.png in Resources */,
+				10AB018C1CADE1ED0092D7AF /* RL_WoodSlide_Stereo1.aiff in Resources */,
 				10B34CB21C4B935F00AD8DD7 /* Yellow4_test.png in Resources */,
 				10B34CEE1C4F87BE00AD8DD7 /* Red4_test.png in Resources */,
 				10B34CF61C516DAC00AD8DD7 /* MainMenu1.png in Resources */,
 				10B34CAE1C4B935F00AD8DD7 /* Yellow2_test.png in Resources */,
+				10AB018A1CADE1ED0092D7AF /* PileTap_Mono7.aiff in Resources */,
 				107698CA1C320292006051B2 /* LaunchScreen.storyboard in Resources */,
 				10B34CD31C4E32DB00AD8DD7 /* Orange3_test.png in Resources */,
+				10AB01A51CADE1ED0092D7AF /* SmallFall_Stereo6.aiff in Resources */,
+				10AB019E1CADE1ED0092D7AF /* SingleTapLoud_Mono7.aiff in Resources */,
+				10AB01A11CADE1ED0092D7AF /* SmallFall_Stereo2.aiff in Resources */,
 				10B34CB01C4B935F00AD8DD7 /* Yellow3_test.png in Resources */,
 				10AB01301CA480DE0092D7AF /* emailButton-500px_def.png in Resources */,
+				10AB01841CADE1ED0092D7AF /* PileTap_Mono1.aiff in Resources */,
 				10B34D111C536C9500AD8DD7 /* Red1_sel.png in Resources */,
+				10AB01821CADE1ED0092D7AF /* Catch_Mono5.aiff in Resources */,
 				10AB01341CA480DE0092D7AF /* webButton-500px_def.png in Resources */,
 				10B34CD71C4E32DB00AD8DD7 /* Orange5_test.png in Resources */,
 				10B34CDB1C4E32DB00AD8DD7 /* Purple2_test.png in Resources */,
 				10AB01201CA35D950092D7AF /* PlayButton_sel.png in Resources */,
+				10AB01A31CADE1ED0092D7AF /* SmallFall_Stereo4.aiff in Resources */,
 				1023D2AC1C5C2E57005DBAB9 /* TileSheetSample.png in Resources */,
+				10AB01881CADE1ED0092D7AF /* PileTap_Mono5.aiff in Resources */,
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
+				10AB01921CADE1ED0092D7AF /* SingleTap_Mono3.aiff in Resources */,
 				1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */,
+				10AB019C1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff in Resources */,
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
 				10AB01381CA485C90092D7AF /* checkBox-500px_def.png in Resources */,
 				10B34CAA1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
 				1023D2A81C5C2713005DBAB9 /* BlueBack_sel-500px.png in Resources */,
+				10AB017B1CADE1ED0092D7AF /* LR_WoodSlide_Stereo4.aiff in Resources */,
 				10B34CD91C4E32DB00AD8DD7 /* Purple1_test.png in Resources */,
+				10AB01991CADE1ED0092D7AF /* SingleTapLoud_Mono2.aiff in Resources */,
+				10AB01A71CADE1ED0092D7AF /* SmallFall_Stereo8.aiff in Resources */,
 				10B34CDD1C4E32DB00AD8DD7 /* Purple3_test.png in Resources */,
 				10B34CF91C5221F200AD8DD7 /* Todos in Resources */,
+				10AB01981CADE1ED0092D7AF /* SingleTapLoud_Mono1.aiff in Resources */,
 				10AB01241CA46E100092D7AF /* PurplePlay_sel.png in Resources */,
 				10B34CBD1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */,
+				10AB01961CADE1ED0092D7AF /* SingleTap_Mono7.aiff in Resources */,
 				10B34CDF1C4E32DB00AD8DD7 /* Purple4_test.png in Resources */,
+				10AB018F1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff in Resources */,
 				10B34D141C54C49D00AD8DD7 /* info1.png in Resources */,
 				1023D2A71C5C2713005DBAB9 /* BlueBack_def-500px.png in Resources */,
 				10AB01391CA485C90092D7AF /* checkBox-500px_sel.png in Resources */,
 				10B34CB41C4B935F00AD8DD7 /* Yellow5_test.png in Resources */,
 				10AB01321CA480DE0092D7AF /* gitButton-500px_def.png in Resources */,
+				10AB01901CADE1ED0092D7AF /* SingleTap_Mono1.aiff in Resources */,
+				10AB017A1CADE1ED0092D7AF /* LR_WoodSlide_Stereo3.aiff in Resources */,
 				10B34CA41C4B935F00AD8DD7 /* DGreen1_test.png in Resources */,
 				10B34C8F1C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
+				10AB019D1CADE1ED0092D7AF /* SingleTapLoud_Mono6.aiff in Resources */,
 				1023D2A41C5B58F0005DBAB9 /* BlueON.png in Resources */,
 				10AB01311CA480DE0092D7AF /* emailButton-500px_sel.png in Resources */,
+				10AB019A1CADE1ED0092D7AF /* SingleTapLoud_Mono3.aiff in Resources */,
+				10AB017C1CADE1ED0092D7AF /* LR_WoodSlide_Stereo5.aiff in Resources */,
 				10AB01331CA480DE0092D7AF /* gitButton-500px_sel.png in Resources */,
+				10AB017E1CADE1ED0092D7AF /* Catch_Mono1.aiff in Resources */,
 				10AB01231CA46E100092D7AF /* PurplePlay_def.png in Resources */,
 				10B34D021C536C1700AD8DD7 /* Purple2_def.png in Resources */,
 				10B34D0A1C536C1700AD8DD7 /* Red1_def.png in Resources */,
 				10B34D061C536C1700AD8DD7 /* Purple2_sel.png in Resources */,
 				10B34CEA1C4F87BE00AD8DD7 /* Red2_test.png in Resources */,
+				10AB019B1CADE1ED0092D7AF /* SingleTapLoud_Mono4.aiff in Resources */,
 				10B34CEC1C4F87BE00AD8DD7 /* Red3_test.png in Resources */,
+				10AB01951CADE1ED0092D7AF /* SingleTap_Mono6.aiff in Resources */,
+				10AB01861CADE1ED0092D7AF /* PileTap_Mono3.aiff in Resources */,
+				10AB01A41CADE1ED0092D7AF /* SmallFall_Stereo5.aiff in Resources */,
+				10AB01971CADE1ED0092D7AF /* SingleTap_Mono8.aiff in Resources */,
 				10B34CD11C4E32DB00AD8DD7 /* Orange2_test.png in Resources */,
+				10AB01A01CADE1ED0092D7AF /* SmallFall_Stereo1.aiff in Resources */,
 				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
 				10AB01271CA474F00092D7AF /* PurpleMenu_def.png in Resources */,
+				10AB01801CADE1ED0092D7AF /* Catch_Mono3.aiff in Resources */,
+				10AB01931CADE1ED0092D7AF /* SingleTap_Mono4.aiff in Resources */,
+				10AB019F1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff in Resources */,
+				10AB018B1CADE1ED0092D7AF /* PileTap_Mono8.aiff in Resources */,
 				10B34CCF1C4E32DB00AD8DD7 /* Orange1_test.png in Resources */,
 				10B34CE81C4F87BE00AD8DD7 /* Red1_test.png in Resources */,
 				1023D2AD1C5C2E57005DBAB9 /* TileSheetSample.xcf in Resources */,
+				10AB017D1CADE1ED0092D7AF /* LR_WoodSlide_Stereo6.aiff in Resources */,
+				10AB01A21CADE1ED0092D7AF /* SmallFall_Stereo3.aiff in Resources */,
 				10B34CD51C4E32DB00AD8DD7 /* Orange4_test.png in Resources */,
 				10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */,
 				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
 				10AB01351CA480DE0092D7AF /* webButton-500px_sel.png in Resources */,
+				10AB01851CADE1ED0092D7AF /* PileTap_Mono2.aiff in Resources */,
 				10B34CA61C4B935F00AD8DD7 /* DGreen2_test.png in Resources */,
+				10AB01781CADE1ED0092D7AF /* LR_WoodSlide_Stereo1.aiff in Resources */,
+				10AB018D1CADE1ED0092D7AF /* RL_WoodSlide_Stereo2.aiff in Resources */,
 				1023D2A01C5B5057005DBAB9 /* email-500px.png in Resources */,
+				10AB018E1CADE1ED0092D7AF /* RL_WoodSlide_Stereo3.aiff in Resources */,
+				10AB01A61CADE1ED0092D7AF /* SmallFall_Stereo7.aiff in Resources */,
 				10B34CE11C4E32DB00AD8DD7 /* Purple5_test.png in Resources */,
 				10B34CC11C4DA4B700AD8DD7 /* LGreen4_test.png in Resources */,
 				10AB011F1CA35D950092D7AF /* PlayButton_active.png in Resources */,
 				1023D2A31C5B58F0005DBAB9 /* BlueOFF.png in Resources */,
 				10B34C931C4A4A0200AD8DD7 /* Blue3_test.png in Resources */,
+				10AB01911CADE1ED0092D7AF /* SingleTap_Mono2.aiff in Resources */,
+				10AB01811CADE1ED0092D7AF /* Catch_Mono4.aiff in Resources */,
+				10AB01941CADE1ED0092D7AF /* SingleTap_Mono5.aiff in Resources */,
+				10AB01871CADE1ED0092D7AF /* PileTap_Mono4.aiff in Resources */,
 				10B34CBB1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */,
 				10B34CAC1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
+				10AB017F1CADE1ED0092D7AF /* Catch_Mono2.aiff in Resources */,
 				10B34C951C4A4A0200AD8DD7 /* Blue4_test.png in Resources */,
 				10AB01281CA474F00092D7AF /* PurpleMenu_sel.png in Resources */,
+				10AB01791CADE1ED0092D7AF /* LR_WoodSlide_Stereo2.aiff in Resources */,
 				10B34CF71C516DAC00AD8DD7 /* MainMenu2.png in Resources */,
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
 				1023D2B01C6421A8005DBAB9 /* levels_1.txt in Resources */,
 				10B34C991C4A4A0200AD8DD7 /* Yellow1_test.png in Resources */,
 				10B34CA81C4B935F00AD8DD7 /* DGreen3_test.png in Resources */,
+				10AB01891CADE1ED0092D7AF /* PileTap_Mono6.aiff in Resources */,
 				1023D29C1C5AE38A005DBAB9 /* GitHub-Mark-500px.png in Resources */,
 				10B34C911C4A4A0200AD8DD7 /* Blue2_test.png in Resources */,
 			);
@@ -729,6 +997,7 @@
 				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
 				10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
+				10AB013F1CAD9B380092D7AF /* TD_AudioPlayer.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
 				10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */,
 				10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */,

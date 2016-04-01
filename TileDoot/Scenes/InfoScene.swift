@@ -17,10 +17,9 @@ class InfoScene: SKScene {
     //var companyLogo = SKSpriteNode(imageNamed: "placeHolder.png")
     let codeNdesign = SKLabelNode(fontNamed:"Futura-medium")
     let authorName = SKLabelNode(fontNamed:"Futura-medium")
-    // icon panel
-    // radio buttons
-    //var sfxButton = TDButton?()
-    //var musicButton = TDButton?()
+    
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func didMoveToView(view: SKView)
     {
@@ -152,29 +151,41 @@ class InfoScene: SKScene {
     
     func doEmailButton()
     {
-        let emailUrl = NSURL(string: "mailto: garry.kling@gmail.com")!
-        UIApplication.sharedApplication().openURL(emailUrl)
+        // this is the old way, and it crashes and burns
+        // let emailUrl = NSURL(string: "mailto: garry.kling@gmail.com")!
+        // UIApplication.sharedApplication().openURL(emailUrl)
     }
     
     func doSfxOn()
     {
+        // retain the default
+        defaults.setBool(true, forKey: sfx_key)
+        // update the player
         print("SFX On")
     }
     
     func doSfxOff()
     {
+        // retain default
+        defaults.setBool(false, forKey: sfx_key)
+        // update the player
         print("SFX Off")
     }
     
     func doMusicOff()
     {
-        // music off
+        // retain the default
+        defaults.setBool(false, forKey: music_key)
+        // update the player
         print("Music Off.")
     }
     
     func doMusicOn()
     {
-        // music on
+        // retain the default
+        defaults.setBool(true, forKey: music_key)
+        
+        // update the player
         print("Music On")
     }
     

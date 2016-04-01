@@ -11,6 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController
 {
+    let audioEngine = TD_AudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class GameViewController: UIViewController
         //skView.ignoresSiblingOrder = true
         
         // create the scene sized to fit
+        setupAudio()
         let scene = MainMenuScene(size: view!.bounds.size)
         skView.presentScene(scene)
         
@@ -55,8 +57,6 @@ class GameViewController: UIViewController
     
     func setupAudio()
     {
-        // load settings
-        // load sounds
-        // start up the thread
+        // should be set up by the init on TD_AudioPlayer
     }
 }

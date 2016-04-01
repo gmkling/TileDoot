@@ -16,6 +16,9 @@ enum progressType : Int
     case some, complete
 }
 
+let sfx_key = "SFX_ON"
+let music_key = "MUSIC_ON"
+
 struct GameData
 {
     // audio settings
