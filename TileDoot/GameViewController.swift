@@ -25,6 +25,7 @@ class GameViewController: UIViewController
         // create the scene sized to fit
         setupAudio()
         let scene = MainMenuScene(size: view!.bounds.size)
+        scene.audioDelegate = audioEngine
         skView.presentScene(scene)
         
     }

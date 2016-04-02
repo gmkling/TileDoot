@@ -14,6 +14,8 @@ class GamePlayScene: SKScene {
     var puzzleData : Puzzle?
     var gameView : GameBoardView?
     
+    var audioDelegate : TD_AudioPlayer?
+    
     func setPuzzle(puz: Puzzle)
     {
         // how to error check this?

@@ -14,6 +14,7 @@ class MainMenuScene: SKScene {
     let myLabel = SKLabelNode(fontNamed:"Futura-medium")
     var labelBackground = SKSpriteNode()
     
+    var audioDelegate : TD_AudioPlayer?
     
     override func didMoveToView(view: SKView)
     {
@@ -55,10 +56,13 @@ class MainMenuScene: SKScene {
     
     func doPlayButton()
     {
+        audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
         // switch to PuzzleDirectoryScene
         // slide in from the Right
         let pdsTransition = SKTransition.pushWithDirection(.Left, duration: 0.5)
         let pdsScene = PuzzleDirectoryScene(size: view!.bounds.size)
+        
+        pdsScene.audioDelegate = audioDelegate
         scene!.view!.presentScene(pdsScene, transition: pdsTransition)
     }
     
@@ -69,10 +73,12 @@ class MainMenuScene: SKScene {
     
     func doInfo()
     {
+        audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
         // create transition
         let transition = SKTransition.pushWithDirection(.Right, duration: 0.5)
         // create the info scene
         let infoScene = InfoScene(size: view!.bounds.size)
+        infoScene.audioDelegate = audioDelegate
         // present it
         scene!.view!.presentScene(infoScene, transition: transition)
 

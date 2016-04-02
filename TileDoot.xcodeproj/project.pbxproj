@@ -15,7 +15,6 @@
 		1023D2A71C5C2713005DBAB9 /* BlueBack_def-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2A51C5C2713005DBAB9 /* BlueBack_def-500px.png */; };
 		1023D2A81C5C2713005DBAB9 /* BlueBack_sel-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2A61C5C2713005DBAB9 /* BlueBack_sel-500px.png */; };
 		1023D2AC1C5C2E57005DBAB9 /* TileSheetSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2AA1C5C2E57005DBAB9 /* TileSheetSample.png */; };
-		1023D2AD1C5C2E57005DBAB9 /* TileSheetSample.xcf in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2AB1C5C2E57005DBAB9 /* TileSheetSample.xcf */; };
 		1023D2B01C6421A8005DBAB9 /* levels_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2AF1C6421A8005DBAB9 /* levels_1.txt */; };
 		1023D2B11C6421A9005DBAB9 /* levels_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1023D2AF1C6421A8005DBAB9 /* levels_1.txt */; };
 		1023D2B31C64222A005DBAB9 /* PuzzleSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1023D2B21C642229005DBAB9 /* PuzzleSet.swift */; };
@@ -105,6 +104,8 @@
 		10AB01A51CADE1ED0092D7AF /* SmallFall_Stereo6.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01751CADE1ED0092D7AF /* SmallFall_Stereo6.aiff */; };
 		10AB01A61CADE1ED0092D7AF /* SmallFall_Stereo7.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01761CADE1ED0092D7AF /* SmallFall_Stereo7.aiff */; };
 		10AB01A71CADE1ED0092D7AF /* SmallFall_Stereo8.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01771CADE1ED0092D7AF /* SmallFall_Stereo8.aiff */; };
+		10AB01A91CB058310092D7AF /* PuzzleSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB01A81CB058310092D7AF /* PuzzleSetView.swift */; };
+		10AB01AB1CB059430092D7AF /* PuzzleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB01AA1CB059430092D7AF /* PuzzleSprite.swift */; };
 		10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6A1C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6D1C44F02900AD8DD7 /* TDButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */; };
@@ -218,7 +219,6 @@
 		1023D2A51C5C2713005DBAB9 /* BlueBack_def-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueBack_def-500px.png"; sourceTree = "<group>"; };
 		1023D2A61C5C2713005DBAB9 /* BlueBack_sel-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueBack_sel-500px.png"; sourceTree = "<group>"; };
 		1023D2AA1C5C2E57005DBAB9 /* TileSheetSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TileSheetSample.png; sourceTree = "<group>"; };
-		1023D2AB1C5C2E57005DBAB9 /* TileSheetSample.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TileSheetSample.xcf; sourceTree = "<group>"; };
 		1023D2AF1C6421A8005DBAB9 /* levels_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = levels_1.txt; sourceTree = "<group>"; };
 		1023D2B21C642229005DBAB9 /* PuzzleSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleSet.swift; sourceTree = "<group>"; };
 		107698B81C320292006051B2 /* TileDoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileDoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +306,8 @@
 		10AB01751CADE1ED0092D7AF /* SmallFall_Stereo6.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo6.aiff; sourceTree = "<group>"; };
 		10AB01761CADE1ED0092D7AF /* SmallFall_Stereo7.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo7.aiff; sourceTree = "<group>"; };
 		10AB01771CADE1ED0092D7AF /* SmallFall_Stereo8.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo8.aiff; sourceTree = "<group>"; };
+		10AB01A81CB058310092D7AF /* PuzzleSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSetView.swift; path = Views/PuzzleSetView.swift; sourceTree = "<group>"; };
+		10AB01AA1CB059430092D7AF /* PuzzleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSprite.swift; path = Views/PuzzleSprite.swift; sourceTree = "<group>"; };
 		10B34C681C44E63400AD8DD7 /* TDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDButton.swift; sourceTree = "<group>"; };
 		10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDButtonTest.swift; path = TileDootUITests/TDButtonTest.swift; sourceTree = "<group>"; };
 		10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SplashGlass_test.JPG; sourceTree = "<group>"; };
@@ -398,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				1023D2AA1C5C2E57005DBAB9 /* TileSheetSample.png */,
-				1023D2AB1C5C2E57005DBAB9 /* TileSheetSample.xcf */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -421,6 +422,7 @@
 				10B34C6B1C44EFCC00AD8DD7 /* TileDootUITests */,
 				10B34C751C478D5D00AD8DD7 /* TD_Buttons */,
 				10B34C6E1C46437A00AD8DD7 /* TileAssets */,
+				10AB01401CADE1ED0092D7AF /* AudioAssets */,
 				1023D2AE1C642081005DBAB9 /* Levels */,
 				107698B91C320292006051B2 /* Products */,
 			);
@@ -438,7 +440,6 @@
 		107698BA1C320292006051B2 /* TileDoot */ = {
 			isa = PBXGroup;
 			children = (
-				10AB01401CADE1ED0092D7AF /* AudioAssets */,
 				10AB013D1CAD9B070092D7AF /* Audio */,
 				10B34D161C5A0A5E00AD8DD7 /* Scenes */,
 				107698BB1C320292006051B2 /* AppDelegate.swift */,
@@ -485,6 +486,8 @@
 			children = (
 				10A91E081C99EFEF009F50AB /* GameBoardView.swift */,
 				10A91E0A1C9A99A4009F50AB /* TileSprite.swift */,
+				10AB01A81CB058310092D7AF /* PuzzleSetView.swift */,
+				10AB01AA1CB059430092D7AF /* PuzzleSprite.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -521,8 +524,7 @@
 				10AB01661CADE1ED0092D7AF /* SingleTapsLoud_Mono */,
 				10AB016F1CADE1ED0092D7AF /* SmallFall_Stereo */,
 			);
-			name = AudioAssets;
-			path = ../AudioAssets;
+			path = AudioAssets;
 			sourceTree = "<group>";
 		};
 		10AB01411CADE1ED0092D7AF /* LR_WoodSlide_Stereo */ = {
@@ -893,7 +895,6 @@
 				10AB018B1CADE1ED0092D7AF /* PileTap_Mono8.aiff in Resources */,
 				10B34CCF1C4E32DB00AD8DD7 /* Orange1_test.png in Resources */,
 				10B34CE81C4F87BE00AD8DD7 /* Red1_test.png in Resources */,
-				1023D2AD1C5C2E57005DBAB9 /* TileSheetSample.xcf in Resources */,
 				10AB017D1CADE1ED0092D7AF /* LR_WoodSlide_Stereo6.aiff in Resources */,
 				10AB01A21CADE1ED0092D7AF /* SmallFall_Stereo3.aiff in Resources */,
 				10B34CD51C4E32DB00AD8DD7 /* Orange4_test.png in Resources */,
@@ -997,11 +998,13 @@
 				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
 				10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
+				10AB01AB1CB059430092D7AF /* PuzzleSprite.swift in Sources */,
 				10AB013F1CAD9B380092D7AF /* TD_AudioPlayer.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
 				10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */,
 				10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */,
 				10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */,
+				10AB01A91CB058310092D7AF /* PuzzleSetView.swift in Sources */,
 				10B34CF31C50CC7D00AD8DD7 /* SceneInvertTest.swift in Sources */,
 				10AB013B1CA515BF0092D7AF /* GameData.swift in Sources */,
 				1023D2B31C64222A005DBAB9 /* PuzzleSet.swift in Sources */,

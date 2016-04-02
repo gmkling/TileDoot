@@ -9,11 +9,33 @@
 import Foundation
 import AVFoundation
 
+protocol SoundPlayer
+{
+    func playSFX(sfxKey: String, typeKey: String)
+    func playMusic(musicKey: String)
+    func muteSFX()
+    func unmuteSFX()
+    func muteMusic()
+    func unmuteMusic()
+}
+
+let mono_key = "MONO_FILE"
+let stereo_key = "STEREO_FILE"
+let loud_key = "LOUD_FILE"
+
+let singleTap_key = "ST_SFX"
+let pileTap_key = "PT_SFX"
+let woodSlide_key = "WS_SFX"
+let smallFall_key = "SF_SFX"
+let catch_key = "CT_SFX"
+
+
+
 //class TD_AudioPlayer : AVAudioPlayerDelegate
-class TD_AudioPlayer
+class TD_AudioPlayer : SoundPlayer
 {    
-    var sfxStatus = false
-    var musicStatus = false
+    var sfxStatus : Bool
+    var musicStatus : Bool
     
     // sound arrays
     var stSounds = [AVAudioPlayer()]
@@ -23,6 +45,7 @@ class TD_AudioPlayer
     var gfSounds = [AVAudioPlayer()]
     var catchSounds = [AVAudioPlayer()]
     
+    var sfxDict : [String : [AVAudioPlayer]]
     
     init()
     {
@@ -39,6 +62,8 @@ class TD_AudioPlayer
         } catch {
             print(error)
         }
+        
+        sfxDict = [:]
         
         // load sounds for game and music
         self.loadSFX()
@@ -88,85 +113,116 @@ class TD_AudioPlayer
     {
         
         do {
-        // wish list - A better way to manage content without changing code
-        let monoStr = "_Mono"
-        let stereoStr = "_Stereo"
-        let aifStr = ".aiff"
+            // wish list - A better way to manage content without changing code
+            let monoStr = "_Mono"
+            let stereoStr = "_Stereo"
+            let aifStr = ".aiff"
 
-        // single tap
-        let stPrefix = "SingleTap"
-        let nST = 8
+            // single tap
+            let stPrefix = "SingleTap"
+            let nST = 8
             
-        stSounds.removeAtIndex(0)
-        for i in 1...nST
-        {
-            let fileCur = stPrefix+monoStr+String(i)+aifStr
-            let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
-            try stSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
-        }
-        
-        // pile tap
-        let ptPrefix = "PileTap"
-        let nPT = 8
-        
-        ptSounds.removeAtIndex(0)
-        for i in 1...nPT
-        {
-            let fileCur = ptPrefix+monoStr+String(i)+aifStr
-            let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
-            try ptSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
-        }
-        
-        // wood slide
-        let lr = "LR_"
-        let rl = "RL_"
-        let wsPrefix = "WoodSlide"
-        let nLRS = 6
-        let nRLS = 4
-        
-        wsLRSounds.removeAtIndex(0)
-        for i in 1...nLRS
-        {
-            let fileCur = lr+wsPrefix+stereoStr+String(i)+aifStr
-            let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
-            try wsLRSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
-        }
-        
-        wsRLSounds.removeAtIndex(0)
-        for i in 1...nRLS
-        {
-            let fileCur = rl+wsPrefix+stereoStr+String(i)+aifStr
-            let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
-            try wsRLSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
-        }
-        
-        // granite fall
-        let gfPrefix = "SmallFall"
-        let nGF = 8
-        
-        gfSounds.removeAtIndex(0)
-        for i in 1...nGF
-        {
-            let fileCur = gfPrefix+stereoStr+String(i)+aifStr
-            let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
-            try gfSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
-        }
-        
-        // catch
-        let catPrefix = "Catch"
-        let nCatch = 6
-        
-        for i in 1...nCatch
-        {
-            let fileCur = catPrefix+monoStr+String(i)+aifStr
-            let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
-            try catchSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
-        }
+            stSounds.removeAtIndex(0)
+            for i in 1...nST
+            {
+                let fileCur = stPrefix+monoStr+String(i)+aifStr
+                let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
+                try stSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
+            }
             
-        } catch {
-            print("Error loading SFX files")
-            print(error)
+            sfxDict[singleTap_key] = stSounds
+                
+            // pile tap
+            let ptPrefix = "PileTap"
+            let nPT = 8
+            
+            ptSounds.removeAtIndex(0)
+            for i in 1...nPT
+            {
+                let fileCur = ptPrefix+monoStr+String(i)+aifStr
+                let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
+                try ptSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
+            }
+            
+            sfxDict[pileTap_key] = ptSounds
+            
+            // wood slide
+            let lr = "LR_"
+            let rl = "RL_"
+            let wsPrefix = "WoodSlide"
+            let nLRS = 6
+            let nRLS = 4
+            
+            wsLRSounds.removeAtIndex(0)
+            for i in 1...nLRS
+            {
+                let fileCur = lr+wsPrefix+stereoStr+String(i)+aifStr
+                let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
+                try wsLRSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
+            }
+            
+            wsRLSounds.removeAtIndex(0)
+            for i in 1...nRLS
+            {
+                let fileCur = rl+wsPrefix+stereoStr+String(i)+aifStr
+                let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
+                try wsRLSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
+            }
+            
+            // Need to figure out how to use the LR vs RL versions
+            // Only using LR for now
+            sfxDict[woodSlide_key] = wsLRSounds
+            
+                
+            // granite fall
+            let gfPrefix = "SmallFall"
+            let nGF = 8
+            
+            gfSounds.removeAtIndex(0)
+            for i in 1...nGF
+            {
+                let fileCur = gfPrefix+stereoStr+String(i)+aifStr
+                let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
+                try gfSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
+            }
+            
+            sfxDict[smallFall_key] = gfSounds
+            
+            // catch
+            let catPrefix = "Catch"
+            let nCatch = 6
+            
+            catchSounds.removeAtIndex(0)
+            for i in 1...nCatch
+            {
+                let fileCur = catPrefix+monoStr+String(i)+aifStr
+                let urlpath = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileCur, ofType: nil)!)
+                try catchSounds.append(AVAudioPlayer(contentsOfURL: urlpath))
+            }
+            
+            sfxDict[catch_key] = catchSounds
+                
+            } catch {
+                print("Error loading SFX files")
+                print(error)
+            }
+        
+        
+    }
+    
+    func playSFX(sfxKey: String, typeKey: String)
+    {
+        // don't play if we are mute
+        if sfxStatus==false { return }
+        
+        if let sound = sfxDict[sfxKey]
+        {
+            sound.randomItem().play()
         }
     }
     
+    func playMusic(musicKey: String)
+    {
+        
+    }
 }

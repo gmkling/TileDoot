@@ -21,6 +21,8 @@ class InfoScene: SKScene {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    var audioDelegate : TD_AudioPlayer?
+    
     override func didMoveToView(view: SKView)
     {
         self.backgroundColor = greenTileColor
@@ -85,8 +87,8 @@ class InfoScene: SKScene {
         // preference custom buttons - can we implement proper checkbox UI class please?
         // further, the whole group should be centered, the way this is here, that is not possible
         
-        // change tiles to simple checkboxes when doing the custom class, the tiles are ugly for this
-        let sfxButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doSfxOn, disableAction: doSfxOff, withState: false, labelStr: "")
+        let sfxState = defaults.boolForKey(sfx_key)
+        let sfxButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doSfxOn, disableAction: doSfxOff, withState: sfxState, labelStr: "")
         sfxButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*5.0)
         sfxButton.setScale(littleButtonScale)
         
@@ -97,7 +99,8 @@ class InfoScene: SKScene {
         sfxLabel.verticalAlignmentMode = .Center
         sfxLabel.position = CGPoint(x: gridSize*4.5, y: gridSize*5.0)
         
-        let musicButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doMusicOn, disableAction: doMusicOff, withState: false, labelStr: "")
+        let musicState = defaults.boolForKey(music_key)
+        let musicButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doMusicOn, disableAction: doMusicOff, withState: musicState, labelStr: "")
         musicButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*4.0)
         musicButton.setScale(littleButtonScale)
         
@@ -131,9 +134,11 @@ class InfoScene: SKScene {
     
     func doBackButton()
     {
+        audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
         // slide from right, where we came from
         let mmTransition = SKTransition.pushWithDirection(.Left, duration: 0.5)
         let mmScene = MainMenuScene(size: view!.bounds.size)
+        mmScene.audioDelegate = audioDelegate
         scene!.view!.presentScene(mmScene, transition: mmTransition)
     }
     
@@ -161,6 +166,7 @@ class InfoScene: SKScene {
         // retain the default
         defaults.setBool(true, forKey: sfx_key)
         // update the player
+        audioDelegate?.unmuteSFX()
         print("SFX On")
     }
     
@@ -169,6 +175,7 @@ class InfoScene: SKScene {
         // retain default
         defaults.setBool(false, forKey: sfx_key)
         // update the player
+        audioDelegate?.muteSFX()
         print("SFX Off")
     }
     
@@ -177,6 +184,7 @@ class InfoScene: SKScene {
         // retain the default
         defaults.setBool(false, forKey: music_key)
         // update the player
+        audioDelegate?.muteMusic()
         print("Music Off.")
     }
     
@@ -186,6 +194,7 @@ class InfoScene: SKScene {
         defaults.setBool(true, forKey: music_key)
         
         // update the player
+        audioDelegate?.unmuteMusic()
         print("Music On")
     }
     

@@ -11,6 +11,7 @@ import SpriteKit
 
 class PuzzleDirectoryScene: SKScene {
     
+    var audioDelegate : TD_AudioPlayer?
     
     override func didMoveToView(view: SKView)
     {
@@ -40,9 +41,11 @@ class PuzzleDirectoryScene: SKScene {
     
     func doBackButton()
     {
+        audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
         // slide from left, where we came from
         let mmTransition = SKTransition.pushWithDirection(.Right, duration: 0.5)
         let mmScene = MainMenuScene(size: view!.bounds.size)
+        mmScene.audioDelegate = audioDelegate
         scene!.view!.presentScene(mmScene, transition: mmTransition)
     }
 }
