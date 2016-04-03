@@ -17,7 +17,8 @@ class PuzzleSetView: SKNode
     var size : CGSize
     var background = SKShapeNode()
     var puzzles : PuzzleSet
-    
+    var puzzlePages : [PuzzleSetPage]
+    var nPages : Float
     
     init(inPuzzles: PuzzleSet, viewSize: CGSize)
     {
@@ -26,8 +27,19 @@ class PuzzleSetView: SKNode
         
         self.puzzles = inPuzzles
         
-        // initialize the PuzzleGrid by cycling through PuzzleSet and populating the cells relevant cells
+        // initialize the PuzzleGridPages by cycling through PuzzleSet and populating new pages
+        nPages = Float(inPuzzles.nPuzzles)/16.0
+        puzzlePages = []
         
+        for i in 0...Int(nPages)
+        {
+            var tempPage = PuzzleSetPage(viewSize: self.size)
+            for j in 0..<16
+            {
+                tempPage.addPuzzle(i, atY: j, status: <#T##PuzzleStatus#>)
+            }
+            puzzlePages.append(tempPage)
+        }
         super.init()
         
         drawBackground()
@@ -57,7 +69,7 @@ class PuzzleSetView: SKNode
 
 class PuzzleSetPage : SKNode
 {
-    var dimension = 4
+    let dimension = 4
     var size : CGSize
     // the grid will always be 4x4, if I ever want to change it, I'll come up with a better way
     var background = SKShapeNode()
@@ -76,10 +88,25 @@ class PuzzleSetPage : SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
+    func addPuzzle(atX: Int, atY: Int, status: PuzzleStatus)
+    {
+        if atX > 3 || atY > 3
+        {
+            // you suck
+            print("Error adding Puzzle to PuzzleSetPage at [\(atX),\(atY)]")
+            return
+        }
+        var tempSprite = PuzzleSprite(viewSize: CGSize(width: self.size.width/4.0, height: self.size.width/4.0))
+        tempSprite.setProgress(status)
+        tempSprite.position = CGPointMake((self.size.width/4.0)*CGFloat(atX), self.size.height - (self.size.width/4.0)*CGFloat(atY))
+        self.addChild(tempSprite)
+        puzzleSprites[atX, atY] = tempSprite
+    }
+    
     func drawBackground()
     {
         background = SKShapeNode.init(rectOfSize: size)
-        background.fillColor = SKColor.grayColor()
+        background.fillColor = SKColor.darkGrayColor()
         background.strokeColor = SKColor.blackColor()
         background.position = self.center()
         self.addChild(background)

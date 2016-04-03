@@ -14,14 +14,57 @@ enum PuzzleStatus : Int{
     case solved, parMet
 }
 
-class PuzzleSprite : SKSpriteNode
+class PuzzleSprite : SKNode
 {
     var puzzleNum = 0
     var status = PuzzleStatus.unsolved
+    var par = 0
+    var size : CGSize
     
     // shapes
     var puzzleSquare = SKShapeNode()
     var progressIndicator = SKShapeNode()
+    
+    init(viewSize: CGSize)
+    {
+        self.size = viewSize
+        // assume no progress
+        puzzleSquare = SKShapeNode(rect: CGRect(origin: CGPoint(x: self.size.width*0.5, y: self.size.height*0.75), size: CGSize(width:self.size.width/2.0, height: self.size.height/2.0 )))
+        progressIndicator = SKShapeNode(circleOfRadius: 1.0)
+        progressIndicator.position = CGPoint(x: self.size.width/2.0, y: self.size.height*0.25)
+        
+        puzzleSquare.fillColor = yellowTileColor
+        progressIndicator.fillColor = SKColor.blackColor()
+        progressIndicator.strokeColor = SKColor.whiteColor()
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setProgress(newStatus: PuzzleStatus)
+    {
+        status = newStatus
+        
+        if status == .unsolved
+        {
+            progressIndicator.fillColor = SKColor.blackColor()
+            return
+        }
+        
+        if status == .solved
+        {
+            progressIndicator.fillColor = SKColor.lightGrayColor()
+            return
+        }
+        
+        if status == .parMet
+        {
+            progressIndicator.fillColor = SKColor.whiteColor()
+            return
+        }
+    }
     
 }
 
@@ -30,7 +73,7 @@ class PuzzleGrid {
     var board = [PuzzleSprite]()
     
     init(dim: Int) {
-        let nullPuzzle = PuzzleSprite()
+        let nullPuzzle = PuzzleSprite(viewSize: CGSize(width: 0,height: 0))
         self.dimension = dim
         self.board = [PuzzleSprite](count:dim*dim, repeatedValue:nullPuzzle)
     }
