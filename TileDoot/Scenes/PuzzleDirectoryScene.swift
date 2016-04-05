@@ -12,6 +12,7 @@ import SpriteKit
 class PuzzleDirectoryScene: SKScene {
     
     var audioDelegate : TD_AudioPlayer?
+    var puzzleSelect : PuzzleSetView?
     
     override func didMoveToView(view: SKView)
     {
@@ -31,12 +32,18 @@ class PuzzleDirectoryScene: SKScene {
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
+        // load the PuzzleSet file
+        let testFile = "testLevels.txt"
+        let testSet = PuzzleSet(withFileName:testFile)
         
         // load the puzzle directory subview
-        // info button is it needed here?
+        let subviewSize = CGSizeMake(self.size.width*0.666, self.size.height*0.6)
+        let subviewOrigin = CGPointMake(self.size.width/6, self.size.height*0.15)
+        puzzleSelect = PuzzleSetView(inPuzzles: testSet, viewSize: subviewSize)
+        puzzleSelect!.position = subviewOrigin
         // make the node tree
         self.addChild(backButton)
-        
+        self.addChild(puzzleSelect!)
     }
     
     func doBackButton()

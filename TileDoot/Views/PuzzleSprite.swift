@@ -9,7 +9,8 @@
 import Foundation
 import SpriteKit
 
-enum PuzzleStatus : Int{
+enum PuzzleStatus : Int
+{
     case unsolved = 0
     case solved, parMet
 }
@@ -20,23 +21,32 @@ class PuzzleSprite : SKNode
     var status = PuzzleStatus.unsolved
     var par = 0
     var size : CGSize
+    var ID: String?
     
     // shapes
     var puzzleSquare = SKShapeNode()
     var progressIndicator = SKShapeNode()
+    var numberLabel = SKLabelNode(fontNamed: "Futura-medium")
     
     init(viewSize: CGSize)
     {
         self.size = viewSize
-        // assume no progress
-        puzzleSquare = SKShapeNode(rect: CGRect(origin: CGPoint(x: self.size.width*0.5, y: self.size.height*0.75), size: CGSize(width:self.size.width/2.0, height: self.size.height/2.0 )))
-        progressIndicator = SKShapeNode(circleOfRadius: 1.0)
-        progressIndicator.position = CGPoint(x: self.size.width/2.0, y: self.size.height*0.25)
         
-        puzzleSquare.fillColor = yellowTileColor
+        puzzleSquare = SKShapeNode(rectOfSize: CGSize(width:viewSize.width/2.0, height: viewSize.height/2.0), cornerRadius: 5.0)
+        
+        puzzleSquare.position = CGPoint(x: viewSize.width*0.5, y: viewSize.height*0.5)
+        puzzleSquare.fillColor = SKColor(red: 226.0/255.0, green: 198.0/255.0, blue: 72.0/255.0, alpha: 255.0)
+        puzzleSquare.strokeColor = SKColor.whiteColor()
+        
+        // assume no progress
+        progressIndicator = SKShapeNode(circleOfRadius: self.size.width*0.05)
+        progressIndicator.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.125)
         progressIndicator.fillColor = SKColor.blackColor()
         progressIndicator.strokeColor = SKColor.whiteColor()
+        
         super.init()
+        self.addChild(puzzleSquare)
+        self.addChild(progressIndicator)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,6 +74,24 @@ class PuzzleSprite : SKNode
             progressIndicator.fillColor = SKColor.whiteColor()
             return
         }
+    }
+    
+    func setNumber(num: Int)
+    {
+        if num < 0 { return } // get out of here with that nasty shit
+        
+        numberLabel.text = "\(num)"
+        numberLabel.fontSize = size.height/4.0
+        numberLabel.verticalAlignmentMode = .Center
+        numberLabel.horizontalAlignmentMode = .Center
+        numberLabel.position = CGPointMake(puzzleSquare.frame.midX, puzzleSquare.frame.midY)
+        numberLabel.fontColor = UIColor.whiteColor()
+        self.addChild(numberLabel)
+    }
+    
+    func setPuzzleID(newID: String)
+    {
+        self.ID = newID
     }
     
 }

@@ -261,7 +261,7 @@ class PuzzleSet
                 if newPuzzle.puzzleValid
                 {
                     newPuzzle.par = Int(puzzleHeader[1])!
-                    newPuzzle.puzzleName = puzzleHeader[2]
+                    newPuzzle.puzzleID = puzzleHeader[2]
                     self.appendPuzzle(newPuzzle)
                     nPuzzlesRead += 1
                 }
@@ -349,9 +349,10 @@ class Puzzle
     var dimension : Int
     var par : Int
     var puzzleValid = false
+    var progress = 0
     
     // the stringRep
-    var puzzleName = String()
+    var puzzleID = String()
     var stringRep = String()
     
     init(dim: Int, inPar: Int, levelString: String, levelName: String?)
@@ -367,7 +368,9 @@ class Puzzle
         } else { stringRep = levelString }
         
         if levelName != nil
-        { puzzleName = levelName! } 
+        { puzzleID = levelName! } 
+        
+        getSavedProgress()
         
         self.checkValid()
     }
@@ -442,6 +445,21 @@ class Puzzle
         }
         
         return tempString
+    }
+    
+    func getSavedProgress()
+    {
+        // luckily integerForKey fails to 0 if the key is not found
+        let savedData = NSUserDefaults.standardUserDefaults()
+        progress = savedData.integerForKey(self.puzzleID)
+
+    }
+    
+    func setSavedProgress(newProgress: Int)
+    {
+        self.progress = newProgress
+        let savedData = NSUserDefaults.standardUserDefaults()
+        savedData.setInteger(newProgress, forKey: self.puzzleID)
     }
     
     func checkValid() ->Bool

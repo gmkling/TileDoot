@@ -106,6 +106,7 @@
 		10AB01A71CADE1ED0092D7AF /* SmallFall_Stereo8.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01771CADE1ED0092D7AF /* SmallFall_Stereo8.aiff */; };
 		10AB01A91CB058310092D7AF /* PuzzleSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB01A81CB058310092D7AF /* PuzzleSetView.swift */; };
 		10AB01AB1CB059430092D7AF /* PuzzleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB01AA1CB059430092D7AF /* PuzzleSprite.swift */; };
+		10AB01AD1CB1E1090092D7AF /* testLevels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01AC1CB1E1090092D7AF /* testLevels.txt */; };
 		10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6A1C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6D1C44F02900AD8DD7 /* TDButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */; };
@@ -308,6 +309,7 @@
 		10AB01771CADE1ED0092D7AF /* SmallFall_Stereo8.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = SmallFall_Stereo8.aiff; sourceTree = "<group>"; };
 		10AB01A81CB058310092D7AF /* PuzzleSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSetView.swift; path = Views/PuzzleSetView.swift; sourceTree = "<group>"; };
 		10AB01AA1CB059430092D7AF /* PuzzleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSprite.swift; path = Views/PuzzleSprite.swift; sourceTree = "<group>"; };
+		10AB01AC1CB1E1090092D7AF /* testLevels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testLevels.txt; sourceTree = "<group>"; };
 		10B34C681C44E63400AD8DD7 /* TDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDButton.swift; sourceTree = "<group>"; };
 		10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDButtonTest.swift; path = TileDootUITests/TDButtonTest.swift; sourceTree = "<group>"; };
 		10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SplashGlass_test.JPG; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				1023D2AF1C6421A8005DBAB9 /* levels_1.txt */,
+				10AB01AC1CB1E1090092D7AF /* testLevels.txt */,
 			);
 			name = Levels;
 			path = TileDoot;
@@ -921,6 +924,7 @@
 				10B34CAC1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
 				10AB017F1CADE1ED0092D7AF /* Catch_Mono2.aiff in Resources */,
 				10B34C951C4A4A0200AD8DD7 /* Blue4_test.png in Resources */,
+				10AB01AD1CB1E1090092D7AF /* testLevels.txt in Resources */,
 				10AB01281CA474F00092D7AF /* PurpleMenu_sel.png in Resources */,
 				10AB01791CADE1ED0092D7AF /* LR_WoodSlide_Stereo2.aiff in Resources */,
 				10B34CF71C516DAC00AD8DD7 /* MainMenu2.png in Resources */,

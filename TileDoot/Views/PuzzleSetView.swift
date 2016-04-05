@@ -19,32 +19,45 @@ class PuzzleSetView: SKNode
     var puzzles : PuzzleSet
     var puzzlePages : [PuzzleSetPage]
     var nPages : Float
+    var curPage : Float
     
     init(inPuzzles: PuzzleSet, viewSize: CGSize)
     {
         self.size = viewSize
-        
-        
+        let defaults = NSUserDefaults.standardUserDefaults()
         self.puzzles = inPuzzles
         
         // initialize the PuzzleGridPages by cycling through PuzzleSet and populating new pages
         nPages = Float(inPuzzles.nPuzzles)/16.0
         puzzlePages = []
+        curPage = 0
         
         for i in 0...Int(nPages)
         {
             var tempPage = PuzzleSetPage(viewSize: self.size)
             for j in 0..<16
             {
-                tempPage.addPuzzle(i, atY: j, status: <#T##PuzzleStatus#>)
+                let curPuzzle = (i*16)+j
+                // check for partial page
+                if curPuzzle >= inPuzzles.nPuzzles { break }
+                
+                let curX = j%4
+                let curY = (j-curX)/4
+                
+                let tempPuzzle = inPuzzles.getPuzzle(curPuzzle)
+                let prog = defaults.integerForKey((tempPuzzle?.puzzleID)!)
+                
+                tempPage.addPuzzle(curX, atY: curY, status: PuzzleStatus(rawValue: prog)!, pID: (tempPuzzle?.puzzleID)!)
+                
             }
+            tempPage.position = CGPointMake(0.0, 0.0)
             puzzlePages.append(tempPage)
         }
         super.init()
         
-        drawBackground()
+        //drawBackground()
         
-        
+        self.addChild(puzzlePages[Int(curPage)])
         
     }
     
@@ -54,16 +67,38 @@ class PuzzleSetView: SKNode
     
     func drawBackground()
     {
+        
         background = SKShapeNode.init(rectOfSize: size)
-        background.fillColor = SKColor.grayColor()
+        background.fillColor = SKColor.lightGrayColor()
         background.strokeColor = SKColor.blackColor()
         background.position = self.center()
+        background.zPosition = -1
         self.addChild(background)
     }
     
     func center () ->CGPoint
     {
         return CGPointMake((self.size.width/2.0), (self.size.height/2.0))
+    }
+    
+    func moveLeft()
+    {
+        // this may work
+//        if (curPage+1)>nPages { return } // don't move
+//        
+//        var removeMotion = SKAction.moveTo(CGPointMake(self.size.width * -1, 0.0), duration: 0.25)
+//        var removeFade = SKAction.fadeOutWithDuration(0.25)
+//        puzzlePages[Int(curPage)].runAction(SKAction.group([removeMotion, removeFade]))
+//        puzzlePages[Int(curPage)].removeFromParent()
+//        curPage += 1
+        // move the page onto the screen from the Right
+        
+        
+    }
+    
+    func moveRight()
+    {
+        
     }
 }
 
@@ -81,14 +116,14 @@ class PuzzleSetPage : SKNode
         self.puzzleSprites = PuzzleGrid(dim: dimension)
         super.init()
         
-        drawBackground()
+        //drawBackground()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addPuzzle(atX: Int, atY: Int, status: PuzzleStatus)
+    func addPuzzle(atX: Int, atY: Int, status: PuzzleStatus, pID: String)
     {
         if atX > 3 || atY > 3
         {
@@ -98,6 +133,8 @@ class PuzzleSetPage : SKNode
         }
         var tempSprite = PuzzleSprite(viewSize: CGSize(width: self.size.width/4.0, height: self.size.width/4.0))
         tempSprite.setProgress(status)
+        tempSprite.setPuzzleID(pID)
+        tempSprite.setNumber((atX + atY*4)+1)
         tempSprite.position = CGPointMake((self.size.width/4.0)*CGFloat(atX), self.size.height - (self.size.width/4.0)*CGFloat(atY))
         self.addChild(tempSprite)
         puzzleSprites[atX, atY] = tempSprite
