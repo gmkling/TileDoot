@@ -24,4 +24,9 @@ class TileSprite : SKSpriteNode
         
         self.runAction(actionQ.removeFirst())
     }
+    
+    func bundleActionQ()
+    {
+        // collect enqueued actions into 1 sequence of actions
+    }
 }

@@ -17,6 +17,8 @@ protocol GameBoardProtocol : class {
     func setTileType(loc: Coordinate, newType: TileType)
     
     func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
+    
+    // this protocol could probably use a signal at the end of a turn, after collapses etc, to trigger all actions
 }
 
 // GameBoard is the game model wrapped around a TileBoard. It uses the GameBoard Protocol to communicate with its view
@@ -413,6 +415,8 @@ class GameBoard {
             }
             
         }
+        
+        // this is where we get when a move is done
     
     }
     
