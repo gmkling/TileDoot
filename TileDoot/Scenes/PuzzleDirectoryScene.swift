@@ -28,7 +28,7 @@ class PuzzleDirectoryScene: SKScene {
         let smallTextSize = CGFloat(8.0)
         
         // hamburger button at top left
-        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, labelStr: "")
+        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, disabledImageName: nil, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
@@ -41,6 +41,7 @@ class PuzzleDirectoryScene: SKScene {
         let subviewOrigin = CGPointMake(self.size.width/6, self.size.height*0.15)
         puzzleSelect = PuzzleSetView(inPuzzles: testSet, viewSize: subviewSize)
         puzzleSelect!.position = subviewOrigin
+        puzzleSelect!.audioDelegate = audioDelegate
         // make the node tree
         self.addChild(backButton)
         self.addChild(puzzleSelect!)
@@ -55,4 +56,6 @@ class PuzzleDirectoryScene: SKScene {
         mmScene.audioDelegate = audioDelegate
         scene!.view!.presentScene(mmScene, transition: mmTransition)
     }
+    
+    
 }

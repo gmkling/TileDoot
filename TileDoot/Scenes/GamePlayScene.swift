@@ -12,7 +12,12 @@ import SpriteKit
 class GamePlayScene: SKScene {
     
     var puzzleData : Puzzle?
+    var returnAddr : SKScene?
     var gameView : GameBoardView?
+    var puzzleSetName : SKLabelNode?
+    var puzzleName : SKLabelNode?
+    var controlPanel : SKNode?
+    var huDisplay : SKNode?
     
     var audioDelegate : TD_AudioPlayer?
     
@@ -24,15 +29,34 @@ class GamePlayScene: SKScene {
     
     override func didMoveToView(view: SKView)
     {
-        // create GameBoardView with puzzle
-        let testSize = CGSize(width: self.size.width/2.0, height: self.size.width/2.0)
+        self.backgroundColor = greenTileColor
         
+        // some layout tools
+        let gridSize = self.frame.width/12.0
+        let littleButtonSize = 0.5*gridSize
+        let littleButtonScale = littleButtonSize/500.0
         
-        gameView = GameBoardView(puzzle: puzzleData!, boardSize: testSize)
+        // create GameBoardView with puzzle: 5/6 of width square
+        let testSize = CGSize(width: self.size.width*0.833, height: self.size.width*0.833)
         
-        gameView!.position = CGPointMake((self.size.width/4.0), (self.size.height/2.0)-self.size.width/4.0)
+        if puzzleData != nil
+        {
+            gameView = GameBoardView(puzzle: puzzleData!, boardSize: testSize)
+            gameView!.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
+        } else
+        {
+            // make a crappy default puzzle
+            gameView = GameBoardView(puzzle: Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle"), boardSize: testSize)
+        }
+        
+        // hamburger button at top left
+        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, disabledImageName: nil, labelStr: "")
+        backButton.setScale(littleButtonScale*2.0)
+        backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
+        
         setupSwipeControls()
         self.addChild(gameView!)
+        self.addChild(backButton)
     }
     
     // swipes
@@ -93,6 +117,22 @@ class GamePlayScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         
+    }
+    
+    func doBackButton()
+    {
+        audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
+        // slide from left, where we came from
+        let returnTransition = SKTransition.flipHorizontalWithDuration(0.5)
+        if returnAddr != nil
+        {
+            // we assume that the returnAddr needs no audioDelegate assigned
+            scene!.view!.presentScene(returnAddr!, transition: returnTransition)
+        } else {
+            let mmScene = MainMenuScene(size: view!.bounds.size)
+            mmScene.audioDelegate = audioDelegate
+            scene!.view!.presentScene(mmScene, transition: returnTransition)
+        }
     }
     
 }

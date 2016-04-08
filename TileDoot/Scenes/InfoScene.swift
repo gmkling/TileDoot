@@ -41,7 +41,7 @@ class InfoScene: SKScene {
         infoButton.setScale(gridSize/500.0)
         infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*18.0)
         
-        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, labelStr: "")
+        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, disabledImageName: nil, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
@@ -71,9 +71,9 @@ class InfoScene: SKScene {
         authorName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*10.0)
         
         // social buttons
-        let webButton = TDButton(defaultImageName: "webButton-500px_def.png", selectImageName: "webButton-500px_sel.png", buttonAction: doWebButton, labelStr: "")
-        let githubButton = TDButton(defaultImageName: "gitButton-500px_def.png", selectImageName: "gitButton-500px_sel.png", buttonAction: doGitButton, labelStr: "")
-        let emailButton = TDButton(defaultImageName: "emailButton-500px_def.png", selectImageName: "emailButton-500px_sel.png", buttonAction: doEmailButton, labelStr: "")
+        let webButton = TDButton(defaultImageName: "webButton-500px_def.png", selectImageName: "webButton-500px_sel.png", buttonAction: doWebButton, disabledImageName: nil, labelStr: "")
+        let githubButton = TDButton(defaultImageName: "gitButton-500px_def.png", selectImageName: "gitButton-500px_sel.png", buttonAction: doGitButton, disabledImageName: nil, labelStr: "")
+        let emailButton = TDButton(defaultImageName: "emailButton-500px_def.png", selectImageName: "emailButton-500px_sel.png", buttonAction: doEmailButton, disabledImageName: nil, labelStr: "")
         
         webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - gridSize, y:gridSize*9.0)
         webButton.setScale(littleButtonScale)

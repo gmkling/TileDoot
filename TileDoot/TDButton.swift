@@ -19,15 +19,20 @@ class TDButton : SKNode
     // MARK: Text
     var labelString : String
     var buttonLabel = SKLabelNode(fontNamed: "Futura-medium")
+    var disabled = false
         
     var action: () -> Void
     
     // MARK: Initializers
     
-    init(defaultImageName: String, selectImageName: String, buttonAction: () -> Void, labelStr: String?)
+    init(defaultImageName: String, selectImageName: String, buttonAction: () -> Void, disabledImageName: String?, labelStr: String?)
     {
         self.defaultImage = SKSpriteNode(imageNamed: defaultImageName)
         self.selectedImage = SKSpriteNode(imageNamed: selectImageName)
+        if disabledImageName != nil{
+            self.disabledImage = SKSpriteNode(imageNamed: disabledImageName!)
+            disabledImage!.hidden = true
+        }
         
         selectedImage.hidden = true
         action = buttonAction
@@ -56,6 +61,7 @@ class TDButton : SKNode
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
     {
+        if disabled { return }
         // if the touch begins on button, swap the selected image in for default
         selectedImage.hidden = false
         defaultImage.hidden = true
@@ -63,6 +69,7 @@ class TDButton : SKNode
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
     {
+        if disabled { return }
         // if the user moves a touch, find out if it moved onto or off of the button
         // and do the right thing
         for touch in touches
@@ -82,6 +89,7 @@ class TDButton : SKNode
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
     {
+        if disabled { return }
         for touch in touches
         {
             let location: CGPoint = touch.locationInNode(self)
@@ -105,6 +113,22 @@ class TDButton : SKNode
         super.setScale(scale)
         buttonLabel.setScale(1.0/scale)
     }
+    
+    func disable()
+    {
+        disabled = true
+        disabledImage?.hidden = false
+        defaultImage.hidden = true
+        selectedImage.hidden = true
+    }
+    
+    func enable()
+    {
+        disabled = false
+        disabledImage?.hidden = true
+        defaultImage.hidden = false
+        selectedImage.hidden = true
+    }
 }
 
 class TDToggleButton : TDButton
@@ -118,7 +142,7 @@ class TDToggleButton : TDButton
         isEnabled = withState
         self.disableAction = disableAction
         
-        super.init(defaultImageName: defaultImageName, selectImageName: selectImageName, buttonAction: enableAction, labelStr: labelStr)
+        super.init(defaultImageName: defaultImageName, selectImageName: selectImageName, buttonAction: enableAction, disabledImageName: nil, labelStr: labelStr)
         
         if isEnabled
         {
@@ -145,7 +169,7 @@ class TDToggleButton : TDButton
         {
             let location: CGPoint = touch.locationInNode(self)
             
-            if defaultImage.containsPoint(location)
+            if defaultImage.containsPoint(location) 
             {
                 selectedImage.hidden = isEnabled
                 defaultImage.hidden = !isEnabled

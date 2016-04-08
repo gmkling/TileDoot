@@ -24,9 +24,9 @@ class MainMenuScene: SKScene {
         
         // my TDButton class is great, but I'm not happy with the text labels yet.
         //let playButton = TDButton(defaultImageName: "Purple2_def.png", selectImageName: "Purple2_sel.png", buttonAction: doPlayButton, labelStr: "Play")
-        let playButton = TDButton(defaultImageName: "PurplePlay_def.png", selectImageName: "PurplePlay_sel.png", buttonAction: doPlayButton, labelStr: "")
+        let playButton = TDButton(defaultImageName: "PurplePlay_def.png", selectImageName: "PurplePlay_sel.png", buttonAction: doPlayButton, disabledImageName: nil, labelStr: "")
         //let hardButton = TDButton(defaultImageName: "Red1_def.png", selectImageName: "Red1_sel.png", buttonAction: doHardPuzzleMenu, labelStr: "Hard Puzzles")
-        let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo, labelStr: "")
+        let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo, disabledImageName: nil, labelStr: "")
         
         let gridSize = self.frame.width/12.0
         let bigButtonSize = 3.0*gridSize

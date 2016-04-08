@@ -20,6 +20,8 @@ class PuzzleSetView: SKNode
     var puzzlePages : [PuzzleSetPage]
     var nPages : Float
     var curPage : Float
+    var audioDelegate: TD_AudioPlayer?
+    var gameScene : GamePlayScene?
     
     init(inPuzzles: PuzzleSet, viewSize: CGSize)
     {
@@ -32,14 +34,16 @@ class PuzzleSetView: SKNode
         puzzlePages = []
         curPage = 0
         
+        super.init()
+        
         for i in 0...Int(nPages)
         {
-            var tempPage = PuzzleSetPage(viewSize: self.size)
+            var tempPage = PuzzleSetPage(viewSize: self.size, handler: doGameScene)
             for j in 0..<16
             {
                 let curPuzzle = (i*16)+j
                 // check for partial page
-                if curPuzzle >= inPuzzles.nPuzzles { break }
+                if curPuzzle >= puzzles.nPuzzles { break }
                 
                 let curX = j%4
                 let curY = (j-curX)/4
@@ -53,7 +57,7 @@ class PuzzleSetView: SKNode
             tempPage.position = CGPointMake(0.0, 0.0)
             puzzlePages.append(tempPage)
         }
-        super.init()
+        
         
         //drawBackground()
         
@@ -100,6 +104,28 @@ class PuzzleSetView: SKNode
     {
         
     }
+    
+    func doGameScene(puzID: String?)
+    {
+        // this smells funny to me. 
+        
+        // match puzID to the one in puzzles
+        // create a gameplay scene with it
+        if puzID != nil
+        {
+            var puz = puzzles.getPuzzleWithID(puzID!)
+            self.gameScene = GamePlayScene(size: scene!.view!.bounds.size)
+            gameScene!.setPuzzle(puz!)
+            gameScene!.returnAddr = scene!
+            var transition = SKTransition.flipHorizontalWithDuration(0.5)
+            gameScene!.audioDelegate = audioDelegate
+            self.scene?.view?.presentScene(gameScene!, transition: transition)
+            return
+        }
+        
+        // or die quietly
+        print("Error creating gameScene with PuzzleID: \(puzID)")
+    }
 }
 
 class PuzzleSetPage : SKNode
@@ -109,11 +135,15 @@ class PuzzleSetPage : SKNode
     // the grid will always be 4x4, if I ever want to change it, I'll come up with a better way
     var background = SKShapeNode()
     var puzzleSprites : PuzzleGrid
+    let puzzleSelImg = "Red1_sel.png"
+    let puzzleDefImg = "Red1_def.png"
+    var buttonHandler: (String?) -> Void
     
-    init(viewSize: CGSize)
+    init(viewSize: CGSize, handler: (String?) -> Void)
     {
         self.size = viewSize
         self.puzzleSprites = PuzzleGrid(dim: dimension)
+        self.buttonHandler = handler
         super.init()
         
         //drawBackground()
@@ -131,7 +161,7 @@ class PuzzleSetPage : SKNode
             print("Error adding Puzzle to PuzzleSetPage at [\(atX),\(atY)]")
             return
         }
-        var tempSprite = PuzzleSprite(viewSize: CGSize(width: self.size.width/4.0, height: self.size.width/4.0))
+        var tempSprite = PuzzleSprite(viewSize: CGSize(width: self.size.width/4.0, height: self.size.width/4.0), defaultImageName: redFiles.randomItem(), selectImageName: puzzleSelImg, buttonAction: doPuzzleButton)
         tempSprite.setProgress(status)
         tempSprite.setPuzzleID(pID)
         tempSprite.setNumber((atX + atY*4)+1)
@@ -147,6 +177,19 @@ class PuzzleSetPage : SKNode
         background.strokeColor = SKColor.blackColor()
         background.position = self.center()
         self.addChild(background)
+    }
+    
+    // add a func to change images of buttons, etc
+    
+    // when a button gets pushed, route it here
+    
+    func doPuzzleButton(inID: String?)
+    {
+        if (inID != nil)
+        {
+            print(inID)
+            buttonHandler(inID)
+        }
     }
     
     func center () ->CGPoint

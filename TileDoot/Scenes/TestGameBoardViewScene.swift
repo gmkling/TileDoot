@@ -11,12 +11,16 @@ import SpriteKit
 class TestGameBoardView: SKScene {
     
     var gameView : GameBoardView?
-    
-
+    var audioDelegate : TD_AudioPlayer?
     
     override func didMoveToView(view: SKView)
     {
         let testDim = 8
+        // some layout tools
+        let gridSize = self.frame.width/12.0
+        let littleButtonSize = 0.5*gridSize
+        let littleButtonScale = littleButtonSize/500.0
+        
         // construct the String rep of the game board
         let puzRow8 = "BBBB****"
         let puzRow7 = "BBBB****"
@@ -39,7 +43,15 @@ class TestGameBoardView: SKScene {
         gameView = GameBoardView(puzzle: testPuz, boardSize: testSize)
         // make it go
         gameView!.position = CGPointMake((self.size.width/4.0), (self.size.height/2.0)-self.size.width/4.0)
+        
+        // hamburger button at top left
+        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, disabledImageName: nil, labelStr: "")
+        backButton.setScale(littleButtonScale*2.0)
+        backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
+        
+        //self.scaleMode = .AspectFill
         setupSwipeControls()
+        self.addChild(backButton)
         self.addChild(gameView!)
     
     }
@@ -112,5 +124,15 @@ class TestGameBoardView: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         
+    }
+    
+    func doBackButton()
+    {
+        audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
+        // slide from left, where we came from
+        let mmTransition = SKTransition.pushWithDirection(.Right, duration: 0.5)
+        let mmScene = MainMenuScene(size: view!.bounds.size)
+        mmScene.audioDelegate = audioDelegate
+        scene!.view!.presentScene(mmScene, transition: mmTransition)
     }
 }

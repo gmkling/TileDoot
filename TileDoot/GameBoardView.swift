@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 import SpriteKit
 
 // this view will be a part of the gameplay scene to represent the board
@@ -20,16 +21,23 @@ class GameBoardView : SKNode , GameBoardProtocol
     var background = SKShapeNode()
     var tiles : SpriteBoard
     
+    // grid
+    var gridPath : CGMutablePath
+    var gridLines = SKShapeNode()
+    
     // boardSize is the size in Pixels of the UI element
     init(puzzle: Puzzle, boardSize: CGSize)
     {
         self.size = boardSize
         self.dimension = puzzle.dimension
         tiles = SpriteBoard(dim: dimension)
-        super.init()
+        gridPath = CGPathCreateMutable()
         
+        super.init()
+
         // init background
         drawBackground()
+        drawGrid()
         
         // init board
         self.gameBoard = GameBoard(boardDimension: dimension, delegate: self, boardString: puzzle.reverseRows())
@@ -38,18 +46,47 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func drawBackground()
     {
-        // TODO: Some work is needed to make this look good
-        // ************************************************
-        // determine grid size
-        // set line style
-        // draw lines
+        
         
         // would rather draw grid, but just a square in back for now
         background = SKShapeNode.init(rectOfSize: size)
-        background.fillColor = SKColor.grayColor()
+        background.fillColor = SKColor.lightGrayColor()
         background.strokeColor = SKColor.blackColor()
         background.position = self.center()
         self.addChild(background)
+        
+    }
+    
+    func drawGrid()
+    {
+        let theWidth = self.size.width
+        let theHeight = self.size.height
+        let gridSize = theWidth/CGFloat(dimension)
+        
+        // create the subpaths for the grid
+        for num in 1..<dimension
+        {
+            let curX = gridSize*CGFloat(num)
+            let curY = self.size.height - curX
+            
+            // vertical
+            CGPathMoveToPoint(gridPath, nil, curX, theHeight)
+            CGPathAddLineToPoint(gridPath, nil, curX, 0)
+            CGPathCloseSubpath(gridPath)
+            
+            // horizontal
+            CGPathMoveToPoint(gridPath, nil, 0, curY)
+            CGPathAddLineToPoint(gridPath, nil, theWidth, curY)
+            CGPathCloseSubpath(gridPath)
+        }
+        // turn the paths into a SKNode
+        gridLines = SKShapeNode.init(path: gridPath)
+        
+        // set line style
+        gridLines.strokeColor = SKColor.darkGrayColor()
+        gridLines.lineWidth = 1.0
+        gridLines.position = CGPointMake(0, 0)
+        self.addChild(gridLines)
     }
 
     required init?(coder aDecoder: NSCoder) {
