@@ -54,6 +54,7 @@ class GamePlayScene: SKScene {
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
+        gameView?.audioDelegate = self.audioDelegate
         setupSwipeControls()
         self.addChild(gameView!)
         self.addChild(backButton)

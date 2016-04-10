@@ -21,6 +21,8 @@ class GameBoardView : SKNode , GameBoardProtocol
     var background = SKShapeNode()
     var tiles : SpriteBoard
     
+    var audioDelegate : TD_AudioPlayer?
+    
     // grid
     var gridPath : CGMutablePath
     var gridLines = SKShapeNode()
@@ -121,7 +123,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         case .colorTile:
                 tileFile = filenameForColor(tile.color)
         case .barrierTile:
-                tileFile = "barrierTile.png"
+                tileFile = "StopTileTest3.png"
         case .emptyTile:
             // the rest of this is irrelevant
             return
