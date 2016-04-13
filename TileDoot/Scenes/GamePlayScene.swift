@@ -41,12 +41,12 @@ class GamePlayScene: SKScene {
         
         if puzzleData != nil
         {
-            gameView = GameBoardView(puzzle: puzzleData!, boardSize: testSize)
+            gameView = GameBoardView(puzzle: puzzleData!, boardSize: testSize, audioDel: self.audioDelegate)
             gameView!.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
         } else
         {
             // make a crappy default puzzle
-            gameView = GameBoardView(puzzle: Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle"), boardSize: testSize)
+            gameView = GameBoardView(puzzle: Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle"), boardSize: testSize, audioDel: self.audioDelegate)
         }
         
         // hamburger button at top left
@@ -54,7 +54,6 @@ class GamePlayScene: SKScene {
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
-        gameView!.audioDelegate = self.audioDelegate
         setupSwipeControls()
         self.addChild(gameView!)
         self.addChild(backButton)

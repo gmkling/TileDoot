@@ -29,7 +29,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     var gridLines = SKShapeNode()
     
     // boardSize is the size in Pixels of the UI element
-    init(puzzle: Puzzle, boardSize: CGSize)
+    init(puzzle: Puzzle, boardSize: CGSize, audioDel: TD_AudioPlayer?)
     {
         self.size = boardSize
         self.dimension = puzzle.dimension
@@ -37,6 +37,10 @@ class GameBoardView : SKNode , GameBoardProtocol
         gridPath = CGPathCreateMutable()
         moves = []
         moves.append(Turn(dir: .none))
+        if audioDel != nil
+        {
+            self.audioDelegate = audioDel
+        }
         
         super.init()
 
@@ -124,7 +128,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
         let fadeInSeq = SKAction.sequence([waitAction, fadeInAction])
         
-        if audioDelegate == nil { print("nil audioDelegate") }
+        if self.audioDelegate == nil { print("nil audioDelegate") }
         
         if moves.last != nil && moves.last!!.move == MoveDirection.none
         {
@@ -338,6 +342,7 @@ class GameBoardView : SKNode , GameBoardProtocol
             tiles[toLoc.x, toLoc.y] = tileSprite
         }
         
+        audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)
         self.moves.last??.subTurns += 1
     }
     
