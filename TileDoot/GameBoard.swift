@@ -377,8 +377,7 @@ class GameBoard {
         // these sentinels indicate whether we need to check for grouped colors and/or if we need to delete tiles and recurse
         // should this be a switch?
 
-        // open the turn
-        delegate.startTurn(dir)
+        
         
         if dir == MoveDirection.up
         {
@@ -412,8 +411,7 @@ class GameBoard {
                     }
                 }
             };
-        } else if dir == MoveDirection.right
-        {
+        } else if dir == MoveDirection.right {
             for (x=maxX; x>=0; x -= 1) {
                 for (y=0; y<=maxY; y += 1) {
                     curLoc = Coordinate(x: x,y: y);
@@ -439,9 +437,7 @@ class GameBoard {
             }
             
         }
-        
-        delegate.endTurn()
-        
+                
         // this is where we get when a move is done
         // test victory
     

@@ -27,8 +27,27 @@ class TileSprite : SKSpriteNode
     
     func bundleActionQ()
     {
-        // collect enqueued actions into 1 sequence of actions
+        if actionQ.count == 0 { return }
+        
+        var actionSeq = [SKAction]()
+        
+        for action in actionQ
+        {
+            actionSeq.append(action)
+        }
+        
+        actionQ.removeAll()
+        actionQ.append(SKAction.sequence(actionSeq))
     }
+    
+    func executeActions()
+    {
+        if actionQ.count == 0 { return }
+        if actionQ.count > 1 { bundleActionQ() }
+        
+        self.runAction(actionQ[0])
+    }
+    
 }
 
 // since actions on tiles may need to be passed around, deferred, processed, etc
@@ -122,6 +141,8 @@ class Turn
 {
     var move : MoveDirection
     var actionQ : [TileAction?]
+    var complete = false
+    var subTurns = 0
     
     init(dir: MoveDirection)
     {

@@ -171,6 +171,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func endTurn()
     {
+        // if the swipe did not move any tiles, disregard it
         if moves.last!!.actionQ.count == 0
         {
             // if the swipe created no actions, throw it away and return
@@ -183,34 +184,29 @@ class GameBoardView : SKNode , GameBoardProtocol
             return
         }
         
-        // TODO: Scan enqueued actions and create animations
+        // unthinkable, but
+        // if moves.last!!.complete { return }
         
-        // Moves
+        processActions()
         
-//      // convert grid location to node space
-//        let toPos = locationForCoord(toLoc)
-//        
-//        // create an animation/action for the sprite
-//        let moveAction = SKAction.moveTo(toPos, duration: 0.25)
-//        let tileSprite = tiles[fromLoc.x, fromLoc.y]
-//        tileSprite.runAction(moveAction)
-//        
-//        // also change the grid position
-//        tiles[toLoc.x, toLoc.y] = tileSprite
+        for i in 0..<dimension
+        {
+            for j in 0..<dimension
+            {
+                tiles[i,j].executeActions()
+            }
+        }
         
-        // Group Deletes
-//        // create the action/animation for deletion
-//        //let delAction = createDeleteAction()
-//        //let delSprite = tiles[loc.x, loc.y]
-//        //delSprite.runAction(delAction)
-//        print("Deleted tile with Parent tileID: \(group)")
-//        
-//        // delete the TileSprite in the SpriteBoard
-//        //clearTile(loc)
-        
-        // Repeat if necessito
         // update scoring
         // archive the Turn, do any cleanup that is needed
+        
+        moves.last!!.complete = true
+        
+        // turn gesture recognizer back on
+        for each in (self.scene!.view!.gestureRecognizers)!
+        {
+            each.enabled = true
+        }
     }
     
     func endPuzzle()
@@ -229,18 +225,16 @@ class GameBoardView : SKNode , GameBoardProtocol
         let tilePos = locationForCoord(loc)
         let tileAction = AddAction(loc: loc, tile: tile, pos: tilePos)
         
-        if moves.last != nil
-        {
+//        if moves.last != nil
+//        {
             moves.last!!.appendAction(tileAction)
-        }
-        
+ //       }
+    
     }
     
     func deleteTile(loc: Coordinate, group: Int)
     {
         
-        
-        // TODO: New Version with move queuing
         let delAction = DeleteAction(loc: loc, group: group)
         
         moves.last!!.appendAction(delAction)
@@ -249,7 +243,10 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func createDeleteAction() -> SKAction
     {
-        return SKAction.fadeOutWithDuration(0.25)
+        let randomRange = CGFloat(Float(arc4random())) / CGFloat(UINT32_MAX)
+        let fadeAction = SKAction.fadeOutWithDuration(0.25*Double(randomRange))
+        let delAction = SKAction.removeFromParent()
+        return SKAction.sequence([fadeAction, delAction])
     }
     
     func setColor(loc: Coordinate, color: Color)
@@ -269,14 +266,109 @@ class GameBoardView : SKNode , GameBoardProtocol
         moves.last!!.appendAction(moveCmd)
     }
     
-    func processMoves()
+    func processActions()
     {
+        // TODO: Create additional animation overlays
+        // TODO: sync sounds with actions
         
+        if let actions = moves.last??.actionQ
+        {
+            var index = 0
+            
+            while index < actions.count
+            {
+                var curAction = actions[index]
+                if curAction is MoveAction
+                {
+                    // gather the run of move actions into an array
+                    var moveBlock = [curAction as! MoveAction]
+                    index += 1
+                    
+                    // test the index on left so we don't overflow
+                    while index < actions.count && actions[index] is MoveAction
+                    {
+                        moveBlock.append(actions[index]! as! MoveAction)
+                        index += 1
+                    }
+                    processMoveBlock(moveBlock)
+                } else if curAction is DeleteAction
+                {
+                    // gather the run of delete actions into an array
+                    var deleteBlock = [curAction as! DeleteAction]
+                    index+=1
+                    
+                    while index < actions.count && actions[index] is DeleteAction
+                    {
+                        deleteBlock.append(actions[index]! as! DeleteAction)
+                        index += 1
+                    }
+                    processDeleteBlock(deleteBlock)
+                } else {
+                    // head off the infinite loop
+                    index += 1
+                    print("Unimplemented action type in GameBoardView::processActions()")
+                }
+                
+            }
+            
+            // now we have run through the queue
+        } else
+        {
+            // sorry, you dun goofed
+            print("Error unrolling action queue")
+        }
+            
     }
     
-    func processGroups()
-    {
         
+    func processMoveBlock(moves: [MoveAction])
+    {
+        for curAction in moves
+        {
+            // do this for each move action in the array
+            let toLoc = curAction.to
+            let toPos = locationForCoord(toLoc)
+            let fromLoc = curAction.target
+            // create an animation/action for the sprite
+            let moveAction = SKAction.moveTo(toPos, duration: 0.25)
+            let tileSprite = tiles[fromLoc!.x, fromLoc!.y]
+            tileSprite.enqueueAction(moveAction)
+            
+            // also change the grid position
+            tiles[toLoc.x, toLoc.y] = tileSprite
+        }
+        
+        self.moves.last??.subTurns += 1
+    }
+    
+    func processDeleteBlock(deletes: [DeleteAction])
+    {
+        // TODO: make group delete animation!
+        
+        for curAction in deletes
+        {
+            // create the action/animation for deletion
+            let loc = curAction.target!
+            let delAction = createDeleteAction() // fade and remove from parent for now
+            let delSprite = tiles[loc.x, loc.y]
+            
+            // if the sprite has less moves than subturns, add a pause
+            if delSprite.actionQ.count == moves.last!!.subTurns
+            {
+                delSprite.enqueueAction(delAction)
+            } else
+            {
+                delSprite.enqueueAction(SKAction.waitForDuration(0.25))
+                delSprite.enqueueAction(delAction)
+            }
+            
+            // print("Deleted tile with Parent tileID: \(group)")
+            //
+            // delete the TileSprite in the SpriteBoard
+            //clearTile(loc)
+        }
+        
+        self.moves.last??.subTurns += 1
     }
     
     func center () ->CGPoint
