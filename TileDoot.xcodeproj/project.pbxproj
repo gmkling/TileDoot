@@ -32,8 +32,6 @@
 		107698E11C3467DB006051B2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698D11C3202C8006051B2 /* Tile.swift */; };
 		107698E41C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
 		107698E51C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
-		107698E71C347CE7006051B2 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E61C347CE7006051B2 /* Commands.swift */; };
-		107698E81C347CE7006051B2 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E61C347CE7006051B2 /* Commands.swift */; };
 		107698ED1C3EF0FD006051B2 /* TileDootModelMovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */; };
 		10A6B27E1C6D20020038263E /* TileDootPuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */; };
 		10A6B2801C6DC0040038263E /* TileDootPuzzleSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */; };
@@ -239,7 +237,6 @@
 		107698D91C34668A006051B2 /* TileDootModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileDootModelTests.swift; sourceTree = "<group>"; };
 		107698DB1C34668A006051B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		107698E31C346CEE006051B2 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
-		107698E61C347CE7006051B2 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootModelMovementTests.swift; sourceTree = "<group>"; };
 		10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleTests.swift; sourceTree = "<group>"; };
 		10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetTests.swift; sourceTree = "<group>"; };
@@ -482,7 +479,6 @@
 			children = (
 				107698D11C3202C8006051B2 /* Tile.swift */,
 				107698E31C346CEE006051B2 /* GameBoard.swift */,
-				107698E61C347CE7006051B2 /* Commands.swift */,
 				1023D2B21C642229005DBAB9 /* PuzzleSet.swift */,
 			);
 			name = Models;
@@ -1005,7 +1001,6 @@
 				10A91E0B1C9A99A4009F50AB /* TileSprite.swift in Sources */,
 				10B34D181C5A0AA500AD8DD7 /* InfoScene.swift in Sources */,
 				107698C01C320292006051B2 /* MainMenuScene.swift in Sources */,
-				107698E71C347CE7006051B2 /* Commands.swift in Sources */,
 				10B34D1A1C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift in Sources */,
 				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
 				10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */,
@@ -1039,7 +1034,6 @@
 				10B34C6A1C44E63400AD8DD7 /* TDButton.swift in Sources */,
 				107698E11C3467DB006051B2 /* Tile.swift in Sources */,
 				1023D2B41C64222A005DBAB9 /* PuzzleSet.swift in Sources */,
-				107698E81C347CE7006051B2 /* Commands.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

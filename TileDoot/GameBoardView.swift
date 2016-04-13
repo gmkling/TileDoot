@@ -20,6 +20,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     var dimension : Int
     var background = SKShapeNode()
     var tiles : SpriteBoard
+    var moves : [Turn?]
     
     var audioDelegate : TD_AudioPlayer?
     
@@ -34,6 +35,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         self.dimension = puzzle.dimension
         tiles = SpriteBoard(dim: dimension)
         gridPath = CGPathCreateMutable()
+        moves = []
         
         super.init()
 
@@ -45,6 +47,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         self.gameBoard = GameBoard(boardDimension: dimension, delegate: self, boardString: puzzle.reverseRows())
         
     }
+    
     
     func drawBackground()
     {
@@ -112,6 +115,35 @@ class GameBoardView : SKNode , GameBoardProtocol
     }
     
     // the GameBoardProtocol
+    func startPuzzle()
+    {
+        // TODO: Make the start of puzzle animation be special
+        // at this point all addTile actions should be in Q, waiting to look pretty
+    }
+    
+    func startTurn()
+    {
+        // TODO: Create a new Turn object, do anything else to get ready for a turn cycle
+        
+    }
+    
+    func endTurn()
+    {
+        // TODO: Scan enqueued actions to create animations for:
+        // Moves
+        // Group Deletes
+        // Repeat if necessito
+        // update scoring
+        // archive the Turn, do any cleanup that is needed
+    }
+    
+    func endPuzzle()
+    {
+        // TODO: When Victory condition is reached,
+        // create the fancy winning/losing window
+        // prepare to change or repeat puzzle, return to main, info, etc
+    }
+    
     func addTile(loc: Coordinate, tile: Tile)
     {
         var tileFile = ""
@@ -155,15 +187,26 @@ class GameBoardView : SKNode , GameBoardProtocol
         
     }
     
-    func deleteTile(loc: Coordinate)
+    func deleteTile(loc: Coordinate, group: Int)
     {
         // create the action/animation for deletion
-        let delAction = SKAction.fadeOutWithDuration(0.25)
-        let delSprite = tiles[loc.x, loc.y]
-        delSprite.runAction(delAction)
+        //let delAction = createDeleteAction()
+        //let delSprite = tiles[loc.x, loc.y]
+        //delSprite.runAction(delAction)
+        print("Deleted tile with Parent tileID: \(group)")
         
         // delete the TileSprite in the SpriteBoard
-        clearTile(loc)
+        //clearTile(loc)
+        
+        // TODO: New Version with move queuing
+        var delAction = DeleteAction(loc: loc, group: group)
+        
+        
+    }
+    
+    func createDeleteAction() -> SKAction
+    {
+        return SKAction.fadeOutWithDuration(0.25)
     }
     
     func setColor(loc: Coordinate, color: Color)
@@ -190,6 +233,16 @@ class GameBoardView : SKNode , GameBoardProtocol
         // also change the grid position
         tiles[toLoc.x, toLoc.y] = tileSprite
         //deleteTile(fromLoc)
+    }
+    
+    func processMoves()
+    {
+        
+    }
+    
+    func processGroups()
+    {
+        
     }
     
     func center () ->CGPoint

@@ -218,6 +218,7 @@ class Tile {
     var color: Color
     var type: TileType
     var rank : Int
+    var tileID : Int
     
     var isStop = false
     var markedForDelete: Bool = false
@@ -228,6 +229,7 @@ class Tile {
         self.color = initColor
         self.type = initType
         self.rank = 0
+        self.tileID = 0
         
         self.isStop = false
         self.markedForDelete = false

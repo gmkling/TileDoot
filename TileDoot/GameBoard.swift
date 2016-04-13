@@ -8,9 +8,21 @@
 
 import Foundation
 
+enum MoveDirection
+{
+    case up, down, left, right
+}
+
 protocol GameBoardProtocol : class {
+    
+    // for synchronization
+    func startPuzzle()
+    func startTurn()
+    func endTurn()
+    func endPuzzle()
+    
     func addTile(loc: Coordinate, tile: Tile)
-    func deleteTile(loc: Coordinate)
+    func deleteTile(loc: Coordinate, group: Int)
     
     // these are the only properties we need to make the sprite look right
     func setColor(loc: Coordinate, color: Color)
@@ -97,6 +109,7 @@ class GameBoard {
             i += 1
         }
         
+        delegate.startPuzzle()
         return true
         
     }
@@ -116,12 +129,19 @@ class GameBoard {
     
     func deleteTile(loc: Coordinate)
     {
+        let delTile = tileMap[loc.x, loc.y]
+        
         // insert a nullTile if one is not already there
-        // what is the purpose of this check?
-        if tileMap[loc.x, loc.y].type != TileType.nullTile
+        if delTile.type != TileType.nullTile
         {
+            // get the ID of the parent
+            if delTile.parent == nil {
+                delegate.deleteTile(loc, group: delTile.tileID)
+            }  else {
+                delegate.deleteTile(loc, group: (delTile.parent?.tileID)!)
+            }
+            
             tileMap[loc.x, loc.y] = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
-            delegate.deleteTile(loc)
         }
     }
     
@@ -566,6 +586,7 @@ class GameBoard {
     {
         var occupiedTiles = [Coordinate]()
         var result = false
+        var localID = 1
         
         if numTiles<1 {return result} // map is empty
         
@@ -578,6 +599,9 @@ class GameBoard {
                     let curCoord = Coordinate(x: i,y: j)
                     makeSet(curCoord)
                     occupiedTiles.append(curCoord)
+                    
+                    tileMap[i,j].tileID = localID
+                    localID += 1
                 }
             }
         }
