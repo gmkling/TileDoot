@@ -161,11 +161,30 @@ class GameBoardView : SKNode , GameBoardProtocol
     {
         // TODO: Create a new Turn object for a new swipe, do anything else to get ready for a turn cycle
         moves.append(Turn(dir: dir))
+        
+        // can moves be disabled until endTurn() is called?
+        for each in (self.scene!.view!.gestureRecognizers)!
+        {
+            each.enabled = false
+        }
     }
     
     func endTurn()
     {
-        // TODO: Scan enqueued actions to create animations for:
+        if moves.last!!.actionQ.count == 0
+        {
+            // if the swipe created no actions, throw it away and return
+            moves.removeLast()
+            // can moves be disabled until endTurn() is called?
+            for each in (self.scene!.view!.gestureRecognizers)!
+            {
+                each.enabled = true
+            }
+            return
+        }
+        
+        // TODO: Scan enqueued actions and create animations
+        
         // Moves
         
 //      // convert grid location to node space
@@ -180,6 +199,14 @@ class GameBoardView : SKNode , GameBoardProtocol
 //        tiles[toLoc.x, toLoc.y] = tileSprite
         
         // Group Deletes
+//        // create the action/animation for deletion
+//        //let delAction = createDeleteAction()
+//        //let delSprite = tiles[loc.x, loc.y]
+//        //delSprite.runAction(delAction)
+//        print("Deleted tile with Parent tileID: \(group)")
+//        
+//        // delete the TileSprite in the SpriteBoard
+//        //clearTile(loc)
         
         // Repeat if necessito
         // update scoring
@@ -211,14 +238,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func deleteTile(loc: Coordinate, group: Int)
     {
-        // create the action/animation for deletion
-        //let delAction = createDeleteAction()
-        //let delSprite = tiles[loc.x, loc.y]
-        //delSprite.runAction(delAction)
-        print("Deleted tile with Parent tileID: \(group)")
         
-        // delete the TileSprite in the SpriteBoard
-        //clearTile(loc)
         
         // TODO: New Version with move queuing
         let delAction = DeleteAction(loc: loc, group: group)

@@ -376,6 +376,9 @@ class GameBoard {
         
         // these sentinels indicate whether we need to check for grouped colors and/or if we need to delete tiles and recurse
         // should this be a switch?
+
+        // open the turn
+        delegate.startTurn(dir)
         
         if dir == MoveDirection.up
         {
@@ -426,6 +429,7 @@ class GameBoard {
         // if we moved anything, check for connected components
         if(tileMapDirty)
         {
+            
             if connectComponents()
             {
                 // remove deleted tiles
@@ -435,6 +439,8 @@ class GameBoard {
             }
             
         }
+        
+        delegate.endTurn()
         
         // this is where we get when a move is done
         // test victory
