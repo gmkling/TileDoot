@@ -41,7 +41,7 @@ class PuzzleDirectoryScene: SKScene {
         let subviewOrigin = CGPointMake(self.size.width/6, self.size.height*0.15)
         puzzleSelect = PuzzleSetView(inPuzzles: testSet, viewSize: subviewSize)
         puzzleSelect!.position = subviewOrigin
-        puzzleSelect!.audioDelegate = audioDelegate
+        puzzleSelect?.audioDelegate = audioDelegate
         // make the node tree
         self.addChild(backButton)
         self.addChild(puzzleSelect!)

@@ -10,14 +10,14 @@ import Foundation
 
 enum MoveDirection
 {
-    case up, down, left, right
+    case up, down, left, right, none
 }
 
 protocol GameBoardProtocol : class {
     
     // for synchronization
     func startPuzzle()
-    func startTurn()
+    func startTurn(dir: MoveDirection)
     func endTurn()
     func endPuzzle()
     
@@ -526,7 +526,9 @@ class GameBoard {
             case MoveDirection.right:
                 newPos = Coordinate(x: inCoord.x+xIncrement, y: inCoord.y)
             break;
-
+            
+            case .none:
+                newPos = Coordinate(x: inCoord.x, y: inCoord.y)
         }
         
         return newPos;

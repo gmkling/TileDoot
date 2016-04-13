@@ -107,6 +107,7 @@ class PuzzleSetView: SKNode
     
     func doGameScene(puzID: String?)
     {
+        // TODO: somehow the audioDelegate is messed up in this transition
         // this smells funny to me. 
         
         // match puzID to the one in puzzles
@@ -118,7 +119,9 @@ class PuzzleSetView: SKNode
             gameScene!.setPuzzle(puz!)
             gameScene!.returnAddr = scene!
             var transition = SKTransition.flipHorizontalWithDuration(0.5)
-            gameScene!.audioDelegate = audioDelegate
+            if audioDelegate == nil { print("AudioDelegate is nil in PuzzleSetView") }
+            gameScene?.audioDelegate = audioDelegate
+            if gameScene!.audioDelegate == nil { print("AudioDelegate is nil in gameScene before transition") }
             self.scene?.view?.presentScene(gameScene!, transition: transition)
             return
         }

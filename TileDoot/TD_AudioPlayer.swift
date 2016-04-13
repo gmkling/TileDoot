@@ -218,6 +218,8 @@ class TD_AudioPlayer : SoundPlayer
         if let sound = sfxDict[sfxKey]
         {
             sound.randomItem().play()
+        } else {
+            print("Error playing sfx: \(sfxKey)")
         }
     }
     

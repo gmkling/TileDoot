@@ -36,9 +36,11 @@ class GameBoardView : SKNode , GameBoardProtocol
         tiles = SpriteBoard(dim: dimension)
         gridPath = CGPathCreateMutable()
         moves = []
+        moves.append(Turn(dir: .none))
         
         super.init()
 
+        // TODO: animate this
         // init background
         drawBackground()
         drawGrid()
@@ -52,8 +54,6 @@ class GameBoardView : SKNode , GameBoardProtocol
     func drawBackground()
     {
         
-        
-        // would rather draw grid, but just a square in back for now
         background = SKShapeNode.init(rectOfSize: size)
         background.fillColor = SKColor.lightGrayColor()
         background.strokeColor = SKColor.blackColor()
@@ -119,19 +119,68 @@ class GameBoardView : SKNode , GameBoardProtocol
     {
         // TODO: Make the start of puzzle animation be special
         // at this point all addTile actions should be in Q, waiting to look pretty
+        // the moveDirection "none" is for the beginning of the level
+        let fadeInAction = SKAction.fadeInWithDuration(0.1)
+        let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
+        let fadeInSeq = SKAction.sequence([waitAction, fadeInAction])
+        
+        if audioDelegate == nil { print("nil audioDelegate") }
+        
+        if moves.last != nil && moves.last!!.move == MoveDirection.none
+        {
+            for t in moves.last!!.actionQ
+            {
+                if let tileAdd = t as? AddAction
+                {
+                    // TODO: fancy Tile adding animation instead of this
+                    let tempTile = tileAdd.getTileSprite()
+                    
+                    // calc the scale
+                    let sceneSizeX = self.size.width
+                    let sceneSizeY = self.size.height
+                    let spriteDim = CGFloat(dimension)
+                    let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
+                    let tileRenderSize = sceneSizeX / spriteDim
+                    let tileScale = tileRenderSize / tileSizeIn
+                    
+                    tempTile.anchorPoint = CGPointMake(0.0, 0.0)
+                    tempTile.setScale(tileScale)
+                    tempTile.alpha = 0.0
+                    
+                    
+                    self.addChild(tempTile)
+                    tempTile.runAction(fadeInSeq)
+                    audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
+                    tiles[tileAdd.target!.x, tileAdd.target!.y] = tempTile
+                }
+            }
+        }
     }
     
-    func startTurn()
+    func startTurn(dir: MoveDirection)
     {
-        // TODO: Create a new Turn object, do anything else to get ready for a turn cycle
-        
+        // TODO: Create a new Turn object for a new swipe, do anything else to get ready for a turn cycle
+        moves.append(Turn(dir: dir))
     }
     
     func endTurn()
     {
         // TODO: Scan enqueued actions to create animations for:
         // Moves
+        
+//      // convert grid location to node space
+//        let toPos = locationForCoord(toLoc)
+//        
+//        // create an animation/action for the sprite
+//        let moveAction = SKAction.moveTo(toPos, duration: 0.25)
+//        let tileSprite = tiles[fromLoc.x, fromLoc.y]
+//        tileSprite.runAction(moveAction)
+//        
+//        // also change the grid position
+//        tiles[toLoc.x, toLoc.y] = tileSprite
+        
         // Group Deletes
+        
         // Repeat if necessito
         // update scoring
         // archive the Turn, do any cleanup that is needed
@@ -146,44 +195,17 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func addTile(loc: Coordinate, tile: Tile)
     {
-        var tileFile = ""
-        
-        // swift + switch == :)
-        // get an image for the color/type combo
-        
-        switch tile.type {
-        case .colorTile:
-                tileFile = filenameForColor(tile.color)
-        case .barrierTile:
-                tileFile = "StopTileTest3.png"
-        case .emptyTile:
-            // the rest of this is irrelevant
-            return
-        case .nullTile:
-            return
-        default:
-            print("Unrecognized TileType: \(tile.type)")
-        }
+        // no-op if the tileType is empty
+        if tile.type == TileType.emptyTile { return }
         
         // get the location for the loc
         let tilePos = locationForCoord(loc)
-        let tempTile = TileSprite(imageNamed: tileFile)
-        tempTile.position = tilePos
+        let tileAction = AddAction(loc: loc, tile: tile, pos: tilePos)
         
-        // calc the scale
-        let sceneSizeX = self.size.width
-        let sceneSizeY = self.size.height
-        let spriteDim = CGFloat(dimension)
-        let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
-        let tileRenderSize = sceneSizeX / spriteDim
-        let tileScale = tileRenderSize / tileSizeIn
-        
-        tempTile.anchorPoint = CGPointMake(0.0, 0.0)
-        tempTile.setScale(tileScale)
-            
-        self.addChild(tempTile)
-        
-        tiles[loc.x, loc.y] = tempTile
+        if moves.last != nil
+        {
+            moves.last!!.appendAction(tileAction)
+        }
         
     }
     
@@ -199,8 +221,9 @@ class GameBoardView : SKNode , GameBoardProtocol
         //clearTile(loc)
         
         // TODO: New Version with move queuing
-        var delAction = DeleteAction(loc: loc, group: group)
+        let delAction = DeleteAction(loc: loc, group: group)
         
+        moves.last!!.appendAction(delAction)
         
     }
     
@@ -221,18 +244,9 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
     {
-        // convert grid location to node space
-        let toPos = locationForCoord(toLoc)
-        // create an animation/action for the sprite
-        let moveAction = SKAction.moveTo(toPos, duration: 0.25)
+        let moveCmd = MoveAction(from: fromLoc, to: toLoc)
         
-        // get the sprite, queue the action
-        let tileSprite = tiles[fromLoc.x, fromLoc.y]
-        tileSprite.runAction(moveAction)
-        
-        // also change the grid position
-        tiles[toLoc.x, toLoc.y] = tileSprite
-        //deleteTile(fromLoc)
+        moves.last!!.appendAction(moveCmd)
     }
     
     func processMoves()

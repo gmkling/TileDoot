@@ -35,11 +35,11 @@ class TileSprite : SKSpriteNode
 // we'll make a token that can transformed into different concrete SKAction sequences
 // depending on our needs. I don't think TileSprites will process their own actions
 
-// this is not a command
 
-enum ActionType : Int{
-    case add, move, delete
-}
+//enum ActionType : Int{
+//    case add, move, delete
+//}
+
 class TileAction
 {
     var target : Coordinate?
@@ -56,13 +56,39 @@ class AddAction : TileAction
 {
     var color : Color
     var type : TileType
+    var tileFile = ""
+    var pos : CGPoint
     
-    init(loc: Coordinate, tileColor: Color, type: TileType)
+    init(loc: Coordinate, tile: Tile, pos: CGPoint)
     {
-        color = tileColor
-        self.type = type
+        color = tile.color
+        self.type = tile.type
+        self.pos = pos
+        
+        switch tile.type {
+        case .colorTile:
+            tileFile = filenameForColor(tile.color)
+        case .barrierTile:
+            tileFile = "StopTileTest3.png"
+        case .emptyTile:
+            //tileFile = ""
+            break
+        case .nullTile:
+            break
+        default:
+            print("Unrecognized TileType: \(tile.type)")
+        }
         
         super.init(tile: loc)
+    }
+    
+    func getTileSprite() -> TileSprite
+    {
+        let tempT = TileSprite(imageNamed: tileFile)
+        
+        tempT.position = self.pos
+        
+        return tempT
     }
 }
 
@@ -103,7 +129,7 @@ class Turn
         actionQ = []
     }
     
-    func addAction(action: TileAction)
+    func appendAction(action: TileAction)
     {
         actionQ.append(action)
     }
