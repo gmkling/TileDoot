@@ -133,6 +133,21 @@ class DeleteAction : TileAction
     }
 }
 
+class AudioAction : TileAction
+{
+    var keyString : String
+    var audioTypeKey : String
+    
+    init(loc: Coordinate, sfxKey: String, sfxType: String)
+    {
+        keyString = sfxKey
+        audioTypeKey = sfxType
+        
+        super.init(tile: loc)
+    }
+
+}
+
 
 
 // if we make a data structure for this, can we log entire sessions this way? Undos, etc.

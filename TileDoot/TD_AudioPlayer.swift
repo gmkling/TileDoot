@@ -212,7 +212,7 @@ class TD_AudioPlayer : SoundPlayer
     
     func playSFX(sfxKey: String, typeKey: String)
     {
-        // don't play if we are mute
+        // don't play if we are muted
         if sfxStatus==false { return }
         
         if let sound = sfxDict[sfxKey]

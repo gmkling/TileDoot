@@ -126,7 +126,8 @@ class GameBoardView : SKNode , GameBoardProtocol
         // the moveDirection "none" is for the beginning of the level
         let fadeInAction = SKAction.fadeInWithDuration(0.1)
         let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
-        let fadeInSeq = SKAction.sequence([waitAction, fadeInAction])
+        let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)})
+        let fadeInSeq = SKAction.sequence([waitAction, fadeInAction, audioAction])
         
         if self.audioDelegate == nil { print("nil audioDelegate") }
         
@@ -154,7 +155,6 @@ class GameBoardView : SKNode , GameBoardProtocol
                     
                     self.addChild(tempTile)
                     tempTile.runAction(fadeInSeq)
-                    audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
                     tiles[tileAdd.target!.x, tileAdd.target!.y] = tempTile
                 }
             }
@@ -240,17 +240,19 @@ class GameBoardView : SKNode , GameBoardProtocol
     {
         
         let delAction = DeleteAction(loc: loc, group: group)
+        let audAction = AudioAction(loc: loc, sfxKey:catch_key, sfxType: mono_key)
         
         moves.last!!.appendAction(delAction)
-        
+        //moves.last!!.appendAction(audAction)
     }
     
     func createDeleteAction() -> SKAction
     {
         let randomRange = CGFloat(Float(arc4random())) / CGFloat(UINT32_MAX)
         let fadeAction = SKAction.fadeOutWithDuration(0.25*Double(randomRange))
+        let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
         let delAction = SKAction.removeFromParent()
-        return SKAction.sequence([fadeAction, delAction])
+        return SKAction.sequence([fadeAction, audioAction, delAction])
     }
     
     func setColor(loc: Coordinate, color: Color)
@@ -307,7 +309,17 @@ class GameBoardView : SKNode , GameBoardProtocol
                         index += 1
                     }
                     processDeleteBlock(deleteBlock)
-                } else {
+                } else if curAction is AudioAction
+                {
+                    let baseDur = 0.25
+                    var audioBlock = curAction as! AudioAction
+                    let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(audioBlock.keyString, typeKey: audioBlock.audioTypeKey)})
+                    let delayAction = SKAction.waitForDuration(0.25*Double((self.moves.last??.subTurns)!))
+                    
+                    self.runAction(SKAction.sequence([delayAction, audioAction]))
+                    index += 1
+                } else
+                {
                     // head off the infinite loop
                     index += 1
                     print("Unimplemented action type in GameBoardView::processActions()")
@@ -341,7 +353,6 @@ class GameBoardView : SKNode , GameBoardProtocol
             // also change the grid position
             tiles[toLoc.x, toLoc.y] = tileSprite
         }
-        
         audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)
         self.moves.last??.subTurns += 1
     }
