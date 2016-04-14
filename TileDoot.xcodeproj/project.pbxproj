@@ -199,6 +199,16 @@
 		10B34D181C5A0AA500AD8DD7 /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D171C5A0AA500AD8DD7 /* InfoScene.swift */; };
 		10B34D1A1C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D191C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift */; };
 		10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */; };
+		10EB4A9F1CC0379F00E487D3 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */; };
+		10EB4AA91CC041EF00E487D3 /* PurpleBack_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA01CC041EF00E487D3 /* PurpleBack_def.png */; };
+		10EB4AAA1CC041EF00E487D3 /* PurpleBack_dis.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA11CC041EF00E487D3 /* PurpleBack_dis.png */; };
+		10EB4AAB1CC041EF00E487D3 /* PurpleBack_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA21CC041EF00E487D3 /* PurpleBack_sel.png */; };
+		10EB4AAC1CC041EF00E487D3 /* PurpleForward_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA31CC041EF00E487D3 /* PurpleForward_def.png */; };
+		10EB4AAD1CC041EF00E487D3 /* PurpleForward_dis.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA41CC041EF00E487D3 /* PurpleForward_dis.png */; };
+		10EB4AAE1CC041EF00E487D3 /* PurpleForward_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA51CC041EF00E487D3 /* PurpleForward_sel.png */; };
+		10EB4AAF1CC041EF00E487D3 /* PurpleReset_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA61CC041EF00E487D3 /* PurpleReset_def.png */; };
+		10EB4AB01CC041EF00E487D3 /* PurpleReset_dis.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA71CC041EF00E487D3 /* PurpleReset_dis.png */; };
+		10EB4AB11CC041EF00E487D3 /* PurpleReset_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA81CC041EF00E487D3 /* PurpleReset_sel.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +371,16 @@
 		10B34D171C5A0AA500AD8DD7 /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoScene.swift; path = Scenes/InfoScene.swift; sourceTree = "<group>"; };
 		10B34D191C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleDirectoryScene.swift; path = Scenes/PuzzleDirectoryScene.swift; sourceTree = "<group>"; };
 		10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayScene.swift; path = Scenes/GamePlayScene.swift; sourceTree = "<group>"; };
+		10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VictoryView.swift; path = Views/VictoryView.swift; sourceTree = "<group>"; };
+		10EB4AA01CC041EF00E487D3 /* PurpleBack_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBack_def.png; sourceTree = "<group>"; };
+		10EB4AA11CC041EF00E487D3 /* PurpleBack_dis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBack_dis.png; sourceTree = "<group>"; };
+		10EB4AA21CC041EF00E487D3 /* PurpleBack_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBack_sel.png; sourceTree = "<group>"; };
+		10EB4AA31CC041EF00E487D3 /* PurpleForward_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleForward_def.png; sourceTree = "<group>"; };
+		10EB4AA41CC041EF00E487D3 /* PurpleForward_dis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleForward_dis.png; sourceTree = "<group>"; };
+		10EB4AA51CC041EF00E487D3 /* PurpleForward_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleForward_sel.png; sourceTree = "<group>"; };
+		10EB4AA61CC041EF00E487D3 /* PurpleReset_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleReset_def.png; sourceTree = "<group>"; };
+		10EB4AA71CC041EF00E487D3 /* PurpleReset_dis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleReset_dis.png; sourceTree = "<group>"; };
+		10EB4AA81CC041EF00E487D3 /* PurpleReset_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleReset_sel.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +404,15 @@
 		1023D29A1C5AE38A005DBAB9 /* MiscButtons */ = {
 			isa = PBXGroup;
 			children = (
+				10EB4AA01CC041EF00E487D3 /* PurpleBack_def.png */,
+				10EB4AA11CC041EF00E487D3 /* PurpleBack_dis.png */,
+				10EB4AA21CC041EF00E487D3 /* PurpleBack_sel.png */,
+				10EB4AA31CC041EF00E487D3 /* PurpleForward_def.png */,
+				10EB4AA41CC041EF00E487D3 /* PurpleForward_dis.png */,
+				10EB4AA51CC041EF00E487D3 /* PurpleForward_sel.png */,
+				10EB4AA61CC041EF00E487D3 /* PurpleReset_def.png */,
+				10EB4AA71CC041EF00E487D3 /* PurpleReset_dis.png */,
+				10EB4AA81CC041EF00E487D3 /* PurpleReset_sel.png */,
 				10AB01251CA474F00092D7AF /* PurpleMenu_def.png */,
 				10AB01261CA474F00092D7AF /* PurpleMenu_sel.png */,
 				10AB01211CA46E100092D7AF /* PurplePlay_def.png */,
@@ -491,6 +520,7 @@
 				10A91E0A1C9A99A4009F50AB /* TileSprite.swift */,
 				10AB01A81CB058310092D7AF /* PuzzleSetView.swift */,
 				10AB01AA1CB059430092D7AF /* PuzzleSprite.swift */,
+				10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -833,6 +863,7 @@
 				10AB019E1CADE1ED0092D7AF /* SingleTapLoud_Mono7.aiff in Resources */,
 				10AB01A11CADE1ED0092D7AF /* SmallFall_Stereo2.aiff in Resources */,
 				10B34CB01C4B935F00AD8DD7 /* Yellow3_test.png in Resources */,
+				10EB4AAF1CC041EF00E487D3 /* PurpleReset_def.png in Resources */,
 				10AB01301CA480DE0092D7AF /* emailButton-500px_def.png in Resources */,
 				10AB01841CADE1ED0092D7AF /* PileTap_Mono1.aiff in Resources */,
 				10B34D111C536C9500AD8DD7 /* Red1_sel.png in Resources */,
@@ -850,6 +881,7 @@
 				10AB019C1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff in Resources */,
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
 				10AB01381CA485C90092D7AF /* checkBox-500px_def.png in Resources */,
+				10EB4AAE1CC041EF00E487D3 /* PurpleForward_sel.png in Resources */,
 				10B34CAA1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
 				1023D2A81C5C2713005DBAB9 /* BlueBack_sel-500px.png in Resources */,
 				10AB017B1CADE1ED0092D7AF /* LR_WoodSlide_Stereo4.aiff in Resources */,
@@ -886,22 +918,29 @@
 				10B34D061C536C1700AD8DD7 /* Purple2_sel.png in Resources */,
 				10B34CEA1C4F87BE00AD8DD7 /* Red2_test.png in Resources */,
 				10AB019B1CADE1ED0092D7AF /* SingleTapLoud_Mono4.aiff in Resources */,
+				10EB4AA91CC041EF00E487D3 /* PurpleBack_def.png in Resources */,
 				10B34CEC1C4F87BE00AD8DD7 /* Red3_test.png in Resources */,
+				10EB4AB01CC041EF00E487D3 /* PurpleReset_dis.png in Resources */,
 				10AB01951CADE1ED0092D7AF /* SingleTap_Mono6.aiff in Resources */,
 				10AB01861CADE1ED0092D7AF /* PileTap_Mono3.aiff in Resources */,
+				10EB4AAC1CC041EF00E487D3 /* PurpleForward_def.png in Resources */,
 				10AB01A41CADE1ED0092D7AF /* SmallFall_Stereo5.aiff in Resources */,
 				10AB01971CADE1ED0092D7AF /* SingleTap_Mono8.aiff in Resources */,
+				10EB4AB11CC041EF00E487D3 /* PurpleReset_sel.png in Resources */,
 				10B34CD11C4E32DB00AD8DD7 /* Orange2_test.png in Resources */,
 				10AB01A01CADE1ED0092D7AF /* SmallFall_Stereo1.aiff in Resources */,
 				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
+				10EB4AAB1CC041EF00E487D3 /* PurpleBack_sel.png in Resources */,
 				10AB01271CA474F00092D7AF /* PurpleMenu_def.png in Resources */,
 				10AB01801CADE1ED0092D7AF /* Catch_Mono3.aiff in Resources */,
 				10AB01931CADE1ED0092D7AF /* SingleTap_Mono4.aiff in Resources */,
+				10EB4AAD1CC041EF00E487D3 /* PurpleForward_dis.png in Resources */,
 				10AB019F1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff in Resources */,
 				10AB018B1CADE1ED0092D7AF /* PileTap_Mono8.aiff in Resources */,
 				10B34CCF1C4E32DB00AD8DD7 /* Orange1_test.png in Resources */,
 				10B34CE81C4F87BE00AD8DD7 /* Red1_test.png in Resources */,
 				10AB017D1CADE1ED0092D7AF /* LR_WoodSlide_Stereo6.aiff in Resources */,
+				10EB4AAA1CC041EF00E487D3 /* PurpleBack_dis.png in Resources */,
 				10AB01A21CADE1ED0092D7AF /* SmallFall_Stereo3.aiff in Resources */,
 				10B34CD51C4E32DB00AD8DD7 /* Orange4_test.png in Resources */,
 				10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */,
@@ -1012,6 +1051,7 @@
 				10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */,
 				10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */,
 				10AB01A91CB058310092D7AF /* PuzzleSetView.swift in Sources */,
+				10EB4A9F1CC0379F00E487D3 /* VictoryView.swift in Sources */,
 				10B34CF31C50CC7D00AD8DD7 /* SceneInvertTest.swift in Sources */,
 				10AB013B1CA515BF0092D7AF /* GameData.swift in Sources */,
 				1023D2B31C64222A005DBAB9 /* PuzzleSet.swift in Sources */,

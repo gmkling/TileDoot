@@ -168,7 +168,7 @@ class GameBoard {
         return isLocInRange(Coordinate(x: x, y: y))
     }
     
-    // Occupied is implied by the presence of a non-null tile
+    // Occupied is implied by the presence of a non-null, non-empty tile
     // this is not the same as a stop tile
  
     func isLocOccupied(loc: Coordinate) ->Bool
@@ -180,6 +180,25 @@ class GameBoard {
         { return true }
         
         return false
+    }
+    
+    func isPuzzleSolved() -> Bool
+    {
+        // for each tile, check to see if a game tile is present
+        for i in 0..<dimension
+        {
+            for j in 0..<dimension
+            {
+                // if we ever add another type of game tile, we will need to account for it
+                // or change to test a playable property or somesuch thing
+                if tileMap[i,j].type == TileType.colorTile
+                {
+                    return false
+                }
+            }
+        }
+        
+        return true
     }
 
     // stop property
@@ -438,8 +457,11 @@ class GameBoard {
             
         }
                 
-        // this is where we get when a move is done
-        // test victory
+        // tell the delegate if the puzzle is solved
+        if isPuzzleSolved()
+        {
+            delegate.endPuzzle()
+        }
     
     }
     

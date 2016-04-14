@@ -32,6 +32,8 @@ class GamePlayScene: SKScene {
         self.backgroundColor = greenTileColor
         
         // some layout tools
+        
+        // TODO: *0.5 then *2.0 on button size??
         let gridSize = self.frame.width/12.0
         let littleButtonSize = 0.5*gridSize
         let littleButtonScale = littleButtonSize/500.0

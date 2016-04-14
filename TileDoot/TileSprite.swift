@@ -46,6 +46,7 @@ class TileSprite : SKSpriteNode
         if actionQ.count > 1 { bundleActionQ() }
         
         self.runAction(actionQ[0])
+        actionQ.removeAll()
     }
     
 }

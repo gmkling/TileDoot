@@ -221,8 +221,8 @@ class Tile {
     var tileID : Int
     
     var isStop = false
-    var markedForDelete: Bool = false
-    var moveInProgress: Bool = false
+    var markedForDelete = false
+    var moveInProgress = false
         
     init(initType: TileType, initColor: Color)
     {

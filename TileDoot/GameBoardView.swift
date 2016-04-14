@@ -28,6 +28,9 @@ class GameBoardView : SKNode , GameBoardProtocol
     var gridPath : CGMutablePath
     var gridLines = SKShapeNode()
     
+    // victory screen
+    var victoryScreen : VictoryView
+    
     // boardSize is the size in Pixels of the UI element
     init(puzzle: Puzzle, boardSize: CGSize, audioDel: TD_AudioPlayer?)
     {
@@ -42,6 +45,8 @@ class GameBoardView : SKNode , GameBoardProtocol
             self.audioDelegate = audioDel
         }
         
+        victoryScreen = VictoryView(size: boardSize, stars: 2)
+        
         super.init()
 
         // TODO: animate this
@@ -51,7 +56,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         
         // init board
         self.gameBoard = GameBoard(boardDimension: dimension, delegate: self, boardString: puzzle.reverseRows())
-        
+        self.addChild(victoryScreen)
     }
     
     
@@ -390,6 +395,14 @@ class GameBoardView : SKNode , GameBoardProtocol
     func center () ->CGPoint
     {
         return CGPointMake((self.size.width/2.0), (self.size.height/2.0))
+    }
+    
+    func saveProgress()
+    {
+        // save puzzle turn count
+        // save solved state (unsolved, solved, par met)
+        // save stars (* = solved, par + >2, ** = solved, par + 1 to 2, *** = par met or exceeded)
+        // save tiles dooted
     }
     
 }

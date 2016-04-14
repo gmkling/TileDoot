@@ -22,6 +22,7 @@ class PuzzleDirectoryScene: SKScene {
         let gridSize = self.frame.width/12.0
         let littleButtonSize = 0.5*gridSize
         let littleButtonScale = littleButtonSize/500.0
+        
         let imageWidth = 8.0*gridSize
         
         let normalTextSize = CGFloat(16.0)

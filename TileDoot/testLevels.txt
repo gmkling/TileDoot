@@ -1,9 +1,13 @@
-1 Test1 82
-4.1.TestLevel1
-*BB*
-*.B*
-*.B*
-*BBB
+1 Test1 86
+8.1.TestLevel1
+BBBB****
+BBBB****
+....GGGG
+....GGGG
+...RR***
+...RG.OO
+YO...OOY
+GB..OOB*
 4.1.TestLevel2
 *GG*
 *..G

@@ -25,6 +25,30 @@ class TDButton : SKNode
     
     // MARK: Initializers
     
+    override init()
+    {
+        self.defaultImage = SKSpriteNode()
+        self.selectedImage = SKSpriteNode()
+        
+        selectedImage.hidden = true
+        labelString = ""
+        
+        buttonLabel.text = labelString
+        buttonLabel.fontSize = 12
+        
+        action = {}
+        
+        super.init()
+        
+//        buttonLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+//        buttonLabel.zPosition = 1.0
+        userInteractionEnabled = true
+//        addChild(defaultImage)
+//        addChild(selectedImage)
+//        addChild(buttonLabel)
+        
+    }
+    
     init(defaultImageName: String, selectImageName: String, buttonAction: () -> Void, disabledImageName: String?, labelStr: String?)
     {
         self.defaultImage = SKSpriteNode(imageNamed: defaultImageName)
@@ -39,7 +63,7 @@ class TDButton : SKNode
         
         if labelStr == nil
         {
-            labelString = "Untitled"
+            labelString = ""
         } else
         {
             labelString = labelStr!
@@ -111,7 +135,6 @@ class TDButton : SKNode
     
     override func setScale(scale: CGFloat) {
         super.setScale(scale)
-        buttonLabel.setScale(1.0/scale)
     }
     
     func disable()
@@ -136,6 +159,7 @@ class TDToggleButton : TDButton
     var isEnabled = false
     
     var disableAction : () -> Void
+    
     
     init(defaultImageName: String, selectImageName: String, enableAction: () -> Void, disableAction: () -> Void, withState: Bool, labelStr: String?)
     {
