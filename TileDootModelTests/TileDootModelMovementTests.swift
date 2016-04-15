@@ -12,10 +12,20 @@ import XCTest
 class TileDootModelMovementTests: XCTestCase , GameBoardProtocol {
 
     // these are dummies for testing
+    
+    func startPuzzle()
+    {}
+    func startTurn(dir: MoveDirection)
+    {}
+    func endTurn()
+    {}
+    func endPuzzle()
+    {}
+    
     func addTile(loc: Coordinate, tile: Tile)
     {}
     
-    func deleteTile(loc: Coordinate)
+    func deleteTile(loc: Coordinate, group: Int)
     {}
     
     func setColor(loc: Coordinate, color: Color)

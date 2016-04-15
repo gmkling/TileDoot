@@ -21,6 +21,10 @@ protocol GameBoardProtocol : class {
     func endTurn()
     func endPuzzle()
     
+    // these signals tell the view when to process batches of move and delete actions
+    func moveSubturn()
+    func deleteSubturn()
+    
     func addTile(loc: Coordinate, tile: Tile)
     func deleteTile(loc: Coordinate, group: Int)
     
@@ -135,6 +139,7 @@ class GameBoard {
         if delTile.type != TileType.nullTile
         {
             // get the ID of the parent
+            // TODO: we want the ID of the ROOT, hello?
             if delTile.parent == nil {
                 delegate.deleteTile(loc, group: delTile.tileID)
             }  else {
@@ -446,11 +451,12 @@ class GameBoard {
         // if we moved anything, check for connected components
         if(tileMapDirty)
         {
-            
+            delegate.moveSubturn()
             if connectComponents()
             {
                 // remove deleted tiles
                 emptyMarkedTiles()
+                delegate.deleteSubturn()
                 // repeat the move to collapse, until connectComponents returns false
                 dootTiles(dir)
             }
@@ -583,13 +589,15 @@ class GameBoard {
             root = root.parent!
         }
         
+        // strictly this tree shortening isn't needed, it is an optimization. But Swift switching from var to inout broke it
+        // TODO: Figure out why this broke and decide if it is needed. It is breaking trees and leaving tiles all over the place!
         // update the parent pointers
-        while node.parent != nil
-        {
-            tempTile = node.parent
-            node.parent = root
-            node = tempTile!
-        }
+//        while node.parent != nil
+//        {
+//            tempTile = node.parent
+//            node.parent = root
+//            node = tempTile!
+//        }
         return root
     }
     

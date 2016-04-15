@@ -12,10 +12,20 @@ import XCTest
 class TileDootModelTests: XCTestCase , GameBoardProtocol {
     
     // these are dummies for testing
+    
+    func startPuzzle()
+    {}
+    func startTurn(dir: MoveDirection)
+    {}
+    func endTurn()
+    {}
+    func endPuzzle()
+    {}
+    
     func addTile(loc: Coordinate, tile: Tile)
     {}
     
-    func deleteTile(loc: Coordinate)
+    func deleteTile(loc: Coordinate, group: Int)
     {}
     
     func setColor(loc: Coordinate, color: Color)
@@ -374,7 +384,7 @@ class TileDootModelTests: XCTestCase , GameBoardProtocol {
         testBoard.tileMap[1, 1].parent = testBoard.tileMap[0, 1]
         testBoard.tileMap[1, 0].parent = testBoard.tileMap[1, 1]
         
-        let testRoot = testBoard.findSet(testBoard.tileMap[1,0])
+        let testRoot = testBoard.findSet(&testBoard.tileMap[1,0])
         
         XCTAssert(testBoard.tileMap[1,0].parent!==testBoard.tileMap[0, 0])
         XCTAssert(testBoard.tileMap[1,1].parent!==testBoard.tileMap[0, 0])
@@ -465,24 +475,24 @@ class TileDootModelTests: XCTestCase , GameBoardProtocol {
         var g3Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
         var g4Root = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
         
-        if let g1Tile = testBoard.getTile(Coordinate(x: 0,y: 8))
+        if var g1Tile = testBoard.getTile(Coordinate(x: 0,y: 8))
         {
-            g1Root = testBoard.findSet(g1Tile)
+            g1Root = testBoard.findSet(&g1Tile)
         }
         
-        if let g2Tile = testBoard.getTile(Coordinate(x: 4,y: 6))
+        if var g2Tile = testBoard.getTile(Coordinate(x: 4,y: 6))
         {
-            g2Root = testBoard.findSet(g2Tile)
+            g2Root = testBoard.findSet(&g2Tile)
         }
         
-        if let g3Tile = testBoard.getTile(Coordinate(x: 4,y: 3))
+        if var g3Tile = testBoard.getTile(Coordinate(x: 4,y: 3))
         {
-            g3Root = testBoard.findSet(g3Tile)
+            g3Root = testBoard.findSet(&g3Tile)
         }
         
-        if let g4Tile = testBoard.getTile(Coordinate(x: 5,y: 0))
+        if var g4Tile = testBoard.getTile(Coordinate(x: 5,y: 0))
         {
-            g4Root = testBoard.findSet(g4Tile)
+            g4Root = testBoard.findSet(&g4Tile)
         }
         
         var tileGroups = [g1Root, g2Root, g3Root, g4Root]
@@ -503,24 +513,24 @@ class TileDootModelTests: XCTestCase , GameBoardProtocol {
         
         // Now test the singletons in the corner to make sure they have nil parents
         
-        if let g1Tile = testBoard.getTile(Coordinate(x: 6,y: 0))
+        if var g1Tile = testBoard.getTile(Coordinate(x: 6,y: 0))
         {
-            g1Root = testBoard.findSet(g1Tile)
+            g1Root = testBoard.findSet(&g1Tile)
         }
         
-        if let g2Tile = testBoard.getTile(Coordinate(x: 6,y: 1))
+        if var g2Tile = testBoard.getTile(Coordinate(x: 6,y: 1))
         {
-            g2Root = testBoard.findSet(g2Tile)
+            g2Root = testBoard.findSet(&g2Tile)
         }
         
-        if let g3Tile = testBoard.getTile(Coordinate(x: 7,y: 0))
+        if var g3Tile = testBoard.getTile(Coordinate(x: 7,y: 0))
         {
-            g3Root = testBoard.findSet(g3Tile)
+            g3Root = testBoard.findSet(&g3Tile)
         }
         
-        if let g4Tile = testBoard.getTile(Coordinate(x: 7,y: 1))
+        if var g4Tile = testBoard.getTile(Coordinate(x: 7,y: 1))
         {
-            g4Root = testBoard.findSet(g4Tile)
+            g4Root = testBoard.findSet(&g4Tile)
         }
         
         tileGroups = [g1Root, g2Root, g3Root, g4Root]

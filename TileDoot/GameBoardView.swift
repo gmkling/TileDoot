@@ -56,7 +56,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         
         // init board
         self.gameBoard = GameBoard(boardDimension: dimension, delegate: self, boardString: puzzle.reverseRows())
-        self.addChild(victoryScreen)
+        //self.addChild(victoryScreen)
     }
     
     
@@ -178,6 +178,16 @@ class GameBoardView : SKNode , GameBoardProtocol
         }
     }
     
+    func moveSubturn()
+    {
+        // this signal means the model is done moving
+    }
+    
+    func deleteSubturn()
+    {
+        // this signal means the model is done deleting
+    }
+    
     func endTurn()
     {
         // if the swipe did not move any tiles, disregard it
@@ -198,18 +208,11 @@ class GameBoardView : SKNode , GameBoardProtocol
         
         processActions()
         
-        for i in 0..<dimension
-        {
-            for j in 0..<dimension
-            {
-                tiles[i,j].executeActions()
-            }
-        }
-        
         // update scoring
         // archive the Turn, do any cleanup that is needed
         
         moves.last!!.complete = true
+        executeSubturn()
         
         // turn gesture recognizer back on
         for each in (self.scene!.view!.gestureRecognizers)!
@@ -253,8 +256,9 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func createDeleteAction() -> SKAction
     {
-        let randomRange = CGFloat(Float(arc4random())) / CGFloat(UINT32_MAX)
-        let fadeAction = SKAction.fadeOutWithDuration(0.25*Double(randomRange))
+//        let randomRange = CGFloat(Float(arc4random())) / CGFloat(UINT32_MAX)
+//        let fadeAction = SKAction.fadeOutWithDuration(0.25*Double(randomRange))
+        let fadeAction = SKAction.fadeOutWithDuration(0.5)
         let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
         let delAction = SKAction.removeFromParent()
         return SKAction.sequence([fadeAction, audioAction, delAction])
@@ -306,11 +310,13 @@ class GameBoardView : SKNode , GameBoardProtocol
                 {
                     // gather the run of delete actions into an array
                     var deleteBlock = [curAction as! DeleteAction]
+                    var groupsToDelete = [deleteBlock[0].groupID]
                     index+=1
                     
                     while index < actions.count && actions[index] is DeleteAction
                     {
                         deleteBlock.append(actions[index]! as! DeleteAction)
+                        groupsToDelete.append((deleteBlock.last?.groupID)!)
                         index += 1
                     }
                     processDeleteBlock(deleteBlock)
@@ -341,6 +347,17 @@ class GameBoardView : SKNode , GameBoardProtocol
             
     }
     
+    func executeSubturn()
+    {
+        for i in 0..<dimension
+        {
+            for j in 0..<dimension
+            {
+                tiles[i,j].executeActions()
+            }
+        }
+    }
+    
         
     func processMoveBlock(moves: [MoveAction])
     {
@@ -353,13 +370,16 @@ class GameBoardView : SKNode , GameBoardProtocol
             // create an animation/action for the sprite
             let moveAction = SKAction.moveTo(toPos, duration: 0.25)
             let tileSprite = tiles[fromLoc!.x, fromLoc!.y]
+            let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)})
+            tileSprite.enqueueAction(audioAction)
             tileSprite.enqueueAction(moveAction)
             
             // also change the grid position
             tiles[toLoc.x, toLoc.y] = tileSprite
         }
-        audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)
+       
         self.moves.last??.subTurns += 1
+        executeSubturn()
     }
     
     func processDeleteBlock(deletes: [DeleteAction])
@@ -383,6 +403,7 @@ class GameBoardView : SKNode , GameBoardProtocol
                 delSprite.enqueueAction(delAction)
             }
             
+            
             // print("Deleted tile with Parent tileID: \(group)")
             //
             // delete the TileSprite in the SpriteBoard
@@ -390,6 +411,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         }
         
         self.moves.last??.subTurns += 1
+        executeSubturn()
     }
     
     func center () ->CGPoint

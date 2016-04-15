@@ -235,31 +235,31 @@ class PuzzleSet
         nPuzzles += 1
     }
     
-    func removePuzzleNumber(inout puzNum: Int)
+    func removePuzzleNumber(puzNum: Int)
     {
         // adjust the index
-        puzNum -= 1
+        let puzToRemove = puzNum - 1
         
         // check if index is in range or the puzzles are empty
-        if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return }
+        if puzToRemove>puzzles.count || puzToRemove<puzzles.startIndex || puzzles.count==0 { return }
         
-        if puzzles[puzNum] == nil
+        if puzzles[puzToRemove] == nil
         { return }
         
-        puzzles.removeAtIndex(puzNum)
+        puzzles.removeAtIndex(puzToRemove)
         nPuzzles -= 1
     }
     
-    func checkForLevel(inout puzNum: Int) ->Bool
+    func checkForLevel(puzNum: Int) ->Bool
     {
         // adjust the index
-        puzNum -= 1
+        let puzToCheck = puzNum - 1
         
         // check if index is in range or the puzzles are empty
-        if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return false }
+        if puzToCheck>puzzles.count || puzToCheck<puzzles.startIndex || puzzles.count==0 { return false }
         
         // see if the index is occupied by a valid puzzle
-        if puzzles[puzNum]!.checkValid()
+        if puzzles[puzToCheck]!.checkValid()
         {
             return true
         }
