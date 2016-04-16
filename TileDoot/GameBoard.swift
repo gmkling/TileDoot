@@ -129,7 +129,7 @@ class GameBoard {
     
     func deleteTile(loc: Coordinate)
     {
-        let delTile = tileMap[loc.x, loc.y]
+        var delTile = tileMap[loc.x, loc.y]
         
         // insert a nullTile if one is not already there
         if delTile.type != TileType.nullTile
@@ -601,9 +601,9 @@ class GameBoard {
         // make a local copy
         var tempTile = Tile(copy: node)
         
-        findSet(&tempTile)
+        let tileOut = findSet(&tempTile)
         
-        return tempTile.tileID
+        return tileOut.tileID
     }
     
     func unionSets(setA: Tile, setB: Tile)
