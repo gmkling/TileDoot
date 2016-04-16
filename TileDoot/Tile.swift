@@ -235,6 +235,18 @@ class Tile {
         self.markedForDelete = false
         self.moveInProgress = false
     }
+    
+    init(copy: Tile)
+    {
+        self.parent = copy.parent
+        self.color = copy.color
+        self.type = copy.type
+        self.rank = copy.rank
+        self.tileID = copy.tileID
+        self.isStop = copy.isStop
+        self.markedForDelete = copy.markedForDelete
+        self.moveInProgress = copy.moveInProgress
+    }
 
 }
 

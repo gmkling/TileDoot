@@ -21,6 +21,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     var background = SKShapeNode()
     var tiles : SpriteBoard
     var moves : [Turn?]
+    var game : GamePlayScene?
     
     var audioDelegate : TD_AudioPlayer?
     
@@ -32,7 +33,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     var victoryScreen : VictoryView
     
     // boardSize is the size in Pixels of the UI element
-    init(puzzle: Puzzle, boardSize: CGSize, audioDel: TD_AudioPlayer?)
+    init(puzzle: Puzzle, boardSize: CGSize, audioDel: TD_AudioPlayer?, game: GamePlayScene?)
     {
         self.size = boardSize
         self.dimension = puzzle.dimension
@@ -40,9 +41,15 @@ class GameBoardView : SKNode , GameBoardProtocol
         gridPath = CGPathCreateMutable()
         moves = []
         moves.append(Turn(dir: .none))
+        
         if audioDel != nil
         {
             self.audioDelegate = audioDel
+        }
+        
+        if game != nil
+        {
+            self.game = game!
         }
         
         victoryScreen = VictoryView(size: boardSize, stars: 2)
@@ -212,7 +219,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         // archive the Turn, do any cleanup that is needed
         
         moves.last!!.complete = true
-        executeSubturn()
+        //executeSubturn()
         
         // turn gesture recognizer back on
         for each in (self.scene!.view!.gestureRecognizers)!
@@ -258,10 +265,12 @@ class GameBoardView : SKNode , GameBoardProtocol
     {
 //        let randomRange = CGFloat(Float(arc4random())) / CGFloat(UINT32_MAX)
 //        let fadeAction = SKAction.fadeOutWithDuration(0.25*Double(randomRange))
-        let fadeAction = SKAction.fadeOutWithDuration(0.5)
+//        let fadeAction = SKAction.fadeOutWithDuration(0.5)
+        
         let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
-        let delAction = SKAction.removeFromParent()
-        return SKAction.sequence([fadeAction, audioAction, delAction])
+        //let delAction = SKAction.removeFromParent()
+        //return SKAction.sequence([fadeAction, audioAction, delAction])
+        return audioAction
     }
     
     func setColor(loc: Coordinate, color: Color)
@@ -344,7 +353,6 @@ class GameBoardView : SKNode , GameBoardProtocol
             // sorry, you dun goofed
             print("Error unrolling action queue")
         }
-            
     }
     
     func executeSubturn()
@@ -353,6 +361,11 @@ class GameBoardView : SKNode , GameBoardProtocol
         {
             for j in 0..<dimension
             {
+//                // if it isn't running, start it
+//                if tiles[i,j].hasActions() == false
+//                {
+//                    tiles[i,j].executeNext()
+//                }
                 tiles[i,j].executeActions()
             }
         }
@@ -371,8 +384,22 @@ class GameBoardView : SKNode , GameBoardProtocol
             let moveAction = SKAction.moveTo(toPos, duration: 0.25)
             let tileSprite = tiles[fromLoc!.x, fromLoc!.y]
             let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)})
-            tileSprite.enqueueAction(audioAction)
-            tileSprite.enqueueAction(moveAction)
+            //tileSprite.enqueueAction(audioAction)
+            //tileSprite.enqueueAction(moveAction)
+            
+            // if the sprite has less moves than subturns, add a pause
+            // TODO: Calculate actual duration of previously enqueued actions.
+            if tileSprite.actionQ.count == self.moves.last!!.subTurns
+            {
+                tileSprite.enqueueAction(audioAction)
+                tileSprite.enqueueAction(moveAction)
+            } else
+            {
+                tileSprite.enqueueAction(SKAction.waitForDuration(0.25))
+                tileSprite.enqueueAction(audioAction)
+                tileSprite.enqueueAction(moveAction)
+            }
+            
             
             // also change the grid position
             tiles[toLoc.x, toLoc.y] = tileSprite
@@ -390,10 +417,15 @@ class GameBoardView : SKNode , GameBoardProtocol
         {
             // create the action/animation for deletion
             let loc = curAction.target!
-            let delAction = createDeleteAction() // fade and remove from parent for now
+            let delAction = createDeleteAction() // this is only the audio action
+            
+            // set the deleteMark - when the move action completes it will delete. 
+            // somehow this bit of genius delete stationary tiles - WHY?
             let delSprite = tiles[loc.x, loc.y]
+            delSprite.deleteMark = true
             
             // if the sprite has less moves than subturns, add a pause
+            // TODO: Calculate actual duration of previously enqueued actions.
             if delSprite.actionQ.count == moves.last!!.subTurns
             {
                 delSprite.enqueueAction(delAction)

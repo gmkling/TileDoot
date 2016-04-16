@@ -43,12 +43,12 @@ class GamePlayScene: SKScene {
         
         if puzzleData != nil
         {
-            gameView = GameBoardView(puzzle: puzzleData!, boardSize: testSize, audioDel: self.audioDelegate)
+            gameView = GameBoardView(puzzle: puzzleData!, boardSize: testSize, audioDel: self.audioDelegate, game: self)
             gameView!.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
         } else
         {
             // make a crappy default puzzle
-            gameView = GameBoardView(puzzle: Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle"), boardSize: testSize, audioDel: self.audioDelegate)
+            gameView = GameBoardView(puzzle: Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle"), boardSize: testSize, audioDel: self.audioDelegate, game: self)
         }
         
         // hamburger button at top left

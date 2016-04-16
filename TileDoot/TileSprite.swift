@@ -12,6 +12,7 @@ import SpriteKit
 class TileSprite : SKSpriteNode
 {
     var actionQ = [SKAction]()
+    var deleteMark = false
     
     func enqueueAction(action: SKAction)
     {
@@ -22,7 +23,7 @@ class TileSprite : SKSpriteNode
     {
         if actionQ.count == 0 { return }
         
-        self.runAction(actionQ.removeFirst())
+        self.runAction(actionQ.removeFirst(), completion: {self.executeNext()})
     }
     
     func bundleActionQ()
@@ -44,9 +45,20 @@ class TileSprite : SKSpriteNode
     {
         if actionQ.count == 0 { return }
         if actionQ.count > 1 { bundleActionQ() }
-                
-        self.runAction(actionQ[0])
+        
+        self.runAction(actionQ[0], completion: {
+            if self.deleteMark
+            {
+                let delay = SKAction.waitForDuration(0.25)
+                let fadeAction = SKAction.fadeOutWithDuration(0.25)
+                //let audioAction = SKAction.runBlock({audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
+                let delAction = SKAction.removeFromParent()
+                self.runAction(SKAction.sequence([delay, fadeAction, delAction]))
+            }
+        }
+        )
         actionQ.removeAll()
+        //self.executeNext()
     }
     
 }

@@ -40,7 +40,7 @@ class TestGameBoardView: SKScene {
         // create GameBoardView with puzzle
         let testSize = CGSize(width: self.size.width/2.0, height: self.size.width/2.0)
         
-        gameView = GameBoardView(puzzle: testPuz, boardSize: testSize, audioDel: self.audioDelegate)
+        gameView = GameBoardView(puzzle: testPuz, boardSize: testSize, audioDel: self.audioDelegate, game: nil)
         // make it go
         gameView!.position = CGPointMake((self.size.width/4.0), (self.size.height/2.0)-self.size.width/4.0)
         

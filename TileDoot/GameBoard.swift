@@ -21,10 +21,6 @@ protocol GameBoardProtocol : class {
     func endTurn()
     func endPuzzle()
     
-    // these signals tell the view when to process batches of move and delete actions
-    func moveSubturn()
-    func deleteSubturn()
-    
     func addTile(loc: Coordinate, tile: Tile)
     func deleteTile(loc: Coordinate, group: Int)
     
@@ -140,11 +136,11 @@ class GameBoard {
         {
             // get the ID of the parent
             // TODO: we want the ID of the ROOT, hello?
-            if delTile.parent == nil {
-                delegate.deleteTile(loc, group: delTile.tileID)
-            }  else {
-                delegate.deleteTile(loc, group: (delTile.parent?.tileID)!)
-            }
+            //if delTile.parent == nil {
+            delegate.deleteTile(loc, group: findSetID(delTile))
+            //}  else {
+            //    delegate.deleteTile(loc, group: (delTile.parent?.tileID)!)
+            //}
             
             tileMap[loc.x, loc.y] = Tile(initType: TileType.nullTile, initColor: Color.kNoColor)
         }
@@ -451,12 +447,11 @@ class GameBoard {
         // if we moved anything, check for connected components
         if(tileMapDirty)
         {
-            delegate.moveSubturn()
+            
             if connectComponents()
             {
                 // remove deleted tiles
                 emptyMarkedTiles()
-                delegate.deleteSubturn()
                 // repeat the move to collapse, until connectComponents returns false
                 dootTiles(dir)
             }
@@ -599,6 +594,16 @@ class GameBoard {
 //            node = tempTile!
 //        }
         return root
+    }
+    
+    func findSetID(node: Tile) -> Int
+    {
+        // make a local copy
+        var tempTile = Tile(copy: node)
+        
+        findSet(&tempTile)
+        
+        return tempTile.tileID
     }
     
     func unionSets(setA: Tile, setB: Tile)

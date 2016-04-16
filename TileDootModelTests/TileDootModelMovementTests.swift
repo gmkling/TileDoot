@@ -22,6 +22,8 @@ class TileDootModelMovementTests: XCTestCase , GameBoardProtocol {
     func endPuzzle()
     {}
     
+    
+    
     func addTile(loc: Coordinate, tile: Tile)
     {}
     
@@ -152,9 +154,12 @@ class TileDootModelMovementTests: XCTestCase , GameBoardProtocol {
         
         // RUL
         testBoard.clearMap()
+        print("RUL TEST********")
         XCTAssert(testBoard.initBoardFromString(puzzleString))
         testBoard.dootTiles(MoveDirection.right)
+        testBoard.printBoardState()
         testBoard.dootTiles(MoveDirection.up)
+        testBoard.printBoardState()
         testBoard.dootTiles(MoveDirection.left)
         testBoard.printBoardState()
         XCTAssert(testBoard.tileMap[6,9].color == Color.kYellow)
