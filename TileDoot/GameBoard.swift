@@ -18,6 +18,7 @@ protocol GameBoardProtocol : class {
     // for synchronization
     func startPuzzle()
     func startTurn(dir: MoveDirection)
+    func addSubturn()
     func endTurn()
     func endPuzzle()
     

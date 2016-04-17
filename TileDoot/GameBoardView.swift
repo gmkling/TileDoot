@@ -166,7 +166,7 @@ class GameBoardView : SKNode , GameBoardProtocol
                     
                     
                     self.addChild(tempTile)
-                    tempTile.runAction(fadeInSeq)
+                    tempTile.runAction(fadeInSeq)                                            
                     tiles[tileAdd.target!.x, tileAdd.target!.y] = tempTile
                 }
             }
@@ -185,14 +185,10 @@ class GameBoardView : SKNode , GameBoardProtocol
         }
     }
     
-    func moveSubturn()
+    func addSubturn()
     {
-        // this signal means the model is done moving
-    }
-    
-    func deleteSubturn()
-    {
-        // this signal means the model is done deleting
+        // this signal is sent before a set of actions that take place as a single unit
+        // simultaneously, more or less
     }
     
     func endTurn()
@@ -213,12 +209,12 @@ class GameBoardView : SKNode , GameBoardProtocol
         // unthinkable, but
         // if moves.last!!.complete { return }
         
-        processActions()
+        //processActions()
         
         // update scoring
         // archive the Turn, do any cleanup that is needed
         
-        moves.last!!.complete = true
+        //moves.last!!.complete = true
         //executeSubturn()
         
         // turn gesture recognizer back on
@@ -243,11 +239,8 @@ class GameBoardView : SKNode , GameBoardProtocol
         // get the location for the loc
         let tilePos = locationForCoord(loc)
         let tileAction = AddAction(loc: loc, tile: tile, pos: tilePos)
-        
-//        if moves.last != nil
-//        {
-            moves.last!!.appendAction(tileAction)
- //       }
+
+        moves.last!!.appendAction(tileAction)
     
     }
     
@@ -361,11 +354,6 @@ class GameBoardView : SKNode , GameBoardProtocol
         {
             for j in 0..<dimension
             {
-//                // if it isn't running, start it
-//                if tiles[i,j].hasActions() == false
-//                {
-//                    tiles[i,j].executeNext()
-//                }
                 tiles[i,j].executeActions()
             }
         }

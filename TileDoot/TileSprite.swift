@@ -65,14 +65,29 @@ class TileSprite : SKSpriteNode
 
 // since actions on tiles may need to be passed around, deferred, processed, etc
 // we'll make a token that can transformed into different concrete SKAction sequences
-// depending on our needs. I don't think TileSprites will process their own actions
+// depending on our needs.
 
 
-//enum ActionType : Int{
-//    case add, move, delete
-//}
+class SequencedAction
+{
+    init()
+    {
+        
+    }
+}
 
-class TileAction
+class SubturnMark : SequencedAction
+{
+    // this is the piece of the current turn that tokens after this belong to
+    var subturnID : Int
+    
+    init(subturnNum: Int)
+    {
+        subturnID = subturnNum
+    }
+}
+
+class TileAction : SequencedAction
 {
     var target : Coordinate?
 
@@ -168,7 +183,7 @@ class AudioAction : TileAction
 class Turn
 {
     var move : MoveDirection
-    var actionQ : [TileAction?]
+    var actionQ : [SequencedAction?]
     var complete = false
     var subTurns = 0
     
@@ -178,7 +193,7 @@ class Turn
         actionQ = []
     }
     
-    func appendAction(action: TileAction)
+    func appendAction(action: SequencedAction)
     {
         actionQ.append(action)
     }
