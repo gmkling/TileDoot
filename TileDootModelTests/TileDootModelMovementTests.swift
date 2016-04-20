@@ -17,25 +17,21 @@ class TileDootModelMovementTests: XCTestCase , GameBoardProtocol {
     {}
     func startTurn(dir: MoveDirection)
     {}
+    func addSubturn()
+    {}
     func endTurn()
     {}
     func endPuzzle()
     {}
     
-    
-    
     func addTile(loc: Coordinate, tile: Tile)
     {}
-    
     func deleteTile(loc: Coordinate, group: Int)
     {}
-    
     func setColor(loc: Coordinate, color: Color)
     {}
-    
     func setTileType(loc: Coordinate, newType: TileType)
     {}
-    
     func moveTile(fromLoc: Coordinate, toLoc: Coordinate)
     {}
     

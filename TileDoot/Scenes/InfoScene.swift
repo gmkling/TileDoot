@@ -200,15 +200,15 @@ class InfoScene: SKScene {
     
     // touch overrides may not be needed since we are only interested in buttons.
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
-    {
-        
-        for touch in touches
-        {
-            let location = touch.locationInNode(self)
-            // interesting stuff goes here
-        }
-    }
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+//    {
+//        
+//        for touch in touches
+//        {
+//            let location = touch.locationInNode(self)
+//            // interesting stuff goes here
+//        }
+//    }
     
     override func update(currentTime: CFTimeInterval) {
         

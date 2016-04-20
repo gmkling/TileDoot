@@ -444,6 +444,8 @@ class GameBoard {
             };
         }
         
+        // mark the movement subturn
+        delegate.addSubturn()
         
         // if we moved anything, check for connected components
         if(tileMapDirty)
@@ -451,19 +453,24 @@ class GameBoard {
             
             if connectComponents()
             {
-                // remove deleted tiles
+                // remove deleted tiles, mark the subturn
                 emptyMarkedTiles()
+                delegate.addSubturn()
                 // repeat the move to collapse, until connectComponents returns false
                 dootTiles(dir)
             }
             
         }
-                
+        
+        delegate.endTurn()
+        
         // tell the delegate if the puzzle is solved
         if isPuzzleSolved()
         {
             delegate.endPuzzle()
         }
+        
+        
     
     }
     
@@ -576,7 +583,7 @@ class GameBoard {
     
     func findSet(inout node: Tile) ->Tile
     {
-        var tempTile : Tile?
+       // var tempTile : Tile?
         var root = node
         
         // get down to the root
@@ -651,21 +658,19 @@ class GameBoard {
         
         var x = 0 ; var y = 0;
         var tileColor = Color.kNoColor
-        var tileRank = 0
+        //var tileRank = 0
         var upColor, dwnColor, leftColor, rightColor: Color?
         rightColor = Color.kNoColor; upColor = Color.kNoColor; dwnColor = Color.kNoColor; leftColor = Color.kNoColor
         
         var neighbors = [Tile]()
-        var tileLoc : Coordinate
         
         for loc in occupiedTiles
         {
-            tileLoc = loc
             
             x = loc.x; y = loc.y;
             
             tileColor = getTileColor(loc)
-            tileRank = getTileRank(loc)
+            //tileRank = getTileRank(loc)
             
             // gather adjacent tiles
             

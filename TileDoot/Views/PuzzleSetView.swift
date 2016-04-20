@@ -38,7 +38,7 @@ class PuzzleSetView: SKNode
         
         for i in 0...Int(nPages)
         {
-            var tempPage = PuzzleSetPage(viewSize: self.size, handler: doGameScene)
+            let tempPage = PuzzleSetPage(viewSize: self.size, handler: doGameScene)
             for j in 0..<16
             {
                 let curPuzzle = (i*16)+j
@@ -118,7 +118,7 @@ class PuzzleSetView: SKNode
             self.gameScene = GamePlayScene(size: scene!.view!.bounds.size)
             gameScene!.setPuzzle(puz!)
             gameScene!.returnAddr = scene!
-            var transition = SKTransition.flipHorizontalWithDuration(0.5)
+            let transition = SKTransition.flipHorizontalWithDuration(0.5)
             if audioDelegate == nil { print("AudioDelegate is nil in PuzzleSetView") }
             gameScene?.audioDelegate = audioDelegate
             if gameScene!.audioDelegate == nil { print("AudioDelegate is nil in gameScene before transition") }
@@ -164,7 +164,7 @@ class PuzzleSetPage : SKNode
             print("Error adding Puzzle to PuzzleSetPage at [\(atX),\(atY)]")
             return
         }
-        var tempSprite = PuzzleSprite(viewSize: CGSize(width: self.size.width/4.0, height: self.size.width/4.0), defaultImageName: redFiles.randomItem(), selectImageName: puzzleSelImg, buttonAction: doPuzzleButton)
+        let tempSprite = PuzzleSprite(viewSize: CGSize(width: self.size.width/4.0, height: self.size.width/4.0), defaultImageName: redFiles.randomItem(), selectImageName: puzzleSelImg, buttonAction: doPuzzleButton)
         tempSprite.setProgress(status)
         tempSprite.setPuzzleID(pID)
         tempSprite.setNumber((atX + atY*4)+1)

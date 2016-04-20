@@ -20,7 +20,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     var dimension : Int
     var background = SKShapeNode()
     var tiles : SpriteBoard
-    var moves : [Turn?]
+    var moves : [Turn]
     var game : GamePlayScene?
     
     var audioDelegate : TD_AudioPlayer?
@@ -143,9 +143,9 @@ class GameBoardView : SKNode , GameBoardProtocol
         
         if self.audioDelegate == nil { print("nil audioDelegate") }
         
-        if moves.last != nil && moves.last!!.move == MoveDirection.none
+        if moves.last != nil && moves.last!.move == MoveDirection.none
         {
-            for t in moves.last!!.actionQ
+            for t in moves.last!.actionQ
             {
                 if let tileAdd = t as? AddAction
                 {
@@ -154,7 +154,7 @@ class GameBoardView : SKNode , GameBoardProtocol
                     
                     // calc the scale
                     let sceneSizeX = self.size.width
-                    let sceneSizeY = self.size.height
+                    //let sceneSizeY = self.size.height
                     let spriteDim = CGFloat(dimension)
                     let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
                     let tileRenderSize = sceneSizeX / spriteDim
@@ -188,13 +188,14 @@ class GameBoardView : SKNode , GameBoardProtocol
     func addSubturn()
     {
         // this signal is sent before a set of actions that take place as a single unit
-        // simultaneously, more or less
+        // currently (4/20/2016) this is after blocks of moves and blocks of deletes
+        moves.last!.appendAction(SubturnMark())
     }
     
     func endTurn()
     {
         // if the swipe did not move any tiles, disregard it
-        if moves.last!!.actionQ.count == 0
+        if moves.last!.actionQ.count == 0
         {
             // if the swipe created no actions, throw it away and return
             moves.removeLast()
@@ -240,7 +241,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         let tilePos = locationForCoord(loc)
         let tileAction = AddAction(loc: loc, tile: tile, pos: tilePos)
 
-        moves.last!!.appendAction(tileAction)
+        moves.last!.appendAction(tileAction)
     
     }
     
@@ -248,9 +249,9 @@ class GameBoardView : SKNode , GameBoardProtocol
     {
         
         let delAction = DeleteAction(loc: loc, group: group)
-        let audAction = AudioAction(loc: loc, sfxKey:catch_key, sfxType: mono_key)
+        //let audAction = AudioAction(loc: loc, sfxKey:catch_key, sfxType: mono_key)
         
-        moves.last!!.appendAction(delAction)
+        moves.last!.appendAction(delAction)
         //moves.last!!.appendAction(audAction)
     }
     
@@ -280,7 +281,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     {
         let moveCmd = MoveAction(from: fromLoc, to: toLoc)
         
-        moves.last!!.appendAction(moveCmd)
+        moves.last!.appendAction(moveCmd)
     }
     
     // TODO the tree of functions under processActions is getting refactored under the scene, 

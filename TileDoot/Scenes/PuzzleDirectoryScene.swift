@@ -23,10 +23,9 @@ class PuzzleDirectoryScene: SKScene {
         let littleButtonSize = 0.5*gridSize
         let littleButtonScale = littleButtonSize/500.0
         
-        let imageWidth = 8.0*gridSize
-        
-        let normalTextSize = CGFloat(16.0)
-        let smallTextSize = CGFloat(8.0)
+//        let imageWidth = 8.0*gridSize
+//        let normalTextSize = CGFloat(16.0)
+//        let smallTextSize = CGFloat(8.0)
         
         // hamburger button at top left
         let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, disabledImageName: nil, labelStr: "")

@@ -209,6 +209,8 @@
 		10EB4AAF1CC041EF00E487D3 /* PurpleReset_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA61CC041EF00E487D3 /* PurpleReset_def.png */; };
 		10EB4AB01CC041EF00E487D3 /* PurpleReset_dis.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA71CC041EF00E487D3 /* PurpleReset_dis.png */; };
 		10EB4AB11CC041EF00E487D3 /* PurpleReset_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA81CC041EF00E487D3 /* PurpleReset_sel.png */; };
+		10EB4AB31CC7F7D500E487D3 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB21CC7F7D500E487D3 /* Turn.swift */; };
+		10EB4AB51CC7F7FD00E487D3 /* SequencedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB41CC7F7FD00E487D3 /* SequencedAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -381,6 +383,8 @@
 		10EB4AA61CC041EF00E487D3 /* PurpleReset_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleReset_def.png; sourceTree = "<group>"; };
 		10EB4AA71CC041EF00E487D3 /* PurpleReset_dis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleReset_dis.png; sourceTree = "<group>"; };
 		10EB4AA81CC041EF00E487D3 /* PurpleReset_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleReset_sel.png; sourceTree = "<group>"; };
+		10EB4AB21CC7F7D500E487D3 /* Turn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Turn.swift; path = Views/Turn.swift; sourceTree = "<group>"; };
+		10EB4AB41CC7F7FD00E487D3 /* SequencedAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SequencedAction.swift; path = Views/SequencedAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -521,6 +525,8 @@
 				10AB01A81CB058310092D7AF /* PuzzleSetView.swift */,
 				10AB01AA1CB059430092D7AF /* PuzzleSprite.swift */,
 				10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */,
+				10EB4AB21CC7F7D500E487D3 /* Turn.swift */,
+				10EB4AB41CC7F7FD00E487D3 /* SequencedAction.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1042,11 +1048,13 @@
 				107698C01C320292006051B2 /* MainMenuScene.swift in Sources */,
 				10B34D1A1C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift in Sources */,
 				107698D21C3202C8006051B2 /* Tile.swift in Sources */,
+				10EB4AB51CC7F7FD00E487D3 /* SequencedAction.swift in Sources */,
 				10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
 				10AB01AB1CB059430092D7AF /* PuzzleSprite.swift in Sources */,
 				10AB013F1CAD9B380092D7AF /* TD_AudioPlayer.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
+				10EB4AB31CC7F7D500E487D3 /* Turn.swift in Sources */,
 				10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */,
 				10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */,
 				10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */,

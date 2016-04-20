@@ -144,7 +144,7 @@ class GamePlayScene: SKScene {
         // on the first time around, init the beginTime
         if curTurn == 0 { beginTime = currentTime; }
         
-        // take a look at the GamePlayView's actionQ
+        // take a look at the GameBoardView's actionQ
         // if a good Turn is there, take the number if you don't have it
         //  if there are commands waiting, see if it is a whole subturn that is not complete and update internal numbers
         //      if there is a subturn ready, see what commands are timely, package them up as actions and dispatch them
@@ -157,7 +157,7 @@ class GamePlayScene: SKScene {
     }
     
     // the idea is to process this centrally so that it is easy to adjust
-    func convertAction(action: SequencedAction, turn: Turn) -> SKAction?
+    func convertActionToSKAction(action: SequencedAction, turn: Turn) -> SKAction?
     {
         // some actions are meaningless outside the context of the Turn/Render cycle, so we have to do the conversion here.
         // I don't like the dependency, but I don't know how to do this conversion within the SequencedAction subtree
@@ -180,8 +180,34 @@ class GamePlayScene: SKScene {
         
         if action is AddAction
         {
-            // AddAction should be moved over from GameBoardView::startPuzzle()
+            // cast the action
+            let tileAdd = action as! AddAction
             
+            // TODO: fancy Tile adding animation instead of this
+            let fadeInAction = SKAction.fadeInWithDuration(0.1)
+            let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
+            let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)})
+            let finishAction = SKAction.runBlock({tileAdd.markComplete()})
+            let fadeInSeq = SKAction.sequence([waitAction, fadeInAction, audioAction])
+            
+            let tempTile = tileAdd.getTileSprite()
+            
+            // calc the scale
+            let sceneSizeX = gameView.size.width
+            let sceneSizeY = gameView.size.height
+            let spriteDim = CGFloat(gameView.dimension)
+            let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
+            let tileRenderSize = sceneSizeX / spriteDim
+            let tileScale = tileRenderSize / tileSizeIn
+            
+            tempTile.anchorPoint = CGPointMake(0.0, 0.0)
+            tempTile.setScale(tileScale)
+            tempTile.alpha = 0.0
+            
+            
+            gameView.addChild(tempTile)
+            tempTile.enqueueAction(fadeInSeq)
+           // tiles[tileAdd.target!.x, tileAdd.target!.y] = tempTile
         }
         
         if action is MoveAction

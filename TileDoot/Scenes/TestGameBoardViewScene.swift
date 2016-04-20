@@ -89,38 +89,38 @@ class TestGameBoardView: SKScene {
     }
     
     func setupSwipeControls() {
-        let upSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeUp:"))
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(TestGameBoardView.swipeUp(_:)))
         upSwipe.numberOfTouchesRequired = 1
         upSwipe.direction = UISwipeGestureRecognizerDirection.Up
         view!.addGestureRecognizer(upSwipe)
         
-        let downSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDown:"))
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(TestGameBoardView.swipeDown(_:)))
         downSwipe.numberOfTouchesRequired = 1
         downSwipe.direction = UISwipeGestureRecognizerDirection.Down
         view!.addGestureRecognizer(downSwipe)
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeLeft:"))
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(TestGameBoardView.swipeLeft(_:)))
         leftSwipe.numberOfTouchesRequired = 1
         leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
         view!.addGestureRecognizer(leftSwipe)
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeRight:"))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(TestGameBoardView.swipeRight(_:)))
         rightSwipe.numberOfTouchesRequired = 1
         rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
         view!.addGestureRecognizer(rightSwipe)
     }
 
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
-    {
-        
-        for touch in touches
-        {
-            let location = touch.locationInNode(self)
-            // interesting stuff goes here
-            // self.moveSomething()
-        }
-    }
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+//    {
+//        
+//        for touch in touches
+//        {
+//            let location = touch.locationInNode(self)
+//            // interesting stuff goes here
+//            // self.moveSomething()
+//        }
+//    }
     
     override func update(currentTime: CFTimeInterval) {
         

@@ -162,9 +162,9 @@ class PuzzleSet
     func parsePuzzleSet(firstLineNum: Int) ->Bool
     {
         var nPuzzlesRead = 0
-        
+        var i=firstLineNum;
         // loop through the file and load each puzzle, skipping levels that don't make sense without failing
-        for var i=firstLineNum; puzzleSetStrings[i] != "%END%";
+        while puzzleSetStrings[i] != "%END%"
         {
             if puzzleSetStrings[i]=="%END%"
             {
