@@ -44,7 +44,7 @@ class GameBoard {
     
     unowned let delegate : GameBoardProtocol
     
-    // orig init is initMap which creates a new blank map
+     // orig init is initMap which creates a new blank map
     init(boardDimension: Int, delegate: GameBoardProtocol)
     {
         self.dimension = boardDimension

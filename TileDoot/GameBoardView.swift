@@ -283,156 +283,160 @@ class GameBoardView : SKNode , GameBoardProtocol
         moves.last!!.appendAction(moveCmd)
     }
     
-    func processActions()
-    {
-        // TODO: Create additional animation overlays
-        // TODO: sync sounds with actions
-        
-        if let actions = moves.last??.actionQ
-        {
-            var index = 0
-            
-            while index < actions.count
-            {
-                var curAction = actions[index]
-                if curAction is MoveAction
-                {
-                    // gather the run of move actions into an array
-                    var moveBlock = [curAction as! MoveAction]
-                    index += 1
-                    
-                    // test the index on left so we don't overflow
-                    while index < actions.count && actions[index] is MoveAction
-                    {
-                        moveBlock.append(actions[index]! as! MoveAction)
-                        index += 1
-                    }
-                    processMoveBlock(moveBlock)
-                } else if curAction is DeleteAction
-                {
-                    // gather the run of delete actions into an array
-                    var deleteBlock = [curAction as! DeleteAction]
-                    var groupsToDelete = [deleteBlock[0].groupID]
-                    index+=1
-                    
-                    while index < actions.count && actions[index] is DeleteAction
-                    {
-                        deleteBlock.append(actions[index]! as! DeleteAction)
-                        groupsToDelete.append((deleteBlock.last?.groupID)!)
-                        index += 1
-                    }
-                    processDeleteBlock(deleteBlock)
-                } else if curAction is AudioAction
-                {
-                    let baseDur = 0.25
-                    var audioBlock = curAction as! AudioAction
-                    let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(audioBlock.keyString, typeKey: audioBlock.audioTypeKey)})
-                    let delayAction = SKAction.waitForDuration(0.25*Double((self.moves.last??.subTurns)!))
-                    
-                    self.runAction(SKAction.sequence([delayAction, audioAction]))
-                    index += 1
-                } else
-                {
-                    // head off the infinite loop
-                    index += 1
-                    print("Unimplemented action type in GameBoardView::processActions()")
-                }
-                
-            }
-            
-            // now we have run through the queue
-        } else
-        {
-            // sorry, you dun goofed
-            print("Error unrolling action queue")
-        }
-    }
+    // TODO the tree of functions under processActions is getting refactored under the scene, 
+    // which will do much of this work under the spriteKit render cycle.
     
-    func executeSubturn()
-    {
-        for i in 0..<dimension
-        {
-            for j in 0..<dimension
-            {
-                tiles[i,j].executeActions()
-            }
-        }
-    }
-    
-        
-    func processMoveBlock(moves: [MoveAction])
-    {
-        for curAction in moves
-        {
-            // do this for each move action in the array
-            let toLoc = curAction.to
-            let toPos = locationForCoord(toLoc)
-            let fromLoc = curAction.target
-            // create an animation/action for the sprite
-            let moveAction = SKAction.moveTo(toPos, duration: 0.25)
-            let tileSprite = tiles[fromLoc!.x, fromLoc!.y]
-            let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)})
-            //tileSprite.enqueueAction(audioAction)
-            //tileSprite.enqueueAction(moveAction)
-            
-            // if the sprite has less moves than subturns, add a pause
-            // TODO: Calculate actual duration of previously enqueued actions.
-            if tileSprite.actionQ.count == self.moves.last!!.subTurns
-            {
-                tileSprite.enqueueAction(audioAction)
-                tileSprite.enqueueAction(moveAction)
-            } else
-            {
-                tileSprite.enqueueAction(SKAction.waitForDuration(0.25))
-                tileSprite.enqueueAction(audioAction)
-                tileSprite.enqueueAction(moveAction)
-            }
-            
-            
-            // also change the grid position
-            tiles[toLoc.x, toLoc.y] = tileSprite
-        }
-       
-        self.moves.last??.subTurns += 1
-        executeSubturn()
-    }
-    
-    func processDeleteBlock(deletes: [DeleteAction])
-    {
-        // TODO: make group delete animation!
-        
-        for curAction in deletes
-        {
-            // create the action/animation for deletion
-            let loc = curAction.target!
-            let delAction = createDeleteAction() // this is only the audio action
-            
-            // set the deleteMark - when the move action completes it will delete. 
-            // somehow this bit of genius delete stationary tiles - WHY?
-            let delSprite = tiles[loc.x, loc.y]
-            delSprite.deleteMark = true
-            
-            // if the sprite has less moves than subturns, add a pause
-            // TODO: Calculate actual duration of previously enqueued actions.
-            if delSprite.actionQ.count == moves.last!!.subTurns
-            {
-                delSprite.enqueueAction(delAction)
-            } else
-            {
-                delSprite.enqueueAction(SKAction.waitForDuration(0.25))
-                delSprite.enqueueAction(delAction)
-            }
-            
-            
-            // print("Deleted tile with Parent tileID: \(group)")
-            //
-            // delete the TileSprite in the SpriteBoard
-            //clearTile(loc)
-        }
-        
-        self.moves.last??.subTurns += 1
-        executeSubturn()
-    }
+//    
+//    func processActions()
+//    {
+//        // TODO: Create additional animation overlays
+//        // TODO: sync sounds with actions
+//        
+//        if let actions = moves.last??.actionQ
+//        {
+//            var index = 0
+//            
+//            while index < actions.count
+//            {
+//                var curAction = actions[index]
+//                if curAction is MoveAction
+//                {
+//                    // gather the run of move actions into an array
+//                    var moveBlock = [curAction as! MoveAction]
+//                    index += 1
+//                    
+//                    // test the index on left so we don't overflow
+//                    while index < actions.count && actions[index] is MoveAction
+//                    {
+//                        moveBlock.append(actions[index]! as! MoveAction)
+//                        index += 1
+//                    }
+//                    processMoveBlock(moveBlock)
+//                } else if curAction is DeleteAction
+//                {
+//                    // gather the run of delete actions into an array
+//                    var deleteBlock = [curAction as! DeleteAction]
+//                    var groupsToDelete = [deleteBlock[0].groupID]
+//                    index+=1
+//                    
+//                    while index < actions.count && actions[index] is DeleteAction
+//                    {
+//                        deleteBlock.append(actions[index]! as! DeleteAction)
+//                        groupsToDelete.append((deleteBlock.last?.groupID)!)
+//                        index += 1
+//                    }
+//                    processDeleteBlock(deleteBlock)
+//                } else if curAction is AudioAction
+//                {
+//                    let baseDur = 0.25
+//                    var audioBlock = curAction as! AudioAction
+//                    let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(audioBlock.keyString, typeKey: audioBlock.audioTypeKey)})
+//                    let delayAction = SKAction.waitForDuration(0.25*Double((self.moves.last??.subTurns)!))
+//                    
+//                    self.runAction(SKAction.sequence([delayAction, audioAction]))
+//                    index += 1
+//                } else
+//                {
+//                    // head off the infinite loop
+//                    index += 1
+//                    print("Unimplemented action type in GameBoardView::processActions()")
+//                }
+//                
+//            }
+//            
+//            // now we have run through the queue
+//        } else
+//        {
+//            // sorry, you dun goofed
+//            print("Error unrolling action queue")
+//        }
+//    }
+//    
+//    func executeSubturn()
+//    {
+//        for i in 0..<dimension
+//        {
+//            for j in 0..<dimension
+//            {
+//                tiles[i,j].executeActions()
+//            }
+//        }
+//    }
+//    
+//        
+//    func processMoveBlock(moves: [MoveAction])
+//    {
+//        for curAction in moves
+//        {
+//            // do this for each move action in the array
+//            let toLoc = curAction.to
+//            let toPos = locationForCoord(toLoc)
+//            let fromLoc = curAction.target
+//            // create an animation/action for the sprite
+//            let moveAction = SKAction.moveTo(toPos, duration: 0.25)
+//            let tileSprite = tiles[fromLoc!.x, fromLoc!.y]
+//            let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)})
+//            //tileSprite.enqueueAction(audioAction)
+//            //tileSprite.enqueueAction(moveAction)
+//            
+//            // if the sprite has less moves than subturns, add a pause
+//            // TODO: Calculate actual duration of previously enqueued actions.
+//            if tileSprite.actionQ.count == self.moves.last!!.subTurns
+//            {
+//                tileSprite.enqueueAction(audioAction)
+//                tileSprite.enqueueAction(moveAction)
+//            } else
+//            {
+//                tileSprite.enqueueAction(SKAction.waitForDuration(0.25))
+//                tileSprite.enqueueAction(audioAction)
+//                tileSprite.enqueueAction(moveAction)
+//            }
+//            
+//            
+//            // also change the grid position
+//            tiles[toLoc.x, toLoc.y] = tileSprite
+//        }
+//       
+//        self.moves.last??.subTurns += 1
+//        executeSubturn()
+//    }
+//    
+//    func processDeleteBlock(deletes: [DeleteAction])
+//    {
+//        // TODO: make group delete animation!
+//        
+//        for curAction in deletes
+//        {
+//            // create the action/animation for deletion
+//            let loc = curAction.target!
+//            let delAction = createDeleteAction() // this is only the audio action
+//            
+//            // set the deleteMark - when the move action completes it will delete. 
+//            // somehow this bit of genius delete stationary tiles - WHY?
+//            let delSprite = tiles[loc.x, loc.y]
+//            delSprite.deleteMark = true
+//            
+//            // if the sprite has less moves than subturns, add a pause
+//            // TODO: Calculate actual duration of previously enqueued actions.
+//            if delSprite.actionQ.count == moves.last!!.subTurns
+//            {
+//                delSprite.enqueueAction(delAction)
+//            } else
+//            {
+//                delSprite.enqueueAction(SKAction.waitForDuration(0.25))
+//                delSprite.enqueueAction(delAction)
+//            }
+//            
+//            
+//            // print("Deleted tile with Parent tileID: \(group)")
+//            //
+//            // delete the TileSprite in the SpriteBoard
+//            //clearTile(loc)
+//        }
+//        
+//        self.moves.last??.subTurns += 1
+//        executeSubturn()
+//    }
     
     func center () ->CGPoint
     {

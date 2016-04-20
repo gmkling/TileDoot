@@ -70,10 +70,18 @@ class TileSprite : SKSpriteNode
 
 class SequencedAction
 {
+    var complete = false
+    
     init()
     {
         
     }
+    
+    func markComplete()
+    {
+        complete = true
+    }
+
 }
 
 class SubturnMark : SequencedAction
@@ -85,18 +93,20 @@ class SubturnMark : SequencedAction
     {
         subturnID = subturnNum
     }
+
 }
 
 class TileAction : SequencedAction
 {
+    // abstract node in the tree above tile actions
+    // as opposed to actions that operate on Puzzles, Turns, context, etc.
     var target : Coordinate?
 
     init(tile: Coordinate?)
     {
         target = tile
     }
-    
-    // no execute for now
+
 }
 
 class AddAction : TileAction
@@ -195,6 +205,11 @@ class Turn
     
     func appendAction(action: SequencedAction)
     {
+        if action is SubturnMark
+        {
+            subTurns += 1
+        }
+        
         actionQ.append(action)
     }
     
