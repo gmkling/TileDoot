@@ -215,7 +215,7 @@ class GameBoardView : SKNode , GameBoardProtocol
             return
         }
         
-        moves.last!.appendAction(EndTurnMark())
+        // moves.last!.appendAction(EndTurnMark())
         
         // turn gesture recognizer back on
         for each in (self.scene!.view!.gestureRecognizers)!

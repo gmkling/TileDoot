@@ -12,6 +12,8 @@ import SpriteKit
 class GamePlayScene: SKScene {
     
     var puzzleData : Puzzle
+    //var curPuz : Puzzle
+    //var curPuzID : String
     var returnAddr : SKScene?
     var gameView : GameBoardView
     var puzzleSetName = SKLabelNode()
@@ -21,7 +23,7 @@ class GamePlayScene: SKScene {
     
     // turn tracking
     var curTurn = 0
-    var curSubturn = 0
+    var curSubturn = 1
     var beginTime : NSTimeInterval = 0.0
     var lastTime : NSTimeInterval = 0.0
     var thisTime : NSTimeInterval = 0.0
@@ -47,6 +49,11 @@ class GamePlayScene: SKScene {
     {
         // TODO: How can we make this method safer, what to do when a puzzle exists to dispose of it
         puzzleData = puz
+    }
+    
+    func setCurPuzzle(puzID: String)
+    {
+        
     }
     
     override func didMoveToView(view: SKView)
@@ -138,9 +145,11 @@ class GamePlayScene: SKScene {
         // get the first subturn of the curTurn, if the curTurn is still incomplete
         if !gameView.moves[curTurn].complete
         {
-            if gameView.moves[curTurn].scanComplete() { curTurn += 1; curSubturn=0; return }
+            // if the turn is done, mark it and go around the horn.
+            if gameView.moves[curTurn].scanComplete() { curTurn += 1; curSubturn=1; return }
             
-            if let subturnArray = gameView.moves[curTurn].getNextIncompleteSubturn()
+            //if let subturnArray = gameView.moves[curTurn].getNextIncompleteSubturn()
+            if let subturnArray = gameView.moves[curTurn].getSubturn(curSubturn)
             {
                 var subturnProcessFlag = false
                 var subturnIncompleteFlag = false
@@ -157,6 +166,17 @@ class GamePlayScene: SKScene {
                     // mark them as processed
                     for action in subturnArray
                     {
+                        if action is EndTurnMark
+                        {
+                            action.markProcessed()
+                            action.markComplete()
+                        } else if action is EndPuzzleMark
+                        {
+                            action.markProcessed()
+                            action.markComplete()
+                            // run the victory screen, reinit the gameView with next Puzzle on button push
+                            // gameView.runVictory()
+                        }
                         let nextAction = convertActionToSKAction(action)
                         gameView.runAction(nextAction)
                         action.markProcessed()
@@ -171,7 +191,7 @@ class GamePlayScene: SKScene {
                     
                     if subturnIncompleteFlag { return } // wait for completion
                     else {
-                        // TODO: Mark subturn as complete if needed, move on to the next
+                        // Mark subturn (array.last) as complete, move on to the next
                         self.curSubturn += 1;
                         subturnArray.last!.markComplete()
                     }
