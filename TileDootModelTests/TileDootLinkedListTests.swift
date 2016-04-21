@@ -80,7 +80,17 @@ class TileDootLinkedListTests: XCTestCase {
         
     }
     
-    
+    func test_LLCount()
+    {
+        let testLL = LinkedList<Int>()
+        
+        testLL.insert(0)
+        testLL.insert(1)
+        testLL.insert(2)
+        testLL.insert(3)
+        
+        XCTAssert(testLL.count == 4)
+    }
 
 
 }

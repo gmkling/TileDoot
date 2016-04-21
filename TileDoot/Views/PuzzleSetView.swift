@@ -39,20 +39,22 @@ class PuzzleSetView: SKNode
         for i in 0...Int(nPages)
         {
             let tempPage = PuzzleSetPage(viewSize: self.size, handler: doGameScene)
-            for j in 0..<16
+            for j in 1...16
             {
                 let curPuzzle = (i*16)+j
                 // check for partial page
-                if curPuzzle >= puzzles.nPuzzles { break }
+                if curPuzzle > puzzles.nPuzzles { break }
                 
-                let curX = j%4
+                let curX = (j-1)%4
                 let curY = (j-curX)/4
+                var prog : Int
                 
-                let tempPuzzle = inPuzzles.getPuzzle(curPuzzle)
-                let prog = defaults.integerForKey((tempPuzzle?.puzzleID)!)
-                
-                tempPage.addPuzzle(curX, atY: curY, status: PuzzleStatus(rawValue: prog)!, pID: (tempPuzzle?.puzzleID)!)
-                
+                if let tempPuzzle = inPuzzles.getPuzzle(curPuzzle)
+                {
+                    let curID = tempPuzzle.puzzleID
+                    prog = defaults.integerForKey(curID)
+                    tempPage.addPuzzle(curX, atY: curY, status: PuzzleStatus(rawValue: prog)!, pID: curID)
+                }
             }
             tempPage.position = CGPointMake(0.0, 0.0)
             puzzlePages.append(tempPage)

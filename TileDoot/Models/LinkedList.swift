@@ -65,9 +65,28 @@ class LinkedList<T : Equatable> {
         return x
     }
     
+    var count: Int {
+        
+        if head.key == nil {
+            return 0
+        }
+            
+        else  {
+            
+            var current : LLNode = head
+            var n = 1
+
+            while current.next?.key != nil {
+                current = current.next!
+                n += 1
+            }
+            return n
+        }
+    }
+    
     func printKeys()
     {
-        var current: LLNode<T>? = head
+        var current : LLNode? = head
         
         while current != nil
         {

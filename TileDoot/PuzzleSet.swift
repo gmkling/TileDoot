@@ -8,11 +8,10 @@
 
 import Foundation
 
-
 class PuzzleSet
 {
     var nPuzzles = 0
-    var puzzles : [Puzzle?]
+    var puzzleList = LinkedList<Puzzle>()
     var name : String
     
     // storage for file i/o
@@ -27,7 +26,6 @@ class PuzzleSet
     {
         self.name = withName
         fileName = ""
-        puzzles = []
         rawPuzzleFile = String()
         puzzleSetStrings = []
     }
@@ -36,9 +34,9 @@ class PuzzleSet
     {
         self.name = String()
         fileName = String(withFileName)
-        puzzles = []
         rawPuzzleFile = String()
         puzzleSetStrings = []
+        
         
         // this should then load, check, and parse the input file with funcs below
         
@@ -60,7 +58,7 @@ class PuzzleSet
     
     deinit
     {
-        puzzles.removeAll()
+        //puzzleList.removeAll()
         puzzleSetStrings.removeAll()
     }
     
@@ -237,52 +235,25 @@ class PuzzleSet
     // should overload this to be able to use a string + dimension
     func appendPuzzle(inPuzzle: Puzzle)
     {
-        puzzles.append(inPuzzle)
         nPuzzles += 1
+        inPuzzle.puzzleNumber = nPuzzles
+        puzzleList.insert(inPuzzle)
+        
     }
     
-    func removePuzzleNumber(puzNum: Int)
-    {
-        // adjust the index
-        let puzToRemove = puzNum - 1
-        
-        // check if index is in range or the puzzles are empty
-        if puzToRemove>puzzles.count || puzToRemove<puzzles.startIndex || puzzles.count==0 { return }
-        
-        if puzzles[puzToRemove] == nil
-        { return }
-        
-        puzzles.removeAtIndex(puzToRemove)
-        nPuzzles -= 1
-    }
-    
-    func checkForLevel(puzNum: Int) ->Bool
-    {
-        // adjust the index
-        let puzToCheck = puzNum - 1
-        
-        // check if index is in range or the puzzles are empty
-        if puzToCheck>puzzles.count || puzToCheck<puzzles.startIndex || puzzles.count==0 { return false }
-        
-        // see if the index is occupied by a valid puzzle
-        if puzzles[puzToCheck]!.checkValid()
-        {
-            return true
-        }
-        
-        return false
-    }
     
     func getPuzzleWithID(puzID: String) -> Puzzle?
     {
-        // brute force - I'll write a true searchable structure 
-        // if I ever make a PuzzleSet containing more than a few dozen
-        for item in puzzles
+        
+        var currentNode = puzzleList.head
+        
+        while currentNode.key != nil
         {
-            if item?.puzzleID == puzID
+            if currentNode.key?.puzzleID == puzID
             {
-                return item
+                return currentNode.key
             }
+            currentNode = currentNode.next!
         }
         
         return nil
@@ -290,23 +261,39 @@ class PuzzleSet
     
     func getPuzzle(puzNum: Int) -> Puzzle?
     {
-        // check if index is in range or the puzzles are empty
-        if puzNum>puzzles.count || puzNum<puzzles.startIndex || puzzles.count==0 { return nil }
+       
+        var currentNode : LLNode = puzzleList.head
         
-        return puzzles[puzNum]
+        while currentNode.key != nil
+        {
+            if currentNode.key?.puzzleNumber == puzNum
+            {
+                return currentNode.key
+            }
+            
+            currentNode = currentNode.next!
+        }
+        
+        return nil
     }
 }
 
 class Puzzle
 {
-    var dimension : Int
-    var par : Int
+    var dimension = 0
+    var par = 0
     var puzzleValid = false
     var progress = 0
+    var puzzleNumber = 0
     
     // the stringRep
     var puzzleID = String()
     var stringRep = String()
+    
+    init()
+    {
+        
+    }
     
     init(dim: Int, inPar: Int, levelString: String, levelName: String?)
     {
@@ -420,4 +407,11 @@ class Puzzle
         if stringRep.characters.count == dimension*dimension { puzzleValid = true } else { puzzleValid=false }
         return puzzleValid
     }
+}
+
+extension Puzzle: Equatable {}
+
+@warn_unused_result func ==(lhs: Puzzle, rhs: Puzzle) -> Bool
+{
+    return lhs.stringRep == rhs.stringRep
 }
