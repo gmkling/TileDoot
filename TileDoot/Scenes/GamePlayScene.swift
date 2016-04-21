@@ -129,23 +129,57 @@ class GamePlayScene: SKScene {
         view!.addGestureRecognizer(rightSwipe)
     }
     
-    
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
-//    {
-//        
-//        for touch in touches
-//        {
-//            let location = touch.locationInNode(self)
-//        }
-//    }
-    
     override func update(currentTime: NSTimeInterval)
     {
-        // on the first time around, init the beginTime
-        if curTurn == 0 { beginTime = currentTime; }
+        // bug out if there are no turns or curTurn is out of range
+        if gameView.moves.count < 1 { return }
+        if curTurn >= gameView.moves.count { return }
         
-        // take a look at the GameBoardView's actionQ
-        // if a good Turn is there, take the number if you don't have it
+        // get the first subturn of the curTurn, if the curTurn is still incomplete
+        if !gameView.moves[curTurn].complete
+        {
+            if gameView.moves[curTurn].scanComplete() { curTurn += 1; curSubturn=0; return }
+            
+            if let subturnArray = gameView.moves[curTurn].getNextIncompleteSubturn()
+            {
+                var subturnProcessFlag = false
+                var subturnIncompleteFlag = false
+                
+                // if any task needs processed, set the flag
+                for each in subturnArray
+                {
+                    if !each.processed { subturnProcessFlag = true }
+                }
+                
+                if subturnProcessFlag
+                {
+                    // TODO: process each task and run it
+                    // mark them as processed
+                    for action in subturnArray
+                    {
+                        let nextAction = convertActionToSKAction(action)
+                        gameView.runAction(nextAction)
+                        action.markProcessed()
+                    }
+                } else {
+                    for each in subturnArray
+                    {
+                        // don't mark if the incomplete action is the marker
+                        if each is SubturnMark { continue }
+                        if !each.complete { subturnIncompleteFlag = true }
+                    }
+                    
+                    if subturnIncompleteFlag { return } // wait for completion
+                    else {
+                        // TODO: Mark subturn as complete if needed, move on to the next
+                        self.curSubturn += 1;
+                        subturnArray.last!.markComplete()
+                    }
+                }
+            }
+        }
+        
+        
         //  if there are commands waiting, see if it is a whole subturn that is not complete and update internal numbers
         //      if there is a subturn ready, see what commands are timely, package them up as actions and dispatch them
         //         also dispatch any additional actions to additional views as needed
@@ -157,7 +191,7 @@ class GamePlayScene: SKScene {
     }
     
     // the idea is to process this centrally so that it is easy to adjust
-    func convertActionToSKAction(action: SequencedAction, turn: Turn) -> SKAction?
+    func convertActionToSKAction(action: SequencedAction) -> SKAction
     {
         // some actions are meaningless outside the context of the Turn/Render cycle, so we have to do the conversion here.
         // I don't like the dependency, but I don't know how to do this conversion within the SequencedAction subtree
@@ -165,18 +199,35 @@ class GamePlayScene: SKScene {
         
         // Actions should do what they specify PLUS update their original SequencedActions with .markComplete()
         // Their complete flags are test by update() before processing new actions/the next subTurn
+        // All actions should be packaged so that they can be run by the scene or the gameView, even if they run on sprites
+        // eg SKAction.runBlock({ someTile.runAction(someOtherAction, completion: { someOtherActionEvent.markAsComplete } )
+        
+        let action_noop = SKAction.runBlock({})
         
         if action is SubturnMark
         {
-            // increment the subturn here
-            return SKAction.runBlock({ self.curSubturn += 1; action.markComplete() })
+            // subturn will be complete when all other actions run
+            //return SKAction.runBlock({ self.curSubturn += 1; action.markComplete() })
+            return action_noop
         }
         
-        if action is TileAction
+        if action is EndTurnMark
         {
-            // TileAction is abstract, we should not see instances, and should do nothing
-            
+            // I'm not sure if this is the way to go yet
+            //return SKAction.runBlock({ self.curTurn += 1; action.markComplete(); turn.markComplete()})
+            return action_noop
         }
+        
+        if action is EndPuzzleMark
+        {
+            // TODO: ???
+        }
+        
+//        if action is TileAction
+//        {
+//            // TileAction is abstract, we should not see instances, and should do nothing
+//            return action_noop
+//        }
         
         if action is AddAction
         {
@@ -187,16 +238,15 @@ class GamePlayScene: SKScene {
             let fadeInAction = SKAction.fadeInWithDuration(0.1)
             let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
             let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)})
-            let finishAction = SKAction.runBlock({tileAdd.markComplete()})
-            let fadeInSeq = SKAction.sequence([waitAction, fadeInAction, audioAction])
+            let finishAction = SKAction.runBlock({action.markComplete()})
+            let fadeInSeq = SKAction.sequence([waitAction, fadeInAction, audioAction, finishAction])
             
             let tempTile = tileAdd.getTileSprite()
             
             // calc the scale
             let sceneSizeX = gameView.size.width
-            let sceneSizeY = gameView.size.height
             let spriteDim = CGFloat(gameView.dimension)
-            let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
+            let tileSizeIn = CGFloat(kTileFileSizeInPixels) // my tiles are 500x500 pngs
             let tileRenderSize = sceneSizeX / spriteDim
             let tileScale = tileRenderSize / tileSizeIn
             
@@ -205,28 +255,77 @@ class GamePlayScene: SKScene {
             tempTile.alpha = 0.0
             
             
-            gameView.addChild(tempTile)
+            //gameView.addChild(tempTile)
             tempTile.enqueueAction(fadeInSeq)
-           // tiles[tileAdd.target!.x, tileAdd.target!.y] = tempTile
+            
+            // will the reference hang around here so we can package and defer it?
+            return SKAction.runBlock({self.gameView.addTileSprite(tileAdd.target!, tile: tempTile)})
         }
         
         if action is MoveAction
         {
-           // MoveAction should be moved over from GameBoardView::processMoveBlock()
+            let curAction = action as! MoveAction
+            // MoveAction should be moved over from GameBoardView::processMoveBlock()
+            // do this for each move action in the array
+            let toLoc = curAction.to
+            let toPos = gameView.locationForCoord(toLoc)
+            let fromLoc = curAction.target
+            // create an animation/action for the sprite
+            let moveAction = SKAction.moveTo(toPos, duration: 0.25)
+            let tileSprite = gameView.tiles[fromLoc!.x, fromLoc!.y]
+            let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)})
+            let finishAction = SKAction.runBlock({
+                action.markComplete()
+            })
+            let actionBundle = SKAction.sequence([moveAction, audioAction, finishAction])
             
+            let moveBlock = {
+            tileSprite.enqueueAction(actionBundle)
+            // also change the grid position
+            self.gameView.tiles[toLoc.x, toLoc.y] = tileSprite
+            tileSprite.executeActions()
+            }
+            
+            return SKAction.runBlock(moveBlock)
         }
         
         if action is DeleteAction
         {
             // DeleteAction should be moved over from GameBoardView::processDeleteBlock()
+            // create the action/animation for deletion
+            let delAction = action as! DeleteAction
+            let loc = delAction.target
+            
+            
+            let deleteAudio = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
+            let fadeAction = SKAction.fadeOutWithDuration(0.5)
+            let deleteAction = SKAction.removeFromParent()
+            let doneAction = SKAction.runBlock({action.markComplete()})
+            
+            // set the deleteMark - when the move action completes it will delete.
+            // somehow this bit of genius delete stationary tiles - WHY?
+            let delSprite = gameView.tiles[loc!.x, loc!.y]
+            delSprite.deleteMark = true
+
+            // TODO: Add a better animation that will happen per group instead of per tile
+            let deleteBundle = SKAction.sequence([fadeAction, deleteAudio, deleteAction, doneAction])
+            delSprite.enqueueAction(deleteBundle)
+            
+            let deleteBlock = {
+                delSprite.executeActions()
+            }
+            return SKAction.runBlock(deleteBlock)
+            
         }
         
         if action is AudioAction
         {
             // AudioAction should be moved over from GameBoardView::processActions()
+            return action_noop
         }
         
-        return nil
+        print("Failed to ID action \(action)")
+        return action_noop
     }
     
     func doBackButton()

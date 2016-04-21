@@ -58,6 +58,12 @@ class PuzzleSet
         }
     }
     
+    deinit
+    {
+        puzzles.removeAll()
+        puzzleSetStrings.removeAll()
+    }
+    
     func loadPuzzleSetFile(fileInBundle: String) ->Bool
     {
         let filePath = NSBundle.mainBundle().pathForResource(fileInBundle, ofType: nil)

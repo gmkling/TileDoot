@@ -66,6 +66,13 @@ class GameBoardView : SKNode , GameBoardProtocol
         //self.addChild(victoryScreen)
     }
     
+    deinit
+    {
+        gameBoard = nil
+        game = nil
+        audioDelegate = nil
+    }
+    
     
     func drawBackground()
     {
@@ -136,41 +143,42 @@ class GameBoardView : SKNode , GameBoardProtocol
         // TODO: Make the start of puzzle animation be special
         // at this point all addTile actions should be in Q, waiting to look pretty
         // the moveDirection "none" is for the beginning of the level
-        let fadeInAction = SKAction.fadeInWithDuration(0.1)
-        let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
-        let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)})
-        let fadeInSeq = SKAction.sequence([waitAction, fadeInAction, audioAction])
-        
-        if self.audioDelegate == nil { print("nil audioDelegate") }
-        
-        if moves.last != nil && moves.last!.move == MoveDirection.none
-        {
-            for t in moves.last!.actionQ
-            {
-                if let tileAdd = t as? AddAction
-                {
-                    // TODO: fancy Tile adding animation instead of this
-                    let tempTile = tileAdd.getTileSprite()
-                    
-                    // calc the scale
-                    let sceneSizeX = self.size.width
-                    //let sceneSizeY = self.size.height
-                    let spriteDim = CGFloat(dimension)
-                    let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
-                    let tileRenderSize = sceneSizeX / spriteDim
-                    let tileScale = tileRenderSize / tileSizeIn
-                    
-                    tempTile.anchorPoint = CGPointMake(0.0, 0.0)
-                    tempTile.setScale(tileScale)
-                    tempTile.alpha = 0.0
-                    
-                    
-                    self.addChild(tempTile)
-                    tempTile.runAction(fadeInSeq)                                            
-                    tiles[tileAdd.target!.x, tileAdd.target!.y] = tempTile
-                }
-            }
-        }
+//        let fadeInAction = SKAction.fadeInWithDuration(0.1)
+//        let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
+//        let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)})
+//        let fadeInSeq = SKAction.sequence([waitAction, fadeInAction, audioAction])
+//        
+//        if self.audioDelegate == nil { print("nil audioDelegate") }
+//        
+//        if moves.last != nil && moves.last!.move == MoveDirection.none
+//        {
+//            for t in moves.last!.actionQ
+//            {
+//                if let tileAdd = t as? AddAction
+//                {
+//                    // TODO: fancy Tile adding animation instead of this
+//                    let tempTile = tileAdd.getTileSprite()
+//                    
+//                    // calc the scale
+//                    let sceneSizeX = self.size.width
+//                    //let sceneSizeY = self.size.height
+//                    let spriteDim = CGFloat(dimension)
+//                    let tileSizeIn = CGFloat(kTileFileSizeInPixels) // my tiles are 500x500 pngs
+//                    let tileRenderSize = sceneSizeX / spriteDim
+//                    let tileScale = tileRenderSize / tileSizeIn
+//                    
+//                    tempTile.anchorPoint = CGPointMake(0.0, 0.0)
+//                    tempTile.setScale(tileScale)
+//                    tempTile.alpha = 0.0
+//                    
+//                    
+//                    self.addChild(tempTile)
+//                    tempTile.runAction(fadeInSeq)                                            
+//                    tiles[tileAdd.target!.x, tileAdd.target!.y] = tempTile
+//                }
+//            }
+//        }
+        addSubturn()
     }
     
     func startTurn(dir: MoveDirection)
@@ -207,16 +215,7 @@ class GameBoardView : SKNode , GameBoardProtocol
             return
         }
         
-        // unthinkable, but
-        // if moves.last!!.complete { return }
-        
-        //processActions()
-        
-        // update scoring
-        // archive the Turn, do any cleanup that is needed
-        
-        //moves.last!!.complete = true
-        //executeSubturn()
+        moves.last!.appendAction(EndTurnMark())
         
         // turn gesture recognizer back on
         for each in (self.scene!.view!.gestureRecognizers)!
@@ -227,9 +226,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func endPuzzle()
     {
-        // TODO: When Victory condition is reached,
-        // create the fancy winning/losing window
-        // prepare to change or repeat puzzle, return to main, info, etc
+        moves.last!.appendAction(EndPuzzleMark())
     }
     
     func addTile(loc: Coordinate, tile: Tile)
@@ -255,17 +252,17 @@ class GameBoardView : SKNode , GameBoardProtocol
         //moves.last!!.appendAction(audAction)
     }
     
-    func createDeleteAction() -> SKAction
-    {
-//        let randomRange = CGFloat(Float(arc4random())) / CGFloat(UINT32_MAX)
-//        let fadeAction = SKAction.fadeOutWithDuration(0.25*Double(randomRange))
-//        let fadeAction = SKAction.fadeOutWithDuration(0.5)
-        
-        let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
-        //let delAction = SKAction.removeFromParent()
-        //return SKAction.sequence([fadeAction, audioAction, delAction])
-        return audioAction
-    }
+//    func createDeleteAction() -> SKAction
+//    {
+////        let randomRange = CGFloat(Float(arc4random())) / CGFloat(UINT32_MAX)
+////        let fadeAction = SKAction.fadeOutWithDuration(0.25*Double(randomRange))
+////        let fadeAction = SKAction.fadeOutWithDuration(0.5)
+//        
+//        let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
+//        //let delAction = SKAction.removeFromParent()
+//        //return SKAction.sequence([fadeAction, audioAction, delAction])
+//        return audioAction
+//    }
     
     func setColor(loc: Coordinate, color: Color)
     {
@@ -282,6 +279,15 @@ class GameBoardView : SKNode , GameBoardProtocol
         let moveCmd = MoveAction(from: fromLoc, to: toLoc)
         
         moves.last!.appendAction(moveCmd)
+    }
+    
+    
+    func addTileSprite(loc: Coordinate, tile: TileSprite)
+    {
+        tiles[loc.x, loc.y] = tile
+        self.addChild(tile)
+        
+        tiles[loc.x, loc.y].executeActions()
     }
     
     // TODO the tree of functions under processActions is getting refactored under the scene, 

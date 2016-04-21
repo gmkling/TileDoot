@@ -462,7 +462,6 @@ class GameBoard {
             
         }
         
-        delegate.endTurn()
         
         // tell the delegate if the puzzle is solved
         if isPuzzleSolved()
@@ -470,7 +469,7 @@ class GameBoard {
             delegate.endPuzzle()
         }
         
-        
+        // the endTurn signal is sent from the Scene in the swipe selector
     
     }
     

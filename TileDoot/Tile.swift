@@ -36,6 +36,8 @@ let colorBank = [blueTileColor,
     orangeTileColor,
     purpleTileColor]
 
+let kTileFileSizeInPixels = 500
+
 // I don't like that I have to reference type when I use these: Color.kRed - is there something better for this?
 enum Color: Int {
     case kNoColor=1
@@ -247,7 +249,7 @@ class Tile {
         self.markedForDelete = copy.markedForDelete
         self.moveInProgress = copy.moveInProgress
     }
-
+    
 }
 
 // overrides for Tiles

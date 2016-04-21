@@ -16,6 +16,7 @@ import SpriteKit
 
 class SequencedAction
 {
+    var processed = false
     var complete = false
     
     init()
@@ -26,6 +27,11 @@ class SequencedAction
     func markComplete()
     {
         complete = true
+    }
+    
+    func markProcessed()
+    {
+        processed = true
     }
     
 }

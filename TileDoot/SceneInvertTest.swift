@@ -16,25 +16,21 @@ import SpriteKit
 //}
 
 class SceneInvertTest: SKScene {
-    
-    
-    
+  
     override func didMoveToView(view: SKView)
     {
         // since we need a ptr to the method, this happens here instead of at init time
         let endButton = TDButton(defaultImageName: "NewGameActive_test.png", selectImageName: "NewGameSelected_test.png", buttonAction: printStart, disabledImageName: nil, labelStr: "")
         
         // flip the coord system so that [0,0] is TRHC
-        //self.yScale = -1.0
         let sceneSizeX = self.size.width
         let sceneSizeY = self.size.height
         var tileSprites = [SKSpriteNode]()
         let dim = 8
         let spriteDim = CGFloat(dim)
-        let tileSizeIn = CGFloat(500) // my tiles are 500x500 pngs
+        let tileSizeIn = CGFloat(kTileFileSizeInPixels) // my tiles are 500x500 pngs
         let tileRenderSize = sceneSizeX / spriteDim
         let tileScale = tileRenderSize / tileSizeIn
-        //let tileName = ["Purple1_test.png", "Blue1_test.png", "Red1_test.png"]
         
         for i in 0..<dim
         {
@@ -52,13 +48,9 @@ class SceneInvertTest: SKScene {
                 
             }
         }
-        
-        
-        
-        
+
         endButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         endButton.setScale(0.25)
-
     }
     
     func printStart()
@@ -66,18 +58,6 @@ class SceneInvertTest: SKScene {
         print("Start Button pushed.")
     }
     
-    // touch overrides may not be needed since we are only interested in buttons.
-    
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
-//    {
-//        
-//        for touch in touches
-//        {
-//            let location = touch.locationInNode(self)
-//            // interesting stuff goes here
-//        }
-//    }
-//    
     override func update(currentTime: CFTimeInterval) {
         
     }
