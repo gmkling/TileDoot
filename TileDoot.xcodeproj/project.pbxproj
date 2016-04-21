@@ -211,6 +211,8 @@
 		10EB4AB11CC041EF00E487D3 /* PurpleReset_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA81CC041EF00E487D3 /* PurpleReset_sel.png */; };
 		10EB4AB31CC7F7D500E487D3 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB21CC7F7D500E487D3 /* Turn.swift */; };
 		10EB4AB51CC7F7FD00E487D3 /* SequencedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB41CC7F7FD00E487D3 /* SequencedAction.swift */; };
+		10EB4AB71CC95E7500E487D3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB61CC95E7500E487D3 /* LinkedList.swift */; };
+		10EB4AB91CC967E600E487D3 /* TileDootLinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB81CC967E600E487D3 /* TileDootLinkedListTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +387,8 @@
 		10EB4AA81CC041EF00E487D3 /* PurpleReset_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleReset_sel.png; sourceTree = "<group>"; };
 		10EB4AB21CC7F7D500E487D3 /* Turn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Turn.swift; path = Views/Turn.swift; sourceTree = "<group>"; };
 		10EB4AB41CC7F7FD00E487D3 /* SequencedAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SequencedAction.swift; path = Views/SequencedAction.swift; sourceTree = "<group>"; };
+		10EB4AB61CC95E7500E487D3 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkedList.swift; path = Models/LinkedList.swift; sourceTree = "<group>"; };
+		10EB4AB81CC967E600E487D3 /* TileDootLinkedListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootLinkedListTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +507,7 @@
 				107698D91C34668A006051B2 /* TileDootModelTests.swift */,
 				107698DB1C34668A006051B2 /* Info.plist */,
 				107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */,
+				10EB4AB81CC967E600E487D3 /* TileDootLinkedListTests.swift */,
 			);
 			path = TileDootModelTests;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				107698D11C3202C8006051B2 /* Tile.swift */,
 				107698E31C346CEE006051B2 /* GameBoard.swift */,
 				1023D2B21C642229005DBAB9 /* PuzzleSet.swift */,
+				10EB4AB61CC95E7500E487D3 /* LinkedList.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1063,6 +1069,7 @@
 				10B34CF31C50CC7D00AD8DD7 /* SceneInvertTest.swift in Sources */,
 				10AB013B1CA515BF0092D7AF /* GameData.swift in Sources */,
 				1023D2B31C64222A005DBAB9 /* PuzzleSet.swift in Sources */,
+				10EB4AB71CC95E7500E487D3 /* LinkedList.swift in Sources */,
 				107698BC1C320292006051B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1073,6 +1080,7 @@
 			files = (
 				10A6B2801C6DC0040038263E /* TileDootPuzzleSetTests.swift in Sources */,
 				10AB013C1CA515BF0092D7AF /* GameData.swift in Sources */,
+				10EB4AB91CC967E600E487D3 /* TileDootLinkedListTests.swift in Sources */,
 				10A6B2821C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift in Sources */,
 				107698ED1C3EF0FD006051B2 /* TileDootModelMovementTests.swift in Sources */,
 				10A6B27E1C6D20020038263E /* TileDootPuzzleTests.swift in Sources */,

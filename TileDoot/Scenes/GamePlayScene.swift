@@ -142,13 +142,16 @@ class GamePlayScene: SKScene {
         if gameView.moves.count < 1 { return }
         if curTurn >= gameView.moves.count { return }
         
+        let theTurn = gameView.moves[curTurn]
+        
         // get the first subturn of the curTurn, if the curTurn is still incomplete
-        if !gameView.moves[curTurn].complete
+        if !theTurn.complete
         {
             // if the turn is done, mark it and go around the horn.
-            if gameView.moves[curTurn].scanComplete() { curTurn += 1; curSubturn=1; return }
+            if theTurn.scanComplete() { curTurn += 1; curSubturn=1; return }
             
-            //if let subturnArray = gameView.moves[curTurn].getNextIncompleteSubturn()
+            if curSubturn > theTurn.subTurns + 1 { return }
+
             if let subturnArray = gameView.moves[curTurn].getSubturn(curSubturn)
             {
                 var subturnProcessFlag = false
@@ -166,6 +169,8 @@ class GamePlayScene: SKScene {
                     // mark them as processed
                     for action in subturnArray
                     {
+                        // check in Turn.getSubturn, EndTurn and EndPuzzle only ever occur after the prev subturn
+                        // so they can be processed when they are encountered with impugnity
                         if action is EndTurnMark
                         {
                             action.markProcessed()
@@ -222,6 +227,7 @@ class GamePlayScene: SKScene {
         // All actions should be packaged so that they can be run by the scene or the gameView, even if they run on sprites
         // eg SKAction.runBlock({ someTile.runAction(someOtherAction, completion: { someOtherActionEvent.markAsComplete } )
         
+        // would look better as a switch case, but I am using type, and you can't switch on type
         let action_noop = SKAction.runBlock({})
         
         if action is SubturnMark
@@ -241,13 +247,9 @@ class GamePlayScene: SKScene {
         if action is EndPuzzleMark
         {
             // TODO: ???
+            // return SKAction.runBlock({ self.audioDelegate?.playSFX(<#T##sfxKey: String##String#>, typeKey: <#T##String#>))
+            return action_noop
         }
-        
-//        if action is TileAction
-//        {
-//            // TileAction is abstract, we should not see instances, and should do nothing
-//            return action_noop
-//        }
         
         if action is AddAction
         {
