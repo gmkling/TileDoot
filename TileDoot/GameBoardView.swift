@@ -135,7 +135,7 @@ class GameBoardView : SKNode , GameBoardProtocol
         victoryScreen.alpha = 0.0
         
         self.addChild(victoryScreen)
-        self.gridLines.runAction(SKAction.fadeOutWithDuration(0.1))
+        self.gridLines.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.025))
         victoryScreen.runAction(SKAction.fadeInWithDuration(0.5))
     }
 

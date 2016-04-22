@@ -372,6 +372,7 @@ class GamePlayScene: SKScene {
         puzzleData = puzzles.getPuzzle(nextPuzNum)!
         gameView = GameBoardView(puzzle: puzzleData, boardSize: testSize, audioDel: self.audioDelegate, game: self)
         gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
+        gameView.alpha = 0.0
         self.addChild(gameView)
         gameView.runAction(SKAction.fadeInWithDuration(1))
         
