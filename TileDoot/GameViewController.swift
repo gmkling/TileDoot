@@ -26,6 +26,8 @@ class GameViewController: UIViewController
         setupAudio()
         let scene = MainMenuScene(size: view!.bounds.size)
         scene.audioDelegate = audioEngine
+        //let scene = SceneInvertTest(size: view!.bounds.size)
+        
         skView.presentScene(scene)
         
     }

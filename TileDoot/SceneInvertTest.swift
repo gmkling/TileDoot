@@ -26,7 +26,7 @@ class SceneInvertTest: SKScene {
         let sceneSizeX = self.size.width
         let sceneSizeY = self.size.height
         var tileSprites = [SKSpriteNode]()
-        let dim = 8
+        let dim = 1024
         let spriteDim = CGFloat(dim)
         let tileSizeIn = CGFloat(kTileFileSizeInPixels) // my tiles are 500x500 pngs
         let tileRenderSize = sceneSizeX / spriteDim

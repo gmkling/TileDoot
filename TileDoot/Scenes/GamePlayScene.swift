@@ -305,7 +305,7 @@ class GamePlayScene: SKScene {
             let finishAction = SKAction.runBlock({
                 action.markComplete()
             })
-            let actionBundle = SKAction.sequence([moveAction, audioAction, finishAction])
+            let actionBundle = SKAction.sequence([audioAction, moveAction, finishAction])
             
             let moveBlock = {
             tileSprite.enqueueAction(actionBundle)
@@ -326,7 +326,7 @@ class GamePlayScene: SKScene {
             
             
             let deleteAudio = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
-            let fadeAction = SKAction.fadeOutWithDuration(0.5)
+            let fadeAction = SKAction.fadeOutWithDuration(0.25)
             let deleteAction = SKAction.removeFromParent()
             let doneAction = SKAction.runBlock({action.markComplete()})
             

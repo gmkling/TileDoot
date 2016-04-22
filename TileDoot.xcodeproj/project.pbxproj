@@ -110,8 +110,6 @@
 		10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6A1C44E63400AD8DD7 /* TDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C681C44E63400AD8DD7 /* TDButton.swift */; };
 		10B34C6D1C44F02900AD8DD7 /* TDButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */; };
-		10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */; };
-		10B34C741C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */; };
 		10B34C8F1C4A4A0200AD8DD7 /* Blue1_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C891C4A4A0200AD8DD7 /* Blue1_test.png */; };
 		10B34C901C4A4A0200AD8DD7 /* Blue1_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C891C4A4A0200AD8DD7 /* Blue1_test.png */; };
 		10B34C911C4A4A0200AD8DD7 /* Blue2_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B34C8A1C4A4A0200AD8DD7 /* Blue2_test.png */; };
@@ -214,6 +212,8 @@
 		10EB4AB71CC95E7500E487D3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB61CC95E7500E487D3 /* LinkedList.swift */; };
 		10EB4AB91CC967E600E487D3 /* TileDootLinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB81CC967E600E487D3 /* TileDootLinkedListTests.swift */; };
 		10EB4ABA1CC9755000E487D3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB61CC95E7500E487D3 /* LinkedList.swift */; };
+		10EB4ABC1CCAC9A400E487D3 /* greenSplash.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4ABB1CCAC9A400E487D3 /* greenSplash.png */; };
+		10EB4ABF1CCACBE000E487D3 /* PlainLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4ABE1CCACBE000E487D3 /* PlainLaunch.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,7 +328,6 @@
 		10AB01AC1CB1E1090092D7AF /* testLevels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testLevels.txt; sourceTree = "<group>"; };
 		10B34C681C44E63400AD8DD7 /* TDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDButton.swift; sourceTree = "<group>"; };
 		10B34C6C1C44F02900AD8DD7 /* TDButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDButtonTest.swift; path = TileDootUITests/TDButtonTest.swift; sourceTree = "<group>"; };
-		10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SplashGlass_test.JPG; sourceTree = "<group>"; };
 		10B34C891C4A4A0200AD8DD7 /* Blue1_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue1_test.png; sourceTree = "<group>"; };
 		10B34C8A1C4A4A0200AD8DD7 /* Blue2_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue2_test.png; sourceTree = "<group>"; };
 		10B34C8B1C4A4A0200AD8DD7 /* Blue3_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue3_test.png; sourceTree = "<group>"; };
@@ -390,6 +389,8 @@
 		10EB4AB41CC7F7FD00E487D3 /* SequencedAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SequencedAction.swift; path = Views/SequencedAction.swift; sourceTree = "<group>"; };
 		10EB4AB61CC95E7500E487D3 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkedList.swift; path = Models/LinkedList.swift; sourceTree = "<group>"; };
 		10EB4AB81CC967E600E487D3 /* TileDootLinkedListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootLinkedListTests.swift; sourceTree = "<group>"; };
+		10EB4ABB1CCAC9A400E487D3 /* greenSplash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenSplash.png; path = Splash/greenSplash.png; sourceTree = "<group>"; };
+		10EB4ABE1CCACBE000E487D3 /* PlainLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlainLaunch.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +465,7 @@
 				10B34C6B1C44EFCC00AD8DD7 /* TileDootUITests */,
 				10B34C751C478D5D00AD8DD7 /* TD_Buttons */,
 				10B34C6E1C46437A00AD8DD7 /* TileAssets */,
+				10EB4ABD1CCAC9A900E487D3 /* SplashAssets */,
 				10AB01401CADE1ED0092D7AF /* AudioAssets */,
 				1023D2AE1C642081005DBAB9 /* Levels */,
 				107698B91C320292006051B2 /* Products */,
@@ -495,6 +497,7 @@
 				10B34C671C44E60300AD8DD7 /* UI_Nodes */,
 				10B34CF21C50CC7D00AD8DD7 /* SceneInvertTest.swift */,
 				10AB013A1CA515BF0092D7AF /* GameData.swift */,
+				10EB4ABE1CCACBE000E487D3 /* PlainLaunch.storyboard */,
 			);
 			path = TileDoot;
 			sourceTree = "<group>";
@@ -698,7 +701,6 @@
 				10B34CF41C516DAC00AD8DD7 /* MainMenu1.png */,
 				10B34CF51C516DAC00AD8DD7 /* MainMenu2.png */,
 				10B34C821C48EC9E00AD8DD7 /* GlassTiles_Test */,
-				10B34C701C46437A00AD8DD7 /* SplashGlass_test.JPG */,
 			);
 			path = TileAssets;
 			sourceTree = "<group>";
@@ -778,6 +780,14 @@
 				10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		10EB4ABD1CCAC9A900E487D3 /* SplashAssets */ = {
+			isa = PBXGroup;
+			children = (
+				10EB4ABB1CCAC9A400E487D3 /* greenSplash.png */,
+			);
+			name = SplashAssets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -942,7 +952,6 @@
 				10EB4AB11CC041EF00E487D3 /* PurpleReset_sel.png in Resources */,
 				10B34CD11C4E32DB00AD8DD7 /* Orange2_test.png in Resources */,
 				10AB01A01CADE1ED0092D7AF /* SmallFall_Stereo1.aiff in Resources */,
-				10B34C731C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
 				10EB4AAB1CC041EF00E487D3 /* PurpleBack_sel.png in Resources */,
 				10AB01271CA474F00092D7AF /* PurpleMenu_def.png in Resources */,
 				10AB01801CADE1ED0092D7AF /* Catch_Mono3.aiff in Resources */,
@@ -959,6 +968,7 @@
 				10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */,
 				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
 				10AB01351CA480DE0092D7AF /* webButton-500px_sel.png in Resources */,
+				10EB4ABF1CCACBE000E487D3 /* PlainLaunch.storyboard in Resources */,
 				10AB01851CADE1ED0092D7AF /* PileTap_Mono2.aiff in Resources */,
 				10B34CA61C4B935F00AD8DD7 /* DGreen2_test.png in Resources */,
 				10AB01781CADE1ED0092D7AF /* LR_WoodSlide_Stereo1.aiff in Resources */,
@@ -974,6 +984,7 @@
 				10AB01911CADE1ED0092D7AF /* SingleTap_Mono2.aiff in Resources */,
 				10AB01811CADE1ED0092D7AF /* Catch_Mono4.aiff in Resources */,
 				10AB01941CADE1ED0092D7AF /* SingleTap_Mono5.aiff in Resources */,
+				10EB4ABC1CCAC9A400E487D3 /* greenSplash.png in Resources */,
 				10AB01871CADE1ED0092D7AF /* PileTap_Mono4.aiff in Resources */,
 				10B34CBB1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */,
 				10B34CAC1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
@@ -1001,7 +1012,6 @@
 				10B34CC01C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
 				10B34D121C536C9500AD8DD7 /* Red1_sel.png in Resources */,
 				10B34C901C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
-				10B34C741C46437A00AD8DD7 /* SplashGlass_test.JPG in Resources */,
 				10B34CE01C4E32DB00AD8DD7 /* Purple4_test.png in Resources */,
 				10B34CAB1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
 				10B34C941C4A4A0200AD8DD7 /* Blue3_test.png in Resources */,
