@@ -12,6 +12,7 @@ import SpriteKit
 class GamePlayScene: SKScene {
     
     var puzzleData : Puzzle
+    var puzzles : PuzzleSet
     //var curPuz : Puzzle
     //var curPuzID : String
     var returnAddr : SKScene?
@@ -31,14 +32,23 @@ class GamePlayScene: SKScene {
     
     var audioDelegate : TD_AudioPlayer?
     
-    override init(size: CGSize)
+//    override init(size: CGSize)
+//    {
+//        // make a placeholder puzzle and view until
+//        puzzleData = Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle")
+//        gameView = GameBoardView(puzzle: self.puzzleData, boardSize: size, audioDel: self.audioDelegate, game: nil)
+//        
+//        super.init(size: size)
+//        
+//    }
+    
+    init(size: CGSize, puzSet: PuzzleSet, puzID: String)
     {
-        // make a placeholder puzzle and view until
-        puzzleData = Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle")
-        gameView = GameBoardView(puzzle: self.puzzleData, boardSize: size, audioDel: self.audioDelegate, game: nil)
+        self.puzzles = puzSet
+        puzzleData = puzSet.getPuzzleWithID(puzID)!
+        gameView = GameBoardView(puzzle: puzzleData, boardSize: size, audioDel: self.audioDelegate, game: nil)
         
         super.init(size: size)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,7 +85,7 @@ class GamePlayScene: SKScene {
         
         
         // hamburger button at top left
-        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, disabledImageName: nil, labelStr: "")
+        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doMenuButton, disabledImageName: nil, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
         
@@ -170,7 +180,7 @@ class GamePlayScene: SKScene {
                     for action in subturnArray
                     {
                         // check in Turn.getSubturn, EndTurn and EndPuzzle only ever occur after the prev subturn
-                        // so they can be processed when they are encountered with impugnity
+                        // so they can be processed with impugnity
                         if action is EndTurnMark
                         {
                             action.markProcessed()
@@ -180,8 +190,10 @@ class GamePlayScene: SKScene {
                             action.markProcessed()
                             action.markComplete()
                             // run the victory screen, reinit the gameView with next Puzzle on button push
-                            // gameView.runVictory()
+                            // victory button should signal nextPuzzle()
+                            gameView.runAction(SKAction.runBlock({self.gameView.runVictory()}))
                         }
+                        
                         let nextAction = convertActionToSKAction(action)
                         gameView.runAction(nextAction)
                         action.markProcessed()
@@ -203,16 +215,10 @@ class GamePlayScene: SKScene {
                 }
             }
         }
-        
-        
-        //  if there are commands waiting, see if it is a whole subturn that is not complete and update internal numbers
-        //      if there is a subturn ready, see what commands are timely, package them up as actions and dispatch them
-        //         also dispatch any additional actions to additional views as needed
-        //         update scoring data in HUD
-        
-        //
-        
-        
+
+        // dispatch any additional actions to additional views as needed
+        // update scoring data in HUD
+ 
     }
     
     // the idea is to process this centrally so that it is easy to adjust
@@ -232,15 +238,13 @@ class GamePlayScene: SKScene {
         
         if action is SubturnMark
         {
-            // subturn will be complete when all other actions run
-            //return SKAction.runBlock({ self.curSubturn += 1; action.markComplete() })
+            // taken care of in update()
             return action_noop
         }
         
         if action is EndTurnMark
         {
-            // I'm not sure if this is the way to go yet
-            //return SKAction.runBlock({ self.curTurn += 1; action.markComplete(); turn.markComplete()})
+            // taken care of in update()
             return action_noop
         }
         
@@ -248,6 +252,8 @@ class GamePlayScene: SKScene {
         {
             // TODO: ???
             // return SKAction.runBlock({ self.audioDelegate?.playSFX(<#T##sfxKey: String##String#>, typeKey: <#T##String#>))
+            
+            // taken care of in update() for now, could run a block instead
             return action_noop
         }
         
@@ -350,7 +356,56 @@ class GamePlayScene: SKScene {
         return action_noop
     }
     
-    func doBackButton()
+    func nextPuzzle()
+    {
+        gameView.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(1.0), SKAction.removeFromParent()]))
+        
+        let testSize = CGSize(width: self.size.width*0.833, height: self.size.width*0.833)
+        let nextPuzNum = puzzleData.puzzleNumber+1
+        
+        if nextPuzNum > puzzles.nPuzzles
+        {
+            doMenuButton()
+            return
+        }
+        
+        puzzleData = puzzles.getPuzzle(nextPuzNum)!
+        gameView = GameBoardView(puzzle: puzzleData, boardSize: testSize, audioDel: self.audioDelegate, game: self)
+        gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
+        self.addChild(gameView)
+        gameView.runAction(SKAction.fadeInWithDuration(1))
+        
+        // reset turn tracking
+        curTurn = 0
+        curSubturn = 1
+    }
+    
+    func resetPuzzle()
+    {
+        gameView.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(1.0), SKAction.removeFromParent()]))
+        
+        let testSize = CGSize(width: self.size.width*0.833, height: self.size.width*0.833)
+        let nextPuzNum = puzzleData.puzzleNumber
+        
+        if nextPuzNum > puzzles.nPuzzles
+        {
+            doMenuButton()
+            return
+        }
+        
+        puzzleData = puzzles.getPuzzle(nextPuzNum)!
+        gameView = GameBoardView(puzzle: puzzleData, boardSize: testSize, audioDel: self.audioDelegate, game: self)
+        gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
+        self.addChild(gameView)
+        gameView.runAction(SKAction.fadeInWithDuration(1))
+        
+        // reset turn tracking
+        curTurn = 0
+        curSubturn = 1
+    }
+    
+    
+    func doMenuButton()
     {
         audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
         // slide from left, where we came from

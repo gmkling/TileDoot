@@ -19,6 +19,8 @@ class VictoryView : SKNode
     var tiles : [SKSpriteNode]
     var scoring = SKLabelNode(fontNamed: "futura-medium")
     var background = SKShapeNode()
+    var gamePtr: GamePlayScene?
+    var dootedTiles : Int
     
     // buttons
     var tileXStart : CGFloat
@@ -29,7 +31,7 @@ class VictoryView : SKNode
     var replayButton = TDButton()
     var contButton = TDButton()
     
-    init(size: CGSize, stars: Int)
+    init(size: CGSize, stars: Int, moves: Int, par: Int, tilesDooted: Int, game: GamePlayScene?)
     {
         self.windowSize = size
         var starFile = [Color]()
@@ -38,6 +40,7 @@ class VictoryView : SKNode
         
         starFile = []
         tiles = []
+        dootedTiles = tilesDooted
         
         // draw title
         victoryLabel.fontSize = 48.0
@@ -78,9 +81,11 @@ class VictoryView : SKNode
         // draw scoring
         scoring.fontSize = 16.0
         scoring.position = CGPointMake(xSize*0.5, ySize*0.375)
-        scoring.text = "Moves: 0/0  TilesDooted: 0"
+        scoring.text = "Moves: \(moves)/\(par)  TilesDooted: \(dootedTiles)"
         scoring.verticalAlignmentMode = .Center
         scoring.horizontalAlignmentMode = .Center
+        
+        gamePtr = game
         
         super.init()
         
@@ -133,17 +138,17 @@ class VictoryView : SKNode
     
     func doMenuButton()
     {
-        
+        gamePtr?.doMenuButton()
     }
     
     func doResetButton()
     {
-        
+        gamePtr?.resetPuzzle()
     }
     
     func doForwardButton()
     {
-        
+        gamePtr?.nextPuzzle()
     }
     
     required init?(coder aDecoder: NSCoder) {

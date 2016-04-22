@@ -117,8 +117,8 @@ class PuzzleSetView: SKNode
         if puzID != nil
         {
             var puz = puzzles.getPuzzleWithID(puzID!)
-            self.gameScene = GamePlayScene(size: scene!.view!.bounds.size)
-            gameScene!.setPuzzle(puz!)
+            self.gameScene = GamePlayScene(size: scene!.view!.bounds.size, puzSet: puzzles, puzID: puzID!)
+            //gameScene!.setPuzzle(puz!)
             gameScene!.returnAddr = scene!
             let transition = SKTransition.flipHorizontalWithDuration(0.5)
             if audioDelegate == nil { print("AudioDelegate is nil in PuzzleSetView") }

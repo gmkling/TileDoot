@@ -41,6 +41,7 @@ class GameBoard {
     var dimension, numTiles: Int
     var tileMap : TileBoard
     var tileMapDirty = false;
+    var solved = false
     
     unowned let delegate : GameBoardProtocol
     
@@ -464,9 +465,10 @@ class GameBoard {
         
         
         // tell the delegate if the puzzle is solved
-        if isPuzzleSolved()
+        if isPuzzleSolved() && !self.solved
         {
             delegate.endPuzzle()
+            self.solved = true
         }
         
         // the endTurn signal is sent from the Scene in the swipe selector
