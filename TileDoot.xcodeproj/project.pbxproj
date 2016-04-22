@@ -39,6 +39,8 @@
 		10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A91E081C99EFEF009F50AB /* GameBoardView.swift */; };
 		10A91E0B1C9A99A4009F50AB /* TileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A91E0A1C9A99A4009F50AB /* TileSprite.swift */; };
 		10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */; };
+		10A984F31CCADEE40026F00C /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10A984F21CCADEE40026F00C /* Icon-Small@3x.png */; };
+		10A984F51CCAE0010026F00C /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10A984F41CCAE0010026F00C /* Icon-83.5@2x.png */; };
 		10AB011F1CA35D950092D7AF /* PlayButton_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB011D1CA35D950092D7AF /* PlayButton_active.png */; };
 		10AB01201CA35D950092D7AF /* PlayButton_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB011E1CA35D950092D7AF /* PlayButton_sel.png */; };
 		10AB01231CA46E100092D7AF /* PurplePlay_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AB01211CA46E100092D7AF /* PurplePlay_def.png */; };
@@ -214,6 +216,18 @@
 		10EB4ABA1CC9755000E487D3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4AB61CC95E7500E487D3 /* LinkedList.swift */; };
 		10EB4ABC1CCAC9A400E487D3 /* greenSplash.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4ABB1CCAC9A400E487D3 /* greenSplash.png */; };
 		10EB4ABF1CCACBE000E487D3 /* PlainLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4ABE1CCACBE000E487D3 /* PlainLaunch.storyboard */; };
+		10EB4ACD1CCADDAD00E487D3 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC11CCADDAD00E487D3 /* Icon-60@2x.png */; };
+		10EB4ACE1CCADDAD00E487D3 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC21CCADDAD00E487D3 /* Icon-60@3x.png */; };
+		10EB4ACF1CCADDAD00E487D3 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC31CCADDAD00E487D3 /* Icon-76.png */; };
+		10EB4AD01CCADDAD00E487D3 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC41CCADDAD00E487D3 /* Icon-76@2x.png */; };
+		10EB4AD11CCADDAD00E487D3 /* Icon-Small-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC51CCADDAD00E487D3 /* Icon-Small-40.png */; };
+		10EB4AD21CCADDAD00E487D3 /* Icon-Small-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC61CCADDAD00E487D3 /* Icon-Small-40@2x.png */; };
+		10EB4AD31CCADDAD00E487D3 /* Icon-Small-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC71CCADDAD00E487D3 /* Icon-Small-40@3x.png */; };
+		10EB4AD41CCADDAD00E487D3 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC81CCADDAD00E487D3 /* Icon-Small.png */; };
+		10EB4AD51CCADDAD00E487D3 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AC91CCADDAD00E487D3 /* Icon-Small@2x.png */; };
+		10EB4AD61CCADDAD00E487D3 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4ACA1CCADDAD00E487D3 /* iTunesArtwork */; };
+		10EB4AD71CCADDAD00E487D3 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4ACB1CCADDAD00E487D3 /* iTunesArtwork@2x */; };
+		10EB4AD81CCADDAD00E487D3 /* Purple_TD.svg in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4ACC1CCADDAD00E487D3 /* Purple_TD.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +273,8 @@
 		10A91E081C99EFEF009F50AB /* GameBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardView.swift; sourceTree = "<group>"; };
 		10A91E0A1C9A99A4009F50AB /* TileSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileSprite.swift; sourceTree = "<group>"; };
 		10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestGameBoardViewScene.swift; path = Scenes/TestGameBoardViewScene.swift; sourceTree = "<group>"; };
+		10A984F21CCADEE40026F00C /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
+		10A984F41CCAE0010026F00C /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-83.5@2x.png"; sourceTree = "<group>"; };
 		10AB011D1CA35D950092D7AF /* PlayButton_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton_active.png; sourceTree = "<group>"; };
 		10AB011E1CA35D950092D7AF /* PlayButton_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton_sel.png; sourceTree = "<group>"; };
 		10AB01211CA46E100092D7AF /* PurplePlay_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurplePlay_def.png; sourceTree = "<group>"; };
@@ -391,6 +407,18 @@
 		10EB4AB81CC967E600E487D3 /* TileDootLinkedListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootLinkedListTests.swift; sourceTree = "<group>"; };
 		10EB4ABB1CCAC9A400E487D3 /* greenSplash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenSplash.png; path = Splash/greenSplash.png; sourceTree = "<group>"; };
 		10EB4ABE1CCACBE000E487D3 /* PlainLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlainLaunch.storyboard; sourceTree = "<group>"; };
+		10EB4AC11CCADDAD00E487D3 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		10EB4AC21CCADDAD00E487D3 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		10EB4AC31CCADDAD00E487D3 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		10EB4AC41CCADDAD00E487D3 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		10EB4AC51CCADDAD00E487D3 /* Icon-Small-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40.png"; sourceTree = "<group>"; };
+		10EB4AC61CCADDAD00E487D3 /* Icon-Small-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@2x.png"; sourceTree = "<group>"; };
+		10EB4AC71CCADDAD00E487D3 /* Icon-Small-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@3x.png"; sourceTree = "<group>"; };
+		10EB4AC81CCADDAD00E487D3 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		10EB4AC91CCADDAD00E487D3 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		10EB4ACA1CCADDAD00E487D3 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		10EB4ACB1CCADDAD00E487D3 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
+		10EB4ACC1CCADDAD00E487D3 /* Purple_TD.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Purple_TD.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,6 +493,7 @@
 				10B34C6B1C44EFCC00AD8DD7 /* TileDootUITests */,
 				10B34C751C478D5D00AD8DD7 /* TD_Buttons */,
 				10B34C6E1C46437A00AD8DD7 /* TileAssets */,
+				10EB4AC01CCADDAD00E487D3 /* Icons */,
 				10EB4ABD1CCAC9A900E487D3 /* SplashAssets */,
 				10AB01401CADE1ED0092D7AF /* AudioAssets */,
 				1023D2AE1C642081005DBAB9 /* Levels */,
@@ -790,6 +819,27 @@
 			name = SplashAssets;
 			sourceTree = "<group>";
 		};
+		10EB4AC01CCADDAD00E487D3 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				10EB4AC11CCADDAD00E487D3 /* Icon-60@2x.png */,
+				10EB4AC21CCADDAD00E487D3 /* Icon-60@3x.png */,
+				10EB4AC31CCADDAD00E487D3 /* Icon-76.png */,
+				10EB4AC41CCADDAD00E487D3 /* Icon-76@2x.png */,
+				10A984F41CCAE0010026F00C /* Icon-83.5@2x.png */,
+				10EB4AC51CCADDAD00E487D3 /* Icon-Small-40.png */,
+				10EB4AC61CCADDAD00E487D3 /* Icon-Small-40@2x.png */,
+				10EB4AC71CCADDAD00E487D3 /* Icon-Small-40@3x.png */,
+				10EB4AC81CCADDAD00E487D3 /* Icon-Small.png */,
+				10EB4AC91CCADDAD00E487D3 /* Icon-Small@2x.png */,
+				10A984F21CCADEE40026F00C /* Icon-Small@3x.png */,
+				10EB4ACA1CCADDAD00E487D3 /* iTunesArtwork */,
+				10EB4ACB1CCADDAD00E487D3 /* iTunesArtwork@2x */,
+				10EB4ACC1CCADDAD00E487D3 /* Purple_TD.svg */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -840,6 +890,7 @@
 				TargetAttributes = {
 					107698B71C320292006051B2 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = SZ757V7UE4;
 					};
 					107698D61C346689006051B2 = {
 						CreatedOnToolsVersion = 7.2;
@@ -884,6 +935,7 @@
 				10B34CD31C4E32DB00AD8DD7 /* Orange3_test.png in Resources */,
 				10AB01A51CADE1ED0092D7AF /* SmallFall_Stereo6.aiff in Resources */,
 				10AB019E1CADE1ED0092D7AF /* SingleTapLoud_Mono7.aiff in Resources */,
+				10EB4AD51CCADDAD00E487D3 /* Icon-Small@2x.png in Resources */,
 				10AB01A11CADE1ED0092D7AF /* SmallFall_Stereo2.aiff in Resources */,
 				10B34CB01C4B935F00AD8DD7 /* Yellow3_test.png in Resources */,
 				10EB4AAF1CC041EF00E487D3 /* PurpleReset_def.png in Resources */,
@@ -893,12 +945,14 @@
 				10AB01821CADE1ED0092D7AF /* Catch_Mono5.aiff in Resources */,
 				10AB01341CA480DE0092D7AF /* webButton-500px_def.png in Resources */,
 				10B34CD71C4E32DB00AD8DD7 /* Orange5_test.png in Resources */,
+				10EB4AD21CCADDAD00E487D3 /* Icon-Small-40@2x.png in Resources */,
 				10B34CDB1C4E32DB00AD8DD7 /* Purple2_test.png in Resources */,
 				10AB01201CA35D950092D7AF /* PlayButton_sel.png in Resources */,
 				10AB01A31CADE1ED0092D7AF /* SmallFall_Stereo4.aiff in Resources */,
 				1023D2AC1C5C2E57005DBAB9 /* TileSheetSample.png in Resources */,
 				10AB01881CADE1ED0092D7AF /* PileTap_Mono5.aiff in Resources */,
 				107698C71C320292006051B2 /* Assets.xcassets in Resources */,
+				10A984F31CCADEE40026F00C /* Icon-Small@3x.png in Resources */,
 				10AB01921CADE1ED0092D7AF /* SingleTap_Mono3.aiff in Resources */,
 				1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */,
 				10AB019C1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff in Resources */,
@@ -918,6 +972,7 @@
 				10B34CBD1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */,
 				10AB01961CADE1ED0092D7AF /* SingleTap_Mono7.aiff in Resources */,
 				10B34CDF1C4E32DB00AD8DD7 /* Purple4_test.png in Resources */,
+				10EB4AD81CCADDAD00E487D3 /* Purple_TD.svg in Resources */,
 				10AB018F1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff in Resources */,
 				10B34D141C54C49D00AD8DD7 /* info1.png in Resources */,
 				1023D2A71C5C2713005DBAB9 /* BlueBack_def-500px.png in Resources */,
@@ -929,7 +984,9 @@
 				10B34CA41C4B935F00AD8DD7 /* DGreen1_test.png in Resources */,
 				10B34C8F1C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
 				10AB019D1CADE1ED0092D7AF /* SingleTapLoud_Mono6.aiff in Resources */,
+				10EB4AD71CCADDAD00E487D3 /* iTunesArtwork@2x in Resources */,
 				1023D2A41C5B58F0005DBAB9 /* BlueON.png in Resources */,
+				10EB4ACD1CCADDAD00E487D3 /* Icon-60@2x.png in Resources */,
 				10AB01311CA480DE0092D7AF /* emailButton-500px_sel.png in Resources */,
 				10AB019A1CADE1ED0092D7AF /* SingleTapLoud_Mono3.aiff in Resources */,
 				10AB017C1CADE1ED0092D7AF /* LR_WoodSlide_Stereo5.aiff in Resources */,
@@ -950,6 +1007,7 @@
 				10AB01A41CADE1ED0092D7AF /* SmallFall_Stereo5.aiff in Resources */,
 				10AB01971CADE1ED0092D7AF /* SingleTap_Mono8.aiff in Resources */,
 				10EB4AB11CC041EF00E487D3 /* PurpleReset_sel.png in Resources */,
+				10EB4AD61CCADDAD00E487D3 /* iTunesArtwork in Resources */,
 				10B34CD11C4E32DB00AD8DD7 /* Orange2_test.png in Resources */,
 				10AB01A01CADE1ED0092D7AF /* SmallFall_Stereo1.aiff in Resources */,
 				10EB4AAB1CC041EF00E487D3 /* PurpleBack_sel.png in Resources */,
@@ -965,17 +1023,23 @@
 				10EB4AAA1CC041EF00E487D3 /* PurpleBack_dis.png in Resources */,
 				10AB01A21CADE1ED0092D7AF /* SmallFall_Stereo3.aiff in Resources */,
 				10B34CD51C4E32DB00AD8DD7 /* Orange4_test.png in Resources */,
+				10EB4ACE1CCADDAD00E487D3 /* Icon-60@3x.png in Resources */,
 				10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */,
 				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
 				10AB01351CA480DE0092D7AF /* webButton-500px_sel.png in Resources */,
+				10EB4AD31CCADDAD00E487D3 /* Icon-Small-40@3x.png in Resources */,
+				10EB4ACF1CCADDAD00E487D3 /* Icon-76.png in Resources */,
 				10EB4ABF1CCACBE000E487D3 /* PlainLaunch.storyboard in Resources */,
 				10AB01851CADE1ED0092D7AF /* PileTap_Mono2.aiff in Resources */,
 				10B34CA61C4B935F00AD8DD7 /* DGreen2_test.png in Resources */,
 				10AB01781CADE1ED0092D7AF /* LR_WoodSlide_Stereo1.aiff in Resources */,
+				10A984F51CCAE0010026F00C /* Icon-83.5@2x.png in Resources */,
 				10AB018D1CADE1ED0092D7AF /* RL_WoodSlide_Stereo2.aiff in Resources */,
 				1023D2A01C5B5057005DBAB9 /* email-500px.png in Resources */,
+				10EB4AD41CCADDAD00E487D3 /* Icon-Small.png in Resources */,
 				10AB018E1CADE1ED0092D7AF /* RL_WoodSlide_Stereo3.aiff in Resources */,
 				10AB01A61CADE1ED0092D7AF /* SmallFall_Stereo7.aiff in Resources */,
+				10EB4AD11CCADDAD00E487D3 /* Icon-Small-40.png in Resources */,
 				10B34CE11C4E32DB00AD8DD7 /* Purple5_test.png in Resources */,
 				10B34CC11C4DA4B700AD8DD7 /* LGreen4_test.png in Resources */,
 				10AB011F1CA35D950092D7AF /* PlayButton_active.png in Resources */,
@@ -986,6 +1050,7 @@
 				10AB01941CADE1ED0092D7AF /* SingleTap_Mono5.aiff in Resources */,
 				10EB4ABC1CCAC9A400E487D3 /* greenSplash.png in Resources */,
 				10AB01871CADE1ED0092D7AF /* PileTap_Mono4.aiff in Resources */,
+				10EB4AD01CCADDAD00E487D3 /* Icon-76@2x.png in Resources */,
 				10B34CBB1C4DA4B700AD8DD7 /* LGreen1_test.png in Resources */,
 				10B34CAC1C4B935F00AD8DD7 /* DGreen5_test.png in Resources */,
 				106D2D151CB8EFD400D0F479 /* StopTileTest2.png in Resources */,
@@ -1222,6 +1287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TileDoot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1234,6 +1300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TileDoot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
