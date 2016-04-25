@@ -34,6 +34,7 @@ class VictoryView : SKNode
     init(size: CGSize, stars: Int, moves: Int, par: Int, tilesDooted: Int, game: GamePlayScene?)
     {
         self.windowSize = size
+        let fontScale = size.width/(750.0*0.833) 
         var starFile = [Color]()
         let xSize = self.windowSize.width
         let ySize = self.windowSize.height
@@ -43,7 +44,7 @@ class VictoryView : SKNode
         dootedTiles = tilesDooted
         
         // draw title
-        victoryLabel.fontSize = 48.0
+        victoryLabel.fontSize = 48.0*fontScale
         victoryLabel.position = CGPointMake(xSize*0.5, ySize*0.8)
         victoryLabel.text = title
         victoryLabel.verticalAlignmentMode = .Center

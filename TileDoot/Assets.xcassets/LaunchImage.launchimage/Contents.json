@@ -10,12 +10,11 @@
       "scale" : "3x"
     },
     {
-      "extent" : "full-screen",
-      "idiom" : "iphone",
-      "subtype" : "736h",
-      "filename" : "greenSplash-2.png",
-      "minimum-system-version" : "8.0",
       "orientation" : "landscape",
+      "idiom" : "iphone",
+      "extent" : "full-screen",
+      "minimum-system-version" : "8.0",
+      "subtype" : "736h",
       "scale" : "3x"
     },
     {
@@ -55,7 +54,6 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
-      "filename" : "greenSplash-7.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "1x"
@@ -71,7 +69,6 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
-      "filename" : "greenSplash-8.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"

@@ -24,7 +24,7 @@ class MainMenuScene: SKScene {
         let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo, disabledImageName: nil, labelStr: "")
         
         let gridSize = self.frame.width/12.0
-        let bigButtonSize = 3.0*gridSize
+        let bigButtonSize = 2.0*gridSize
         let bigButtonScale = bigButtonSize/500.0
         
         myLabel.text = "Tile Doot"
