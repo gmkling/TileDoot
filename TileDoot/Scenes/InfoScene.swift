@@ -73,13 +73,13 @@ class InfoScene: SKScene {
         // social buttons
         let webButton = TDButton(defaultImageName: "webButton-500px_def.png", selectImageName: "webButton-500px_sel.png", buttonAction: doWebButton, disabledImageName: nil, labelStr: "")
         let githubButton = TDButton(defaultImageName: "gitButton-500px_def.png", selectImageName: "gitButton-500px_sel.png", buttonAction: doGitButton, disabledImageName: nil, labelStr: "")
-        let emailButton = TDButton(defaultImageName: "emailButton-500px_def.png", selectImageName: "emailButton-500px_sel.png", buttonAction: doEmailButton, disabledImageName: nil, labelStr: "")
+        let linkedinButton = TDButton(defaultImageName: "linkedin_def-500px.png", selectImageName: "linkedin_sel-500px.png", buttonAction: doLinkedinButton, disabledImageName: nil, labelStr: "")
         
         webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - gridSize, y:gridSize*9.0)
         webButton.setScale(littleButtonScale)
         
-        emailButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*9.0)
-        emailButton.setScale(littleButtonScale)
+        linkedinButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*9.0)
+        linkedinButton.setScale(littleButtonScale)
         
         githubButton.position = CGPoint(x: CGRectGetMidX(self.frame) + gridSize, y: gridSize*9.0)
         githubButton.setScale(littleButtonScale)
@@ -123,7 +123,7 @@ class InfoScene: SKScene {
         self.addChild(authorName)
         
         self.addChild(webButton)
-        self.addChild(emailButton)
+        self.addChild(linkedinButton)
         self.addChild(githubButton)
         
         self.addChild(sfxButton)
@@ -154,11 +154,11 @@ class InfoScene: SKScene {
         UIApplication.sharedApplication().openURL(gitUrl)
     }
     
-    func doEmailButton()
+    func doLinkedinButton()
     {
         // this is the old way, and it crashes and burns
-        // let emailUrl = NSURL(string: "mailto: garry.kling@gmail.com")!
-        // UIApplication.sharedApplication().openURL(emailUrl)
+        let webUrl = NSURL(string: "http://www.linkedin.com/in/garrykling")!
+        UIApplication.sharedApplication().openURL(webUrl)
     }
     
     func doSfxOn()

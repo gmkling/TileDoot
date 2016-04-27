@@ -199,6 +199,8 @@
 		10B34D181C5A0AA500AD8DD7 /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D171C5A0AA500AD8DD7 /* InfoScene.swift */; };
 		10B34D1A1C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D191C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift */; };
 		10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */; };
+		10CF19CD1CD098E300CB43DA /* linkedin_def-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CF19CB1CD098E300CB43DA /* linkedin_def-500px.png */; };
+		10CF19CE1CD098E300CB43DA /* linkedin_sel-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CF19CC1CD098E300CB43DA /* linkedin_sel-500px.png */; };
 		10EB4A9F1CC0379F00E487D3 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */; };
 		10EB4AA91CC041EF00E487D3 /* PurpleBack_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA01CC041EF00E487D3 /* PurpleBack_def.png */; };
 		10EB4AAA1CC041EF00E487D3 /* PurpleBack_dis.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA11CC041EF00E487D3 /* PurpleBack_dis.png */; };
@@ -391,6 +393,8 @@
 		10B34D171C5A0AA500AD8DD7 /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoScene.swift; path = Scenes/InfoScene.swift; sourceTree = "<group>"; };
 		10B34D191C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleDirectoryScene.swift; path = Scenes/PuzzleDirectoryScene.swift; sourceTree = "<group>"; };
 		10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayScene.swift; path = Scenes/GamePlayScene.swift; sourceTree = "<group>"; };
+		10CF19CB1CD098E300CB43DA /* linkedin_def-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedin_def-500px.png"; path = "MiscButtons/linkedin_def-500px.png"; sourceTree = "<group>"; };
+		10CF19CC1CD098E300CB43DA /* linkedin_sel-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedin_sel-500px.png"; path = "MiscButtons/linkedin_sel-500px.png"; sourceTree = "<group>"; };
 		10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VictoryView.swift; path = Views/VictoryView.swift; sourceTree = "<group>"; };
 		10EB4AA01CC041EF00E487D3 /* PurpleBack_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBack_def.png; sourceTree = "<group>"; };
 		10EB4AA11CC041EF00E487D3 /* PurpleBack_dis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBack_dis.png; sourceTree = "<group>"; };
@@ -573,6 +577,8 @@
 		10AB01291CA480B80092D7AF /* InfoButtons */ = {
 			isa = PBXGroup;
 			children = (
+				10CF19CB1CD098E300CB43DA /* linkedin_def-500px.png */,
+				10CF19CC1CD098E300CB43DA /* linkedin_sel-500px.png */,
 				10AB012A1CA480DE0092D7AF /* emailButton-500px_def.png */,
 				10AB012B1CA480DE0092D7AF /* emailButton-500px_sel.png */,
 				10AB012C1CA480DE0092D7AF /* gitButton-500px_def.png */,
@@ -947,6 +953,7 @@
 				10B34CD71C4E32DB00AD8DD7 /* Orange5_test.png in Resources */,
 				10EB4AD21CCADDAD00E487D3 /* Icon-Small-40@2x.png in Resources */,
 				10B34CDB1C4E32DB00AD8DD7 /* Purple2_test.png in Resources */,
+				10CF19CD1CD098E300CB43DA /* linkedin_def-500px.png in Resources */,
 				10AB01201CA35D950092D7AF /* PlayButton_sel.png in Resources */,
 				10AB01A31CADE1ED0092D7AF /* SmallFall_Stereo4.aiff in Resources */,
 				1023D2AC1C5C2E57005DBAB9 /* TileSheetSample.png in Resources */,
@@ -957,6 +964,7 @@
 				1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */,
 				10AB019C1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff in Resources */,
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
+				10CF19CE1CD098E300CB43DA /* linkedin_sel-500px.png in Resources */,
 				10AB01381CA485C90092D7AF /* checkBox-500px_def.png in Resources */,
 				10EB4AAE1CC041EF00E487D3 /* PurpleForward_sel.png in Resources */,
 				10B34CAA1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
