@@ -42,6 +42,7 @@ class GameBoard {
     var tileMap : TileBoard
     var tileMapDirty = false;
     var solved = false
+    var nGameTiles = 0
     
     unowned let delegate : GameBoardProtocol
     
@@ -125,6 +126,8 @@ class GameBoard {
         {
             tileMap[loc.x, loc.y] = newTile
             delegate.addTile(loc, tile: newTile)
+            // if it is a game tile, count it
+            if newTile.type == .colorTile { nGameTiles += 1 }
         }
         
     }

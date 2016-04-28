@@ -47,13 +47,31 @@ class PuzzleSetView: SKNode
                 
                 let curX = (j-1)%4
                 let curY = (j-curX)/4
-                var prog : Int
+                var prog : [String: AnyObject]
                 
                 if let tempPuzzle = inPuzzles.getPuzzle(curPuzzle)
                 {
+                    // read in defaults if the exist
                     let curID = tempPuzzle.puzzleID
-                    prog = defaults.integerForKey(curID)
-                    tempPage.addPuzzle(curX, atY: curY, status: PuzzleStatus(rawValue: prog)!, pID: curID)
+                    if let prog = defaults.dictionaryForKey(curID)
+                    {
+                        let theStatus = PuzzleStatus(rawValue: prog[statusKey] as! Int)!
+                        //  read them in and use them
+                        tempPage.addPuzzle(curX, atY: curY, status: theStatus, pID: curID)
+                        print("Read default entry for puzzle: \(curID)")
+                        
+                    } else {
+                        // create default values for future edits
+                        prog = [ statusKey : PuzzleStatus.unsolved.rawValue,
+                                 movesKey : 0,
+                                 starKey : 0,
+                                 tilesKey : 0
+                            ]
+                        defaults.setObject(prog, forKey: curID)
+                        tempPage.addPuzzle(curX, atY: curY, status: PuzzleStatus(rawValue: prog[statusKey] as! Int)!, pID: curID)
+                        print("Created default entry for puzzle: \(curID)")
+                    }
+                    
                 }
             }
             tempPage.position = CGPointMake(0.0, 0.0)

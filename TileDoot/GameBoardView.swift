@@ -34,6 +34,8 @@ class GameBoardView : SKNode , GameBoardProtocol
     // victory screen
     var victoryScreen : VictoryView
     
+    
+    
     // boardSize is the size in Pixels of the UI element
     init(puzzle: Puzzle, boardSize: CGSize, audioDel: TD_AudioPlayer?, game: GamePlayScene?)
     {
@@ -56,7 +58,6 @@ class GameBoardView : SKNode , GameBoardProtocol
         
         victoryScreen = VictoryView(size: boardSize, stars: 2, moves: 0, par: 0, tilesDooted: 0, game: game)
         puzzleObj = puzzle
-        
         super.init()
 
         // TODO: animate this
@@ -122,14 +123,18 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func runVictory()
     {
+        // TODO: fade out the HUD
         // calc moves, par, stars
         let netMoves = moves.count-1 // first move is turn 0, which adds all tiles, ignore it
         let par = self.puzzleObj.par
         var stars = 0
+        var curStatus = PuzzleStatus.unsolved
         
-        if netMoves <= par { stars=3 }
-        if netMoves == par+1 { stars = 2 }
-        if netMoves > par+1 { stars = 1 }
+        if netMoves <= par { stars = 3; curStatus = PuzzleStatus.parMet}
+        if netMoves == par+1 { stars = 2;  curStatus = PuzzleStatus.solved}
+        if netMoves > par+1 { stars = 1; curStatus = PuzzleStatus.solved}
+        
+        saveProgress(self.puzzleObj.puzzleID, puzStatus: curStatus, nMoves: netMoves, nStars: stars, nTiles: self.tilesDooted)
         
         victoryScreen = VictoryView(size: self.size, stars: stars, moves: netMoves, par: par, tilesDooted: self.tilesDooted, game: self.game)
         victoryScreen.alpha = 0.0
@@ -188,7 +193,8 @@ class GameBoardView : SKNode , GameBoardProtocol
     func endTurn()
     {
         // if the swipe did not move any tiles, disregard it
-        if moves.last!.actionQ.count == 0
+        // a dry move will have 0 actions or only a subturn mark
+        if moves.last!.actionQ.count <= 1
         {
             // if the swipe created no actions, throw it away and return
             moves.removeLast()
@@ -197,10 +203,11 @@ class GameBoardView : SKNode , GameBoardProtocol
             {
                 each.enabled = true
             }
+            print("Removed empty move")
             return
         }
         
-        // moves.last!.appendAction(EndTurnMark())
+        moves.last!.appendAction(EndTurnMark())
         
         // turn gesture recognizer back on
         for each in (self.scene!.view!.gestureRecognizers)!
@@ -267,12 +274,51 @@ class GameBoardView : SKNode , GameBoardProtocol
         return CGPointMake((self.size.width/2.0), (self.size.height/2.0))
     }
     
-    func saveProgress()
+    func saveProgress(puzID: String, puzStatus: PuzzleStatus, nMoves: Int, nStars: Int, nTiles: Int)
     {
+        // retrieve progress, if it exists
         // save puzzle turn count
         // save solved state (unsolved, solved, par met)
         // save stars (* = solved, par + >2, ** = solved, par + 1 to 2, *** = par met or exceeded)
         // save tiles dooted
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var newProg = [ statusKey : puzStatus.rawValue,
+                        movesKey : nMoves,
+                        starKey : nStars,
+                        tilesKey : nTiles
+        ]
+        
+        if let oldProg = defaults.dictionaryForKey(puzID)
+        {
+            // overwrite if new nMoves is better or the old is 0
+            let oldStatus = oldProg[statusKey] as! Int
+            let oldMoves = oldProg[movesKey] as! Int
+            let oldStars = oldProg[starKey] as! Int
+            let oldTiles = oldProg[tilesKey] as! Int
+            
+            // if the old status was worse, overwrite it
+            if oldStatus<puzStatus.rawValue {
+                newProg[statusKey] = puzStatus.rawValue
+            } else { // otherwise, use it
+                newProg[statusKey] = oldStatus
+            }
+            if oldMoves>nMoves || oldMoves == 0
+            {
+                newProg[movesKey] = nMoves
+                newProg[starKey] = nStars
+                newProg[tilesKey] = nTiles
+            }
+            
+            defaults.setObject(newProg, forKey: puzID)
+            print("Created edited scores entry for puzID \(puzID)")
+            
+        } else { // create a progress entry if it doesn't exist
+            
+            defaults.setObject(newProg, forKey: puzID)
+            print("Created brand new scores entry for puzID \(puzID)")
+        }
+        
     }
     
 }

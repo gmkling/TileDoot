@@ -20,7 +20,9 @@ class GamePlayScene: SKScene {
     var puzzleSetName = SKLabelNode()
     var puzzleName = SKLabelNode()
     var controlPanel = SKNode()
-    var huDisplay = SKNode()
+    
+    // HUD
+    var HUD : HUDView
     
     // turn tracking
     var curTurn = 0
@@ -47,7 +49,7 @@ class GamePlayScene: SKScene {
         self.puzzles = puzSet
         puzzleData = puzSet.getPuzzleWithID(puzID)!
         gameView = GameBoardView(puzzle: puzzleData, boardSize: size, audioDel: self.audioDelegate, game: nil)
-        
+        HUD = HUDView(size: CGSizeMake(size.width, size.height*0.1))
         super.init(size: size)
     }
     
@@ -88,6 +90,12 @@ class GamePlayScene: SKScene {
         let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doMenuButton, disabledImageName: nil, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
+        
+        // HUD
+        HUD.setTiles(gameView.gameBoard!.nGameTiles)
+        HUD.setPuzPar(gameView.puzzleObj.par)
+        HUD.position = CGPointMake(0.0, 0.0)
+        addChild(HUD)
         
         setupSwipeControls()
         self.addChild(gameView)
@@ -245,6 +253,7 @@ class GamePlayScene: SKScene {
         if action is EndTurnMark
         {
             // taken care of in update()
+            HUD.addMove()
             return action_noop
         }
         
@@ -328,7 +337,7 @@ class GamePlayScene: SKScene {
             let deleteAudio = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
             let fadeAction = SKAction.fadeOutWithDuration(0.25)
             let deleteAction = SKAction.removeFromParent()
-            let doneAction = SKAction.runBlock({action.markComplete()})
+            let doneAction = SKAction.runBlock({action.markComplete(); self.HUD.addTile()})
             
             // set the deleteMark - when the move action completes it will delete.
             // somehow this bit of genius delete stationary tiles - WHY?
@@ -403,6 +412,8 @@ class GamePlayScene: SKScene {
         // reset turn tracking
         curTurn = 0
         curSubturn = 1
+        // reset HUD
+        HUD.resetScore()
     }
     
     

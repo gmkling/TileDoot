@@ -201,6 +201,7 @@
 		10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */; };
 		10CF19CD1CD098E300CB43DA /* linkedin_def-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CF19CB1CD098E300CB43DA /* linkedin_def-500px.png */; };
 		10CF19CE1CD098E300CB43DA /* linkedin_sel-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CF19CC1CD098E300CB43DA /* linkedin_sel-500px.png */; };
+		10CF19D01CD2AF5600CB43DA /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF19CF1CD2AF5600CB43DA /* HUDView.swift */; };
 		10EB4A9F1CC0379F00E487D3 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */; };
 		10EB4AA91CC041EF00E487D3 /* PurpleBack_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA01CC041EF00E487D3 /* PurpleBack_def.png */; };
 		10EB4AAA1CC041EF00E487D3 /* PurpleBack_dis.png in Resources */ = {isa = PBXBuildFile; fileRef = 10EB4AA11CC041EF00E487D3 /* PurpleBack_dis.png */; };
@@ -395,6 +396,7 @@
 		10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayScene.swift; path = Scenes/GamePlayScene.swift; sourceTree = "<group>"; };
 		10CF19CB1CD098E300CB43DA /* linkedin_def-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedin_def-500px.png"; path = "MiscButtons/linkedin_def-500px.png"; sourceTree = "<group>"; };
 		10CF19CC1CD098E300CB43DA /* linkedin_sel-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedin_sel-500px.png"; path = "MiscButtons/linkedin_sel-500px.png"; sourceTree = "<group>"; };
+		10CF19CF1CD2AF5600CB43DA /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HUDView.swift; path = Views/HUDView.swift; sourceTree = "<group>"; };
 		10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VictoryView.swift; path = Views/VictoryView.swift; sourceTree = "<group>"; };
 		10EB4AA01CC041EF00E487D3 /* PurpleBack_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBack_def.png; sourceTree = "<group>"; };
 		10EB4AA11CC041EF00E487D3 /* PurpleBack_dis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBack_dis.png; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				10EB4A9E1CC0379F00E487D3 /* VictoryView.swift */,
 				10EB4AB21CC7F7D500E487D3 /* Turn.swift */,
 				10EB4AB41CC7F7FD00E487D3 /* SequencedAction.swift */,
+				10CF19CF1CD2AF5600CB43DA /* HUDView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1152,6 +1155,7 @@
 				10EB4A9F1CC0379F00E487D3 /* VictoryView.swift in Sources */,
 				10B34CF31C50CC7D00AD8DD7 /* SceneInvertTest.swift in Sources */,
 				10AB013B1CA515BF0092D7AF /* GameData.swift in Sources */,
+				10CF19D01CD2AF5600CB43DA /* HUDView.swift in Sources */,
 				1023D2B31C64222A005DBAB9 /* PuzzleSet.swift in Sources */,
 				10EB4AB71CC95E7500E487D3 /* LinkedList.swift in Sources */,
 				107698BC1C320292006051B2 /* AppDelegate.swift in Sources */,

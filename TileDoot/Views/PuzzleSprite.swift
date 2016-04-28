@@ -15,6 +15,12 @@ enum PuzzleStatus : Int
     case solved, parMet
 }
 
+let statusKey = "puzStatus"
+let movesKey = "nMoves"
+let starKey = "nStars"
+let tilesKey = "nTiles"
+
+
 class PuzzleSprite : SKNode
 {
     var puzzleNum = 0
