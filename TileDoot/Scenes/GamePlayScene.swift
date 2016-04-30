@@ -17,8 +17,8 @@ class GamePlayScene: SKScene {
     //var curPuzID : String
     var returnAddr : SKScene?
     var gameView : GameBoardView
-    var puzzleSetName = SKLabelNode()
-    var puzzleName = SKLabelNode()
+    var puzzleSetName = SKLabelNode(fontNamed: "futura-medium")
+    var puzzleName = SKLabelNode(fontNamed: "futura-medium")
     var controlPanel = SKNode()
     
     // HUD
@@ -83,13 +83,31 @@ class GamePlayScene: SKScene {
         
         // get the gameView squared away
         gameView = GameBoardView(puzzle: puzzleData, boardSize: testSize, audioDel: self.audioDelegate, game: self)
-        gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
-        
+        //gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
+        gameView.position = CGPointMake((self.size.width/12.0), (self.size.height-self.size.width*0.833)/2.0)
         
         // hamburger button at top left
         let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doMenuButton, disabledImageName: nil, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
         backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
+        //backButton.position = CGPoint(x: gridSize*1.5, y: size.height-size.height*0.05)
+        
+        // Label
+        puzzleSetName.text = puzzles.name
+        puzzleName.text = puzzleData.puzzleID
+        
+        puzzleSetName.fontSize = 16.0
+        puzzleSetName.position = CGPointMake(size.width*0.25, self.frame.height - gridSize*1.5)
+        puzzleSetName.verticalAlignmentMode = .Center
+        puzzleSetName.horizontalAlignmentMode = .Center
+        
+        puzzleName.fontSize = 16.0
+        puzzleName.position = CGPointMake(size.width*0.75, self.frame.height - gridSize*1.5)
+        puzzleName.verticalAlignmentMode = .Center
+        puzzleName.horizontalAlignmentMode = .Center
+        
+        self.addChild(puzzleName)
+        self.addChild(puzzleSetName)
         
         // HUD
         HUD.setTiles(gameView.gameBoard!.nGameTiles)
@@ -183,7 +201,6 @@ class GamePlayScene: SKScene {
                 
                 if subturnProcessFlag
                 {
-                    // TODO: process each task and run it
                     // mark them as processed
                     for action in subturnArray
                     {
@@ -197,8 +214,14 @@ class GamePlayScene: SKScene {
                         {
                             action.markProcessed()
                             action.markComplete()
+                            
                             // run the victory screen, reinit the gameView with next Puzzle on button push
                             // victory button should signal nextPuzzle()
+                            // fade the HUD while victory runs, fade it back in
+                            let fadeOutHUD = SKAction.fadeOutWithDuration(0.5)
+                            let fadeInHUD = SKAction.fadeInWithDuration(0.5)
+                            
+                            HUD.runAction(fadeOutHUD)
                             gameView.runAction(SKAction.runBlock({self.gameView.runVictory()}))
                         }
                         
@@ -380,14 +403,17 @@ class GamePlayScene: SKScene {
         
         puzzleData = puzzles.getPuzzle(nextPuzNum)!
         gameView = GameBoardView(puzzle: puzzleData, boardSize: testSize, audioDel: self.audioDelegate, game: self)
-        gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
+        gameView.position = CGPointMake((self.size.width/12.0), (self.size.height-self.size.width*0.833)/2.0)
         gameView.alpha = 0.0
         self.addChild(gameView)
         gameView.runAction(SKAction.fadeInWithDuration(1))
+        let fadeInHUD = SKAction.fadeInWithDuration(0.5)
+        self.HUD.runAction(fadeInHUD)
+        resetScoring()
         
-        // reset turn tracking
-        curTurn = 0
-        curSubturn = 1
+        // labels
+        puzzleSetName.text = puzzles.name
+        puzzleName.text = puzzleData.puzzleID
     }
     
     func resetPuzzle()
@@ -405,15 +431,25 @@ class GamePlayScene: SKScene {
         
         puzzleData = puzzles.getPuzzle(nextPuzNum)!
         gameView = GameBoardView(puzzle: puzzleData, boardSize: testSize, audioDel: self.audioDelegate, game: self)
-        gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
+        gameView.position = CGPointMake((self.size.width/12.0), (self.size.height-self.size.width*0.833)/2.0)
         self.addChild(gameView)
         gameView.runAction(SKAction.fadeInWithDuration(1))
         
+        resetScoring()
+        let fadeInHUD = SKAction.fadeInWithDuration(0.5)
+        self.HUD.runAction(fadeInHUD)
+        
+    }
+    
+    func resetScoring()
+    {
         // reset turn tracking
         curTurn = 0
         curSubturn = 1
         // reset HUD
         HUD.resetScore()
+        HUD.setTiles(gameView.gameBoard!.nGameTiles)
+        HUD.setPuzPar(gameView.puzzleObj.par)
     }
     
     

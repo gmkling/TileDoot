@@ -28,35 +28,36 @@ class InfoScene: SKScene {
         self.backgroundColor = greenTileColor
         
         
-        let gridSize = self.frame.width/12.0
-        let littleButtonSize = 0.5*gridSize
+        let xGridSize = self.frame.width/12.0
+        let yGridSize = self.frame.height/20.0
+        let littleButtonSize = 0.5*xGridSize
         let littleButtonScale = littleButtonSize/500.0
-        let imageWidth = 8.0*gridSize
+        let imageWidth = 8.0*xGridSize
         
         let normalTextSize = CGFloat(16.0)
         //let smallTextSize = CGFloat(8.0)
         
         // info icon at top
         let infoButton = SKSpriteNode(imageNamed: "info1.png")
-        infoButton.setScale(gridSize/500.0)
-        infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*18.0)
+        infoButton.setScale(yGridSize/500.0)
+        infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: yGridSize*18.0)
         
         let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doBackButton, disabledImageName: nil, labelStr: "")
         backButton.setScale(littleButtonScale*2.0)
-        backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
+        backButton.position = CGPoint(x: xGridSize*1.5, y: self.frame.height - xGridSize*1.5)
         
         // The name of the game
         appLabel.text = "Tile Doot"
         appLabel.fontSize = 28
-        appLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y: gridSize*18.0)
+        appLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y: yGridSize*18.0)
         
         let tileSheetImage = SKSpriteNode(imageNamed: "TileSheetSample.png")
-        tileSheetImage.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*14.75)
+        tileSheetImage.position = CGPoint(x: CGRectGetMidX(self.frame), y: yGridSize*14.75)
         tileSheetImage.setScale(imageWidth/tileSheetImage.frame.width)
         
         aGameBy.text = "A Game By"
         aGameBy.fontSize = normalTextSize
-        aGameBy.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*11.0)
+        aGameBy.position = CGPoint(x: CGRectGetMidX(self.frame), y: yGridSize*11.0)
         
 //        companyName.text = "Omondi Media"
 //        companyName.fontSize = normalTextSize
@@ -68,20 +69,20 @@ class InfoScene: SKScene {
         
         authorName.text = "Garry Kling"
         authorName.fontSize = normalTextSize
-        authorName.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*10.0)
+        authorName.position = CGPoint(x: CGRectGetMidX(self.frame), y: yGridSize*10.0)
         
         // social buttons
         let webButton = TDButton(defaultImageName: "webButton-500px_def.png", selectImageName: "webButton-500px_sel.png", buttonAction: doWebButton, disabledImageName: nil, labelStr: "")
         let githubButton = TDButton(defaultImageName: "gitButton-500px_def.png", selectImageName: "gitButton-500px_sel.png", buttonAction: doGitButton, disabledImageName: nil, labelStr: "")
         let linkedinButton = TDButton(defaultImageName: "linkedin_def-500px.png", selectImageName: "linkedin_sel-500px.png", buttonAction: doLinkedinButton, disabledImageName: nil, labelStr: "")
         
-        webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - gridSize, y:gridSize*9.0)
+        webButton.position = CGPoint(x: CGRectGetMidX(self.frame) - xGridSize, y:yGridSize*9.0)
         webButton.setScale(littleButtonScale)
         
-        linkedinButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*9.0)
+        linkedinButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:yGridSize*9.0)
         linkedinButton.setScale(littleButtonScale)
         
-        githubButton.position = CGPoint(x: CGRectGetMidX(self.frame) + gridSize, y: gridSize*9.0)
+        githubButton.position = CGPoint(x: CGRectGetMidX(self.frame) + xGridSize, y: yGridSize*9.0)
         githubButton.setScale(littleButtonScale)
         
         // preference custom buttons - can we implement proper checkbox UI class please?
@@ -89,7 +90,7 @@ class InfoScene: SKScene {
         
         let sfxState = defaults.boolForKey(sfx_key)
         let sfxButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doSfxOn, disableAction: doSfxOff, withState: sfxState, labelStr: "")
-        sfxButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*5.0)
+        sfxButton.position = CGPoint(x: 4.0*xGridSize, y: yGridSize*5.0)
         sfxButton.setScale(littleButtonScale)
         
         let sfxLabel = SKLabelNode(fontNamed: "Futura-medium")
@@ -97,11 +98,11 @@ class InfoScene: SKScene {
         sfxLabel.fontSize = normalTextSize
         sfxLabel.horizontalAlignmentMode = .Left
         sfxLabel.verticalAlignmentMode = .Center
-        sfxLabel.position = CGPoint(x: gridSize*4.5, y: gridSize*5.0)
+        sfxLabel.position = CGPoint(x: xGridSize*4.5, y: yGridSize*5.0)
         
         let musicState = defaults.boolForKey(music_key)
         let musicButton = TDToggleButton(defaultImageName: "checkBox-500px_def.png", selectImageName: "checkBox-500px_sel.png", enableAction: doMusicOn, disableAction: doMusicOff, withState: musicState, labelStr: "")
-        musicButton.position = CGPoint(x: 4.0*gridSize, y: gridSize*4.0)
+        musicButton.position = CGPoint(x: 4.0*xGridSize, y: yGridSize*4.0)
         musicButton.setScale(littleButtonScale)
         
         let musicLabel = SKLabelNode(fontNamed: "Futura-medium")
@@ -109,7 +110,7 @@ class InfoScene: SKScene {
         musicLabel.fontSize = normalTextSize
         musicLabel.horizontalAlignmentMode = .Left
         musicLabel.verticalAlignmentMode = .Center
-        musicLabel.position = CGPoint(x: gridSize*4.5, y: gridSize*4.0)
+        musicLabel.position = CGPoint(x: xGridSize*4.5, y: yGridSize*4.0)
         
         // var tileSet
         

@@ -13,6 +13,9 @@ class GameViewController: UIViewController
 {
     let audioEngine = TD_AudioPlayer()
     
+    @IBOutlet var playButton: UIButton!
+    @IBOutlet var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +26,6 @@ class GameViewController: UIViewController
         //skView.ignoresSiblingOrder = true
         
         // create the scene sized to fit
-        setupAudio()
         let scene = MainMenuScene(size: view!.bounds.size)
         scene.audioDelegate = audioEngine
         //let scene = SceneInvertTest(size: view!.bounds.size)
@@ -49,17 +51,13 @@ class GameViewController: UIViewController
         // Release any cached data, images, etc that aren't in use.
     }
 
+    @IBAction func playButtonPush(sender: UIButton) {
+        
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
-    func loadPuzzleData()
-    {
-        // load all of the Puzzle data here, pass it to the scenes
-    }
-    
-    func setupAudio()
-    {
-        // should be set up by the init on TD_AudioPlayer
-    }
+
 }

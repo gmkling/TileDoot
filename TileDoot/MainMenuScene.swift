@@ -11,7 +11,7 @@ import UIKit
 
 class MainMenuScene: SKScene {
     
-    let myLabel = SKLabelNode(fontNamed:"Futura-medium")
+    let mainTitle = SKLabelNode(fontNamed:"Futura-medium")
     var labelBackground = SKSpriteNode()
     
     var audioDelegate : TD_AudioPlayer?
@@ -23,13 +23,14 @@ class MainMenuScene: SKScene {
         let playButton = TDButton(defaultImageName: "PurplePlay_def.png", selectImageName: "PurplePlay_sel.png", buttonAction: doPlayButton, disabledImageName: nil, labelStr: "")
         let infoButton = TDButton(defaultImageName: "info1.png", selectImageName: "info1.png", buttonAction: doInfo, disabledImageName: nil, labelStr: "")
         
+        let fontScale = size.width/(750.0*0.833)
         let gridSize = self.frame.width/12.0
         let bigButtonSize = 2.0*gridSize
         let bigButtonScale = bigButtonSize/500.0
         
-        myLabel.text = "Tile Doot"
-        myLabel.fontSize = 48
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)*1.33)
+        mainTitle.text = "Tile Doot"
+        mainTitle.fontSize = 72*fontScale
+        mainTitle.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)*1.33)
         
         playButton.position = CGPoint(x: CGRectGetMidX(self.frame), y:gridSize*9.0)
         playButton.setScale(bigButtonScale)
@@ -37,7 +38,7 @@ class MainMenuScene: SKScene {
         infoButton.position = CGPoint(x: CGRectGetMidX(self.frame), y: gridSize*2.0)
         infoButton.setScale(gridSize/500.0) // I want this little one @ 1/12 the width
         
-        self.addChild(myLabel)
+        self.addChild(mainTitle)
         self.addChild(playButton)
         self.addChild(infoButton)
     }

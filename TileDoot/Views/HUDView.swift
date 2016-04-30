@@ -79,7 +79,7 @@ class HUDView : SKNode
         
         background = SKShapeNode.init(rectOfSize: HUDSize)
         background.fillColor = SKColor.lightGrayColor()
-        background.strokeColor = SKColor.blackColor()
+        background.strokeColor = SKColor.clearColor()
         background.position = self.center()
         self.addChild(background)
     }

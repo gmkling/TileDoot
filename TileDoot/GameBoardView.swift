@@ -123,7 +123,6 @@ class GameBoardView : SKNode , GameBoardProtocol
     
     func runVictory()
     {
-        // TODO: fade out the HUD
         // calc moves, par, stars
         let netMoves = moves.count-1 // first move is turn 0, which adds all tiles, ignore it
         let par = self.puzzleObj.par

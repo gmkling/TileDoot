@@ -44,7 +44,7 @@ class VictoryView : SKNode
         dootedTiles = tilesDooted
         
         // draw title
-        victoryLabel.fontSize = 48.0*fontScale
+        victoryLabel.fontSize = 64.0*fontScale
         victoryLabel.position = CGPointMake(xSize*0.5, ySize*0.8)
         victoryLabel.text = title
         victoryLabel.verticalAlignmentMode = .Center
@@ -80,9 +80,9 @@ class VictoryView : SKNode
         }
         
         // draw scoring
-        scoring.fontSize = 16.0
+        scoring.fontSize = 28.0*fontScale
         scoring.position = CGPointMake(xSize*0.5, ySize*0.375)
-        scoring.text = "Moves: \(moves)/\(par)  TilesDooted: \(dootedTiles)"
+        scoring.text = "Doots: \(moves)/\(par)  TilesRemoved: \(dootedTiles)"
         scoring.verticalAlignmentMode = .Center
         scoring.horizontalAlignmentMode = .Center
         

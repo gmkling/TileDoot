@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -16,11 +17,122 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="greenSplash.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uac-HS-84m">
+                                <rect key="frame" x="-151" y="-135" width="1242" height="2208"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TileDoot" lineBreakMode="clip" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="mU4-dy-BOu">
+                                <rect key="frame" x="165" y="226" width="271" height="94"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="72"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Be-yb-ZQD" userLabel="Info Button">
+                                <rect key="frame" x="289" y="554" width="22" height="22"/>
+                            </button>
+                            <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-DW-ddC">
+                                <rect key="frame" x="263" y="328" width="72" height="50"/>
+                                <color key="backgroundColor" red="0.64313725490196072" green="0.29019607843137252" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I1o-BO-koq"/>
+                                    <constraint firstAttribute="width" constant="72" id="qrc-Ft-qb9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButtonPush:" destination="BV1-FR-VrT" eventType="touchUpInside" id="s7m-xQ-pKD"/>
+                                    <segue destination="YgZ-aC-sA0" kind="show" id="sel-WM-f1r"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mU4-dy-BOu" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="431-jC-NDD"/>
+                            <constraint firstItem="8Be-yb-ZQD" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="9PX-F8-5jK"/>
+                            <constraint firstItem="Uac-HS-84m" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="-153" id="fsS-9Y-3Yy"/>
+                            <constraint firstItem="mU4-dy-BOu" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" multiplier="0.667" id="g6a-po-46g"/>
+                            <constraint firstItem="Uac-HS-84m" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="-144" id="kjI-ks-zj5"/>
+                            <constraint firstItem="HMv-DW-ddC" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="mUK-lt-2VH"/>
+                            <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="8Be-yb-ZQD" secondAttribute="bottom" constant="36" id="o7U-6Z-NNf"/>
+                            <constraint firstItem="HMv-DW-ddC" firstAttribute="top" secondItem="mU4-dy-BOu" secondAttribute="centerY" multiplier="2" id="rTR-ix-Vhi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="mU4-dy-BOu" id="M7C-mI-HD2"/>
+                        <outlet property="playButton" destination="HMv-DW-ddC" id="dah-7H-FlC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-80" y="449"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="J2t-7p-fUk">
+            <objects>
+                <collectionViewController id="Fte-HQ-0fy" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UJn-JE-gOc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3tz-5G-NhY">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oup-BW-2PQ">
+                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Fte-HQ-0fy" id="6M3-kh-PkV"/>
+                            <outlet property="delegate" destination="Fte-HQ-0fy" id="gni-G0-sIJ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="6VQ-Ns-Nm9"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wPE-g0-BXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1383" y="461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7zE-5J-GrT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YgZ-aC-sA0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gSG-7e-rSt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fte-HQ-0fy" kind="relationship" relationship="rootViewController" id="qnP-Md-Trk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XTg-ft-cze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="707" y="461"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="greenSplash.png" width="1242" height="2208"/>
+    </resources>
 </document>
