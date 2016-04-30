@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -35,6 +36,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Be-yb-ZQD" userLabel="Info Button">
                                 <rect key="frame" x="289" y="554" width="22" height="22"/>
+                                <connections>
+                                    <segue destination="PWG-wa-CHi" kind="presentation" id="aFM-c7-f9E"/>
+                                </connections>
                             </button>
                             <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-DW-ddC">
                                 <rect key="frame" x="263" y="328" width="72" height="50"/>
@@ -69,6 +73,7 @@
                             <constraint firstItem="HMv-DW-ddC" firstAttribute="top" secondItem="mU4-dy-BOu" secondAttribute="centerY" multiplier="2" id="rTR-ix-Vhi"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="label" destination="mU4-dy-BOu" id="M7C-mI-HD2"/>
                         <outlet property="playButton" destination="HMv-DW-ddC" id="dah-7H-FlC"/>
@@ -78,22 +83,106 @@
             </objects>
             <point key="canvasLocation" x="-80" y="449"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--InfoViewController-->
+        <scene sceneID="VCV-iU-DKU">
+            <objects>
+                <viewController id="PWG-wa-CHi" userLabel="InfoViewController" customClass="InfoViewController" customModule="TileDoot" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bEY-Pa-1FQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="zqs-Jk-nzo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dv6-zp-vZR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TileDoot" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZC-fE-CPJ">
+                                <rect key="frame" x="236" y="55" width="128" height="45"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TileSheetSample.png" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-cR-kqf">
+                                <rect key="frame" x="180" y="108" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="KHd-yj-6M2"/>
+                                    <constraint firstAttribute="width" constant="240" id="nQV-iK-eTg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A Game By " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0L-RF-HGx">
+                                <rect key="frame" x="208" y="259" width="184" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Garry Kling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9j-DY-8fH">
+                                <rect key="frame" x="256" y="289" width="88" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f5-im-775">
+                                <rect key="frame" x="264" y="435" width="72" height="50"/>
+                                <color key="backgroundColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="Tae-gz-7iX"/>
+                                    <constraint firstAttribute="height" constant="50" id="uAl-BS-egz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="H9t-Sj-c8c" kind="unwind" unwindAction="unwindAction:" id="YuZ-VG-TyN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.56470588239999997" green="0.67450980390000004" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="p0L-RF-HGx" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="0Kb-v0-Vk8"/>
+                            <constraint firstItem="h9j-DY-8fH" firstAttribute="top" secondItem="p0L-RF-HGx" secondAttribute="bottom" constant="8" id="3vS-xQ-tcB"/>
+                            <constraint firstItem="h9j-DY-8fH" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="Ens-bG-KtC"/>
+                            <constraint firstItem="p0L-RF-HGx" firstAttribute="top" secondItem="Udc-cR-kqf" secondAttribute="bottom" constant="8" id="OYR-nb-Yfa"/>
+                            <constraint firstItem="IZC-fE-CPJ" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="dwD-4L-FSY"/>
+                            <constraint firstItem="Udc-cR-kqf" firstAttribute="top" secondItem="IZC-fE-CPJ" secondAttribute="bottom" constant="8" id="fNK-j1-M96"/>
+                            <constraint firstItem="4f5-im-775" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="fuo-uM-pW0"/>
+                            <constraint firstItem="zqs-Jk-nzo" firstAttribute="top" secondItem="4f5-im-775" secondAttribute="bottom" constant="128" id="nZU-1z-5s7"/>
+                            <constraint firstItem="Udc-cR-kqf" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="ueB-Zc-2qB"/>
+                            <constraint firstItem="h9j-DY-8fH" firstAttribute="top" secondItem="Dv6-zp-vZR" secondAttribute="centerY" id="z7d-mI-oDX"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="doneButton" destination="4f5-im-775" id="89g-2z-Bvl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EVQ-qK-eXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="H9t-Sj-c8c" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-80" y="1298"/>
+        </scene>
+        <!--PuzzleCollectionViewController-->
         <scene sceneID="J2t-7p-fUk">
             <objects>
-                <collectionViewController id="Fte-HQ-0fy" sceneMemberID="viewController">
+                <collectionViewController id="Fte-HQ-0fy" userLabel="PuzzleCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UJn-JE-gOc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3tz-5G-NhY">
+                        <color key="backgroundColor" red="0.56470588235294117" green="0.67450980392156867" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CeD-2C-6DM">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oup-BW-2PQ">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PuzzleSprite" id="oup-BW-2PQ">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -108,16 +197,18 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="6VQ-Ns-Nm9"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPE-g0-BXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1383" y="461"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--PuzzleCollectionNavigationController-->
         <scene sceneID="7zE-5J-GrT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YgZ-aC-sA0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overFullScreen" navigationBarHidden="YES" id="YgZ-aC-sA0" userLabel="PuzzleCollectionNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gSG-7e-rSt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -133,6 +224,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TileSheetSample.png" width="1087" height="621"/>
         <image name="greenSplash.png" width="1242" height="2208"/>
     </resources>
 </document>

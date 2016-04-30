@@ -55,6 +55,11 @@ class GameViewController: UIViewController
         
     }
     
+    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue)
+    {
+        //self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
