@@ -36,6 +36,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Be-yb-ZQD" userLabel="Info Button">
                                 <rect key="frame" x="289" y="554" width="22" height="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="PWG-wa-CHi" kind="presentation" id="aFM-c7-f9E"/>
                                 </connections>
@@ -154,7 +155,7 @@
                                 <state key="normal" title="GH_Button" backgroundImage="GitHub-Mark-Light-120px-plus.png"/>
                                 <state key="selected" backgroundImage="GitHub-Mark-120px-plus.png"/>
                                 <connections>
-                                    <action selector="doGitButton" destination="PWG-wa-CHi" eventType="touchUpInside" id="lnG-qW-PIK"/>
+                                    <action selector="doGit_Button" destination="PWG-wa-CHi" eventType="touchUpInside" id="lO9-ek-6B4"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f5-im-775">
