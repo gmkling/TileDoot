@@ -73,6 +73,7 @@
                             <constraint firstItem="HMv-DW-ddC" firstAttribute="top" secondItem="mU4-dy-BOu" secondAttribute="centerY" multiplier="2" id="rTR-ix-Vhi"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="label" destination="mU4-dy-BOu" id="M7C-mI-HD2"/>
@@ -86,7 +87,7 @@
         <!--InfoViewController-->
         <scene sceneID="VCV-iU-DKU">
             <objects>
-                <viewController id="PWG-wa-CHi" userLabel="InfoViewController" customClass="InfoViewController" customModule="TileDoot" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="PWG-wa-CHi" userLabel="InfoViewController" customClass="InfoViewController" customModule="TileDoot" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bEY-Pa-1FQ"/>
                         <viewControllerLayoutGuide type="bottom" id="zqs-Jk-nzo"/>
@@ -120,6 +121,42 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhY-2J-guC">
+                                <rect key="frame" x="289" y="318" width="22" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="cmI-De-g1U"/>
+                                    <constraint firstAttribute="height" constant="20" id="iTp-IG-2zv"/>
+                                </constraints>
+                                <state key="normal" title="LI_Button" backgroundImage="In-White-128px-R.png"/>
+                                <state key="selected" backgroundImage="In-Black-128px-R.png"/>
+                                <connections>
+                                    <action selector="doLI_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="d7w-tf-mUx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-WC-eEZ">
+                                <rect key="frame" x="256" y="318" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="72D-2P-iB7"/>
+                                    <constraint firstAttribute="height" constant="20" id="QzT-9G-Z19"/>
+                                </constraints>
+                                <state key="normal" title="Web_Button" backgroundImage="web-white-128px.png"/>
+                                <state key="selected" backgroundImage="web-black-128px.png"/>
+                                <connections>
+                                    <action selector="doWeb_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="cJO-oL-4NM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMi-78-iyp">
+                                <rect key="frame" x="324" y="318" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7j5-9f-COF"/>
+                                    <constraint firstAttribute="width" constant="20" id="XQ0-iZ-Auj"/>
+                                </constraints>
+                                <state key="normal" title="GH_Button" backgroundImage="GitHub-Mark-Light-120px-plus.png"/>
+                                <state key="selected" backgroundImage="GitHub-Mark-120px-plus.png"/>
+                                <connections>
+                                    <action selector="doGitButton" destination="PWG-wa-CHi" eventType="touchUpInside" id="lnG-qW-PIK"/>
+                                </connections>
+                            </button>
                             <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f5-im-775">
                                 <rect key="frame" x="264" y="435" width="72" height="50"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -139,25 +176,75 @@
                                     <segue destination="H9t-Sj-c8c" kind="unwind" unwindAction="unwindAction:" id="YuZ-VG-TyN"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZA1-BY-Sll">
+                                <rect key="frame" x="180" y="498" width="51" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="SFX_toggle:" destination="PWG-wa-CHi" eventType="valueChanged" id="qX0-9y-0fT"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zfg-7D-9hE">
+                                <rect key="frame" x="180" y="537" width="51" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="Music_toggle:" destination="PWG-wa-CHi" eventType="touchUpInside" id="D3G-S4-x05"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sound Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5n-as-NhY">
+                                <rect key="frame" x="256" y="503" width="98" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp6-BX-L17">
+                                <rect key="frame" x="256" y="542" width="43" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.56470588239999997" green="0.67450980390000004" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="p0L-RF-HGx" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="0Kb-v0-Vk8"/>
                             <constraint firstItem="h9j-DY-8fH" firstAttribute="top" secondItem="p0L-RF-HGx" secondAttribute="bottom" constant="8" id="3vS-xQ-tcB"/>
+                            <constraint firstItem="yhY-2J-guC" firstAttribute="leading" secondItem="PQi-WC-eEZ" secondAttribute="trailing" constant="13" id="5kx-94-UFg"/>
+                            <constraint firstItem="RMi-78-iyp" firstAttribute="leading" secondItem="yhY-2J-guC" secondAttribute="trailing" constant="13" id="AYI-pM-Nq8"/>
+                            <constraint firstItem="yhY-2J-guC" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="CAG-3N-Tel"/>
                             <constraint firstItem="h9j-DY-8fH" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="Ens-bG-KtC"/>
-                            <constraint firstItem="p0L-RF-HGx" firstAttribute="top" secondItem="Udc-cR-kqf" secondAttribute="bottom" constant="8" id="OYR-nb-Yfa"/>
+                            <constraint firstItem="ZA1-BY-Sll" firstAttribute="top" secondItem="4f5-im-775" secondAttribute="bottom" constant="16" id="IxO-rN-nXd"/>
+                            <constraint firstItem="zfg-7D-9hE" firstAttribute="centerY" secondItem="cp6-BX-L17" secondAttribute="centerY" id="K3a-QF-iYb"/>
+                            <constraint firstItem="p0L-RF-HGx" firstAttribute="top" secondItem="Udc-cR-kqf" secondAttribute="bottom" constant="16" id="OYR-nb-Yfa"/>
+                            <constraint firstItem="ZA1-BY-Sll" firstAttribute="centerY" secondItem="h5n-as-NhY" secondAttribute="centerY" id="TyI-wo-PB2"/>
+                            <constraint firstItem="zfg-7D-9hE" firstAttribute="top" secondItem="ZA1-BY-Sll" secondAttribute="bottom" constant="8" id="VnK-SB-K0s"/>
+                            <constraint firstItem="h9j-DY-8fH" firstAttribute="leading" secondItem="h5n-as-NhY" secondAttribute="leading" id="XLE-9P-hXh"/>
+                            <constraint firstItem="RMi-78-iyp" firstAttribute="top" secondItem="yhY-2J-guC" secondAttribute="top" id="XlV-uZ-a07"/>
+                            <constraint firstItem="PQi-WC-eEZ" firstAttribute="top" secondItem="yhY-2J-guC" secondAttribute="top" id="Y6k-Le-XEL"/>
                             <constraint firstItem="IZC-fE-CPJ" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="dwD-4L-FSY"/>
                             <constraint firstItem="Udc-cR-kqf" firstAttribute="top" secondItem="IZC-fE-CPJ" secondAttribute="bottom" constant="8" id="fNK-j1-M96"/>
                             <constraint firstItem="4f5-im-775" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="fuo-uM-pW0"/>
-                            <constraint firstItem="zqs-Jk-nzo" firstAttribute="top" secondItem="4f5-im-775" secondAttribute="bottom" constant="128" id="nZU-1z-5s7"/>
+                            <constraint firstItem="yhY-2J-guC" firstAttribute="top" secondItem="h9j-DY-8fH" secondAttribute="bottom" constant="16" id="jKD-uU-nTW"/>
+                            <constraint firstItem="4f5-im-775" firstAttribute="top" secondItem="yhY-2J-guC" secondAttribute="bottom" constant="16" id="peu-nh-CzC"/>
+                            <constraint firstItem="h5n-as-NhY" firstAttribute="leading" secondItem="cp6-BX-L17" secondAttribute="leading" id="ptA-ES-jGg"/>
+                            <constraint firstItem="h5n-as-NhY" firstAttribute="leading" secondItem="ZA1-BY-Sll" secondAttribute="trailing" constant="8" id="rIg-oM-wBd"/>
                             <constraint firstItem="Udc-cR-kqf" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="ueB-Zc-2qB"/>
                             <constraint firstItem="h9j-DY-8fH" firstAttribute="top" secondItem="Dv6-zp-vZR" secondAttribute="centerY" id="z7d-mI-oDX"/>
+                            <constraint firstItem="zfg-7D-9hE" firstAttribute="leading" secondItem="ZA1-BY-Sll" secondAttribute="leading" id="zA7-9W-2rE"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="Git_Button" destination="RMi-78-iyp" id="50Y-R1-Ngf"/>
+                        <outlet property="LI_Button" destination="yhY-2J-guC" id="3Y0-89-L7c"/>
+                        <outlet property="Music_Switch" destination="zfg-7D-9hE" id="C9m-qu-juu"/>
+                        <outlet property="SFX_Switch" destination="ZA1-BY-Sll" id="YPb-V6-Crk"/>
+                        <outlet property="Web_Button" destination="PQi-WC-eEZ" id="IGU-Hv-Khd"/>
                         <outlet property="doneButton" destination="4f5-im-775" id="89g-2z-Bvl"/>
                     </connections>
                 </viewController>
@@ -224,7 +311,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GitHub-Mark-120px-plus.png" width="120" height="120"/>
+        <image name="GitHub-Mark-Light-120px-plus.png" width="120" height="120"/>
+        <image name="In-Black-128px-R.png" width="139" height="128"/>
+        <image name="In-White-128px-R.png" width="139" height="128"/>
         <image name="TileSheetSample.png" width="1087" height="621"/>
         <image name="greenSplash.png" width="1242" height="2208"/>
+        <image name="web-black-128px.png" width="128" height="128"/>
+        <image name="web-white-128px.png" width="128" height="128"/>
     </resources>
 </document>

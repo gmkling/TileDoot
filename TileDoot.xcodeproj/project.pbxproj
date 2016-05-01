@@ -33,6 +33,12 @@
 		107698E41C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
 		107698E51C346CEE006051B2 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698E31C346CEE006051B2 /* GameBoard.swift */; };
 		107698ED1C3EF0FD006051B2 /* TileDootModelMovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */; };
+		1089DB171CD5D43B00802F58 /* GitHub-Mark-120px-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1089DB0E1CD5D43B00802F58 /* GitHub-Mark-120px-plus.png */; };
+		1089DB181CD5D43B00802F58 /* GitHub-Mark-Light-120px-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1089DB0F1CD5D43B00802F58 /* GitHub-Mark-Light-120px-plus.png */; };
+		1089DB191CD5D43B00802F58 /* In-Black-128px-R.png in Resources */ = {isa = PBXBuildFile; fileRef = 1089DB101CD5D43B00802F58 /* In-Black-128px-R.png */; };
+		1089DB1A1CD5D43B00802F58 /* In-White-128px-R.png in Resources */ = {isa = PBXBuildFile; fileRef = 1089DB111CD5D43B00802F58 /* In-White-128px-R.png */; };
+		1089DB1D1CD5D43B00802F58 /* web-black-128px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1089DB141CD5D43B00802F58 /* web-black-128px.png */; };
+		1089DB1F1CD5D43B00802F58 /* web-white-128px.png in Resources */ = {isa = PBXBuildFile; fileRef = 1089DB161CD5D43B00802F58 /* web-white-128px.png */; };
 		10A6B27E1C6D20020038263E /* TileDootPuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */; };
 		10A6B2801C6DC0040038263E /* TileDootPuzzleSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */; };
 		10A6B2821C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */; };
@@ -271,6 +277,12 @@
 		107698DB1C34668A006051B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		107698E31C346CEE006051B2 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		107698EC1C3EF0FD006051B2 /* TileDootModelMovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootModelMovementTests.swift; sourceTree = "<group>"; };
+		1089DB0E1CD5D43B00802F58 /* GitHub-Mark-120px-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark-120px-plus.png"; sourceTree = "<group>"; };
+		1089DB0F1CD5D43B00802F58 /* GitHub-Mark-Light-120px-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark-Light-120px-plus.png"; sourceTree = "<group>"; };
+		1089DB101CD5D43B00802F58 /* In-Black-128px-R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In-Black-128px-R.png"; sourceTree = "<group>"; };
+		1089DB111CD5D43B00802F58 /* In-White-128px-R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In-White-128px-R.png"; sourceTree = "<group>"; };
+		1089DB141CD5D43B00802F58 /* web-black-128px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web-black-128px.png"; sourceTree = "<group>"; };
+		1089DB161CD5D43B00802F58 /* web-white-128px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web-white-128px.png"; sourceTree = "<group>"; };
 		10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleTests.swift; sourceTree = "<group>"; };
 		10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetTests.swift; sourceTree = "<group>"; };
 		10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetMgrTests.swift; sourceTree = "<group>"; };
@@ -501,6 +513,7 @@
 				10B34C6B1C44EFCC00AD8DD7 /* TileDootUITests */,
 				10B34C751C478D5D00AD8DD7 /* TD_Buttons */,
 				10B34C6E1C46437A00AD8DD7 /* TileAssets */,
+				1089DB0D1CD5D43B00802F58 /* InfoButtonImg */,
 				10EB4AC01CCADDAD00E487D3 /* Icons */,
 				10EB4ABD1CCAC9A900E487D3 /* SplashAssets */,
 				10AB01401CADE1ED0092D7AF /* AudioAssets */,
@@ -563,6 +576,20 @@
 				10EB4AB61CC95E7500E487D3 /* LinkedList.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		1089DB0D1CD5D43B00802F58 /* InfoButtonImg */ = {
+			isa = PBXGroup;
+			children = (
+				1089DB0E1CD5D43B00802F58 /* GitHub-Mark-120px-plus.png */,
+				1089DB0F1CD5D43B00802F58 /* GitHub-Mark-Light-120px-plus.png */,
+				1089DB101CD5D43B00802F58 /* In-Black-128px-R.png */,
+				1089DB111CD5D43B00802F58 /* In-White-128px-R.png */,
+				1089DB141CD5D43B00802F58 /* web-black-128px.png */,
+				1089DB161CD5D43B00802F58 /* web-white-128px.png */,
+			);
+			name = InfoButtonImg;
+			path = TileDoot/InfoButtonImg;
 			sourceTree = "<group>";
 		};
 		10A91E071C99EFB2009F50AB /* Views */ = {
@@ -992,12 +1019,14 @@
 				10AB01981CADE1ED0092D7AF /* SingleTapLoud_Mono1.aiff in Resources */,
 				10AB01241CA46E100092D7AF /* PurplePlay_sel.png in Resources */,
 				10B34CBD1C4DA4B700AD8DD7 /* LGreen2_test.png in Resources */,
+				1089DB1A1CD5D43B00802F58 /* In-White-128px-R.png in Resources */,
 				10AB01961CADE1ED0092D7AF /* SingleTap_Mono7.aiff in Resources */,
 				10B34CDF1C4E32DB00AD8DD7 /* Purple4_test.png in Resources */,
 				10EB4AD81CCADDAD00E487D3 /* Purple_TD.svg in Resources */,
 				10AB018F1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff in Resources */,
 				10B34D141C54C49D00AD8DD7 /* info1.png in Resources */,
 				1023D2A71C5C2713005DBAB9 /* BlueBack_def-500px.png in Resources */,
+				1089DB1D1CD5D43B00802F58 /* web-black-128px.png in Resources */,
 				10AB01391CA485C90092D7AF /* checkBox-500px_sel.png in Resources */,
 				10B34CB41C4B935F00AD8DD7 /* Yellow5_test.png in Resources */,
 				10AB01321CA480DE0092D7AF /* gitButton-500px_def.png in Resources */,
@@ -1035,6 +1064,7 @@
 				10EB4AAB1CC041EF00E487D3 /* PurpleBack_sel.png in Resources */,
 				10AB01271CA474F00092D7AF /* PurpleMenu_def.png in Resources */,
 				10AB01801CADE1ED0092D7AF /* Catch_Mono3.aiff in Resources */,
+				1089DB181CD5D43B00802F58 /* GitHub-Mark-Light-120px-plus.png in Resources */,
 				10AB01931CADE1ED0092D7AF /* SingleTap_Mono4.aiff in Resources */,
 				10EB4AAD1CC041EF00E487D3 /* PurpleForward_dis.png in Resources */,
 				10AB019F1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff in Resources */,
@@ -1067,6 +1097,7 @@
 				10AB011F1CA35D950092D7AF /* PlayButton_active.png in Resources */,
 				1023D2A31C5B58F0005DBAB9 /* BlueOFF.png in Resources */,
 				10B34C931C4A4A0200AD8DD7 /* Blue3_test.png in Resources */,
+				1089DB1F1CD5D43B00802F58 /* web-white-128px.png in Resources */,
 				10AB01911CADE1ED0092D7AF /* SingleTap_Mono2.aiff in Resources */,
 				10AB01811CADE1ED0092D7AF /* Catch_Mono4.aiff in Resources */,
 				10AB01941CADE1ED0092D7AF /* SingleTap_Mono5.aiff in Resources */,
@@ -1083,10 +1114,12 @@
 				10AB01791CADE1ED0092D7AF /* LR_WoodSlide_Stereo2.aiff in Resources */,
 				10B34CF71C516DAC00AD8DD7 /* MainMenu2.png in Resources */,
 				107698C51C320292006051B2 /* Main.storyboard in Resources */,
+				1089DB171CD5D43B00802F58 /* GitHub-Mark-120px-plus.png in Resources */,
 				1023D2B01C6421A8005DBAB9 /* levels_1.txt in Resources */,
 				10B34C991C4A4A0200AD8DD7 /* Yellow1_test.png in Resources */,
 				10B34CA81C4B935F00AD8DD7 /* DGreen3_test.png in Resources */,
 				10AB01891CADE1ED0092D7AF /* PileTap_Mono6.aiff in Resources */,
+				1089DB191CD5D43B00802F58 /* In-Black-128px-R.png in Resources */,
 				1023D29C1C5AE38A005DBAB9 /* GitHub-Mark-500px.png in Resources */,
 				10B34C911C4A4A0200AD8DD7 /* Blue2_test.png in Resources */,
 			);

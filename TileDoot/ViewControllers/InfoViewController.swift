@@ -10,9 +10,15 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    @IBOutlet var LI_Button: UIButton!
+    @IBOutlet var Web_Button: UIButton!
+    @IBOutlet var Git_Button: UIButton!
     @IBOutlet var doneButton: UIButton!
-
-
+    @IBOutlet var SFX_Switch: UISwitch!
+    @IBOutlet var Music_Switch: UISwitch!
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,62 @@ class InfoViewController: UIViewController {
     }
     
  
+    @IBAction func doWeb_Button(sender: UIButton)
+    {
+        let webUrl = NSURL(string: "http://www.garrykling.com")!
+        UIApplication.sharedApplication().openURL(webUrl)
+    }
+    
+    @IBAction func doGit_Button()
+    {
+        let gitUrl = NSURL(string: "http://www.github.com/gmkling")!
+        UIApplication.sharedApplication().openURL(gitUrl)
+    }
+    
+    @IBAction func doLI_Button(sender: UIButton)
+    {
+        let webUrl = NSURL(string: "http://www.linkedin.com/in/garrykling")!
+        UIApplication.sharedApplication().openURL(webUrl)
+    }
+    
+    @IBAction func SFX_toggle(switchState: UISwitch)
+    {
+        // sent on status change
+        if switchState.on
+        {
+            // retain the default
+            defaults.setBool(true, forKey: sfx_key)
+            // update the player
+            audioDelegate?.unmuteSFX()
+            print("SFX On")
+        } else {
+            // retain default
+            defaults.setBool(false, forKey: sfx_key)
+            // update the player
+            audioDelegate?.muteSFX()
+            print("SFX Off")
+        }
+    }
+    
+    @IBAction func Music_toggle(switchState: UISwitch)
+    {
+        // sent on status change
+        if switchState.on
+        {
+            // retain the default
+            defaults.setBool(false, forKey: music_key)
+            // update the player
+            audioDelegate?.muteMusic()
+            print("Music Off")
+        } else {
+            // retain the default
+            defaults.setBool(true, forKey: music_key)
+            
+            // update the player
+            audioDelegate?.unmuteMusic()
+            print("Music On")
+        }
+    }
     
     /*
     // MARK: - Navigation
@@ -41,5 +103,6 @@ class InfoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }
