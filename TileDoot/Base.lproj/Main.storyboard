@@ -38,7 +38,7 @@
                                 <rect key="frame" x="289" y="554" width="22" height="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="PWG-wa-CHi" kind="presentation" id="aFM-c7-f9E"/>
+                                    <segue destination="PWG-wa-CHi" kind="presentation" identifier="InfoSegue" id="aFM-c7-f9E"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-DW-ddC">

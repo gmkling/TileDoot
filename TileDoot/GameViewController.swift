@@ -15,24 +15,6 @@ class GameViewController: UIViewController
     
     @IBOutlet var playButton: UIButton!
     @IBOutlet var label: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Configure the view.
-        let skView = self.view as! SKView
-        //skView.showsFPS = true
-        //skView.showsNodeCount = true
-        //skView.ignoresSiblingOrder = true
-        
-        // create the scene sized to fit
-        let scene = MainMenuScene(size: view!.bounds.size)
-        scene.audioDelegate = audioEngine
-        //let scene = SceneInvertTest(size: view!.bounds.size)
-        
-        skView.presentScene(scene)
-        
-    }
 
     override func shouldAutorotate() -> Bool {
         return true
@@ -51,13 +33,25 @@ class GameViewController: UIViewController
         // Release any cached data, images, etc that aren't in use.
     }
 
-    @IBAction func playButtonPush(sender: UIButton) {
-        
+    @IBAction func playButtonPush(sender: UIButton)
+    {
+        audioEngine.playSFX(pileTap_key, typeKey: stereo_key)
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue)
     {
-        //self.navigationController?.popViewControllerAnimated(true)
+        audioEngine.playSFX(singleTap_key, typeKey: mono_key)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        audioEngine.playSFX(pileTap_key, typeKey: stereo_key)
+        // give the destination controller a pointer to the audio engine
+        if segue.identifier == "InfoSegue"
+        {
+            let destControl = segue.destinationViewController as! InfoViewController
+            destControl.audioDelegate = self.audioEngine
+        }
     }
     
     override func prefersStatusBarHidden() -> Bool {

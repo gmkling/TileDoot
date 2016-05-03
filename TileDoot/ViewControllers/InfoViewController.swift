@@ -24,33 +24,31 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func doDoneButton(sender: UIButton)
-    {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
  
     @IBAction func doWeb_Button(sender: UIButton)
     {
+        audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
         let webUrl = NSURL(string: "http://www.garrykling.com")!
         UIApplication.sharedApplication().openURL(webUrl)
     }
     
     @IBAction func doGit_Button()
     {
+        audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
         let gitUrl = NSURL(string: "http://www.github.com/gmkling")!
         UIApplication.sharedApplication().openURL(gitUrl)
     }
     
     @IBAction func doLI_Button(sender: UIButton)
     {
+        audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
         let webUrl = NSURL(string: "http://www.linkedin.com/in/garrykling")!
         UIApplication.sharedApplication().openURL(webUrl)
     }
@@ -64,6 +62,7 @@ class InfoViewController: UIViewController {
             defaults.setBool(true, forKey: sfx_key)
             // update the player
             audioDelegate?.unmuteSFX()
+            audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
             print("SFX On")
         } else {
             // retain default
@@ -76,6 +75,7 @@ class InfoViewController: UIViewController {
     
     @IBAction func Music_toggle(switchState: UISwitch)
     {
+        
         // sent on status change
         if switchState.on
         {
@@ -92,6 +92,10 @@ class InfoViewController: UIViewController {
             audioDelegate?.unmuteMusic()
             print("Music On")
         }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     /*
