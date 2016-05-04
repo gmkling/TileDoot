@@ -38,50 +38,6 @@ class Turn
         complete = true
     }
 
-    // this is no good
-//    func getNextIncompleteSubturn() -> [SequencedAction]?
-//    {
-//        var subturnIndexes = [0]
-//        var subturn : [SequencedAction]
-//        subturn = []
-//        
-//        for (index, item) in actionQ.enumerate()
-//        {
-//            if item is SubturnMark
-//            {
-//                subturnIndexes.append(index)
-//            }
-//        }
-//        
-//        var prevSubturn = 0
-//        var curSubturn = 0
-//        
-//        for index in subturnIndexes
-//        {
-//            // if this one is complete, make it the lastSubturn, and move to next
-//            if actionQ[index].complete
-//            {
-//                prevSubturn = index
-//            } else if !actionQ[index].complete {
-//                curSubturn = index
-//            }
-//        }
-//        
-//        // check the range, and pack them in
-//        // if both are 0, then nothing has been scheduled
-//        // if prev>cur, then we are done
-//        if prevSubturn == curSubturn { return nil }
-//        if prevSubturn > curSubturn { return nil }
-//        
-//        // get all items from lastSubturn to curSubturn, including the subturn mark itself
-//        
-//        for i in (prevSubturn)...curSubturn
-//        {
-//            subturn.append(actionQ[i])
-//        }
-//        
-//        return subturn
-//    }
     
     // a less convoluted version. The caller will have to determine if the subturn is complete, etc
     func getSubturn(num: Int) -> [SequencedAction]?
@@ -89,8 +45,8 @@ class Turn
         if num == 0 { return nil }
         
         var subturnIndexes = [0]
-        var subturn : [SequencedAction]
-        subturn = []
+//        var subturn : [SequencedAction]
+//        subturn = []
         
         for (index, item) in actionQ.enumerate()
         {

@@ -134,7 +134,7 @@ class GameBoard {
     
     func deleteTile(loc: Coordinate)
     {
-        var delTile = tileMap[loc.x, loc.y]
+        let delTile = tileMap[loc.x, loc.y]
         
         // insert a nullTile if one is not already there
         if delTile.type != TileType.nullTile

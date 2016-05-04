@@ -293,8 +293,8 @@ class GameBoardView : SKNode , GameBoardProtocol
             // overwrite if new nMoves is better or the old is 0
             let oldStatus = oldProg[statusKey] as! Int
             let oldMoves = oldProg[movesKey] as! Int
-            let oldStars = oldProg[starKey] as! Int
-            let oldTiles = oldProg[tilesKey] as! Int
+//            let oldStars = oldProg[starKey] as! Int
+//            let oldTiles = oldProg[tilesKey] as! Int
             
             // if the old status was worse, overwrite it
             if oldStatus<puzStatus.rawValue {

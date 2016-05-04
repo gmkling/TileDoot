@@ -219,7 +219,6 @@ class GamePlayScene: SKScene {
                             // victory button should signal nextPuzzle()
                             // fade the HUD while victory runs, fade it back in
                             let fadeOutHUD = SKAction.fadeOutWithDuration(0.5)
-                            let fadeInHUD = SKAction.fadeInWithDuration(0.5)
                             
                             HUD.runAction(fadeOutHUD)
                             gameView.runAction(SKAction.runBlock({self.gameView.runVictory()}))

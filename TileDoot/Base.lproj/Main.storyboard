@@ -19,14 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="greenSplash.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uac-HS-84m">
-                                <rect key="frame" x="-151" y="-135" width="1242" height="2208"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenSplash.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uac-HS-84m">
+                                <rect key="frame" x="-153" y="-144" width="1242" height="2208"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TileDoot" lineBreakMode="clip" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="mU4-dy-BOu">
-                                <rect key="frame" x="165" y="226" width="271" height="94"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TileDoot" lineBreakMode="clip" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="mU4-dy-BOu">
+                                <rect key="frame" x="165" y="153" width="271" height="94"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -34,15 +34,15 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Be-yb-ZQD" userLabel="Info Button">
-                                <rect key="frame" x="289" y="554" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Be-yb-ZQD" userLabel="Info Button">
+                                <rect key="frame" x="289" y="542" width="22" height="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="PWG-wa-CHi" kind="presentation" identifier="InfoSegue" id="aFM-c7-f9E"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-DW-ddC">
-                                <rect key="frame" x="263" y="328" width="72" height="50"/>
+                            <button autoresizesSubviews="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-DW-ddC">
+                                <rect key="frame" x="264" y="400" width="72" height="50"/>
                                 <color key="backgroundColor" red="0.64313725490196072" green="0.29019607843137252" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="I1o-BO-koq"/>
@@ -97,33 +97,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TileDoot" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZC-fE-CPJ">
-                                <rect key="frame" x="236" y="55" width="128" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TileDoot" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZC-fE-CPJ">
+                                <rect key="frame" x="247" y="82" width="106" height="37"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TileSheetSample.png" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-cR-kqf">
-                                <rect key="frame" x="180" y="108" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TileSheetSample.png" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-cR-kqf">
+                                <rect key="frame" x="180" y="127" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="KHd-yj-6M2"/>
                                     <constraint firstAttribute="width" constant="240" id="nQV-iK-eTg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A Game By " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0L-RF-HGx">
-                                <rect key="frame" x="208" y="259" width="184" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Game By " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0L-RF-HGx">
+                                <rect key="frame" x="255" y="271" width="90" height="21"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Garry Kling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9j-DY-8fH">
-                                <rect key="frame" x="256" y="289" width="88" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garry Kling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9j-DY-8fH">
+                                <rect key="frame" x="257" y="300" width="87" height="21"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhY-2J-guC">
-                                <rect key="frame" x="289" y="318" width="22" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhY-2J-guC">
+                                <rect key="frame" x="289" y="337" width="22" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="cmI-De-g1U"/>
                                     <constraint firstAttribute="height" constant="20" id="iTp-IG-2zv"/>
@@ -134,8 +134,8 @@
                                     <action selector="doLI_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="d7w-tf-mUx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-WC-eEZ">
-                                <rect key="frame" x="256" y="318" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-WC-eEZ">
+                                <rect key="frame" x="256" y="337" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="72D-2P-iB7"/>
                                     <constraint firstAttribute="height" constant="20" id="QzT-9G-Z19"/>
@@ -146,8 +146,8 @@
                                     <action selector="doWeb_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="cJO-oL-4NM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMi-78-iyp">
-                                <rect key="frame" x="324" y="318" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMi-78-iyp">
+                                <rect key="frame" x="324" y="337" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="7j5-9f-COF"/>
                                     <constraint firstAttribute="width" constant="20" id="XQ0-iZ-Auj"/>
@@ -158,8 +158,8 @@
                                     <action selector="doGit_Button" destination="PWG-wa-CHi" eventType="touchUpInside" id="lO9-ek-6B4"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f5-im-775">
-                                <rect key="frame" x="264" y="435" width="72" height="50"/>
+                            <button autoresizesSubviews="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f5-im-775">
+                                <rect key="frame" x="264" y="373" width="72" height="50"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="Tae-gz-7iX"/>
@@ -177,8 +177,8 @@
                                     <segue destination="H9t-Sj-c8c" kind="unwind" unwindAction="unwindAction:" id="YuZ-VG-TyN"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZA1-BY-Sll">
-                                <rect key="frame" x="180" y="498" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZA1-BY-Sll">
+                                <rect key="frame" x="200" y="439" width="51" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,8 +186,8 @@
                                     <action selector="SFX_toggle:" destination="PWG-wa-CHi" eventType="valueChanged" id="qX0-9y-0fT"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zfg-7D-9hE">
-                                <rect key="frame" x="180" y="537" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zfg-7D-9hE">
+                                <rect key="frame" x="200" y="478" width="51" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -195,14 +195,14 @@
                                     <action selector="Music_toggle:" destination="PWG-wa-CHi" eventType="touchUpInside" id="D3G-S4-x05"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sound Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5n-as-NhY">
-                                <rect key="frame" x="256" y="503" width="98" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5n-as-NhY">
+                                <rect key="frame" x="257" y="444" width="98" height="21"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp6-BX-L17">
-                                <rect key="frame" x="256" y="542" width="43" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp6-BX-L17">
+                                <rect key="frame" x="257" y="483" width="43" height="21"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

@@ -134,7 +134,7 @@ class PuzzleSetView: SKNode
         // create a gameplay scene with it
         if puzID != nil
         {
-            var puz = puzzles.getPuzzleWithID(puzID!)
+ //           var puz = puzzles.getPuzzleWithID(puzID!)
             self.gameScene = GamePlayScene(size: scene!.view!.bounds.size, puzSet: puzzles, puzID: puzID!)
             //gameScene!.setPuzzle(puz!)
             gameScene!.returnAddr = scene!

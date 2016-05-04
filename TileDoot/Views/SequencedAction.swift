@@ -97,8 +97,8 @@ class AddAction : TileAction
             break
         case .nullTile:
             break
-        default:
-            print("Unrecognized TileType: \(tile.type)")
+//        default: // the impossible default
+//            print("Unrecognized TileType: \(tile.type)")
         }
         
         super.init(tile: loc)
