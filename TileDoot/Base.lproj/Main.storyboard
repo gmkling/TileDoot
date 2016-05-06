@@ -58,7 +58,6 @@
                                 </state>
                                 <connections>
                                     <action selector="playButtonPush:" destination="BV1-FR-VrT" eventType="touchUpInside" id="s7m-xQ-pKD"/>
-                                    <segue destination="YgZ-aC-sA0" kind="show" id="sel-WM-f1r"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -253,62 +252,6 @@
                 <exit id="H9t-Sj-c8c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-80" y="1298"/>
-        </scene>
-        <!--PuzzleCollectionViewController-->
-        <scene sceneID="J2t-7p-fUk">
-            <objects>
-                <collectionViewController id="Fte-HQ-0fy" userLabel="PuzzleCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UJn-JE-gOc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.56470588235294117" green="0.67450980392156867" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CeD-2C-6DM">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PuzzleSprite" id="oup-BW-2PQ">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="Fte-HQ-0fy" id="6M3-kh-PkV"/>
-                            <outlet property="delegate" destination="Fte-HQ-0fy" id="gni-G0-sIJ"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="6VQ-Ns-Nm9"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wPE-g0-BXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1383" y="461"/>
-        </scene>
-        <!--PuzzleCollectionNavigationController-->
-        <scene sceneID="7zE-5J-GrT">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overFullScreen" navigationBarHidden="YES" id="YgZ-aC-sA0" userLabel="PuzzleCollectionNavigationController" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gSG-7e-rSt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Fte-HQ-0fy" kind="relationship" relationship="rootViewController" id="qnP-Md-Trk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XTg-ft-cze" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="707" y="461"/>
         </scene>
     </scenes>
     <resources>
