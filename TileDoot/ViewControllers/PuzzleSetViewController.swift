@@ -10,24 +10,17 @@ import UIKit
 
 let puzzleSetFiles = ["TestSet1.txt", "TestSet2.txt", "TestSet3.txt"]
 
-class PuzzleSetViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class PuzzleSetViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    var collectionView : UICollectionView!
-    var puzzleData : [PuzzleSet]!
-    
+    //var collectionView : UICollectionView!
+    var puzzleData : [PuzzleSet?] = []
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // background
-        
-        
-        // configure the layout object
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Vertical
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 90, height: 120)
+
+        // set the size of the items in the collectionView
+        collectionView?.contentSize = CGSize(width: 75, height: 150)
         
         // init the PuzzleSet array - TODO: How to preload this data?
         puzzleData = []
@@ -35,19 +28,8 @@ class PuzzleSetViewController: UIViewController, UICollectionViewDataSource, UIC
         {
             puzzleData.append(PuzzleSet(withFileName: name))
         }
-        
-        // create the UICollectionView and hook up delegate, cell class, and data source
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.registerClass(PuzzleSetCell.self, forCellWithReuseIdentifier: "Cell")
-        collectionView.backgroundColor = UIColor.init(colorLiteralRed: 144.0/255.0, green: 172.0/255.0, blue: 95.0/255.0, alpha: 1.0)
-        
-        self.view.addSubview(collectionView)
-        // constrain to center
-        NSLayoutConstraint(item: self.view, attribute: .CenterX, relatedBy: .Equal, toItem: collectionView, attribute: .CenterX, multiplier: 1, constant: 0).active = true
-        
-        NSLayoutConstraint(item: self.view, attribute: .CenterY, relatedBy: .Equal, toItem: collectionView, attribute: .CenterY, multiplier: 1, constant: 0).active = true
+
+        collectionView!.backgroundColor = lightGreenTileColor.colorWithAlphaComponent(1.0)
     }
 
     override func didReceiveMemoryWarning()
@@ -75,11 +57,12 @@ class PuzzleSetViewController: UIViewController, UICollectionViewDataSource, UIC
     // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        if puzzleData != nil
+        // 5 items per page
+        if puzzleData.count > 0
         {
-            return self.puzzleData.count
+            return puzzleData.count
         } else {
             return 0
         }
@@ -88,20 +71,29 @@ class PuzzleSetViewController: UIViewController, UICollectionViewDataSource, UIC
     
     // make a cell for each cell index path
    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        // configure cell visual attributes
-        cell.backgroundColor = UIColor.orangeColor()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PuzzleSetCell
+        
+        // configure cell visual attributes, indexing the puzzle set
+        // create a blank/grey tile if there is no set to use
+       
+        cell.backgroundColor = purpleTileColor.colorWithAlphaComponent(1.0)
+        let index = (indexPath.section*2)+indexPath.row
+        cell.titleLabel.text = puzzleData[index]?.name
         return cell
     }
     
     // MARK: - UICollectionViewDelegate protocol
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         // handle tap events
         // selected item launch a new collection view of the puzzles
+        let index = (indexPath.section*2)+indexPath.row
+        let puzzleSetSelected = puzzleData[index]
+        
+        
     }
 
 }
@@ -109,5 +101,6 @@ class PuzzleSetViewController: UIViewController, UICollectionViewDataSource, UIC
 
 class PuzzleSetCell : UICollectionViewCell
 {
+    @IBOutlet var titleLabel: UILabel!
     
 }

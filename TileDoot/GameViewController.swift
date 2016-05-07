@@ -37,10 +37,10 @@ class GameViewController: UIViewController
     {
         audioEngine.playSFX(pileTap_key, typeKey: stereo_key)
         
-        let puzzleSetController = PuzzleSetViewController()
-        puzzleSetController.modalPresentationStyle = .FullScreen
-        puzzleSetController.modalTransitionStyle = .FlipHorizontal
-        self.showViewController(puzzleSetController, sender: self)
+//        let puzzleSetController = PuzzleSetViewController()
+//        puzzleSetController.modalPresentationStyle = .FullScreen
+//        puzzleSetController.modalTransitionStyle = .FlipHorizontal
+//        self.showViewController(puzzleSetController, sender: self)
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue)
