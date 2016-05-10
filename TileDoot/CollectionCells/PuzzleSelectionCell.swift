@@ -10,5 +10,6 @@ import UIKit
 
 class PuzzleSelectionCell: UICollectionViewCell
 {
-    
+    @IBOutlet var puzzleLabel: UILabel!
+
 }

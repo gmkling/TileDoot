@@ -14,6 +14,7 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
 
     //var collectionView : UICollectionView!
     var puzzleData : [PuzzleSet?] = []
+    var selectedIndex = 0
     
     override func viewDidLoad()
     {
@@ -88,12 +89,24 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        // handle tap events
-        // selected item launch a new collection view of the puzzles
-        let index = (indexPath.section*2)+indexPath.row
-        let puzzleSetSelected = puzzleData[index]
+        // hand off the index for the selected Puzzle
+        selectedIndex = (indexPath.section*2)+indexPath.row
+    }
+    
+    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue)
+    {
+        // TODO: keep the audioEngine relevant
+        //audioEngine.playSFX(singleTap_key, typeKey: mono_key)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        
+        if segue.identifier == "PuzzleSetSelectedSegue"
+        {
+            let vc = segue.destinationViewController as? PuzzleSelectionViewController
+            vc!.puzzleData = self.puzzleData[selectedIndex]
+            print("Added Puzzle set named \(vc!.puzzleData.name) to selectionView")
+        }
     }
 
 }

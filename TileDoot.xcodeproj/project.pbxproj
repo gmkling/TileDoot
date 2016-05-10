@@ -46,6 +46,8 @@
 		10902A211CDD5819009AB2C5 /* PuzzleSetDirectoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A201CDD5819009AB2C5 /* PuzzleSetDirectoryController.swift */; };
 		10902A251CDDD8A3009AB2C5 /* PuzzleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A241CDDD8A3009AB2C5 /* PuzzleSelectionViewController.swift */; };
 		10902A291CDE5F7B009AB2C5 /* PuzzleSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A281CDE5F7B009AB2C5 /* PuzzleSelectionCell.swift */; };
+		10902A2B1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A2A1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift */; };
+		10902A2D1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A2C1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift */; };
 		10A6B27E1C6D20020038263E /* TileDootPuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */; };
 		10A6B2801C6DC0040038263E /* TileDootPuzzleSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */; };
 		10A6B2821C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */; };
@@ -297,6 +299,8 @@
 		10902A201CDD5819009AB2C5 /* PuzzleSetDirectoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSetDirectoryController.swift; path = ViewControllers/PuzzleSetDirectoryController.swift; sourceTree = "<group>"; };
 		10902A241CDDD8A3009AB2C5 /* PuzzleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSelectionViewController.swift; path = ViewControllers/PuzzleSelectionViewController.swift; sourceTree = "<group>"; };
 		10902A281CDE5F7B009AB2C5 /* PuzzleSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSelectionCell.swift; path = CollectionCells/PuzzleSelectionCell.swift; sourceTree = "<group>"; };
+		10902A2A1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleCollectionViewController.swift; path = ViewControllers/PuzzleCollectionViewController.swift; sourceTree = "<group>"; };
+		10902A2C1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlaySceneViewController.swift; path = ViewControllers/GamePlaySceneViewController.swift; sourceTree = "<group>"; };
 		10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleTests.swift; sourceTree = "<group>"; };
 		10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetTests.swift; sourceTree = "<group>"; };
 		10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetMgrTests.swift; sourceTree = "<group>"; };
@@ -875,6 +879,8 @@
 				1089DB201CDBECA100802F58 /* PuzzleSetViewController.swift */,
 				10902A201CDD5819009AB2C5 /* PuzzleSetDirectoryController.swift */,
 				10902A241CDDD8A3009AB2C5 /* PuzzleSelectionViewController.swift */,
+				10902A2A1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift */,
+				10902A2C1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1214,6 +1220,7 @@
 				10A91E091C99EFEF009F50AB /* GameBoardView.swift in Sources */,
 				1089DB211CDBECA100802F58 /* PuzzleSetViewController.swift in Sources */,
 				107698E41C346CEE006051B2 /* GameBoard.swift in Sources */,
+				10902A2B1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift in Sources */,
 				10AB01AB1CB059430092D7AF /* PuzzleSprite.swift in Sources */,
 				10AB013F1CAD9B380092D7AF /* TD_AudioPlayer.swift in Sources */,
 				107698C21C320292006051B2 /* GameViewController.swift in Sources */,
@@ -1222,6 +1229,7 @@
 				10A91E0D1C9BD5EC009F50AB /* TestGameBoardViewScene.swift in Sources */,
 				10B34C691C44E63400AD8DD7 /* TDButton.swift in Sources */,
 				10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */,
+				10902A2D1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift in Sources */,
 				10AB01A91CB058310092D7AF /* PuzzleSetView.swift in Sources */,
 				10EB4A9F1CC0379F00E487D3 /* VictoryView.swift in Sources */,
 				10902A291CDE5F7B009AB2C5 /* PuzzleSelectionCell.swift in Sources */,

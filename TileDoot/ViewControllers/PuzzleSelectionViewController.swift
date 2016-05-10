@@ -12,6 +12,12 @@ class PuzzleSelectionViewController: UIViewController {
 
     @IBOutlet var selectionTitle: UILabel!
     @IBOutlet var selectionContainer: UIView!
+    var puzzleData : PuzzleSet!
+    
+    func setPuzzleSet(newSet: PuzzleSet)
+    {
+       puzzleData = newSet
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +33,18 @@ class PuzzleSelectionViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
+    
+    // get the segue for the container view to pass the puzzleSet there
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "PuzzleSelectSegue"
+        {
+            let vc = segue.destinationViewController as? PuzzleCollectionViewController
+            vc!.puzzleData = self.puzzleData
+            print("Added Puzzle set named \(puzzleData.name) to selectionView")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
