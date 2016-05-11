@@ -13,12 +13,13 @@ class GamePlaySceneViewController: UIViewController {
     
     var puzzles : PuzzleSet?
     var curPuz : String = ""
+    var scene : GamePlayScene?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let skView = self.view as! SKView
         let scene = GamePlayScene(size: view.frame.size, puzSet: puzzles!, puzID: curPuz)
-        
+        scene.delegateController = self
         skView.presentScene(scene)
     }
 
@@ -29,6 +30,17 @@ class GamePlaySceneViewController: UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func returnToPuzzleSelection()
+    {
+        // clear the scene and delete
+        let skView = self.view as! SKView
+        skView.presentScene(nil)
+        scene = nil
+        
+        // manually unwind the modal segue
+        self.performSegueWithIdentifier("unwindToPuzzleMenu", sender: self)
     }
 
     /*

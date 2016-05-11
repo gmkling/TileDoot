@@ -48,6 +48,8 @@
 		10902A291CDE5F7B009AB2C5 /* PuzzleSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A281CDE5F7B009AB2C5 /* PuzzleSelectionCell.swift */; };
 		10902A2B1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A2A1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift */; };
 		10902A2D1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10902A2C1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift */; };
+		10902A311CE31D5C009AB2C5 /* PuzzleMenu_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 10902A2F1CE31D5C009AB2C5 /* PuzzleMenu_def.png */; };
+		10902A321CE31D5C009AB2C5 /* PuzzleMenu_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 10902A301CE31D5C009AB2C5 /* PuzzleMenu_sel.png */; };
 		10A6B27E1C6D20020038263E /* TileDootPuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */; };
 		10A6B2801C6DC0040038263E /* TileDootPuzzleSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */; };
 		10A6B2821C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */; };
@@ -301,6 +303,8 @@
 		10902A281CDE5F7B009AB2C5 /* PuzzleSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleSelectionCell.swift; path = CollectionCells/PuzzleSelectionCell.swift; sourceTree = "<group>"; };
 		10902A2A1CE1B48F009AB2C5 /* PuzzleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleCollectionViewController.swift; path = ViewControllers/PuzzleCollectionViewController.swift; sourceTree = "<group>"; };
 		10902A2C1CE1CD7C009AB2C5 /* GamePlaySceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlaySceneViewController.swift; path = ViewControllers/GamePlaySceneViewController.swift; sourceTree = "<group>"; };
+		10902A2F1CE31D5C009AB2C5 /* PuzzleMenu_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PuzzleMenu_def.png; path = UIKit_Tiles/PuzzleMenu_def.png; sourceTree = "<group>"; };
+		10902A301CE31D5C009AB2C5 /* PuzzleMenu_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PuzzleMenu_sel.png; path = UIKit_Tiles/PuzzleMenu_sel.png; sourceTree = "<group>"; };
 		10A6B27D1C6D20020038263E /* TileDootPuzzleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleTests.swift; sourceTree = "<group>"; };
 		10A6B27F1C6DC0040038263E /* TileDootPuzzleSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetTests.swift; sourceTree = "<group>"; };
 		10A6B2811C6E6AC00038263E /* TileDootPuzzleSetMgrTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDootPuzzleSetMgrTests.swift; sourceTree = "<group>"; };
@@ -613,6 +617,15 @@
 			path = TileDoot/InfoButtonImg;
 			sourceTree = "<group>";
 		};
+		10902A2E1CE31D0C009AB2C5 /* UIKit_Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				10902A2F1CE31D5C009AB2C5 /* PuzzleMenu_def.png */,
+				10902A301CE31D5C009AB2C5 /* PuzzleMenu_sel.png */,
+			);
+			name = UIKit_Tiles;
+			sourceTree = "<group>";
+		};
 		10A91E071C99EFB2009F50AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +795,7 @@
 		10B34C6E1C46437A00AD8DD7 /* TileAssets */ = {
 			isa = PBXGroup;
 			children = (
+				10902A2E1CE31D0C009AB2C5 /* UIKit_Tiles */,
 				106D2D161CB97E6800D0F479 /* StopTileTest3.png */,
 				106D2D141CB8EFD400D0F479 /* StopTileTest2.png */,
 				10AB01291CA480B80092D7AF /* InfoButtons */,
@@ -1022,6 +1036,7 @@
 				10EB4AD21CCADDAD00E487D3 /* Icon-Small-40@2x.png in Resources */,
 				10B34CDB1C4E32DB00AD8DD7 /* Purple2_test.png in Resources */,
 				10CF19CD1CD098E300CB43DA /* linkedin_def-500px.png in Resources */,
+				10902A311CE31D5C009AB2C5 /* PuzzleMenu_def.png in Resources */,
 				10AB01201CA35D950092D7AF /* PlayButton_sel.png in Resources */,
 				10AB01A31CADE1ED0092D7AF /* SmallFall_Stereo4.aiff in Resources */,
 				1023D2AC1C5C2E57005DBAB9 /* TileSheetSample.png in Resources */,
@@ -1052,6 +1067,7 @@
 				10EB4AD81CCADDAD00E487D3 /* Purple_TD.svg in Resources */,
 				10AB018F1CADE1ED0092D7AF /* RL_WoodSlide_Stereo4.aiff in Resources */,
 				10B34D141C54C49D00AD8DD7 /* info1.png in Resources */,
+				10902A321CE31D5C009AB2C5 /* PuzzleMenu_sel.png in Resources */,
 				1023D2A71C5C2713005DBAB9 /* BlueBack_def-500px.png in Resources */,
 				1089DB1D1CD5D43B00802F58 /* web-black-128px.png in Resources */,
 				10AB01391CA485C90092D7AF /* checkBox-500px_sel.png in Resources */,

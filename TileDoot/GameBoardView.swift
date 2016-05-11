@@ -176,10 +176,11 @@ class GameBoardView : SKNode , GameBoardProtocol
         moves.append(Turn(dir: dir))
         
         // can moves be disabled until endTurn() is called?
-        for each in (self.scene!.view!.gestureRecognizers)!
-        {
-            each.enabled = false
-        }
+        // this dumps core now that gestures happen on a subview of skscene
+//        for each in (self.scene!.view!.gestureRecognizers)!
+//        {
+//            each.enabled = false
+//        }
     }
     
     func addSubturn()
@@ -198,10 +199,11 @@ class GameBoardView : SKNode , GameBoardProtocol
             // if the swipe created no actions, throw it away and return
             moves.removeLast()
             // can moves be disabled until endTurn() is called?
-            for each in (self.scene!.view!.gestureRecognizers)!
-            {
-                each.enabled = true
-            }
+            // this dumps core now that gestures happen on a subview of skscene
+//            for each in (self.scene!.view!.gestureRecognizers)!
+//            {
+//                each.enabled = true
+//            }
             print("Removed empty move")
             return
         }
@@ -209,10 +211,11 @@ class GameBoardView : SKNode , GameBoardProtocol
         moves.last!.appendAction(EndTurnMark())
         
         // turn gesture recognizer back on
-        for each in (self.scene!.view!.gestureRecognizers)!
-        {
-            each.enabled = true
-        }
+        // this dumps core now that gestures happen on a subview of skscene
+//        for each in (self.scene!.view!.gestureRecognizers)!
+//        {
+//            each.enabled = true
+//        }
     }
     
     func endPuzzle()

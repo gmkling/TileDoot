@@ -15,11 +15,14 @@ class GamePlayScene: SKScene {
     var puzzles : PuzzleSet
     //var curPuz : Puzzle
     //var curPuzID : String
+    var delegateController : GamePlaySceneViewController?
     var returnAddr : SKScene?
     var gameView : GameBoardView
-    var puzzleSetName = SKLabelNode(fontNamed: "futura-medium")
-    var puzzleName = SKLabelNode(fontNamed: "futura-medium")
+    var puzzleSetName = UILabel() //fontNamed: "futura-medium")
+    var puzzleName = UILabel() //fontNamed: "futura-medium")
     var controlPanel = SKNode()
+    var trackingSurrogate = UIView()
+    var backButton = UIButton()
     
     // HUD
     var HUD : HUDView
@@ -31,18 +34,7 @@ class GamePlayScene: SKScene {
     var lastTime : NSTimeInterval = 0.0
     var thisTime : NSTimeInterval = 0.0
     
-    
     var audioDelegate : TD_AudioPlayer?
-    
-//    override init(size: CGSize)
-//    {
-//        // make a placeholder puzzle and view until
-//        puzzleData = Puzzle(dim: 4, inPar: 2, levelString: "................", levelName: "DefaultPuzzle")
-//        gameView = GameBoardView(puzzle: self.puzzleData, boardSize: size, audioDel: self.audioDelegate, game: nil)
-//        
-//        super.init(size: size)
-//        
-//    }
     
     init(size: CGSize, puzSet: PuzzleSet, puzID: String)
     {
@@ -75,7 +67,7 @@ class GamePlayScene: SKScene {
         
         // TODO: *0.5 then *2.0 on button size??
         let gridSize = self.frame.width/12.0
-        let littleButtonSize = 0.5*gridSize
+        let littleButtonSize = gridSize
         let littleButtonScale = littleButtonSize/500.0
         
         // create GameBoardView with puzzle: 5/6 of width square
@@ -84,30 +76,56 @@ class GamePlayScene: SKScene {
         // get the gameView squared away
         gameView = GameBoardView(puzzle: puzzleData, boardSize: testSize, audioDel: self.audioDelegate, game: self)
         //gameView.position = CGPointMake((self.size.width/12.0), self.size.height-self.size.height*0.75)
-        gameView.position = CGPointMake((self.size.width/12.0), (self.size.height-self.size.width*0.833)/2.0)
+        let gameViewPos = CGPointMake((self.size.width/12.0), (self.size.height-self.size.width*0.833)/2.0)
+        gameView.position = gameViewPos
+        
+        // let trackingPos = convertPointToView(gameViewPos)
+        let trackingPos = gameViewPos
+        trackingSurrogate.frame = CGRectMake(trackingPos.x, trackingPos.y, testSize.width, testSize.height)
         
         // hamburger button at top left
-        let backButton = TDButton(defaultImageName: "PurpleMenu_def.png", selectImageName: "PurpleMenu_sel.png", buttonAction: doMenuButton, disabledImageName: nil, labelStr: "")
-        backButton.setScale(littleButtonScale*2.0)
-        backButton.position = CGPoint(x: gridSize*1.5, y: self.frame.height - gridSize*1.5)
-        //backButton.position = CGPoint(x: gridSize*1.5, y: size.height-size.height*0.05)
+        backButton = UIButton(type: .System)
+        backButton.addTarget(self, action: #selector(doMenuButton), forControlEvents: .TouchUpInside)
+        backButton.backgroundColor = purpleTileColor.colorWithAlphaComponent(1.0)
+        let defImg = UIImage(named: "PuzzleMenu_def.png")
+        backButton.setBackgroundImage(defImg?.resizableImageWithCapInsets(UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0), resizingMode: .Stretch), forState: .Normal)
+        let selImg = UIImage(named: "PuzzleMenu_sel.png")
+        backButton.setBackgroundImage(selImg?.resizableImageWithCapInsets(UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0), resizingMode: .Stretch), forState: .Selected)
+        
+        backButton.contentHorizontalAlignment = .Center
+        backButton.contentVerticalAlignment = .Center
+        backButton.tintColor = UIColor.clearColor()
+        // create the frame for the back button, in SK coords it is TLeft(0,0), UI is BLeft(0, 0)
+        // setScale(littleButtonScale*2.0)
+        // backButton.position = CGPoint(x: gridSize*1.5, y: size.height-size.height*0.05)
+        backButton.frame = CGRectMake(gameViewPos.x, gridSize*1.5, littleButtonSize*1.667, littleButtonSize)
+        //backButton.translatesAutoresizingMaskIntoConstraints = false
         
         // Label
         puzzleSetName.text = puzzles.name
         puzzleName.text = puzzleData.puzzleID
         
-        puzzleSetName.fontSize = 16.0
-        puzzleSetName.position = CGPointMake(size.width*0.25, self.frame.height - gridSize*1.5)
-        puzzleSetName.verticalAlignmentMode = .Center
-        puzzleSetName.horizontalAlignmentMode = .Center
+        puzzleSetName.font = UIFont(name: "futura-medium", size: 16.0)
+        //puzzleSetName.position = CGPointMake(size.width*0.25, self.frame.height - gridSize*1.5)
+        puzzleSetName.frame = CGRectMake(size.width*0.25, gridSize*1.5, littleButtonSize*1.667, littleButtonSize)
+        puzzleSetName.textAlignment = .Center
+        puzzleSetName.numberOfLines = 1
+        puzzleSetName.adjustsFontSizeToFitWidth = true
+        puzzleSetName.textColor = UIColor.whiteColor()
         
-        puzzleName.fontSize = 16.0
-        puzzleName.position = CGPointMake(size.width*0.75, self.frame.height - gridSize*1.5)
-        puzzleName.verticalAlignmentMode = .Center
-        puzzleName.horizontalAlignmentMode = .Center
+        puzzleName.font = UIFont(name: "futura-medium", size: 16.0)
+        //puzzleName.position = CGPointMake(size.width*0.75, self.frame.height - gridSize*1.5)
+        puzzleName.frame = CGRectMake(size.width*0.75, gridSize*1.5, littleButtonSize*1.667, littleButtonSize)
+        puzzleName.textAlignment = .Center
+        puzzleName.numberOfLines = 1
+        puzzleName.adjustsFontSizeToFitWidth = true
+        puzzleName.textColor = UIColor.whiteColor()
         
-        self.addChild(puzzleName)
-        self.addChild(puzzleSetName)
+        self.view?.addSubview(backButton)
+        self.view?.addSubview(puzzleName)
+        self.view?.addSubview(puzzleSetName)
+        self.view?.addSubview(trackingSurrogate)
+        addLayoutConstraints()
         
         // HUD
         HUD.setTiles(gameView.gameBoard!.nGameTiles)
@@ -117,7 +135,19 @@ class GamePlayScene: SKScene {
         
         setupSwipeControls()
         self.addChild(gameView)
-        self.addChild(backButton)
+        
+        
+    }
+    
+    // add constraints
+    
+    func addLayoutConstraints()
+    {
+        // the layout for backButton, puzzleName, and puzzleSetName
+        // aligned below top guide, backButton aligned with gameView left
+        
+        let backButtonLeftAlign = NSLayoutConstraint(item: backButton, attribute: .Leading, relatedBy: .Equal, toItem: trackingSurrogate, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        view?.addConstraint(backButtonLeftAlign)
     }
     
     // swipes
@@ -154,22 +184,22 @@ class GamePlayScene: SKScene {
         let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(GamePlayScene.swipeUp(_:)))
         upSwipe.numberOfTouchesRequired = 1
         upSwipe.direction = UISwipeGestureRecognizerDirection.Up
-        view!.addGestureRecognizer(upSwipe)
+        trackingSurrogate.addGestureRecognizer(upSwipe)
         
         let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(GamePlayScene.swipeDown(_:)))
         downSwipe.numberOfTouchesRequired = 1
         downSwipe.direction = UISwipeGestureRecognizerDirection.Down
-        view!.addGestureRecognizer(downSwipe)
+        trackingSurrogate.addGestureRecognizer(downSwipe)
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(GamePlayScene.swipeLeft(_:)))
         leftSwipe.numberOfTouchesRequired = 1
         leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
-        view!.addGestureRecognizer(leftSwipe)
+        trackingSurrogate.addGestureRecognizer(leftSwipe)
         
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(GamePlayScene.swipeRight(_:)))
         rightSwipe.numberOfTouchesRequired = 1
         rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
-        view!.addGestureRecognizer(rightSwipe)
+        trackingSurrogate.addGestureRecognizer(rightSwipe)
     }
     
     override func update(currentTime: NSTimeInterval)
@@ -455,16 +485,10 @@ class GamePlayScene: SKScene {
     func doMenuButton()
     {
         audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
-        // slide from left, where we came from
-        let returnTransition = SKTransition.flipHorizontalWithDuration(0.5)
-        if returnAddr != nil
+
+        if delegateController != nil
         {
-            // we assume that the returnAddr needs no audioDelegate assigned
-            scene!.view!.presentScene(returnAddr!, transition: returnTransition)
-        } else {
-            let mmScene = MainMenuScene(size: view!.bounds.size)
-            mmScene.audioDelegate = audioDelegate
-            scene!.view!.presentScene(mmScene, transition: returnTransition)
+          delegateController!.returnToPuzzleSelection()
         }
     }
     

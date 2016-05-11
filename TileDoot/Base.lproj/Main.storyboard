@@ -231,8 +231,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.56470588239999997" green="0.67450980390000004" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="H0G-YP-B8P" kind="unwind" identifier="unwindToPuzzleMenu" unwindAction="unwindToPuzzleMenu:" id="360-2X-AeK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5Q-au-XqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="H0G-YP-B8P" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1406" y="1826"/>
         </scene>
@@ -254,7 +258,7 @@
                                     <segue destination="bJc-Ln-mSe" kind="embed" identifier="PuzzleSelectSegue" id="O1e-JX-j9d"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select Puzzle Set" textAlignment="center" lineBreakMode="clip" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="QdE-N0-UO3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select a Puzzle" textAlignment="center" lineBreakMode="clip" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="QdE-N0-UO3">
                                 <rect key="frame" x="115" y="20" width="370" height="94"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
