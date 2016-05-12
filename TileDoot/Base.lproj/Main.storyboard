@@ -60,7 +60,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playButtonPush:" destination="BV1-FR-VrT" eventType="touchUpInside" id="s7m-xQ-pKD"/>
-                                    <segue destination="GwG-f5-fBg" kind="show" id="P0A-F6-yuF"/>
+                                    <segue destination="GwG-f5-fBg" kind="presentation" modalTransitionStyle="flipHorizontal" id="P0A-F6-yuF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,7 +139,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playButtonPush:" destination="BV1-FR-VrT" eventType="touchUpInside" id="y7t-Xi-Hr2"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="V1m-Wb-c91"/>
+                                    <segue destination="PYY-Ip-CBY" kind="unwind" unwindAction="unwindAction:" id="Xn8-mW-pXR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -161,6 +161,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1l-8z-aNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PYY-Ip-CBY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="686" y="449"/>
         </scene>
@@ -285,7 +286,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playButtonPush:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YbB-D1-4BM"/>
-                                    <segue destination="0LN-BK-SmQ" kind="unwind" unwindAction="unwindAction:" id="ZWf-cx-gQo"/>
+                                    <segue destination="0LN-BK-SmQ" kind="unwind" unwindAction="unwindToSetMenu:" id="ZWf-cx-gQo"/>
                                 </connections>
                             </button>
                         </subviews>

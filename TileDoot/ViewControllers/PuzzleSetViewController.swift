@@ -94,16 +94,13 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
         self.performSegueWithIdentifier("PuzzleSetSelectedSegue", sender: self)
     }
     
-    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue)
-    {
-        // TODO: keep the audioEngine relevant
-        //audioEngine.playSFX(singleTap_key, typeKey: mono_key)
-    }
+//    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue)
+//    {
+//        // TODO: keep the audioEngine relevant
+//        //audioEngine.playSFX(singleTap_key, typeKey: mono_key)
+//    }
     
-    @IBAction func unwindToSetMenu(unwindSegue: UIStoryboardSegue)
-    {
-        //audioEngine.playSFX(singleTap_key, typeKey: mono_key)
-    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
