@@ -59,6 +59,12 @@ class GameViewController: UIViewController
             let destControl = segue.destinationViewController as! InfoViewController
             destControl.audioDelegate = self.audioEngine
         }
+        
+        if segue.identifier == "PlaySegue"
+        {
+            let playControl = segue.destinationViewController as! PuzzleSetDirectoryController
+            playControl.audioDelegate = self.audioEngine
+        }
     }
     
     override func prefersStatusBarHidden() -> Bool {

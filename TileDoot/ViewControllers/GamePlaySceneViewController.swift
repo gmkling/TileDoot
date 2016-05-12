@@ -15,6 +15,7 @@ class GamePlaySceneViewController: UIViewController {
     var curPuz : String = ""
     var curSet : String = ""
     var scene : GamePlayScene?
+    var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad()
     {
@@ -22,6 +23,7 @@ class GamePlaySceneViewController: UIViewController {
         let skView = self.view as! SKView
         let scene = GamePlayScene(size: view.frame.size, puzSet: puzzles!, puzID: curPuz)
         scene.delegateController = self
+        scene.audioDelegate = self.audioDelegate
         skView.presentScene(scene)
     }
 
@@ -41,6 +43,7 @@ class GamePlaySceneViewController: UIViewController {
         let skView = self.view as! SKView
         skView.presentScene(nil)
         scene = nil
+        audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
         
         // manually unwind the modal segue
         self.performSegueWithIdentifier("unwindToPuzzleMenu", sender: self)
@@ -53,6 +56,7 @@ class GamePlaySceneViewController: UIViewController {
         let skView = self.view as! SKView
         skView.presentScene(nil)
         scene = nil
+        audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
         
         self.performSegueWithIdentifier("unwindToSetMenu", sender: self)
     }

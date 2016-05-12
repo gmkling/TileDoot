@@ -14,6 +14,7 @@ class PuzzleCollectionViewController: UICollectionViewController
 {
     var puzzleData : PuzzleSet!
     var puzzleSelected = 0
+    var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,7 @@ class PuzzleCollectionViewController: UICollectionViewController
             let thePuzzle = self.puzzleData.getPuzzle(index+1)
             vc!.curPuz = (thePuzzle!.puzzleID)
             vc!.curSet = puzzleData.name
+            vc!.audioDelegate = self.audioDelegate
             print("Added Puzzle set named \(vc!.curPuz) to GamePlayView")
         }
     }
@@ -95,6 +97,7 @@ class PuzzleCollectionViewController: UICollectionViewController
         // use the selected puzzle to present a gamePlayView
         print("Selected Puzzle: \(index+1)")
         puzzleSelected = index + 1
+        audioDelegate?.playSFX(singleTap_key, typeKey: stereo_key)
     }
 
 }

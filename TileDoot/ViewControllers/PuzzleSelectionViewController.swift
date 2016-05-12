@@ -13,6 +13,7 @@ class PuzzleSelectionViewController: UIViewController {
     @IBOutlet var selectionTitle: UILabel!
     @IBOutlet var selectionContainer: UIView!
     var puzzleData : PuzzleSet!
+    var audioDelegate : TD_AudioPlayer?
     
     func setPuzzleSet(newSet: PuzzleSet)
     {
@@ -41,13 +42,14 @@ class PuzzleSelectionViewController: UIViewController {
         {
             let vc = segue.destinationViewController as? PuzzleCollectionViewController
             vc!.puzzleData = self.puzzleData
+            vc!.audioDelegate = self.audioDelegate
             print("Added Puzzle set named \(puzzleData.name) to selectionView")
         }
     }
     
     @IBAction func unwindToPuzzleMenu(segue: UIStoryboardSegue)
     {
-        
+        audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
     }
     
     /*

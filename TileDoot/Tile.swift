@@ -216,7 +216,7 @@ struct Coordinate {
 
 class Tile {
     
-    var parent: Tile?
+    weak var parent: Tile?
     var color: Color
     var type: TileType
     var rank : Int

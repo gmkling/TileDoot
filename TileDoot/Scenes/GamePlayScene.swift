@@ -81,7 +81,8 @@ class GamePlayScene: SKScene {
         
         // let trackingPos = convertPointToView(gameViewPos)
         let trackingPos = gameViewPos
-        trackingSurrogate.frame = CGRectMake(trackingPos.x, trackingPos.y, testSize.width, testSize.height)
+        // make the tracking frame slightly larger to allow for swipes to start/finish on the margin
+        trackingSurrogate.frame = CGRectMake(trackingPos.x, trackingPos.y, testSize.width*1.1, testSize.height*1.1)
         
         // hamburger button at top left
         backButton = UIButton(type: .System)
@@ -96,17 +97,13 @@ class GamePlayScene: SKScene {
         backButton.contentVerticalAlignment = .Center
         backButton.tintColor = UIColor.clearColor()
         // create the frame for the back button, in SK coords it is TLeft(0,0), UI is BLeft(0, 0)
-        // setScale(littleButtonScale*2.0)
-        // backButton.position = CGPoint(x: gridSize*1.5, y: size.height-size.height*0.05)
         backButton.frame = CGRectMake(gameViewPos.x, gridSize*1.5, littleButtonSize*1.667, littleButtonSize)
-        //backButton.translatesAutoresizingMaskIntoConstraints = false
         
         // Label
         puzzleSetName.text = puzzles.name
         puzzleName.text = puzzleData.puzzleID
         
         puzzleSetName.font = UIFont(name: "futura-medium", size: 16.0)
-        //puzzleSetName.position = CGPointMake(size.width*0.25, self.frame.height - gridSize*1.5)
         puzzleSetName.frame = CGRectMake(size.width*0.25, gridSize*1.5, littleButtonSize*1.667, littleButtonSize)
         puzzleSetName.textAlignment = .Center
         puzzleSetName.numberOfLines = 1
@@ -114,7 +111,6 @@ class GamePlayScene: SKScene {
         puzzleSetName.textColor = UIColor.whiteColor()
         
         puzzleName.font = UIFont(name: "futura-medium", size: 16.0)
-        //puzzleName.position = CGPointMake(size.width*0.75, self.frame.height - gridSize*1.5)
         puzzleName.frame = CGRectMake(size.width*0.75, gridSize*1.5, littleButtonSize*1.667, littleButtonSize)
         puzzleName.textAlignment = .Center
         puzzleName.numberOfLines = 1

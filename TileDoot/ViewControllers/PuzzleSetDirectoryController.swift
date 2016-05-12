@@ -11,6 +11,7 @@ import UIKit
 class PuzzleSetDirectoryController: UIViewController {
 
     @IBOutlet var directoryTitle: UILabel!
+    var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,17 @@ class PuzzleSetDirectoryController: UIViewController {
     
     @IBAction func unwindToSetMenu(unwindSegue: UIStoryboardSegue)
     {
-        //audioEngine.playSFX(singleTap_key, typeKey: mono_key)
+        audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "PuzzleSetSegue"
+        {
+            let puzzleSetControl = segue.destinationViewController as! PuzzleSetViewController
+            puzzleSetControl.audioDelegate = self.audioDelegate
+        }
+    }
     /*
     // MARK: - Navigation
 

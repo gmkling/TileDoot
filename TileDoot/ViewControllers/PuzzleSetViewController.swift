@@ -15,6 +15,7 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
     //var collectionView : UICollectionView!
     var puzzleData : [PuzzleSet?] = []
     var selectedIndex = 0
+    var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad()
     {
@@ -91,6 +92,7 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
     {
         // hand off the index for the selected Puzzle
         selectedIndex = (indexPath.section*2)+indexPath.row
+        audioDelegate?.playSFX(singleTap_key, typeKey: stereo_key)
         self.performSegueWithIdentifier("PuzzleSetSelectedSegue", sender: self)
     }
     
@@ -108,6 +110,7 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
         {
             let vc = segue.destinationViewController as? PuzzleSelectionViewController
             vc!.puzzleData = self.puzzleData[selectedIndex]
+            vc!.audioDelegate = self.audioDelegate
             print("Added Puzzle set named \(vc!.puzzleData.name) to selectionView")
         }
     }

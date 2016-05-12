@@ -55,12 +55,7 @@ class PuzzleSet
             return
         }
     }
-    
-    deinit
-    {
-        //puzzleList.removeAll()
-        puzzleSetStrings.removeAll()
-    }
+
     
     func loadPuzzleSetFile(fileInBundle: String) ->Bool
     {

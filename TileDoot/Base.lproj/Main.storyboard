@@ -60,7 +60,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playButtonPush:" destination="BV1-FR-VrT" eventType="touchUpInside" id="s7m-xQ-pKD"/>
-                                    <segue destination="GwG-f5-fBg" kind="presentation" modalTransitionStyle="flipHorizontal" id="P0A-F6-yuF"/>
+                                    <segue destination="GwG-f5-fBg" kind="presentation" identifier="PlaySegue" modalTransitionStyle="flipHorizontal" id="P0A-F6-yuF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -110,7 +110,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="j66-c0-nvd" kind="embed" id="Whq-Fb-G37"/>
+                                    <segue destination="j66-c0-nvd" kind="embed" identifier="PuzzleSetSegue" id="Whq-Fb-G37"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select Puzzle Set" textAlignment="center" lineBreakMode="clip" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="EKd-pr-TjS">
