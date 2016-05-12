@@ -13,9 +13,11 @@ class GamePlaySceneViewController: UIViewController {
     
     var puzzles : PuzzleSet?
     var curPuz : String = ""
+    var curSet : String = ""
     var scene : GamePlayScene?
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         let skView = self.view as! SKView
         let scene = GamePlayScene(size: view.frame.size, puzSet: puzzles!, puzID: curPuz)
@@ -34,6 +36,7 @@ class GamePlaySceneViewController: UIViewController {
     
     func returnToPuzzleSelection()
     {
+        // TODO: Effective cleanup
         // clear the scene and delete
         let skView = self.view as! SKView
         skView.presentScene(nil)
@@ -41,6 +44,17 @@ class GamePlaySceneViewController: UIViewController {
         
         // manually unwind the modal segue
         self.performSegueWithIdentifier("unwindToPuzzleMenu", sender: self)
+    }
+    
+    func returnToPuzzleSetScreen()
+    {
+        // TODO: Effective cleanup
+        // clear the scene and delete
+        let skView = self.view as! SKView
+        skView.presentScene(nil)
+        scene = nil
+        
+        self.performSegueWithIdentifier("unwindToSetMenu", sender: self)
     }
 
     /*

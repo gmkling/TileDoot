@@ -233,6 +233,7 @@
                     </view>
                     <connections>
                         <segue destination="H0G-YP-B8P" kind="unwind" identifier="unwindToPuzzleMenu" unwindAction="unwindToPuzzleMenu:" id="360-2X-AeK"/>
+                        <segue destination="H0G-YP-B8P" kind="unwind" identifier="unwindToSetMenu" unwindAction="unwindToSetMenu:" id="ZSh-RO-SLj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5Q-au-XqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -259,7 +260,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select a Puzzle" textAlignment="center" lineBreakMode="clip" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="QdE-N0-UO3">
-                                <rect key="frame" x="115" y="20" width="370" height="94"/>
+                                <rect key="frame" x="115" y="20" width="370" height="41"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -347,7 +348,6 @@
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="titleLabel" destination="4E7-vu-xz6" id="Pg1-mB-DQI"/>
-                                    <segue destination="QIz-CC-VWW" kind="presentation" identifier="PuzzleSetSelectedSegue" id="RIq-Ba-84f"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -356,6 +356,9 @@
                             <outlet property="delegate" destination="j66-c0-nvd" id="tci-A7-EEk"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <segue destination="QIz-CC-VWW" kind="presentation" identifier="PuzzleSetSelectedSegue" modalTransitionStyle="coverVertical" id="ka4-jd-jVi"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n3A-Ml-4Bn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

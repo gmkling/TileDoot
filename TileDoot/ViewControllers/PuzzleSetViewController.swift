@@ -91,11 +91,17 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
     {
         // hand off the index for the selected Puzzle
         selectedIndex = (indexPath.section*2)+indexPath.row
+        self.performSegueWithIdentifier("PuzzleSetSelectedSegue", sender: self)
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue)
     {
         // TODO: keep the audioEngine relevant
+        //audioEngine.playSFX(singleTap_key, typeKey: mono_key)
+    }
+    
+    @IBAction func unwindToSetMenu(unwindSegue: UIStoryboardSegue)
+    {
         //audioEngine.playSFX(singleTap_key, typeKey: mono_key)
     }
     

@@ -79,6 +79,7 @@ class PuzzleCollectionViewController: UICollectionViewController
             vc!.puzzles = self.puzzleData
             let thePuzzle = self.puzzleData.getPuzzle(index+1)
             vc!.curPuz = (thePuzzle!.puzzleID)
+            vc!.curSet = puzzleData.name
             print("Added Puzzle set named \(vc!.curPuz) to GamePlayView")
         }
     }

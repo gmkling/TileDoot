@@ -484,11 +484,18 @@ class GamePlayScene: SKScene {
     
     func doMenuButton()
     {
+        // TODO: Effective cleanup
         audioDelegate?.playSFX(pileTap_key, typeKey: stereo_key)
-
+        
+        if puzzleData.puzzleNumber+1 > puzzles.nPuzzles
+        {
+            delegateController!.returnToPuzzleSetScreen()
+            return
+        }
+        
         if delegateController != nil
         {
-          delegateController!.returnToPuzzleSelection()
+            delegateController!.returnToPuzzleSelection()
         }
     }
     
