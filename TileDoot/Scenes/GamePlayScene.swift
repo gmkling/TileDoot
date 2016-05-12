@@ -15,7 +15,7 @@ class GamePlayScene: SKScene {
     var puzzles : PuzzleSet
     //var curPuz : Puzzle
     //var curPuzID : String
-    var delegateController : GamePlaySceneViewController?
+    weak var delegateController : GamePlaySceneViewController?
     var returnAddr : SKScene?
     var gameView : GameBoardView
     var puzzleSetName = UILabel() //fontNamed: "futura-medium")
@@ -34,7 +34,7 @@ class GamePlayScene: SKScene {
     var lastTime : NSTimeInterval = 0.0
     var thisTime : NSTimeInterval = 0.0
     
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     init(size: CGSize, puzSet: PuzzleSet, puzID: String)
     {

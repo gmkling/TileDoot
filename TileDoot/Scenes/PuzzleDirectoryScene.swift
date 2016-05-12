@@ -11,7 +11,7 @@ import SpriteKit
 
 class PuzzleDirectoryScene: SKScene {
     
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     var puzzleSelect : PuzzleSetView?
     
     override func didMoveToView(view: SKView)

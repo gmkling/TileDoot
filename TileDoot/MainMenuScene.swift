@@ -14,7 +14,7 @@ class MainMenuScene: SKScene {
     let mainTitle = SKLabelNode(fontNamed:"Futura-medium")
     var labelBackground = SKSpriteNode()
     
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     override func didMoveToView(view: SKView)
     {

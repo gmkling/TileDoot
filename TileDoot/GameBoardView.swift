@@ -21,11 +21,11 @@ class GameBoardView : SKNode , GameBoardProtocol
     var background = SKShapeNode()
     var tiles : SpriteBoard
     var moves : [Turn]
-    var game : GamePlayScene?
+    weak var game : GamePlayScene?
     var tilesDooted = 0
     var puzzleObj : Puzzle
     
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     // grid
     var gridPath : CGMutablePath

@@ -13,7 +13,7 @@ class PuzzleSelectionViewController: UIViewController {
     @IBOutlet var selectionTitle: UILabel!
     @IBOutlet var selectionContainer: UIView!
     var puzzleData : PuzzleSet!
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     func setPuzzleSet(newSet: PuzzleSet)
     {

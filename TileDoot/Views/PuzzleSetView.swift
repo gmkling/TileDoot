@@ -20,7 +20,7 @@ class PuzzleSetView: SKNode
     var puzzlePages : [PuzzleSetPage]
     var nPages : Float
     var curPage : Float
-    var audioDelegate: TD_AudioPlayer?
+    weak var audioDelegate: TD_AudioPlayer?
     var gameScene : GamePlayScene?
     
     init(inPuzzles: PuzzleSet, viewSize: CGSize)

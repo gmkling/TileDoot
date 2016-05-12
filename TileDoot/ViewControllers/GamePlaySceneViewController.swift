@@ -14,8 +14,8 @@ class GamePlaySceneViewController: UIViewController {
     var puzzles : PuzzleSet?
     var curPuz : String = ""
     var curSet : String = ""
-    var scene : GamePlayScene?
-    var audioDelegate : TD_AudioPlayer?
+    weak var scene : GamePlayScene?
+    weak var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad()
     {

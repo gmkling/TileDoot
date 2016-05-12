@@ -21,7 +21,7 @@ class InfoScene: SKScene {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     override func didMoveToView(view: SKView)
     {

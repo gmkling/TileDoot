@@ -11,7 +11,7 @@ import UIKit
 class PuzzleSetDirectoryController: UIViewController {
 
     @IBOutlet var directoryTitle: UILabel!
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()

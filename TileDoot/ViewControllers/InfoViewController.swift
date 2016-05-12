@@ -18,7 +18,7 @@ class InfoViewController: UIViewController {
     @IBOutlet var Music_Switch: UISwitch!
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()

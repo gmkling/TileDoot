@@ -15,7 +15,7 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
     //var collectionView : UICollectionView!
     var puzzleData : [PuzzleSet?] = []
     var selectedIndex = 0
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad()
     {

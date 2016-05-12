@@ -14,7 +14,7 @@ class PuzzleCollectionViewController: UICollectionViewController
 {
     var puzzleData : PuzzleSet!
     var puzzleSelected = 0
-    var audioDelegate : TD_AudioPlayer?
+    weak var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
