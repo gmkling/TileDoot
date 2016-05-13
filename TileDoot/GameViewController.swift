@@ -15,6 +15,11 @@ class GameViewController: UIViewController
     
     @IBOutlet var playButton: UIButton!
     @IBOutlet var label: UILabel!
+    
+    override func viewDidLoad()
+    {
+        preloadTileTextures()
+    }
 
     override func shouldAutorotate() -> Bool {
         return true

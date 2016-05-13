@@ -9,6 +9,7 @@
 import Foundation
 import CoreGraphics
 import UIKit
+import SpriteKit
 
 // for fun
 extension Array {
@@ -72,7 +73,6 @@ var typeChars : [TileType : Character] = [
     TileType.emptyTile : "."
 ]
 
-// hard coding this because I want to finish this century
 
 var blueFiles = [
     "Blue1_test.png",
@@ -82,6 +82,8 @@ var blueFiles = [
     "Blue5_test.png"
     ]
 
+var blueTextures = [SKTexture]()
+
 var redFiles = [
     "Red1_test.png",
     "Red2_test.png",
@@ -89,6 +91,8 @@ var redFiles = [
     "Red4_test.png",
     "Red5_test.png"
 ]
+
+var redTextures = [SKTexture]()
 
 var yellowFiles = [
     "Yellow1_test.png",
@@ -98,6 +102,8 @@ var yellowFiles = [
     "Yellow5_test.png"
     ]
 
+var yellowTextures = [SKTexture]()
+
 var orangeFiles = [
     "Orange1_test.png",
     "Orange2_test.png",
@@ -105,6 +111,9 @@ var orangeFiles = [
     "Orange4_test.png",
     "Orange5_test.png"
     ]
+
+var orangeTextures = [SKTexture]()
+
 var lGreenFiles = [
     "LGreen1_test.png",
     "LGreen2_test.png",
@@ -112,6 +121,7 @@ var lGreenFiles = [
     "LGreen4_test.png",
     "LGreen5_test.png"
     ]
+var lGreenTextures = [SKTexture]()
 
 var dGreenFiles = [
     "DGreen1_test.png",
@@ -120,6 +130,7 @@ var dGreenFiles = [
     "DGreen4_test.png",
     "DGreen5_test.png"
     ]
+var dGreenTextures = [SKTexture]()
 
 var purpleFiles = [
     "Purple1_test.png",
@@ -128,6 +139,13 @@ var purpleFiles = [
     "Purple4_test.png",
     "Purple5_test.png"
 ]
+var purpleTextures = [SKTexture]()
+
+var stopFiles = [
+    "StopTileTest3.png",
+    "StopTileTest2.png"
+]
+var stopTextures = [SKTexture]()
 
 var tileNames = [
     "Blue1_test.png",
@@ -166,6 +184,79 @@ var tileNames = [
     "Purple4_test.png",
     "Purple5_test.png"
 ]
+
+
+func preloadTileTextures()
+{
+    for name in blueFiles
+    {
+        blueTextures.append(SKTexture(imageNamed: name))
+    }
+    
+    for name in redFiles
+    {
+        redTextures.append(SKTexture(imageNamed: name))
+    }
+    
+    for name in yellowFiles
+    {
+        yellowTextures.append(SKTexture(imageNamed: name))
+    }
+    
+    for name in orangeFiles
+    {
+        orangeTextures.append(SKTexture(imageNamed: name))
+    }
+    
+    for name in lGreenFiles
+    {
+        lGreenTextures.append(SKTexture(imageNamed: name))
+    }
+    
+    for name in dGreenFiles
+    {
+        dGreenTextures.append(SKTexture(imageNamed: name))
+    }
+    
+    for name in purpleFiles
+    {
+        purpleTextures.append(SKTexture(imageNamed: name))
+    }
+    
+    for name in stopFiles
+    {
+        stopTextures.append(SKTexture(imageNamed: name))
+    }
+}
+
+func textureForColor(inColor: Color) -> SKTexture
+{
+    switch inColor
+    {
+    case Color.kBlue:
+        return blueTextures.randomItem()
+    case Color.kRed:
+        return redTextures.randomItem()
+    case Color.kYellow:
+        return yellowTextures.randomItem()
+    case Color.kOrange:
+        return orangeTextures.randomItem()
+    case Color.kLightGreen:
+        return lGreenTextures.randomItem()
+    case Color.kGreen:
+        return dGreenTextures.randomItem()
+    case Color.kPurple:
+        return purpleTextures.randomItem()
+    default:
+        // a random ugly tile as a default
+        return SKTexture(imageNamed: "BlueOff.png")
+    }
+}
+
+func randomTextureForStopTile() -> SKTexture
+{
+    return stopTextures.randomItem()
+}
 
 func filenameForColor(inColor: Color) ->String
 {

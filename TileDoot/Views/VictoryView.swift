@@ -19,7 +19,7 @@ class VictoryView : SKNode
     var tiles : [SKSpriteNode]
     var scoring = SKLabelNode(fontNamed: "futura-medium")
     var background = SKShapeNode()
-    var gamePtr: GamePlayScene?
+    weak var gamePtr: GamePlayScene?
     var dootedTiles : Int
     
     // buttons
@@ -27,9 +27,9 @@ class VictoryView : SKNode
     var tileXStride : CGFloat
     var tileYPos : CGFloat
     var buttonY : CGFloat
-    var puzMenuButton = TDButton()
-    var replayButton = TDButton()
-    var contButton = TDButton()
+    var puzMenuButton : TDButton?
+    var replayButton : TDButton?
+    var contButton : TDButton?
     
     init(size: CGSize, stars: Int, moves: Int, par: Int, tilesDooted: Int, game: GamePlayScene?)
     {
@@ -73,7 +73,7 @@ class VictoryView : SKNode
         
         for i in 0...2
         {
-            let tempTile = SKSpriteNode(imageNamed: filenameForColor(starFile[i]))
+            let tempTile = SKSpriteNode(texture: textureForColor(starFile[i]))
             tempTile.position = CGPointMake(tileXStart+tileXStride*CGFloat(i), tileYPos)
             tempTile.setScale(bigButtonScale)
             tiles.append(tempTile)
@@ -123,17 +123,17 @@ class VictoryView : SKNode
         let bigButtonSize = 2.0*gridSize
         let bigButtonScale = (bigButtonSize/500.0)
         
-        puzMenuButton.position = CGPointMake(tileXStart, buttonY)
-        replayButton.position = CGPointMake(tileXStart+tileXStride, buttonY)
-        contButton.position = CGPointMake(tileXStart+(tileXStride*2.0), buttonY)
+        puzMenuButton!.position = CGPointMake(tileXStart, buttonY)
+        replayButton!.position = CGPointMake(tileXStart+tileXStride, buttonY)
+        contButton!.position = CGPointMake(tileXStart+(tileXStride*2.0), buttonY)
         
-        puzMenuButton.setScale(bigButtonScale)
-        replayButton.setScale(bigButtonScale)
-        contButton.setScale(bigButtonScale)
+        puzMenuButton!.setScale(bigButtonScale)
+        replayButton!.setScale(bigButtonScale)
+        contButton!.setScale(bigButtonScale)
         
-        self.addChild(puzMenuButton)
-        self.addChild(replayButton)
-        self.addChild(contButton)
+        self.addChild(puzMenuButton!)
+        self.addChild(replayButton!)
+        self.addChild(contButton!)
         
     }
     

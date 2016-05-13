@@ -247,7 +247,7 @@ class GamePlayScene: SKScene {
                             let fadeOutHUD = SKAction.fadeOutWithDuration(0.5)
                             
                             HUD.runAction(fadeOutHUD)
-                            gameView.runAction(SKAction.runBlock({self.gameView.runVictory()}))
+                            gameView.runAction(SKAction.runBlock({[unowned self] in self.gameView.runVictory()}))
                         }
                         
                         let nextAction = convertActionToSKAction(action)
@@ -322,7 +322,7 @@ class GamePlayScene: SKScene {
             // TODO: fancy Tile adding animation instead of this
             let fadeInAction = SKAction.fadeInWithDuration(0.1)
             let waitAction = SKAction.waitForDuration(0.5, withRange: 0.25)
-            let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)})
+            let audioAction = SKAction.runBlock({[unowned self] in self.audioDelegate?.playSFX(singleTap_key, typeKey: mono_key)})
             let finishAction = SKAction.runBlock({action.markComplete()})
             let fadeInSeq = SKAction.sequence([waitAction, fadeInAction, audioAction, finishAction])
             
@@ -344,7 +344,7 @@ class GamePlayScene: SKScene {
             tempTile.enqueueAction(fadeInSeq)
             
             // will the reference hang around here so we can package and defer it?
-            return SKAction.runBlock({self.gameView.addTileSprite(tileAdd.target!, tile: tempTile)})
+            return SKAction.runBlock({[unowned self] in self.gameView.addTileSprite(tileAdd.target!, tile: tempTile)})
         }
         
         if action is MoveAction
@@ -358,17 +358,18 @@ class GamePlayScene: SKScene {
             // create an animation/action for the sprite
             let moveAction = SKAction.moveTo(toPos, duration: 0.25)
             let tileSprite = gameView.tiles[fromLoc!.x, fromLoc!.y]
-            let audioAction = SKAction.runBlock({self.audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)})
+            let audioAction = SKAction.runBlock({[unowned self] in self.audioDelegate?.playSFX(woodSlide_key, typeKey: stereo_key)})
             let finishAction = SKAction.runBlock({
                 action.markComplete()
             })
             let actionBundle = SKAction.sequence([audioAction, moveAction, finishAction])
             
             let moveBlock = {
-            tileSprite.enqueueAction(actionBundle)
-            // also change the grid position
-            self.gameView.tiles[toLoc.x, toLoc.y] = tileSprite
-            tileSprite.executeActions()
+                [unowned self] in
+                tileSprite.enqueueAction(actionBundle)
+                // also change the grid position
+                self.gameView.tiles[toLoc.x, toLoc.y] = tileSprite
+                tileSprite.executeActions()
             }
             
             return SKAction.runBlock(moveBlock)
@@ -382,10 +383,10 @@ class GamePlayScene: SKScene {
             let loc = delAction.target
             
             
-            let deleteAudio = SKAction.runBlock({self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
+            let deleteAudio = SKAction.runBlock({[unowned self] in self.audioDelegate?.playSFX(pileTap_key, typeKey: mono_key)})
             let fadeAction = SKAction.fadeOutWithDuration(0.25)
             let deleteAction = SKAction.removeFromParent()
-            let doneAction = SKAction.runBlock({action.markComplete(); self.HUD.addTile()})
+            let doneAction = SKAction.runBlock({[unowned self] in action.markComplete(); self.HUD.addTile()})
             
             // set the deleteMark - when the move action completes it will delete.
             // somehow this bit of genius delete stationary tiles - WHY?

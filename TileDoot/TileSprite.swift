@@ -23,7 +23,7 @@ class TileSprite : SKSpriteNode
     {
         if actionQ.count == 0 { return }
         
-        self.runAction(actionQ.removeFirst(), completion: {self.executeNext()})
+        self.runAction(actionQ.removeFirst(), completion: { [unowned self] in self.executeNext()})
     }
     
     func bundleActionQ()
@@ -47,6 +47,7 @@ class TileSprite : SKSpriteNode
         if actionQ.count > 1 { bundleActionQ() }
         
         self.runAction(actionQ[0], completion: {
+            [unowned self] in
             if self.deleteMark
             {
                 let delay = SKAction.waitForDuration(0.25)

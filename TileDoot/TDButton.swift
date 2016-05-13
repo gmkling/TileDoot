@@ -29,6 +29,7 @@ class TDButton : SKNode
     {
         self.defaultImage = SKSpriteNode()
         self.selectedImage = SKSpriteNode()
+        self.disabledImage = SKSpriteNode()
         
         selectedImage.hidden = true
         labelString = ""
@@ -39,14 +40,9 @@ class TDButton : SKNode
         action = {}
         
         super.init()
-        
-//        buttonLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-//        buttonLabel.zPosition = 1.0
+
         userInteractionEnabled = true
-//        addChild(defaultImage)
-//        addChild(selectedImage)
-//        addChild(buttonLabel)
-        
+    
     }
     
     init(defaultImageName: String, selectImageName: String, buttonAction: () -> Void, disabledImageName: String?, labelStr: String?)
@@ -193,7 +189,7 @@ class TDToggleButton : TDButton
         {
             let location: CGPoint = touch.locationInNode(self)
             
-            if defaultImage.containsPoint(location) 
+            if defaultImage.containsPoint(location)
             {
                 selectedImage.hidden = isEnabled
                 defaultImage.hidden = !isEnabled

@@ -78,6 +78,7 @@ class AddAction : TileAction
 {
     var color : Color
     var type : TileType
+    var texture : SKTexture?
     var tileFile = ""
     var pos : CGPoint
     
@@ -90,15 +91,17 @@ class AddAction : TileAction
         switch tile.type {
         case .colorTile:
             tileFile = filenameForColor(tile.color)
+            texture = textureForColor(tile.color)
         case .barrierTile:
             tileFile = "StopTileTest3.png"
+            texture = randomTextureForStopTile()
         case .emptyTile:
             //tileFile = ""
             break
         case .nullTile:
             break
-//        default: // the impossible default
-//            print("Unrecognized TileType: \(tile.type)")
+       default: // the impossible default
+            print("Unrecognized TileType: \(tile.type)")
         }
         
         super.init(tile: loc)
@@ -106,8 +109,8 @@ class AddAction : TileAction
     
     func getTileSprite() -> TileSprite
     {
-        let tempT = TileSprite(imageNamed: tileFile)
-        
+        //let tempT = TileSprite(imageNamed: tileFile)
+        let tempT = TileSprite(texture: texture)
         tempT.position = self.pos
         
         return tempT
