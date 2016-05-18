@@ -185,6 +185,7 @@ var tileNames = [
     "Purple5_test.png"
 ]
 
+// TODO: Error checking?
 
 func preloadTileTextures()
 {

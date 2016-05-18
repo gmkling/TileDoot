@@ -32,7 +32,7 @@ class GameBoardView : SKNode , GameBoardProtocol
     var gridLines = SKShapeNode()
     
     // victory screen
-    var victoryScreen : VictoryView
+    weak var victoryScreen : VictoryView?
     
     
     
@@ -56,7 +56,7 @@ class GameBoardView : SKNode , GameBoardProtocol
             self.game = game!
         }
         
-        victoryScreen = VictoryView(size: boardSize, stars: 2, moves: 0, par: 0, tilesDooted: 0, game: game)
+        //victoryScreen = VictoryView(size: boardSize, stars: 2, moves: 0, par: 0, tilesDooted: 0, game: game)
         puzzleObj = puzzle
         super.init()
 
@@ -136,11 +136,11 @@ class GameBoardView : SKNode , GameBoardProtocol
         saveProgress(self.puzzleObj.puzzleID, puzStatus: curStatus, nMoves: netMoves, nStars: stars, nTiles: self.tilesDooted)
         
         victoryScreen = VictoryView(size: self.size, stars: stars, moves: netMoves, par: par, tilesDooted: self.tilesDooted, game: self.game)
-        victoryScreen.alpha = 0.0
+        victoryScreen!.alpha = 0.0
         
-        self.addChild(victoryScreen)
+        self.addChild(victoryScreen!)
         self.gridLines.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.025))
-        victoryScreen.runAction(SKAction.fadeInWithDuration(0.5))
+        victoryScreen!.runAction(SKAction.fadeInWithDuration(0.5))
     }
 
     required init?(coder aDecoder: NSCoder) {

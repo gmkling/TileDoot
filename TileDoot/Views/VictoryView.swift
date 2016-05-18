@@ -149,6 +149,10 @@ class VictoryView : SKNode
     
     func doForwardButton()
     {
+        let fadeAction = SKAction.fadeOutWithDuration(1.0)
+        let removeAction = SKAction.removeFromParent()
+        self.removeAllChildren()
+        self.runAction(SKAction.sequence([fadeAction, removeAction]))
         gamePtr?.nextPuzzle()
     }
     
