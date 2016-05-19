@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -374,152 +373,171 @@
                         <viewControllerLayoutGuide type="bottom" id="zqs-Jk-nzo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dv6-zp-vZR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TileDoot" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZC-fE-CPJ">
-                                <rect key="frame" x="247" y="82" width="106" height="37"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TileSheetSample.png" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-cR-kqf">
-                                <rect key="frame" x="180" y="127" width="240" height="128"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ALN-pC-Obc">
+                                <rect key="frame" x="20" y="156" width="374" height="436"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xJK-Xr-uAG">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="278"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="TileDoot" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IZC-fE-CPJ">
+                                                <rect key="frame" x="119" y="0.0" width="136" height="47"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="36"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TileSheetSample.png" translatesAutoresizingMaskIntoConstraints="NO" id="Udc-cR-kqf">
+                                                <rect key="frame" x="40" y="55" width="294" height="165"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Udc-cR-kqf" secondAttribute="height" multiplier="16:9" id="VRw-s5-Vwj"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Game By " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p0L-RF-HGx">
+                                                <rect key="frame" x="142" y="228" width="90" height="21"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garry Kling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9j-DY-8fH">
+                                                <rect key="frame" x="144" y="257" width="87" height="21"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Udc-cR-kqf" firstAttribute="centerX" secondItem="xJK-Xr-uAG" secondAttribute="centerX" id="7Z0-GV-TNn"/>
+                                            <constraint firstItem="Udc-cR-kqf" firstAttribute="leading" secondItem="xJK-Xr-uAG" secondAttribute="leading" constant="40" id="BFv-f1-7Ia"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Cgf-G7-Lwc">
+                                        <rect key="frame" x="147" y="286" width="80" height="20"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-WC-eEZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="72D-2P-iB7"/>
+                                                    <constraint firstAttribute="height" constant="20" id="QzT-9G-Z19"/>
+                                                </constraints>
+                                                <state key="normal" title="Web_Button" backgroundImage="web-white-128px.png"/>
+                                                <state key="selected" backgroundImage="web-black-128px.png"/>
+                                                <connections>
+                                                    <action selector="doWeb_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="cJO-oL-4NM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhY-2J-guC">
+                                                <rect key="frame" x="29" y="0.0" width="22" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="22" id="cmI-De-g1U"/>
+                                                    <constraint firstAttribute="height" constant="20" id="iTp-IG-2zv"/>
+                                                </constraints>
+                                                <state key="normal" title="LI_Button" backgroundImage="In-White-128px-R.png"/>
+                                                <state key="selected" backgroundImage="In-Black-128px-R.png"/>
+                                                <connections>
+                                                    <action selector="doLI_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="d7w-tf-mUx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMi-78-iyp">
+                                                <rect key="frame" x="60" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="7j5-9f-COF"/>
+                                                    <constraint firstAttribute="width" constant="20" id="XQ0-iZ-Auj"/>
+                                                </constraints>
+                                                <state key="normal" title="GH_Button" backgroundImage="GitHub-Mark-Light-120px-plus.png"/>
+                                                <state key="selected" backgroundImage="GitHub-Mark-120px-plus.png"/>
+                                                <connections>
+                                                    <action selector="doGit_Button" destination="PWG-wa-CHi" eventType="touchUpInside" id="lO9-ek-6B4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button autoresizesSubviews="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f5-im-775">
+                                        <rect key="frame" x="147" y="314" width="80" height="44"/>
+                                        <color key="backgroundColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="H9t-Sj-c8c" kind="unwind" unwindAction="unwindAction:" id="YuZ-VG-TyN"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lyq-ci-e3W">
+                                        <rect key="frame" x="110" y="366" width="155" height="70"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YHk-xU-ACy">
+                                                <rect key="frame" x="0.0" y="0.0" width="155" height="31"/>
+                                                <subviews>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZA1-BY-Sll">
+                                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <action selector="SFX_toggle:" destination="PWG-wa-CHi" eventType="valueChanged" id="qX0-9y-0fT"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5n-as-NhY">
+                                                        <rect key="frame" x="57" y="0.0" width="98" height="31"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PGM-0C-0sH">
+                                                <rect key="frame" x="0.0" y="39" width="100" height="31"/>
+                                                <subviews>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zfg-7D-9hE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <action selector="Music_toggle:" destination="PWG-wa-CHi" eventType="touchUpInside" id="D3G-S4-x05"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp6-BX-L17">
+                                                        <rect key="frame" x="57" y="0.0" width="43" height="31"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="KHd-yj-6M2"/>
-                                    <constraint firstAttribute="width" constant="240" id="nQV-iK-eTg"/>
+                                    <constraint firstItem="4f5-im-775" firstAttribute="width" secondItem="Cgf-G7-Lwc" secondAttribute="width" id="gGC-Ja-I3r"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Game By " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0L-RF-HGx">
-                                <rect key="frame" x="255" y="271" width="90" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garry Kling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9j-DY-8fH">
-                                <rect key="frame" x="257" y="300" width="87" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhY-2J-guC">
-                                <rect key="frame" x="289" y="337" width="22" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="cmI-De-g1U"/>
-                                    <constraint firstAttribute="height" constant="20" id="iTp-IG-2zv"/>
-                                </constraints>
-                                <state key="normal" title="LI_Button" backgroundImage="In-White-128px-R.png"/>
-                                <state key="selected" backgroundImage="In-Black-128px-R.png"/>
-                                <connections>
-                                    <action selector="doLI_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="d7w-tf-mUx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-WC-eEZ">
-                                <rect key="frame" x="256" y="337" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="72D-2P-iB7"/>
-                                    <constraint firstAttribute="height" constant="20" id="QzT-9G-Z19"/>
-                                </constraints>
-                                <state key="normal" title="Web_Button" backgroundImage="web-white-128px.png"/>
-                                <state key="selected" backgroundImage="web-black-128px.png"/>
-                                <connections>
-                                    <action selector="doWeb_Button:" destination="PWG-wa-CHi" eventType="touchUpInside" id="cJO-oL-4NM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMi-78-iyp">
-                                <rect key="frame" x="324" y="337" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="7j5-9f-COF"/>
-                                    <constraint firstAttribute="width" constant="20" id="XQ0-iZ-Auj"/>
-                                </constraints>
-                                <state key="normal" title="GH_Button" backgroundImage="GitHub-Mark-Light-120px-plus.png"/>
-                                <state key="selected" backgroundImage="GitHub-Mark-120px-plus.png"/>
-                                <connections>
-                                    <action selector="doGit_Button" destination="PWG-wa-CHi" eventType="touchUpInside" id="lO9-ek-6B4"/>
-                                </connections>
-                            </button>
-                            <button autoresizesSubviews="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f5-im-775">
-                                <rect key="frame" x="264" y="373" width="72" height="50"/>
-                                <color key="backgroundColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="Tae-gz-7iX"/>
-                                    <constraint firstAttribute="height" constant="50" id="uAl-BS-egz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="H9t-Sj-c8c" kind="unwind" unwindAction="unwindAction:" id="YuZ-VG-TyN"/>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZA1-BY-Sll">
-                                <rect key="frame" x="200" y="439" width="51" height="31"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="SFX_toggle:" destination="PWG-wa-CHi" eventType="valueChanged" id="qX0-9y-0fT"/>
-                                </connections>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zfg-7D-9hE">
-                                <rect key="frame" x="200" y="478" width="51" height="31"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="onTintColor" red="0.64313725489999995" green="0.2901960784" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="Music_toggle:" destination="PWG-wa-CHi" eventType="touchUpInside" id="D3G-S4-x05"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5n-as-NhY">
-                                <rect key="frame" x="257" y="444" width="98" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp6-BX-L17">
-                                <rect key="frame" x="257" y="483" width="43" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.56470588239999997" green="0.67450980390000004" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="p0L-RF-HGx" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="0Kb-v0-Vk8"/>
-                            <constraint firstItem="h9j-DY-8fH" firstAttribute="top" secondItem="p0L-RF-HGx" secondAttribute="bottom" constant="8" id="3vS-xQ-tcB"/>
-                            <constraint firstItem="yhY-2J-guC" firstAttribute="leading" secondItem="PQi-WC-eEZ" secondAttribute="trailing" constant="13" id="5kx-94-UFg"/>
-                            <constraint firstItem="RMi-78-iyp" firstAttribute="leading" secondItem="yhY-2J-guC" secondAttribute="trailing" constant="13" id="AYI-pM-Nq8"/>
-                            <constraint firstItem="yhY-2J-guC" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="CAG-3N-Tel"/>
-                            <constraint firstItem="h9j-DY-8fH" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="Ens-bG-KtC"/>
-                            <constraint firstItem="ZA1-BY-Sll" firstAttribute="top" secondItem="4f5-im-775" secondAttribute="bottom" constant="16" id="IxO-rN-nXd"/>
-                            <constraint firstItem="zfg-7D-9hE" firstAttribute="centerY" secondItem="cp6-BX-L17" secondAttribute="centerY" id="K3a-QF-iYb"/>
-                            <constraint firstItem="p0L-RF-HGx" firstAttribute="top" secondItem="Udc-cR-kqf" secondAttribute="bottom" constant="16" id="OYR-nb-Yfa"/>
-                            <constraint firstItem="ZA1-BY-Sll" firstAttribute="centerY" secondItem="h5n-as-NhY" secondAttribute="centerY" id="TyI-wo-PB2"/>
-                            <constraint firstItem="zfg-7D-9hE" firstAttribute="top" secondItem="ZA1-BY-Sll" secondAttribute="bottom" constant="8" id="VnK-SB-K0s"/>
-                            <constraint firstItem="h9j-DY-8fH" firstAttribute="leading" secondItem="h5n-as-NhY" secondAttribute="leading" id="XLE-9P-hXh"/>
-                            <constraint firstItem="RMi-78-iyp" firstAttribute="top" secondItem="yhY-2J-guC" secondAttribute="top" id="XlV-uZ-a07"/>
-                            <constraint firstItem="PQi-WC-eEZ" firstAttribute="top" secondItem="yhY-2J-guC" secondAttribute="top" id="Y6k-Le-XEL"/>
-                            <constraint firstItem="IZC-fE-CPJ" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="dwD-4L-FSY"/>
-                            <constraint firstItem="Udc-cR-kqf" firstAttribute="top" secondItem="IZC-fE-CPJ" secondAttribute="bottom" constant="8" id="fNK-j1-M96"/>
-                            <constraint firstItem="4f5-im-775" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="fuo-uM-pW0"/>
-                            <constraint firstItem="yhY-2J-guC" firstAttribute="top" secondItem="h9j-DY-8fH" secondAttribute="bottom" constant="16" id="jKD-uU-nTW"/>
-                            <constraint firstItem="4f5-im-775" firstAttribute="top" secondItem="yhY-2J-guC" secondAttribute="bottom" constant="16" id="peu-nh-CzC"/>
-                            <constraint firstItem="h5n-as-NhY" firstAttribute="leading" secondItem="cp6-BX-L17" secondAttribute="leading" id="ptA-ES-jGg"/>
-                            <constraint firstItem="h5n-as-NhY" firstAttribute="leading" secondItem="ZA1-BY-Sll" secondAttribute="trailing" constant="8" id="rIg-oM-wBd"/>
-                            <constraint firstItem="Udc-cR-kqf" firstAttribute="centerX" secondItem="Dv6-zp-vZR" secondAttribute="centerX" id="ueB-Zc-2qB"/>
-                            <constraint firstItem="h9j-DY-8fH" firstAttribute="top" secondItem="Dv6-zp-vZR" secondAttribute="centerY" id="z7d-mI-oDX"/>
-                            <constraint firstItem="zfg-7D-9hE" firstAttribute="leading" secondItem="ZA1-BY-Sll" secondAttribute="leading" id="zA7-9W-2rE"/>
+                            <constraint firstItem="ALN-pC-Obc" firstAttribute="centerY" secondItem="Dv6-zp-vZR" secondAttribute="centerY" id="W6U-fc-9bo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ALN-pC-Obc" secondAttribute="trailing" id="Wgg-7P-eBQ"/>
+                            <constraint firstItem="ALN-pC-Obc" firstAttribute="width" secondItem="Dv6-zp-vZR" secondAttribute="width" id="a1d-6R-tzz"/>
+                            <constraint firstItem="ALN-pC-Obc" firstAttribute="leading" secondItem="Dv6-zp-vZR" secondAttribute="leadingMargin" id="guA-fj-7kF"/>
+                            <constraint firstItem="ALN-pC-Obc" firstAttribute="centerY" secondItem="Dv6-zp-vZR" secondAttribute="centerY" id="yKe-Tv-XY6"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="a1d-6R-tzz"/>
+                            </mask>
+                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="Git_Button" destination="RMi-78-iyp" id="50Y-R1-Ngf"/>
                         <outlet property="LI_Button" destination="yhY-2J-guC" id="3Y0-89-L7c"/>
@@ -527,12 +545,13 @@
                         <outlet property="SFX_Switch" destination="ZA1-BY-Sll" id="YPb-V6-Crk"/>
                         <outlet property="Web_Button" destination="PQi-WC-eEZ" id="IGU-Hv-Khd"/>
                         <outlet property="doneButton" destination="4f5-im-775" id="89g-2z-Bvl"/>
+                        <outlet property="titleLabel" destination="IZC-fE-CPJ" id="Puf-sI-GVP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVQ-qK-eXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="H9t-Sj-c8c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-80" y="1298"/>
+            <point key="canvasLocation" x="-288" y="1271"/>
         </scene>
     </scenes>
     <resources>

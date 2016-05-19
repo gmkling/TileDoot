@@ -16,6 +16,7 @@ class InfoViewController: UIViewController {
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var SFX_Switch: UISwitch!
     @IBOutlet var Music_Switch: UISwitch!
+    @IBOutlet var titleLabel: UILabel!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     weak var audioDelegate : TD_AudioPlayer?
@@ -23,8 +24,9 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-
+        titleLabel.numberOfLines = 1;
+        titleLabel.minimumScaleFactor = 16.0/titleLabel.font.pointSize;
+        titleLabel.adjustsFontSizeToFitWidth = true;
     }
 
     override func didReceiveMemoryWarning() {
