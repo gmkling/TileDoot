@@ -14,6 +14,7 @@ class PuzzleCollectionViewController: UICollectionViewController
 {
     var puzzleData : PuzzleSet!
     var puzzleSelected = 0
+    var loadSpinner : UIActivityIndicatorView?
     weak var audioDelegate : TD_AudioPlayer?
     
     override func viewDidLoad() {
@@ -64,25 +65,32 @@ class PuzzleCollectionViewController: UICollectionViewController
         
         cell.backgroundColor = purpleTileColor.colorWithAlphaComponent(1.0)
         let index = (indexPath.section*2)+indexPath.row
-        cell.puzzleLabel.text = String(index)
+        cell.puzzleLabel.text = String(index+1)
         return cell
     }
+    
+    // create and display the loading view
+    
+    
     
     // MARK: Loading the GamePlay screen
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        let indexPath = collectionView!.indexPathForCell(sender as! UICollectionViewCell)
-        let index = (indexPath!.section*2)+indexPath!.row
-        
+  
         if segue.identifier == "GamePlaySegue"
         {
+            let indexPath = collectionView!.indexPathForCell(sender as! UICollectionViewCell)
+            let index = (indexPath!.section*2)+indexPath!.row
+            
             let vc = segue.destinationViewController as? GamePlaySceneViewController
             vc!.puzzles = self.puzzleData
             let thePuzzle = self.puzzleData.getPuzzle(index+1)
             vc!.curPuz = (thePuzzle!.puzzleID)
             vc!.curSet = puzzleData.name
             vc!.audioDelegate = self.audioDelegate
-            print("Added Puzzle set named \(vc!.curPuz) to GamePlayView")
+            print("Added Puzzle named \(vc!.curPuz) to GamePlayView")
+            vc!.puzzMenu = self
+            
         }
     }
     
@@ -98,6 +106,13 @@ class PuzzleCollectionViewController: UICollectionViewController
         print("Selected Puzzle: \(index+1)")
         puzzleSelected = index + 1
         audioDelegate?.playSFX(singleTap_key, typeKey: stereo_key)
+        // start the spinner
+        loadSpinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        loadSpinner?.hidesWhenStopped = true
+        loadSpinner?.center = self.view.center
+        //loadSpinner?.color =
+        self.view.addSubview(loadSpinner!)
+        loadSpinner?.startAnimating()
     }
 
 }

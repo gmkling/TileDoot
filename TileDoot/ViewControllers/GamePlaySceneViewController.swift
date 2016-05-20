@@ -16,7 +16,18 @@ class GamePlaySceneViewController: UIViewController {
     var curSet : String = ""
     weak var scene : GamePlayScene?
     weak var audioDelegate : TD_AudioPlayer?
+    weak var puzzMenu : PuzzleCollectionViewController?
     
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        if puzzMenu != nil
+        {
+            // stop the spinner
+            puzzMenu!.loadSpinner?.stopAnimating()
+        }
+    }
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
