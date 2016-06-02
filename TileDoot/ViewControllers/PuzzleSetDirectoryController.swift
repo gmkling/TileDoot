@@ -11,7 +11,9 @@ import UIKit
 class PuzzleSetDirectoryController: UIViewController {
 
     @IBOutlet var directoryTitle: UILabel!
+    @IBOutlet weak var directoryContainer: UIView!
     weak var audioDelegate : TD_AudioPlayer?
+    weak var puzzleSetControl : PuzzleSetViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +37,19 @@ class PuzzleSetDirectoryController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
+        if segue.identifier == "backToMain"
+        {
+            if puzzleSetControl != nil
+            {
+                // clear puzzle data
+                puzzleSetControl?.cleanup()
+            }
+        }
+        
         if segue.identifier == "PuzzleSetSegue"
         {
-            let puzzleSetControl = segue.destinationViewController as! PuzzleSetViewController
-            puzzleSetControl.audioDelegate = self.audioDelegate
+            puzzleSetControl = segue.destinationViewController as! PuzzleSetViewController
+            puzzleSetControl!.audioDelegate = self.audioDelegate
         }
     }
     /*

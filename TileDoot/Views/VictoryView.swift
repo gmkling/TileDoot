@@ -139,21 +139,32 @@ class VictoryView : SKNode
     
     func doMenuButton()
     {
+        cleanup()
         gamePtr?.doMenuButton()
     }
     
     func doResetButton()
     {
+        cleanup()
         gamePtr?.resetPuzzle()
     }
     
     func doForwardButton()
     {
+        cleanup()
+        gamePtr?.nextPuzzle()
+    }
+    
+    func cleanup()
+    {
         let fadeAction = SKAction.fadeOutWithDuration(1.0)
         let removeAction = SKAction.removeFromParent()
         self.removeAllChildren()
+        tiles = []
+        puzMenuButton = nil
+        replayButton = nil
+        contButton = nil
         self.runAction(SKAction.sequence([fadeAction, removeAction]))
-        gamePtr?.nextPuzzle()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -45,6 +45,12 @@ class TDButton : SKNode
     
     }
     
+    deinit
+    {
+        removeAllChildren()
+        removeFromParent()
+    }
+    
     init(defaultImageName: String, selectImageName: String, buttonAction: () -> Void, disabledImageName: String?, labelStr: String?)
     {
         self.defaultImage = SKSpriteNode(imageNamed: defaultImageName)

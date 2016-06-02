@@ -31,7 +31,6 @@ let catch_key = "CT_SFX"
 
 
 
-//class TD_AudioPlayer : AVAudioPlayerDelegate
 class TD_AudioPlayer : SoundPlayer
 {    
     var sfxStatus : Bool

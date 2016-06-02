@@ -138,7 +138,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playButtonPush:" destination="BV1-FR-VrT" eventType="touchUpInside" id="y7t-Xi-Hr2"/>
-                                    <segue destination="PYY-Ip-CBY" kind="unwind" unwindAction="unwindAction:" id="Xn8-mW-pXR"/>
+                                    <segue destination="PYY-Ip-CBY" kind="unwind" identifier="backToMain" unwindAction="unwindAction:" id="Xn8-mW-pXR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -156,6 +156,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="directoryContainer" destination="jpW-Z1-aL7" id="fhv-3k-kfu"/>
                         <outlet property="directoryTitle" destination="EKd-pr-TjS" id="Pwr-iE-kdG"/>
                     </connections>
                 </viewController>

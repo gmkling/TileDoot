@@ -17,6 +17,16 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
     var selectedIndex = 0
     weak var audioDelegate : TD_AudioPlayer?
     
+    deinit
+    {
+        for each in puzzleData
+        {
+            each?.clearPuzzles()
+        }
+        
+        puzzleData.removeAll()
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -33,6 +43,7 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
 
         collectionView!.backgroundColor = lightGreenTileColor.colorWithAlphaComponent(1.0)
     }
+    
 
     override func didReceiveMemoryWarning()
     {
@@ -113,6 +124,16 @@ class PuzzleSetViewController: UICollectionViewController, UICollectionViewDeleg
             vc!.audioDelegate = self.audioDelegate
             print("Added Puzzle set named \(vc!.puzzleData.name) to selectionView")
         }
+    }
+    
+    func cleanup()
+    {
+//        for each in puzzleData
+//        {
+//            each?.clearPuzzles()
+//        }
+//        
+//        puzzleData.removeAll()
     }
 
 }

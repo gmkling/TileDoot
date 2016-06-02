@@ -271,6 +271,14 @@ class PuzzleSet
         
         return nil
     }
+    
+    func clearPuzzles()
+    {
+        while puzzleList.head.key != nil
+        {
+            puzzleList.delete(puzzleList.head)
+        }
+    }
 }
 
 class Puzzle

@@ -34,8 +34,6 @@ class GameBoardView : SKNode , GameBoardProtocol
     // victory screen
     weak var victoryScreen : VictoryView?
     
-    
-    
     // boardSize is the size in Pixels of the UI element
     init(puzzle: Puzzle, boardSize: CGSize, audioDel: TD_AudioPlayer?, game: GamePlayScene?)
     {
@@ -75,6 +73,8 @@ class GameBoardView : SKNode , GameBoardProtocol
         gameBoard = nil
         game = nil
         audioDelegate = nil
+        victoryScreen?.cleanup()
+        victoryScreen = nil
     }
     
     
