@@ -216,6 +216,14 @@
 		10B34D181C5A0AA500AD8DD7 /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D171C5A0AA500AD8DD7 /* InfoScene.swift */; };
 		10B34D1A1C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D191C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift */; };
 		10B34D1C1C5A0B7800AD8DD7 /* GamePlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */; };
+		10BEBC0B1D0246A30047EF58 /* blueStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC031D0246A30047EF58 /* blueStar.png */; };
+		10BEBC0C1D0246A30047EF58 /* clearStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC041D0246A30047EF58 /* clearStar.png */; };
+		10BEBC0D1D0246A30047EF58 /* greenStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC051D0246A30047EF58 /* greenStar.png */; };
+		10BEBC0E1D0246A30047EF58 /* lightGreenStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC061D0246A30047EF58 /* lightGreenStar.png */; };
+		10BEBC0F1D0246A30047EF58 /* orangeStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC071D0246A30047EF58 /* orangeStar.png */; };
+		10BEBC101D0246A30047EF58 /* purpleStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC081D0246A30047EF58 /* purpleStar.png */; };
+		10BEBC111D0246A30047EF58 /* redStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC091D0246A30047EF58 /* redStar.png */; };
+		10BEBC121D0246A30047EF58 /* yellowStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBC0A1D0246A30047EF58 /* yellowStar.png */; };
 		10CF19CD1CD098E300CB43DA /* linkedin_def-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CF19CB1CD098E300CB43DA /* linkedin_def-500px.png */; };
 		10CF19CE1CD098E300CB43DA /* linkedin_sel-500px.png in Resources */ = {isa = PBXBuildFile; fileRef = 10CF19CC1CD098E300CB43DA /* linkedin_sel-500px.png */; };
 		10CF19D01CD2AF5600CB43DA /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF19CF1CD2AF5600CB43DA /* HUDView.swift */; };
@@ -429,6 +437,14 @@
 		10B34D171C5A0AA500AD8DD7 /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoScene.swift; path = Scenes/InfoScene.swift; sourceTree = "<group>"; };
 		10B34D191C5A0AF500AD8DD7 /* PuzzleDirectoryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleDirectoryScene.swift; path = Scenes/PuzzleDirectoryScene.swift; sourceTree = "<group>"; };
 		10B34D1B1C5A0B7800AD8DD7 /* GamePlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePlayScene.swift; path = Scenes/GamePlayScene.swift; sourceTree = "<group>"; };
+		10BEBC031D0246A30047EF58 /* blueStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueStar.png; sourceTree = "<group>"; };
+		10BEBC041D0246A30047EF58 /* clearStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clearStar.png; sourceTree = "<group>"; };
+		10BEBC051D0246A30047EF58 /* greenStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenStar.png; sourceTree = "<group>"; };
+		10BEBC061D0246A30047EF58 /* lightGreenStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightGreenStar.png; sourceTree = "<group>"; };
+		10BEBC071D0246A30047EF58 /* orangeStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeStar.png; sourceTree = "<group>"; };
+		10BEBC081D0246A30047EF58 /* purpleStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purpleStar.png; sourceTree = "<group>"; };
+		10BEBC091D0246A30047EF58 /* redStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redStar.png; sourceTree = "<group>"; };
+		10BEBC0A1D0246A30047EF58 /* yellowStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowStar.png; sourceTree = "<group>"; };
 		10CF19CB1CD098E300CB43DA /* linkedin_def-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedin_def-500px.png"; path = "MiscButtons/linkedin_def-500px.png"; sourceTree = "<group>"; };
 		10CF19CC1CD098E300CB43DA /* linkedin_sel-500px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedin_sel-500px.png"; path = "MiscButtons/linkedin_sel-500px.png"; sourceTree = "<group>"; };
 		10CF19CF1CD2AF5600CB43DA /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HUDView.swift; path = Views/HUDView.swift; sourceTree = "<group>"; };
@@ -795,6 +811,7 @@
 		10B34C6E1C46437A00AD8DD7 /* TileAssets */ = {
 			isa = PBXGroup;
 			children = (
+				10BEBC021D0246A30047EF58 /* Stars */,
 				10902A2E1CE31D0C009AB2C5 /* UIKit_Tiles */,
 				106D2D161CB97E6800D0F479 /* StopTileTest3.png */,
 				106D2D141CB8EFD400D0F479 /* StopTileTest2.png */,
@@ -884,6 +901,21 @@
 				10A91E0C1C9BD5EC009F50AB /* TestGameBoardViewScene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		10BEBC021D0246A30047EF58 /* Stars */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBC031D0246A30047EF58 /* blueStar.png */,
+				10BEBC041D0246A30047EF58 /* clearStar.png */,
+				10BEBC051D0246A30047EF58 /* greenStar.png */,
+				10BEBC061D0246A30047EF58 /* lightGreenStar.png */,
+				10BEBC071D0246A30047EF58 /* orangeStar.png */,
+				10BEBC081D0246A30047EF58 /* purpleStar.png */,
+				10BEBC091D0246A30047EF58 /* redStar.png */,
+				10BEBC0A1D0246A30047EF58 /* yellowStar.png */,
+			);
+			path = Stars;
 			sourceTree = "<group>";
 		};
 		10CF19D11CD4A38400CB43DA /* ViewControllers */ = {
@@ -1011,6 +1043,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10AB01831CADE1ED0092D7AF /* Catch_Mono6.aiff in Resources */,
+				10BEBC0C1D0246A30047EF58 /* clearStar.png in Resources */,
 				10B34CC31C4DA4B700AD8DD7 /* LGreen5_test.png in Resources */,
 				10AB018C1CADE1ED0092D7AF /* RL_WoodSlide_Stereo1.aiff in Resources */,
 				10B34CB21C4B935F00AD8DD7 /* Yellow4_test.png in Resources */,
@@ -1028,6 +1061,7 @@
 				10B34CB01C4B935F00AD8DD7 /* Yellow3_test.png in Resources */,
 				10EB4AAF1CC041EF00E487D3 /* PurpleReset_def.png in Resources */,
 				10AB01301CA480DE0092D7AF /* emailButton-500px_def.png in Resources */,
+				10BEBC111D0246A30047EF58 /* redStar.png in Resources */,
 				10AB01841CADE1ED0092D7AF /* PileTap_Mono1.aiff in Resources */,
 				10B34D111C536C9500AD8DD7 /* Red1_sel.png in Resources */,
 				10AB01821CADE1ED0092D7AF /* Catch_Mono5.aiff in Resources */,
@@ -1045,12 +1079,14 @@
 				10A984F31CCADEE40026F00C /* Icon-Small@3x.png in Resources */,
 				10AB01921CADE1ED0092D7AF /* SingleTap_Mono3.aiff in Resources */,
 				1023D29E1C5AE7C1005DBAB9 /* web-500px.png in Resources */,
+				10BEBC0B1D0246A30047EF58 /* blueStar.png in Resources */,
 				10AB019C1CADE1ED0092D7AF /* SingleTapLoud_Mono5.aiff in Resources */,
 				10B34C971C4A4A0200AD8DD7 /* Blue5_test.png in Resources */,
 				10CF19CE1CD098E300CB43DA /* linkedin_sel-500px.png in Resources */,
 				10AB01381CA485C90092D7AF /* checkBox-500px_def.png in Resources */,
 				10EB4AAE1CC041EF00E487D3 /* PurpleForward_sel.png in Resources */,
 				10B34CAA1C4B935F00AD8DD7 /* DGreen4_test.png in Resources */,
+				10BEBC0D1D0246A30047EF58 /* greenStar.png in Resources */,
 				1023D2A81C5C2713005DBAB9 /* BlueBack_sel-500px.png in Resources */,
 				10AB017B1CADE1ED0092D7AF /* LR_WoodSlide_Stereo4.aiff in Resources */,
 				10B34CD91C4E32DB00AD8DD7 /* Purple1_test.png in Resources */,
@@ -1074,6 +1110,7 @@
 				10B34CB41C4B935F00AD8DD7 /* Yellow5_test.png in Resources */,
 				10AB01321CA480DE0092D7AF /* gitButton-500px_def.png in Resources */,
 				10AB01901CADE1ED0092D7AF /* SingleTap_Mono1.aiff in Resources */,
+				10BEBC101D0246A30047EF58 /* purpleStar.png in Resources */,
 				10AB017A1CADE1ED0092D7AF /* LR_WoodSlide_Stereo3.aiff in Resources */,
 				10B34CA41C4B935F00AD8DD7 /* DGreen1_test.png in Resources */,
 				10B34C8F1C4A4A0200AD8DD7 /* Blue1_test.png in Resources */,
@@ -1109,6 +1146,7 @@
 				10AB01271CA474F00092D7AF /* PurpleMenu_def.png in Resources */,
 				10AB01801CADE1ED0092D7AF /* Catch_Mono3.aiff in Resources */,
 				1089DB181CD5D43B00802F58 /* GitHub-Mark-Light-120px-plus.png in Resources */,
+				10BEBC0F1D0246A30047EF58 /* orangeStar.png in Resources */,
 				10AB01931CADE1ED0092D7AF /* SingleTap_Mono4.aiff in Resources */,
 				10EB4AAD1CC041EF00E487D3 /* PurpleForward_dis.png in Resources */,
 				10AB019F1CADE1ED0092D7AF /* SingleTapLoud_Mono8.aiff in Resources */,
@@ -1119,6 +1157,7 @@
 				10EB4AAA1CC041EF00E487D3 /* PurpleBack_dis.png in Resources */,
 				10AB01A21CADE1ED0092D7AF /* SmallFall_Stereo3.aiff in Resources */,
 				10B34CD51C4E32DB00AD8DD7 /* Orange4_test.png in Resources */,
+				10BEBC0E1D0246A30047EF58 /* lightGreenStar.png in Resources */,
 				10EB4ACE1CCADDAD00E487D3 /* Icon-60@3x.png in Resources */,
 				10B34CF01C4F87BE00AD8DD7 /* Red5_test.png in Resources */,
 				10B34CBF1C4DA4B700AD8DD7 /* LGreen3_test.png in Resources */,
@@ -1134,6 +1173,7 @@
 				10AB018D1CADE1ED0092D7AF /* RL_WoodSlide_Stereo2.aiff in Resources */,
 				1023D2A01C5B5057005DBAB9 /* email-500px.png in Resources */,
 				10EB4AD41CCADDAD00E487D3 /* Icon-Small.png in Resources */,
+				10BEBC121D0246A30047EF58 /* yellowStar.png in Resources */,
 				10AB018E1CADE1ED0092D7AF /* RL_WoodSlide_Stereo3.aiff in Resources */,
 				10AB01A61CADE1ED0092D7AF /* SmallFall_Stereo7.aiff in Resources */,
 				10EB4AD11CCADDAD00E487D3 /* Icon-Small-40.png in Resources */,

@@ -230,6 +230,15 @@ func preloadTileTextures()
     }
 }
 
+var blueStarTexture = SKTexture(imageNamed: "blueStar.png")
+var dGreenStarTexture = SKTexture(imageNamed: "greenStar.png")
+var lGreenStarTexture = SKTexture(imageNamed: "lightGreenStar.png")
+var orangeStarTexture = SKTexture(imageNamed: "orangeStar.png")
+var purpleStarTexture = SKTexture(imageNamed: "purpleStar.png")
+var redStarTexture = SKTexture(imageNamed: "redStar.png")
+var yellowStarTexture = SKTexture(imageNamed: "yellowStar.png")
+var clearStarTexture = SKTexture(imageNamed: "clearStar.png")
+
 func textureForColor(inColor: Color) -> SKTexture
 {
     switch inColor
@@ -248,6 +257,35 @@ func textureForColor(inColor: Color) -> SKTexture
         return dGreenTextures.randomItem()
     case Color.kPurple:
         return purpleTextures.randomItem()
+    default:
+        // a random ugly tile as a default
+        return SKTexture(imageNamed: "BlueOff.png")
+    }
+}
+
+
+
+func starTextureForColor(inColor: Color) -> SKTexture
+{
+    // TODO: Replace this texture with a colored star
+    switch inColor
+    {
+    case Color.kBlue:
+        return blueStarTexture
+    case Color.kRed:
+        return redStarTexture
+    case Color.kYellow:
+        return yellowStarTexture
+    case Color.kOrange:
+        return orangeStarTexture
+    case Color.kLightGreen:
+        return lGreenStarTexture
+    case Color.kGreen:
+        return dGreenStarTexture
+    case Color.kPurple:
+        return purpleStarTexture
+    case Color.kNoColor:
+        return clearStarTexture
     default:
         // a random ugly tile as a default
         return SKTexture(imageNamed: "BlueOff.png")

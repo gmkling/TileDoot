@@ -51,16 +51,18 @@ class VictoryView : SKNode
         victoryLabel.horizontalAlignmentMode = .Center
         
         // draw tiles
+        var goldStar = Color.kYellow
+        var clearStar = Color.kNoColor
         
         switch stars {
         case 1:
-            starFile.appendContentsOf([.kRed, .kLightGreen, .kLightGreen])
+            starFile.appendContentsOf([goldStar, clearStar, clearStar])
         case 2:
-            starFile.appendContentsOf([.kRed, .kRed, .kLightGreen])
+            starFile.appendContentsOf([goldStar, goldStar, clearStar])
         case 3:
-            starFile.appendContentsOf([.kRed, .kRed, .kRed])
+            starFile.appendContentsOf([goldStar, goldStar, goldStar])
         default:
-            starFile.appendContentsOf([.kLightGreen, .kLightGreen, .kLightGreen])
+            starFile.appendContentsOf([clearStar, clearStar, clearStar])
         }
         
         tileXStart = xSize*0.2
@@ -73,7 +75,7 @@ class VictoryView : SKNode
         
         for i in 0...2
         {
-            let tempTile = SKSpriteNode(texture: textureForColor(starFile[i]))
+            let tempTile = SKSpriteNode(texture: starTextureForColor(starFile[i]))
             tempTile.position = CGPointMake(tileXStart+tileXStride*CGFloat(i), tileYPos)
             tempTile.setScale(bigButtonScale)
             tiles.append(tempTile)
@@ -159,7 +161,14 @@ class VictoryView : SKNode
     {
         let fadeAction = SKAction.fadeOutWithDuration(1.0)
         let removeAction = SKAction.removeFromParent()
-        self.removeAllChildren()
+        
+        // if the parent exists, we are cleaning up to change levels,
+        // so we must clean up the children
+        if self.parent != nil
+        {
+           self.removeAllChildren()
+        }
+        
         tiles = []
         puzMenuButton = nil
         replayButton = nil
