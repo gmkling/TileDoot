@@ -51,8 +51,8 @@ class VictoryView : SKNode
         victoryLabel.horizontalAlignmentMode = .Center
         
         // draw tiles
-        var goldStar = Color.kYellow
-        var clearStar = Color.kNoColor
+        let goldStar = Color.kYellow
+        let clearStar = Color.kNoColor
         
         switch stars {
         case 1:
